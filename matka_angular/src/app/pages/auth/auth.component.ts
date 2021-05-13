@@ -40,7 +40,7 @@ export class AuthComponent implements OnInit {
         // tslint:disable-next-line:triple-equals
         console.log(response.data.user);
         // tslint:disable-next-line:triple-equals
-        if (response.data.user.userType.userTypeId == 1){
+        if (response.data.user.userTypeId == 1){
           this.router.navigate(['/owner']).then(r => {});
         }
       }else{

@@ -8,15 +8,14 @@ import {Router} from '@angular/router';
 import {GlobalVariable} from '../shared/global';
 
 export interface AuthResponseData {
-
-
-
   success: number;
   data: {
-    user: { userId: number, pin: string, userName: string,
-      userType: {
-      userTypeId: number, userTypeName: string
-      }
+    user: {
+          userId: number,
+          pin: string,
+          userName: string,
+          userTypeId: number,
+          userTypeName: string
     };
     token: string;
   };
@@ -39,11 +38,12 @@ export class AuthService {
     }
   }
   autoLogin(){
-    const userData: {id: number, personName: string, _authKey: string, personTypeId: number} = JSON.parse(localStorage.getItem('user'));
+    // tslint:disable-next-line:max-line-length
+    const userData: {id: number, userName: string, _authKey: string, userTypeId: number, userTypeName: string} = JSON.parse(localStorage.getItem('user'));
     if (!userData){
       return;
     }
-    const loadedUser = new User(userData.id, userData.personName, userData._authKey, userData.personTypeId);
+    const loadedUser = new User(userData.id, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName);
     if (loadedUser.authKey){
       this.user.next(loadedUser);
       //  if (loadedUser.isOwner){
@@ -60,7 +60,8 @@ export class AuthService {
             const user = new User(resData.data.user.userId,
             resData.data.user.userName,
             resData.data.token,
-            resData.data.user.userType.userTypeId);
+            resData.data.user.userTypeId,
+              resData.data.user.userTypeName);
             this.user.next(user); // here two user is used one is user and another user is subject of rxjs
             localStorage.setItem('user', JSON.stringify(user));
           }

@@ -25,7 +25,8 @@ class UserResource extends JsonResource
             'userId' => $this->id,
             'userName' => $this->user_name,
             'pin' => $this->email,
-            'userType' => new UserTypeResource($this->user_type),
+            'userTypeName' => ($this->user_type)->user_type_name,
+            'userTypeId' => ($this->user_type)->id,
             'balance' => $this->closing_balance
         ];
     }
