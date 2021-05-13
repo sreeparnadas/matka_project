@@ -10,13 +10,13 @@ import {OwnerComponent} from './pages/owner/owner.component';
 
 
 
-
 // @ts-ignore
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'auth', component: AuthComponent},
+  {path: 'owner', component: OwnerComponent}
 
-  
+
 ];
 
 @NgModule({
