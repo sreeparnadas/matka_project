@@ -1,0 +1,32 @@
+#job-transaction-table-div{
+  padding: 5px;
+  border: 2px solid wheat;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #FFFFFF 0%, #a6e0ff 35%, rgba(255,255,255,.6) 100%);
+  -webkit-box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.35);
+  -moz-box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.35);
+  box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.35);
+}
+#jobBill-div {
+
+  background: #dddddd;
+  width: 40%;
+
+
+}
+
+#bill-div label{
+
+  color : royalblue;
+
+}
+table,td{
+  border: 1px solid royalblue;
+  border-collapse: collapse;
+  color : royalblue;
+}
+.table1 td{
+  border : none;
+  color : royalblue;
+
+}

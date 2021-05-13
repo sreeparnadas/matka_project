@@ -1,0 +1,50 @@
+{
+  "name": "vkovic/laravel-commando",
+  "description": "Collection of handy Laravel artisan commands that most projects needs",
+  "keywords": [
+    "laravel",
+    "console",
+    "artisan",
+    "commands"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vladimir Ković",
+      "email": "vlada.kovic@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Vkovic\\LaravelCommando\\": "src"
+    },
+    "files": [
+        "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Vkovic\\LaravelCommando\\Test\\": "tests"
+    }
+  },
+  "require": {
+     "php": "^7.3|^8.0"
+  },
+  "require-dev": {
+    "laravel/framework": "8.*",
+    "orchestra/testbench": "6.*",
+    "orchestra/database": "6.*",
+    "phpunit/phpunit": "^9.3.3"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "extra": {
+      "laravel": {
+          "providers": [
+              "Vkovic\\LaravelCommando\\Providers\\CommandoServiceProvider"
+          ]
+      }
+  },
+  "minimum-stability": "dev"
+}

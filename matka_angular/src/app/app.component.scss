@@ -1,0 +1,20 @@
+#bottom-div {
+    background-color: #c6538c;
+}
+
+router-outlet {
+    height: 100%;
+}
+
+.fixVertical {
+    flex: 1 1 100%;
+    min-height: 100vh;
+}
+
+.yellow {
+    background-color: yellow
+}
+
+#footer-div {
+    background-color: beige;
+}

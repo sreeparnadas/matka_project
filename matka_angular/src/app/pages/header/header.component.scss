@@ -1,0 +1,33 @@
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+.logo{
+  padding: 0px 5px;
+  font-size: 20px;
+}
+.MyActiveMenu{
+  background-color: #cdd20c;
+  color: black;
+}
+
+
+/* here's what you're looking for B-) */
+mat-nav-list.list-horizontal {
+  padding: 0;
+  .mat-list-item {
+    display: inline-block;
+    height: auto;
+    width: auto;
+  }
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row{
+  height: unset !important;
+}
+
+.mat-list-item .mat-list-item-content {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+

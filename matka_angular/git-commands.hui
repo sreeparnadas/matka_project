@@ -1,0 +1,67 @@
+
+//github page deployment check
+https://github.com/<user>/<repo>/deployments
+
+
+#List of Branches, local and remote branches
+git branch -a
+
+#List show all local branches
+git branch
+
+#creating new branch
+git branch <branch name>
+
+#switch to a branch
+git checkout <branch name>
+
+#Creating a new branch and switched to the branch by a single command
+git checkout -b <new branch>
+
+#showing the log
+git log --oneline --decorate
+
+#rename a branch
+git branch -m <old name> <new name>
+
+#delete branch
+git branch -d <branch name>
+
+#check the differences between two branches, here with master
+git diff master <branch name>
+
+#to check the difference visually
+git diftool master <branch name>
+
+# merging a branch to master, let you are in master branch
+git merge <branch name>
+
+#show log with change log
+git log --oneline --graph --decorate
+
+#showing all log
+git log --oneline --graph --decorate --all
+
+
+#suppose you are in new-branch and changes are made in few files, commit them, if you need add files also, now we
+# are going to merge it to master.
+#step 1: Checkout to master
+    git checkout master
+#step 2: merge new-branch to master, this is fast forward merge
+    git merge new-branch
+# this was first forward merge, check the log
+git log --oneline --graph --decorate --all
+
+#now we will evade first forward merge, it will preserve the graph
+git merge new-branch --no-ff
+#use following command to check the changes
+git log --oneline --graph --decorate --all
+
+#if you have changes in branch and master and like to merge the branch to master use following command from master
+git merge new-branch -m "merging and committing"
+# changes in branch
+# changes in branch
+
+# hope working
+
+

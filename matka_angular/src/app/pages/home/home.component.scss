@@ -1,0 +1,31 @@
+
+
+.cards {
+  overflow: auto;
+  height: 90vh;
+  margin-left: 5px;
+}
+
+.image-card{
+  max-width: 300px;
+  margin: 10px;
+  //max-height: 300px;
+  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3);
+}
+
+
+.picture-ripple-container{
+  background-color: transparent;
+  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3);
+  margin-top: 5px;
+  border-radius: 3px;
+}
+.picsum-img-wrapper{
+  //height: 400px;
+  //width: 100px;
+  //margin: 5px;
+}
+
+ngb-carousel{
+  margin: 5px;
+}

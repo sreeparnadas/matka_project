@@ -1,0 +1,55 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "first_name": "Sebastian",
+      "last_name": "Eschweiler",
+      "email": "sebastian@codingthesmartway.com"
+    },
+    {
+      "id": 2,
+      "first_name": "Steve",
+      "last_name": "Palmer",
+      "email": "steve@codingthesmartway.com"
+    },
+    {
+      "id": 3,
+      "first_name": "Ann",
+      "last_name": "Smith",
+      "email": "ann@codingthesmartway.com"
+    },
+    {
+      "id": 4,
+      "first_name": "Sukanta",
+      "last_name": "Hui",
+      "email": "sukantahui@gmail.com"
+    },
+    {
+      "id": 5,
+      "first_name": "Sreeparna",
+      "last_name": "Das",
+      "email": "sebastian@codingthesmartway.com"
+    }
+  ],
+  "clients": [
+    {
+      "id": "59761c23b30d971669fb42ff",
+      "isActive": true,
+      "age": 36,
+      "name": "Dunlap Hubbard",
+      "gender": "male",
+      "company": "CEDWARD",
+      "email": "dunlaphubbard@cedward.com",
+      "phone": "+1 (890) 543-2508",
+      "address": "169 Rutledge Street, Konterra, Northern Mariana Islands, 8551"
+    },
+    {
+      "id": "59761c23b30d971669fb42f8",
+      "isActive": true,
+      "age": 36,
+      "name": "Dunlap Hubbard",
+      "mobuile": "+1 (890) 543-2508",
+      "address2": "169 Rutledge Street, Konterra, Northern Mariana Islands, 8551"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+
+
+
+
+
+https://www.npmjs.com/package/@ng-bootstrap/ng-bootstrap
+
+//this is required for Angular 9
+ng add @angular/localize
+
+ng add @angular/material
+
+
+https://css-tricks.com/guides/
+https://github.com/FortAwesome/angular-fontawesome
+
+https://medium.com/techiediaries-com/angular-9-8-authentication-form-angular-formbuilder-formgroup-and-validators-example-with-node-f91729db006f
+
+
+https://ng-bootstrap.github.io/#/components/toast/examples
+
+
+
+My formspace id is huisukanta77@gmail.com
+password India2day#1977
+
+You could use some BaaS (Backend as a service) provider, like Formspree. It's pretty simple to use and enables you to send emails without have to write or setup a backend. All you have to do is post an Http request from your angular application and this service takes care of the rest.
+
+    create an account at formspree.io
+    click the "+New Form" button
+    enter a email that you want to receive the emails
+
+Then you'll get an unique endpoint for this newly create form wich you can use to send (post) emails to from your angular application. The endpoint will look something like this : https://formspree.io/asdlf7asdf
+
+Here is some example code using Template driven forms:
+The html form
+
+<form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+    <input type="text" placeholder="Name" name="name" ngModel required #name="ngModel">
+    <input type="text" placeholder="Email" email name="email" ngModel required #email="ngModel">
+    <textarea placeholder="Messages" name="messages" ngModel required #messages="ngModel"></textarea>
+    <input type="submit" value="Send">
+</form>
+
+The code behind
+
+ onSubmit(contactForm: NgForm) {
+    if (contactForm.valid) {
+      const email = contactForm.value;
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      this.http.post('https://formspree.io/asdlf7asdf',
+        { name: email.name, replyto: email.email, message: email.messages },
+        { 'headers': headers }).subscribe(
+          response => {
+            console.log(response);
+          }
+        );
+    }
+  }
+
+You can do much more with this (or other) services but this would be the basic gist of it.
+
+
+//project updated to angular version 11
+
+

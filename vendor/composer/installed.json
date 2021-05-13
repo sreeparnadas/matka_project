@@ -1,0 +1,71 @@
+{
+    "packages": [
+        {
+            "name": "vkovic/laravel-commando",
+            "version": "v0.2.0",
+            "version_normalized": "0.2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vkovic/laravel-commando.git",
+                "reference": "f5284a15d4417ba9b1935fead3b79f043e5af4aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vkovic/laravel-commando/zipball/f5284a15d4417ba9b1935fead3b79f043e5af4aa",
+                "reference": "f5284a15d4417ba9b1935fead3b79f043e5af4aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "laravel/framework": "8.*",
+                "orchestra/database": "6.*",
+                "orchestra/testbench": "6.*",
+                "phpunit/phpunit": "^9.3.3"
+            },
+            "time": "2021-01-29T00:26:26+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Vkovic\\LaravelCommando\\Providers\\CommandoServiceProvider"
+                    ]
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Vkovic\\LaravelCommando\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladimir Ković",
+                    "email": "vlada.kovic@gmail.com"
+                }
+            ],
+            "description": "Collection of handy Laravel artisan commands that most projects needs",
+            "keywords": [
+                "artisan",
+                "commands",
+                "console",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/vkovic/laravel-commando/issues",
+                "source": "https://github.com/vkovic/laravel-commando/tree/v0.2.0"
+            },
+            "install-path": "../vkovic/laravel-commando"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

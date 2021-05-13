@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <title>METAL Notes</title>
+  </head>
+  <body>
+    <h1>Metal Project Note</h1>
+	<h2>Terminal Execution Policy</h2>
+	<p>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</p>
+    <p>This project is created using laravel and Angular 10. Laravel is used for API only. Laravel Version is 8.</p>
+    <p>To use Laravel 8 we have to edit the php.ini file from bitnami/wamp~/php</p>
+    <p><b>extension=php_fileinfo.dll</b></p>
+    <p>For more information <a target="_blank" href="https://stackoverflow.com/questions/24850136/i-have-ext-fileinfo-but-composer-says-it-is-missing" >Click Here</a></p>
+    <p>Add the above line in php.ini file</p>
+    <h3>We need composer to install laravel</h3>
+    <p>Install composer from here <a target="_blank" href="https://getcomposer.org/download/">Click Here</a></p>
+    <hr>
+    <h2>Setting config values</h2>
+
+    <p>Now we need to set the global configuration variables, which are very important, especially if you are working with other developers. The main advantage of this being it is easier to find out who has committed a certain code block, for example.</p>
+    <ul>
+        <li>git config --global user.name “Sukanta Hui”</li>
+        <li>git config --global user.email “sukantahui@mail.com”</li>
+        <li>git config --list</li>
+    </ul>
+	<hr>
+	<h2>Laravel useful command Laravel 8</h2>
+	 <dl>
+	  <dt>php artisan schema:dump --prune</dt>
+	  <dd>
+		***It will delete the migration folder from laravel project
+		<br>
+		Schema dumping is a way to squash migrations to a single file. It generates a schema file that has the whole schema for your database in a SQL form. This is used during development, useful for integrating new developers on your project that already has a large number of migrations. It supports MySQL, Postgres, SQLite.
+		<br>
+		Please add mysqldump to your path variable, like below
+		<br>
+		F:\Bitnami\wampstack-7.4.10-0\mysql\bin
+		<br>
+		You will find the output file in database folder of laravel project, database/schema
+	  </dd>
+	  
+	</dl> 
+	<section>
+		<h1>When running script is disabled</h1>
+		<p>
+			Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+		</p>
+	</section>
+	<section>
+		<h1>How to get api list</h1>
+		<p>php artisan route:list --compact --path=api</p>
+		<h1>How to start tinker</h1>
+		<p>php artisan tinker</p>
+		<p>Now Run following to get TransactionMaster</p>
+		<p>>>>App\Models\TransactionMaster::find(4)</p>
+		<p>The above command will show you TransactionMaster for id 4</p>
+		<p><a href="https://plugins.jetbrains.com/plugin/14957-laravel-tinker">https://plugins.jetbrains.com/plugin/14957-laravel-tinker</a></p>
+		<p>$x = new \App\Http\Resources\TransactionResource(\App\Models\TransactionMaster::find(2));</p>
+		<p>$x->jsonSerialize();</p>
+	</section>
+	<section>
+		<p>composer require vkovic/laravel-commando</>
+	</section>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
+
+
+
+
+
