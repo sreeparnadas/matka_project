@@ -13,7 +13,11 @@ export interface AuthResponseData {
 
   success: number;
   data: {
-    user: { id: number, user_name: string, email: string, mobile1: string, mobile2: string, user_type_id: number };
+    user: { userId: number, pin: string, userName: string,
+      userType: {
+      userTypeId: number, userTypeName: string
+      }
+    };
     token: string;
   };
   message: string;
@@ -53,10 +57,10 @@ export class AuthService {
         // tslint:disable-next-line:max-line-length
         // console.log(resData);
         if (resData.success === 1){
-            const user = new User(resData.data.user.id,
-            resData.data.user.user_name,
+            const user = new User(resData.data.user.userId,
+            resData.data.user.userName,
             resData.data.token,
-            resData.data.user.user_type_id);
+            resData.data.user.userType.userTypeId);
             this.user.next(user); // here two user is used one is user and another user is subject of rxjs
             localStorage.setItem('user', JSON.stringify(user));
           }

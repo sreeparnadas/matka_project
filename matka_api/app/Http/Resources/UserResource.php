@@ -9,6 +9,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed id
  * @property mixed user_type
  * @property mixed closing_balance
+ * @property mixed user_name
  */
 class UserResource extends JsonResource
 {
@@ -22,6 +23,7 @@ class UserResource extends JsonResource
     {
         return [
             'userId' => $this->id,
+            'userName' => $this->user_name,
             'pin' => $this->email,
             'userType' => new UserTypeResource($this->user_type),
             'balance' => $this->closing_balance
