@@ -30,9 +30,20 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
   isAuthenticated(){
-
+    console.log('I am checking', this.user.value);
     if (this.user.value){
       return true;
+    }else{
+      return false;
+    }
+  }
+  isAdmin(){
+    if (this.user.value){
+      if (this.user.value.isAdmin){
+        return true;
+      }else{
+        return false;
+      }
     }else{
       return false;
     }

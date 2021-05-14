@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '4d07f66e679b7cf7aec3ae43464c79ba936fae1f',
+    'reference' => 'a6174a9894cc34d0e97ee6445b18b4478921a076',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '4d07f66e679b7cf7aec3ae43464c79ba936fae1f',
+      'reference' => 'a6174a9894cc34d0e97ee6445b18b4478921a076',
     ),
     'vkovic/laravel-commando' => 
     array (

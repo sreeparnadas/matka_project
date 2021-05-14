@@ -7,6 +7,7 @@ import {CpanelComponent} from './pages/cpanel/cpanel.component';
 import {StockistComponent} from './pages/stockist/stockist.component';
 import {TerminalComponent} from './pages/terminal/terminal.component';
 import {DeveloperComponent} from './pages/developer/developer.component';
+import {AuthGuardAdminServiceService} from './services/auth-guard-admin-service.service';
 
 
 
@@ -17,10 +18,10 @@ import {DeveloperComponent} from './pages/developer/developer.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'auth', component: AuthComponent},
-  {path: 'cPanel', component: CpanelComponent},
-  {path: 'stockistCPanel', component: StockistComponent},
-  {path: 'terminal', component: TerminalComponent},
-  {path: 'developer', component: DeveloperComponent},
+  {path: 'cPanel', canActivate : [AuthGuardAdminServiceService], component: CpanelComponent},
+  {path: 'stockistCPanel', canActivate : [AuthGuardService], component: StockistComponent},
+  {path: 'terminal', canActivate : [AuthGuardService], component: TerminalComponent},
+  {path: 'developer', canActivate : [AuthGuardService], component: DeveloperComponent},
 
 
 ];
