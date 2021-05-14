@@ -23,6 +23,10 @@
 
 
     </mat-nav-list>
+
+
+
+
   </mat-toolbar>
   <!--For Admin new-->
   <mat-toolbar color="secondary" [ngStyle]="myStyle()" *ngIf="isAuthenticated && isAdmin">
@@ -179,42 +183,48 @@
       <div fxLayout="row">
         <button mat-button >
           <mat-icon>home</mat-icon>
-          <span class="logo">Coder</span>
+          <span class="logo">Terminal</span>
         </button>
         <div *ngIf="!deviceXs">
           <button mat-button
                   [routerLink]="['/']"
                   routerLinkActive="MyActiveMenu"
                   [routerLinkActiveOptions]="{exact: true}">Home</button>
-          <button mat-button >Contact Us</button>
-          <button mat-button >About Us</button>
+
+          <!-- <button mat-button >Contact Us</button>
+          <button mat-button >About Us</button> -->
         </div>
-        <div ngbDropdown class="d-inline-block">
+        <!-- <div ngbDropdown class="d-inline-block">
           <button class="btn btn-outline-primary" id="dropdownBasic3" ngbDropdownToggle>Toggle dropdown</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem>Action - 1</button>
             <button ngbDropdownItem>Another Action</button>
             <button ngbDropdownItem>Something else is here</button>
           </div>
-        </div>
+        </div> -->
 
-        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['/customer']" routerLinkActive="MyActiveMenu">Customer</button>
           <button mat-menu-item [routerLink]="['/product']" routerLinkActive="MyActiveMenu">Product</button>
-        </mat-menu>
+        </mat-menu> -->
 
 
       </div>
-      <button mat-button
+      <!-- <button mat-button
               [routerLink]="['/auth']"
-              routerLinkActive="MyActiveMenu">Login</button>
-      <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+              routerLinkActive="MyActiveMenu">
+                Login
+            </button> -->
+
       <div>
-        <button  mat-button>
+        <!-- <button  mat-button>
           <mat-icon *ngIf="deviceXs">more_vert</mat-icon>
           <span *ngIf="!deviceXs">Menu</span>
-        </button>
+        </button> -->
+        <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+        <i class="bi bi-arrow-right-circle"></i>
+
       </div>
     </mat-toolbar-row>
 
