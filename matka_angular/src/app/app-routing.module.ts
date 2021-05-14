@@ -11,6 +11,7 @@ import {AuthGuardAdminServiceService} from './services/auth-guard-admin-service.
 import {AuthGuardDeveloperServiceService} from './services/auth-guard-developer-service.service';
 import {AuthGuardTerminalServiceService} from './services/auth-guard-terminal-service.service';
 import {AuthGuardStockistServiceService} from './services/auth-guard-stockist-service.service';
+import {BiIconComponent} from './pages/bi-icon/bi-icon.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'stockistCPanel', canActivate : [AuthGuardStockistServiceService], component: StockistComponent},
   {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
   {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},
+  {path: 'bi-icon', component: BiIconComponent},
 ];
 
 @NgModule({

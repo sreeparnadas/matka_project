@@ -52,6 +52,7 @@ import { CpanelComponent } from './pages/cpanel/cpanel.component';
 import { StockistComponent } from './pages/stockist/stockist.component';
 import { TerminalComponent } from './pages/terminal/terminal.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
+import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
 
 
 
@@ -83,6 +84,7 @@ import { DeveloperComponent } from './pages/developer/developer.component';
                 StockistComponent,
                 TerminalComponent,
                 DeveloperComponent,
+                BiIconComponent,
 
 
 
