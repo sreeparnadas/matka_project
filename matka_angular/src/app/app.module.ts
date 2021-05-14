@@ -23,7 +23,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AuthComponent } from './pages/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorInterceptor} from './services/auth-interceptor.interceptor';
-import { OwnerComponent } from './pages/owner/owner.component';
+// import { OwnerComponent } from './pages/owner/owner.component';
 import {NgxPrintModule} from 'ngx-print';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -65,7 +65,7 @@ import { DeveloperComponent } from './pages/developer/developer.component';
     PictureCarouselComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    OwnerComponent,
+    // OwnerComponent,
     SncakBarComponent,
     ConfirmationDialogComponent,
     LoaidngRippleComponent,
