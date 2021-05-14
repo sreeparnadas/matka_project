@@ -38,12 +38,8 @@ export class AuthService {
     }
   }
   isAdmin(){
-    if (this.user.value){
-      if (this.user.value.isAdmin){
-        return true;
-      }else{
-        return false;
-      }
+    if (this.user.value && this.user.value.isAdmin){
+     return true;
     }else{
       return false;
     }
@@ -55,6 +51,22 @@ export class AuthService {
       return false;
     }
   }
+  isStockist(): boolean{
+    if (this.user.value && this.user.value.isStockist){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isTerminal(): boolean{
+    if (this.user.value && this.user.value.isTerminal){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   autoLogin(){
     // tslint:disable-next-line:max-line-length
     const userData: {id: number, userName: string, _authKey: string, userTypeId: number, userTypeName: string} = JSON.parse(localStorage.getItem('user'));

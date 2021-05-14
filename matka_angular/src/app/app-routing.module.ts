@@ -9,6 +9,8 @@ import {TerminalComponent} from './pages/terminal/terminal.component';
 import {DeveloperComponent} from './pages/developer/developer.component';
 import {AuthGuardAdminServiceService} from './services/auth-guard-admin-service.service';
 import {AuthGuardDeveloperServiceService} from './services/auth-guard-developer-service.service';
+import {AuthGuardTerminalServiceService} from './services/auth-guard-terminal-service.service';
+import {AuthGuardStockistServiceService} from './services/auth-guard-stockist-service.service';
 
 
 
@@ -20,11 +22,9 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'auth', component: AuthComponent},
   {path: 'cPanel', canActivate : [AuthGuardAdminServiceService], component: CpanelComponent},
-  {path: 'stockistCPanel', canActivate : [AuthGuardService], component: StockistComponent},
-  {path: 'terminal', canActivate : [AuthGuardService], component: TerminalComponent},
+  {path: 'stockistCPanel', canActivate : [AuthGuardStockistServiceService], component: StockistComponent},
+  {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
   {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},
-
-
 ];
 
 @NgModule({

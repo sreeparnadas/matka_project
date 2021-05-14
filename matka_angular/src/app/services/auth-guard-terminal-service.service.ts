@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {Observable} from 'rxjs';
+import {AuthService} from './auth.service';
 
+// @ts-ignore
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardTerminalServiceService {
+// @ts-ignore
+export class AuthGuardTerminalServiceService implements CanActivate{
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+  // tslint:disable-next-line:max-line-length
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return this.authService.isTerminal();
+  }
 }
