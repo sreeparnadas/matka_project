@@ -8,6 +8,7 @@ import {StockistComponent} from './pages/stockist/stockist.component';
 import {TerminalComponent} from './pages/terminal/terminal.component';
 import {DeveloperComponent} from './pages/developer/developer.component';
 import {AuthGuardAdminServiceService} from './services/auth-guard-admin-service.service';
+import {AuthGuardDeveloperServiceService} from './services/auth-guard-developer-service.service';
 
 
 
@@ -21,7 +22,7 @@ const routes: Routes = [
   {path: 'cPanel', canActivate : [AuthGuardAdminServiceService], component: CpanelComponent},
   {path: 'stockistCPanel', canActivate : [AuthGuardService], component: StockistComponent},
   {path: 'terminal', canActivate : [AuthGuardService], component: TerminalComponent},
-  {path: 'developer', canActivate : [AuthGuardService], component: DeveloperComponent},
+  {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},
 
 
 ];

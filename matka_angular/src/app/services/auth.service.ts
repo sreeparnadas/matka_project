@@ -48,6 +48,13 @@ export class AuthService {
       return false;
     }
   }
+  isDeveloper(): boolean{
+    if (this.user.value && this.user.value.isDeveloper){
+      return true;
+    }else{
+      return false;
+    }
+  }
   autoLogin(){
     // tslint:disable-next-line:max-line-length
     const userData: {id: number, userName: string, _authKey: string, userTypeId: number, userTypeName: string} = JSON.parse(localStorage.getItem('user'));
