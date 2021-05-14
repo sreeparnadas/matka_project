@@ -19,7 +19,6 @@
         <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
       </mat-list-item>
     </mat-nav-list>
-
     <!-- for mobile view -->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
       <button mat-button [matMenuTriggerFor]="menu" style="line-height: 18px !important; font-size: small; padding-top: 15px;"><i class="ri-menu-line"></i>Menu</button>
@@ -35,75 +34,75 @@
                 routerLinkActive="MyActiveMenu"  style="font-size: small; line-height: 18px !important;">Login</button>
        </mat-menu>
     </mat-toolbar-row>
-
-
   </mat-toolbar>
 
 
-  
-  <!--For Admin new-->
-  <mat-toolbar color="secondary" [ngStyle]="myStyle()" *ngIf="isAuthenticated && isAdmin">
-     <!-- for desktop view -->
-    <mat-nav-list class="list-horizontal" *ngIf="!deviceXs">
-      <button mat-button >
-        <mat-icon>home</mat-icon>
-        <span class="logo">Admin</span>
-      </button>
-      <mat-list-item>
-        <button mat-button
-                [routerLink]="['/']"
-                routerLinkActive="MyActiveMenu"
-                [routerLinkActiveOptions]="{exact: true}">Home</button>
-      </mat-list-item>    
-      <mat-list-item>
-        
-                <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
-
-      </mat-list-item>    
-    </mat-nav-list>
-    <!-- for mobile view  -->
+  <!--For admin-->
+  <mat-toolbar color="accent" *ngIf="isAuthenticated && isAdmin">
+    <!--    for desktop view-->
+    <mat-toolbar-row fxLayoutAlign="space-between center" *ngIf="!deviceXs">
+      <div fxLayout="row">
+        <button mat-button >
+          <i class="bi bi-gem" style="font-size: 25px;"></i>
+          <span class="logo">Admin</span>
+        </button>
+        <div *ngIf="!deviceXs">
+          <button mat-button
+                  [routerLink]="['admin']"
+                  routerLinkActive="MyActiveMenu"
+                  [routerLinkActiveOptions]="{exact: true}">Home</button>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
+      </div>
+    </mat-toolbar-row>
+    <!--    for mobile view-->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
       <button mat-button [matMenuTriggerFor]="menu" style="line-height: 18px !important; font-size: small; padding-top: 15px;"><i class="ri-menu-line"></i>Menu</button>
-      <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;">Admin</span>
-       <mat-menu #menu="matMenu" style="width: 20px !important;">
-         <button mat-menu-item [routerLink]="['cPanel']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
-         <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
-       </mat-menu>
+      <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;"><i class="ri-smartphone-line"></i>Admin</span>
+
+      <mat-menu #menu="matMenu" style="width: 20px !important;">
+        <button mat-menu-item [routerLink]="['admin']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
+        <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
+      </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
+  <!--  header for admin is completed-->
+
 
   <!--For Developer-->
-  <mat-toolbar color="accent" *ngIf="isAuthenticated && isDeveloper">
+  <mat-toolbar style="background-color: #7E7E7E;" *ngIf="isAuthenticated && isDeveloper">
     <!-- for desktop view -->
     <mat-toolbar-row fxLayoutAlign="space-between center" *ngIf="!deviceXs">
       <div fxLayout="row">
-          <button mat-button >
-            <mat-icon>home</mat-icon>
+          <button mat-button style="background-color: rgba(255,215,0,0.05)">
+            <i class="bi bi-gear-wide-connected" style="font-size: 25px;"></i>
             <span class="logo">Developer</span>
           </button>
           <div *ngIf="!deviceXs">
             <button mat-button
-                    [routerLink]="['/']"
+                    [routerLink]="['developer']"
                     routerLinkActive="MyActiveMenu"
                     [routerLinkActiveOptions]="{exact: true}">Home</button>
-            
-          </div>         
-      </div>     
+
+          </div>
+      </div>
       <div>
-          
+
           <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
       </div>
     </mat-toolbar-row>
     <!-- for mobile view -->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
       <button mat-button [matMenuTriggerFor]="menu" style="line-height: 18px !important; font-size: small; padding-top: 15px;"><i class="ri-menu-line"></i>Menu</button>
-      <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;">Developer</span>
+      <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;"><i class="ri-smartphone-line"></i>Developer</span>
        <mat-menu #menu="matMenu" style="width: 20px !important;">
          <button mat-menu-item [routerLink]="['developer']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
          <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
        </mat-menu>
     </mat-toolbar-row>
-    
+
   </mat-toolbar>
 
   <!--For Stockist-->
@@ -119,12 +118,12 @@
           <button mat-button
                   [routerLink]="['/']"
                   routerLinkActive="MyActiveMenu"
-                  [routerLinkActiveOptions]="{exact: true}">Home</button>         
-        </div>          
+                  [routerLinkActiveOptions]="{exact: true}">Home</button>
+        </div>
       </div>
-      
+
       <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
-      
+
     </mat-toolbar-row>
     <!-- for mobile view -->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
@@ -136,8 +135,12 @@
          <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
        </mat-menu>
     </mat-toolbar-row>
-  
+
   </mat-toolbar>
+
+
+
+
 
   <!--For Terminal-->
   <mat-toolbar color="accent" *ngIf="isAuthenticated && isTerminal">
@@ -162,10 +165,10 @@
 <!--    for mobile view-->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
       <button mat-button [matMenuTriggerFor]="menu" style="line-height: 18px !important; font-size: small; padding-top: 15px;"><i class="ri-menu-line"></i>Menu</button>
-      
-        
-        <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;">Terminal</span>
-      
+
+
+        <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;"><i class="ri-smartphone-line"></i>Terminal</span>
+
        <mat-menu #menu="matMenu" style="width: 20px !important;">
          <button mat-menu-item [routerLink]="['terminal']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
          <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
