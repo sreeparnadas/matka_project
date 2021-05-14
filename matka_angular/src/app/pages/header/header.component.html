@@ -205,10 +205,10 @@
     </mat-toolbar-row>
 <!--    for mobile view-->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
-      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-       <mat-menu #menu="matMenu">
-         <button mat-menu-item [routerLink]="['terminal']" routerLinkActive="MyActiveMenu">Home</button>
-         <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
+      <button mat-button [matMenuTriggerFor]="menu" style="line-height: 18px !important; font-size: small; padding-top: 15px;"><i class="ri-menu-line"></i>Menu</button>
+       <mat-menu #menu="matMenu" style="width: 20px !important;">
+         <button mat-menu-item [routerLink]="['terminal']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
+         <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
        </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
