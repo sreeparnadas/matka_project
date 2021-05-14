@@ -68,6 +68,7 @@ export class AuthService {
   }
 
   autoLogin(){
+    console.log('autoLogin working');
     // tslint:disable-next-line:max-line-length
     const userData: {id: number, userName: string, _authKey: string, userTypeId: number, userTypeName: string} = JSON.parse(localStorage.getItem('user'));
     if (!userData){
@@ -76,10 +77,17 @@ export class AuthService {
     const loadedUser = new User(userData.id, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName);
     if (loadedUser.authKey){
       this.user.next(loadedUser);
+
       if (loadedUser.isAdmin){
         this.router.navigate(['/cPanel']);
       }else if (loadedUser.isDeveloper){
         this.router.navigate(['/developer']);
+      }else if (loadedUser.isStockist){
+        this.router.navigate(['/stockistCPanel']);
+      }else if (loadedUser.isTerminal){
+        this.router.navigate(['/terminal']);
+      }else{
+        this.router.navigate(['/']);
       }
     }
   }
@@ -105,7 +113,7 @@ export class AuthService {
   logout(){
     this.user.next(null);
     localStorage.removeItem('user');
-    this.router.navigate(['/auth']).then(r => {
+    this.router.navigate(['/']).then(r => {
       if (r) {
         location.reload();
       }

@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy{
   direction = "row";
 
   toggleDirection() {
-    let next = (DIRECTIONS.indexOf(this.direction) +1 ) % DIRECTIONS.length;
+    const next = (DIRECTIONS.indexOf(this.direction) +1 ) % DIRECTIONS.length;
     this.direction = DIRECTIONS[next];
   }
 
