@@ -185,7 +185,8 @@
 
   <!--For Terminal-->
   <mat-toolbar color="accent" *ngIf="isAuthenticated && isTerminal">
-    <mat-toolbar-row fxLayoutAlign="space-between center">
+<!--    for desktop view-->
+    <mat-toolbar-row fxLayoutAlign="space-between center" *ngIf="!deviceXs">
       <div fxLayout="row">
         <button mat-button >
           <mat-icon>home</mat-icon>
@@ -202,11 +203,14 @@
           <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
       </div>
     </mat-toolbar-row>
-
+<!--    for mobile view-->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
-      <button mat-button >Home</button>
-      <button mat-button >Contact Us</button>
-      <button mat-button >About Us</button>
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+       <mat-menu #menu="matMenu">
+         <button mat-menu-item [routerLink]="['terminal']" routerLinkActive="MyActiveMenu">Home</button>
+         <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
+       </mat-menu>
     </mat-toolbar-row>
   </mat-toolbar>
+<!--  header for terminal is completed-->
 </div>
