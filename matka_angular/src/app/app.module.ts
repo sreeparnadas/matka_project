@@ -73,21 +73,12 @@ import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
     LoaidngEllipsisComponent,
     LoaidngHourglassComponent,
     LoaidngRollerComponent,
-
-
-
-
-
-
     HighlightDirective,
                 CpanelComponent,
                 StockistComponent,
                 TerminalComponent,
                 DeveloperComponent,
                 BiIconComponent,
-
-
-
   ],
   imports: [
     BrowserModule,
