@@ -25,48 +25,20 @@ export class User{
       return false;
     }
   }
-  get isOwner(){
+  get isAdmin(){
     // tslint:disable-next-line:triple-equals
      return this.userTypeId == 1;
   }
-  get isManager(){
+  get isDeveloper(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 2;
   }
-  get isWorkshopManager(){
+  get isStockist(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 3;
   }
-  get isSalesManager(){
+  get isTerminal(){
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 4;
-  }
-  get isAccountManager(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 5;
-  }
-  get isOfficeStaff(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 6;
-  }
-  get isAgent(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 7;
-  }
-  get isWorker(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 8;
-  }
-  get isDeveloper(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 9;
-  }
-  get isCustomer(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 10;
-  }
-  get isKarigarh(){
-    // tslint:disable-next-line:triple-equals
-    return this.userTypeId == 11;
   }
 }

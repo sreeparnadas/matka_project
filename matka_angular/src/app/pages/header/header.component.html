@@ -24,8 +24,8 @@
 
     </mat-nav-list>
   </mat-toolbar>
-  <!--For Owner new-->
-  <mat-toolbar color="secondary" [ngStyle]="myStyle()" *ngIf="isAuthenticated && isOwner">
+  <!--For Admin new-->
+  <mat-toolbar color="secondary" [ngStyle]="myStyle()" *ngIf="isAuthenticated && isAdmin">
     <mat-nav-list class="list-horizontal">
 
       <mat-list-item>
@@ -69,8 +69,8 @@
     </mat-nav-list>
   </mat-toolbar>
 
-  <!--For Manager-->
-  <mat-toolbar color="accent" *ngIf="isAuthenticated && isWorker">
+  <!--For Developer-->
+  <mat-toolbar color="accent" *ngIf="isAuthenticated && isDeveloper">
     <mat-toolbar-row fxLayoutAlign="space-between center">
       <div fxLayout="row">
           <button mat-button >
@@ -111,6 +111,110 @@
             <mat-icon *ngIf="deviceXs">more_vert</mat-icon>
             <span *ngIf="!deviceXs">Menu</span>
           </button>
+      </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
+      <button mat-button >Home</button>
+      <button mat-button >Contact Us</button>
+      <button mat-button >About Us</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!--For Stockist-->
+  <mat-toolbar color="accent" *ngIf="isAuthenticated && isStockist">
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+      <div fxLayout="row">
+        <button mat-button >
+          <mat-icon>home</mat-icon>
+          <span class="logo">Coder</span>
+        </button>
+        <div *ngIf="!deviceXs">
+          <button mat-button
+                  [routerLink]="['/']"
+                  routerLinkActive="MyActiveMenu"
+                  [routerLinkActiveOptions]="{exact: true}">Home</button>
+          <button mat-button >Contact Us</button>
+          <button mat-button >About Us</button>
+        </div>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic3" ngbDropdownToggle>Toggle dropdown</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Action - 1</button>
+            <button ngbDropdownItem>Another Action</button>
+            <button ngbDropdownItem>Something else is here</button>
+          </div>
+        </div>
+
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/customer']" routerLinkActive="MyActiveMenu">Customer</button>
+          <button mat-menu-item [routerLink]="['/product']" routerLinkActive="MyActiveMenu">Product</button>
+        </mat-menu>
+
+
+      </div>
+      <button mat-button
+              [routerLink]="['/auth']"
+              routerLinkActive="MyActiveMenu">Login</button>
+      <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+      <div>
+        <button  mat-button>
+          <mat-icon *ngIf="deviceXs">more_vert</mat-icon>
+          <span *ngIf="!deviceXs">Menu</span>
+        </button>
+      </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
+      <button mat-button >Home</button>
+      <button mat-button >Contact Us</button>
+      <button mat-button >About Us</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!--For Stockist-->
+  <mat-toolbar color="accent" *ngIf="isAuthenticated && isTerminal">
+    <mat-toolbar-row fxLayoutAlign="space-between center">
+      <div fxLayout="row">
+        <button mat-button >
+          <mat-icon>home</mat-icon>
+          <span class="logo">Coder</span>
+        </button>
+        <div *ngIf="!deviceXs">
+          <button mat-button
+                  [routerLink]="['/']"
+                  routerLinkActive="MyActiveMenu"
+                  [routerLinkActiveOptions]="{exact: true}">Home</button>
+          <button mat-button >Contact Us</button>
+          <button mat-button >About Us</button>
+        </div>
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic3" ngbDropdownToggle>Toggle dropdown</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>Action - 1</button>
+            <button ngbDropdownItem>Another Action</button>
+            <button ngbDropdownItem>Something else is here</button>
+          </div>
+        </div>
+
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/customer']" routerLinkActive="MyActiveMenu">Customer</button>
+          <button mat-menu-item [routerLink]="['/product']" routerLinkActive="MyActiveMenu">Product</button>
+        </mat-menu>
+
+
+      </div>
+      <button mat-button
+              [routerLink]="['/auth']"
+              routerLinkActive="MyActiveMenu">Login</button>
+      <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+      <div>
+        <button  mat-button>
+          <mat-icon *ngIf="deviceXs">more_vert</mat-icon>
+          <span *ngIf="!deviceXs">Menu</span>
+        </button>
       </div>
     </mat-toolbar-row>
 

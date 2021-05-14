@@ -46,9 +46,11 @@ export class AuthService {
     const loadedUser = new User(userData.id, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName);
     if (loadedUser.authKey){
       this.user.next(loadedUser);
-      //  if (loadedUser.isOwner){
-      //   this.router.navigate(['/owner']);
-      // }
+      if (loadedUser.isAdmin){
+        this.router.navigate(['/cPanel']);
+      }else if (loadedUser.isDeveloper){
+        this.router.navigate(['/developer']);
+      }
     }
   }
   login(loginData){

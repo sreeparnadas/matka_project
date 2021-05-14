@@ -48,6 +48,10 @@ import {NgxMousetrapModule} from 'ngx-mousetrap';
 import {TooltipModule} from 'ng2-tooltip-directive';
 import { HighlightDirective } from './directives/highlight.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { CpanelComponent } from './pages/cpanel/cpanel.component';
+import { StockistComponent } from './pages/stockist/stockist.component';
+import { TerminalComponent } from './pages/terminal/terminal.component';
+import { DeveloperComponent } from './pages/developer/developer.component';
 
 
 
@@ -75,6 +79,10 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 
     HighlightDirective,
+                CpanelComponent,
+                StockistComponent,
+                TerminalComponent,
+                DeveloperComponent,
 
 
 

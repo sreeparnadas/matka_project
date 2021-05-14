@@ -38,10 +38,20 @@ export class AuthComponent implements OnInit {
       if (response.success === 1){
         this.isLoading = false;
         // tslint:disable-next-line:triple-equals
-        console.log(response.data.user);
-        // tslint:disable-next-line:triple-equals
         if (response.data.user.userTypeId == 1){
-          this.router.navigate(['/owner']).then(r => {});
+          this.router.navigate(['/cPanel']).then(r => {});
+        }
+        // tslint:disable-next-line:triple-equals
+        if (response.data.user.userTypeId == 2){
+          this.router.navigate(['/developer']).then(r => {});
+        }
+        // tslint:disable-next-line:triple-equals
+        if (response.data.user.userTypeId == 3){
+          this.router.navigate(['/stockistCPanel']).then(r => {});
+        }
+        // tslint:disable-next-line:triple-equals
+        if (response.data.user.userTypeId == 4){
+          this.router.navigate(['/terminal']).then(r => {});
         }
       }else{
         Swal.fire({
