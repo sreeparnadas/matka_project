@@ -41,4 +41,7 @@ class PlayMaster extends Model
     public function draw_time(){
         return $this->belongsTo(DrawMaster::class,'draw_master_id');
     }
+    public function play_details(){
+        return $this->hasMany(PlayDetails::class,'play_master_id');
+    }
 }
