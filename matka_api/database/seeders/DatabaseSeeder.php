@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 
+use App\Models\DrawMaster;
+use App\Models\GameType;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\UserType;
@@ -267,7 +269,18 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+        DrawMaster::insert([
+            ['draw_name'=> 'Good morning','start_time'=>'09:00','end_time'=>'12:00','active'=>1],
+            ['draw_name'=> 'Good afternoon','start_time'=>'12:00','end_time'=>'13:00','active'=>0],
+            ['draw_name'=> 'Good evening','start_time'=>'13:00','end_time'=>'14:00','active'=>0],
+            ['draw_name'=> 'Lets play','start_time'=>'14:00','end_time'=>'15:00','active'=>0],
+            ['draw_name'=> 'Good night','start_time'=>'15:00','end_time'=>'16:00','active'=>0]
+        ]);
 
+        GameType::insert([
+            ['game_type_name'=>'single','game_type_initial' => '' ,'mrp'=> 10.00, 'winning_price'=>90, 'winning_bonus_percent'=>0.2, 'commission'=>5.00, 'payout'=>150,'default_payout'=>150],
+            ['game_type_name'=>'triple','game_type_initial' => '' ,'mrp'=> 10.00, 'winning_price'=>90, 'winning_bonus_percent'=>0.2, 'commission'=>5.00, 'payout'=>150,'default_payout'=>150]
+        ]);
 
         // Product has separate file
         // php artisan db:seed --class=ProductSeeder
