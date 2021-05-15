@@ -16,6 +16,8 @@ class PlayMaster extends Model
      * @var mixed
      */
     private $terminal_id;
+
+    //for your help, https://www.larashout.com/how-to-use-laravel-model-observers
     protected static function boot()
     {
         parent::boot();
