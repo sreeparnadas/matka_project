@@ -14,72 +14,12 @@ class NumberCombinationController extends Controller
      */
     public function index()
     {
-        //
+        $result = NumberCombination::get();
+        return response()->json(['success'=>1,'data'=>$result], 200,[],JSON_NUMERIC_CHECK);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NumberCombination  $numberCombination
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NumberCombination $numberCombination)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NumberCombination  $numberCombination
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NumberCombination $numberCombination)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NumberCombination  $numberCombination
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NumberCombination $numberCombination)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NumberCombination  $numberCombination
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NumberCombination $numberCombination)
-    {
-        //
+    public function getNumbersBySingleNumber($number){
+        $result = NumberCombination::where('single_number',$number)->get();
+        return response()->json(['success'=>1,'data'=>$result], 200,[],JSON_NUMERIC_CHECK);
     }
 }
