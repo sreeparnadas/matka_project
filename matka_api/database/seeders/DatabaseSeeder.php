@@ -104,28 +104,97 @@ class DatabaseSeeder extends Seeder
             ['single_number' =>2, 'triple_number' => 110, 'visible_triple_number' => '110'],// #21
             ['single_number' =>2, 'triple_number' => 589, 'visible_triple_number' => '589'],// #22
 
-            ['single_number' =>3, 'triple_number' => 200, 'visible_triple_number' => '200'],// #1
-            ['single_number' =>3, 'triple_number' => 345, 'visible_triple_number' => '345'],// #2
-            ['single_number' =>3, 'triple_number' => 444, 'visible_triple_number' => '444'],// #3
-            ['single_number' =>3, 'triple_number' => 570, 'visible_triple_number' => '570'],// #4
-            ['single_number' =>3, 'triple_number' => 480, 'visible_triple_number' => '480'],// #5
-            ['single_number' =>3, 'triple_number' => 390, 'visible_triple_number' => '390'],// #6
-            ['single_number' =>3, 'triple_number' => 660, 'visible_triple_number' => '660'],// #7
-            ['single_number' =>3, 'triple_number' => 129, 'visible_triple_number' => '129'],// #8
-            ['single_number' =>3, 'triple_number' => 237, 'visible_triple_number' => '237'],// #9
-            ['single_number' =>3, 'triple_number' => 336, 'visible_triple_number' => '336'],// #10
-            ['single_number' =>3, 'triple_number' => 246, 'visible_triple_number' => '246'],// #11
-            ['single_number' =>3, 'triple_number' => 679, 'visible_triple_number' => '679'],// #12
-            ['single_number' =>3, 'triple_number' => 255, 'visible_triple_number' => '255'],// #13
-            ['single_number' =>3, 'triple_number' => 147, 'visible_triple_number' => '147'],// #14
-            ['single_number' =>3, 'triple_number' => 228, 'visible_triple_number' => '228'],// #15
-            ['single_number' =>3, 'triple_number' => 499, 'visible_triple_number' => '499'],// #16
-            ['single_number' =>3, 'triple_number' => 688, 'visible_triple_number' => '688'],// #17
-            ['single_number' =>3, 'triple_number' => 778, 'visible_triple_number' => '778'],// #18
-            ['single_number' =>3, 'triple_number' => 138, 'visible_triple_number' => '138'],// #19
-            ['single_number' =>3, 'triple_number' => 156, 'visible_triple_number' => '156'],// #20
-            ['single_number' =>3, 'triple_number' => 110, 'visible_triple_number' => '110'],// #21
-            ['single_number' =>3, 'triple_number' => 589, 'visible_triple_number' => '589'],// #22
+            ['single_number' =>3, 'triple_number' => 300, 'visible_triple_number' => '300'],// #1
+            ['single_number' =>3, 'triple_number' => 120, 'visible_triple_number' => '120'],// #2
+            ['single_number' =>3, 'triple_number' => 111, 'visible_triple_number' => '111'],// #3
+            ['single_number' =>3, 'triple_number' => 580, 'visible_triple_number' => '580'],// #4
+            ['single_number' =>3, 'triple_number' => 490, 'visible_triple_number' => '490'],// #5
+            ['single_number' =>3, 'triple_number' => 670, 'visible_triple_number' => '670'],// #6
+            ['single_number' =>3, 'triple_number' => 238, 'visible_triple_number' => '238'],// #7
+            ['single_number' =>3, 'triple_number' => 139, 'visible_triple_number' => '139'],// #8
+            ['single_number' =>3, 'triple_number' => 337, 'visible_triple_number' => '337'],// #9
+            ['single_number' =>3, 'triple_number' => 157, 'visible_triple_number' => '157'],// #10
+            ['single_number' =>3, 'triple_number' => 346, 'visible_triple_number' => '346'],// #11
+            ['single_number' =>3, 'triple_number' => 689, 'visible_triple_number' => '689'],// #12
+            ['single_number' =>3, 'triple_number' => 355, 'visible_triple_number' => '355'],// #13
+            ['single_number' =>3, 'triple_number' => 247, 'visible_triple_number' => '247'],// #14
+            ['single_number' =>3, 'triple_number' => 256, 'visible_triple_number' => '256'],// #15
+            ['single_number' =>3, 'triple_number' => 166, 'visible_triple_number' => '166'],// #16
+            ['single_number' =>3, 'triple_number' => 599, 'visible_triple_number' => '599'],// #17
+            ['single_number' =>3, 'triple_number' => 148, 'visible_triple_number' => '148'],// #18
+            ['single_number' =>3, 'triple_number' => 788, 'visible_triple_number' => '788'],// #19
+            ['single_number' =>3, 'triple_number' => 445, 'visible_triple_number' => '445'],// #20
+            ['single_number' =>3, 'triple_number' => 229, 'visible_triple_number' => '229'],// #21
+            ['single_number' =>3, 'triple_number' => 779, 'visible_triple_number' => '779'],// #22
+
+            ['single_number'=>4,'triple_number'=>400,'visible_triple_number'=>'400'],// #1
+            ['single_number'=>4,'triple_number'=>789,'visible_triple_number'=>'789'],// #2
+            ['single_number'=>4,'triple_number'=>888,'visible_triple_number'=>'888'],// #3
+            ['single_number'=>4,'triple_number'=>590,'visible_triple_number'=>'590'],// #4
+            ['single_number'=>4,'triple_number'=>130,'visible_triple_number'=>'130'],// #5
+            ['single_number'=>4,'triple_number'=>680,'visible_triple_number'=>'680'],// #6
+            ['single_number'=>4,'triple_number'=>248,'visible_triple_number'=>'248'],// #7
+            ['single_number'=>4,'triple_number'=>149,'visible_triple_number'=>'149'],// #8
+            ['single_number'=>4,'triple_number'=>347,'visible_triple_number'=>'347'],// #9
+            ['single_number'=>4,'triple_number'=>158,'visible_triple_number'=>'158'],// #10
+            ['single_number'=>4,'triple_number'=>446,'visible_triple_number'=>'446'],// #11
+            ['single_number'=>4,'triple_number'=>699,'visible_triple_number'=>'699'],// #12
+            ['single_number'=>4,'triple_number'=>455,'visible_triple_number'=>'455'],// #13
+            ['single_number'=>4,'triple_number'=>266,'visible_triple_number'=>'266'],// #14
+            ['single_number'=>4,'triple_number'=>112,'visible_triple_number'=>'112'],// #15
+            ['single_number'=>4,'triple_number'=>356,'visible_triple_number'=>'356'],// #16
+            ['single_number'=>4,'triple_number'=>239,'visible_triple_number'=>'239'],// #17
+            ['single_number'=>4,'triple_number'=>338,'visible_triple_number'=>'338'],// #18
+            ['single_number'=>4,'triple_number'=>257,'visible_triple_number'=>'257'],// #19
+            ['single_number'=>4,'triple_number'=>220,'visible_triple_number'=>'220'],// #20
+            ['single_number'=>4,'triple_number'=>770,'visible_triple_number'=>'770'],// #21
+            ['single_number'=>4,'triple_number'=>167,'visible_triple_number'=>'167'],// #22
+
+            ['single_number'=>5,'triple_number'=>500,'visible_triple_number'=>'500'],// #1
+            ['single_number'=>5,'triple_number'=>456,'visible_triple_number'=>'456'],// #2
+            ['single_number'=>5,'triple_number'=>555,'visible_triple_number'=>'555'],// #3
+            ['single_number'=>5,'triple_number'=>140,'visible_triple_number'=>'140'],// #4
+            ['single_number'=>5,'triple_number'=>230,'visible_triple_number'=>'230'],// #5
+            ['single_number'=>5,'triple_number'=>690,'visible_triple_number'=>'690'],// #6
+            ['single_number'=>5,'triple_number'=>258,'visible_triple_number'=>'258'],// #7
+            ['single_number'=>5,'triple_number'=>159,'visible_triple_number'=>'159'],// #8
+            ['single_number'=>5,'triple_number'=>357,'visible_triple_number'=>'357'],// #9
+            ['single_number'=>5,'triple_number'=>799,'visible_triple_number'=>'799'],// #10
+            ['single_number'=>5,'triple_number'=>267,'visible_triple_number'=>'267'],// #11
+            ['single_number'=>5,'triple_number'=>780,'visible_triple_number'=>'780'],// #12
+            ['single_number'=>5,'triple_number'=>447,'visible_triple_number'=>'447'],// #13
+            ['single_number'=>5,'triple_number'=>366,'visible_triple_number'=>'366'],// #14
+            ['single_number'=>5,'triple_number'=>113,'visible_triple_number'=>'113'],// #15
+            ['single_number'=>5,'triple_number'=>122,'visible_triple_number'=>'122'],// #16
+            ['single_number'=>5,'triple_number'=>177,'visible_triple_number'=>'177'],// #17
+            ['single_number'=>5,'triple_number'=>249,'visible_triple_number'=>'249'],// #18
+            ['single_number'=>5,'triple_number'=>339,'visible_triple_number'=>'339'],// #19
+            ['single_number'=>5,'triple_number'=>889,'visible_triple_number'=>'889'],// #20
+            ['single_number'=>5,'triple_number'=>348,'visible_triple_number'=>'348'],// #21
+            ['single_number'=>5,'triple_number'=>168,'visible_triple_number'=>'168'],// #22
+
+            ['single_number'=>6,'triple_number'=>600,'visible_triple_number'=>'600'],// #1
+            ['single_number'=>6,'triple_number'=>123,'visible_triple_number'=>'123'],// #2
+            ['single_number'=>6,'triple_number'=>222,'visible_triple_number'=>'222'],// #3
+            ['single_number'=>6,'triple_number'=>150,'visible_triple_number'=>'150'],// #4
+            ['single_number'=>6,'triple_number'=>330,'visible_triple_number'=>'330'],// #5
+            ['single_number'=>6,'triple_number'=>240,'visible_triple_number'=>'240'],// #6
+            ['single_number'=>6,'triple_number'=>248,'visible_triple_number'=>'268'],// #7
+            ['single_number'=>6,'triple_number'=>169,'visible_triple_number'=>'169'],// #8
+            ['single_number'=>6,'triple_number'=>367,'visible_triple_number'=>'367'],// #9
+            ['single_number'=>6,'triple_number'=>448,'visible_triple_number'=>'448'],// #10
+            ['single_number'=>6,'triple_number'=>899,'visible_triple_number'=>'899'],// #11
+            ['single_number'=>6,'triple_number'=>178,'visible_triple_number'=>'178'],// #12
+            ['single_number'=>6,'triple_number'=>790,'visible_triple_number'=>'790'],// #13
+            ['single_number'=>6,'triple_number'=>466,'visible_triple_number'=>'466'],// #14
+            ['single_number'=>6,'triple_number'=>358,'visible_triple_number'=>'358'],// #15
+            ['single_number'=>6,'triple_number'=>880,'visible_triple_number'=>'880'],// #16
+            ['single_number'=>6,'triple_number'=>114,'visible_triple_number'=>'114'],// #17
+            ['single_number'=>6,'triple_number'=>556,'visible_triple_number'=>'556'],// #18
+            ['single_number'=>6,'triple_number'=>259,'visible_triple_number'=>'259'],// #19
+            ['single_number'=>6,'triple_number'=>349,'visible_triple_number'=>'349'],// #20
+            ['single_number'=>6,'triple_number'=>457,'visible_triple_number'=>'457'],// #21
+            ['single_number'=>6,'triple_number'=>277,'visible_triple_number'=>'277'],// #22
 
         ]);
 
