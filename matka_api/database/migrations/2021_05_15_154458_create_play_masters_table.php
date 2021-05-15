@@ -16,7 +16,7 @@ class CreatePlayMastersTable extends Migration
     {
         Schema::create('play_masters', function (Blueprint $table) {
             $table->id();
-            $table->uuid('barcode_number')->unique();
+            $table->string('barcode_number')->unique();
             $table ->foreignId('draw_master_id')->references('id')->on('draw_masters')->onDelete('cascade');
             $table ->foreignId('terminal_id')->references('id')->on('users')->onDelete('cascade');
 

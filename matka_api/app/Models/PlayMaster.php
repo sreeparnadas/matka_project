@@ -21,8 +21,8 @@ class PlayMaster extends Model
     protected static function boot()
     {
         parent::boot();
-        static::saving(function ($model) {
-            $model->barcode_number =  (string)Uuid::generate();
+        PlayMaster::saving(function ($model) {
+            $model->barcode_number = str_replace('-','x', ((string)Uuid::generate()));
         });
     }
 }
