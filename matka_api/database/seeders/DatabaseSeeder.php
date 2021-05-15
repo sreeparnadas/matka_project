@@ -179,7 +179,7 @@ class DatabaseSeeder extends Seeder
             ['single_number'=>6,'triple_number'=>150,'visible_triple_number'=>'150'],// #4
             ['single_number'=>6,'triple_number'=>330,'visible_triple_number'=>'330'],// #5
             ['single_number'=>6,'triple_number'=>240,'visible_triple_number'=>'240'],// #6
-            ['single_number'=>6,'triple_number'=>248,'visible_triple_number'=>'268'],// #7
+            ['single_number'=>6,'triple_number'=>268,'visible_triple_number'=>'268'],// #7
             ['single_number'=>6,'triple_number'=>169,'visible_triple_number'=>'169'],// #8
             ['single_number'=>6,'triple_number'=>367,'visible_triple_number'=>'367'],// #9
             ['single_number'=>6,'triple_number'=>448,'visible_triple_number'=>'448'],// #10
@@ -223,7 +223,7 @@ class DatabaseSeeder extends Seeder
             ['single_number'=>8,'triple_number'=>567,'visible_triple_number'=>'567'],// #2
             ['single_number'=>8,'triple_number'=>666,'visible_triple_number'=>'666'],// #3
             ['single_number'=>8,'triple_number'=>170,'visible_triple_number'=>'170'],// #4
-            ['single_number'=>8,'triple_number'=>250,'visible_triple_number'=>'250'],// #5
+            ['single_number'=>8,'triple_number'=>350,'visible_triple_number'=>'350'],// #5
             ['single_number'=>8,'triple_number'=>260,'visible_triple_number'=>'260'],// #6
             ['single_number'=>8,'triple_number'=>288,'visible_triple_number'=>'288'],// #7
             ['single_number'=>8,'triple_number'=>189,'visible_triple_number'=>'189'],// #8
