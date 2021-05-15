@@ -196,6 +196,52 @@ class DatabaseSeeder extends Seeder
             ['single_number'=>6,'triple_number'=>457,'visible_triple_number'=>'457'],// #21
             ['single_number'=>6,'triple_number'=>277,'visible_triple_number'=>'277'],// #22
 
+            ['single_number'=>7,'triple_number'=>700,'visible_triple_number'=>'700'],// #1
+            ['single_number'=>7,'triple_number'=>890,'visible_triple_number'=>'890'],// #2
+            ['single_number'=>7,'triple_number'=>999,'visible_triple_number'=>'999'],// #3
+            ['single_number'=>7,'triple_number'=>160,'visible_triple_number'=>'160'],// #4
+            ['single_number'=>7,'triple_number'=>340,'visible_triple_number'=>'340'],// #5
+            ['single_number'=>7,'triple_number'=>250,'visible_triple_number'=>'250'],// #6
+            ['single_number'=>7,'triple_number'=>278,'visible_triple_number'=>'278'],// #7
+            ['single_number'=>7,'triple_number'=>179,'visible_triple_number'=>'179'],// #8
+            ['single_number'=>7,'triple_number'=>377,'visible_triple_number'=>'377'],// #9
+            ['single_number'=>7,'triple_number'=>467,'visible_triple_number'=>'467'],// #10
+            ['single_number'=>7,'triple_number'=>115,'visible_triple_number'=>'115'],// #11
+            ['single_number'=>7,'triple_number'=>124,'visible_triple_number'=>'124'],// #12
+            ['single_number'=>7,'triple_number'=>223,'visible_triple_number'=>'223'],// #13
+            ['single_number'=>7,'triple_number'=>566,'visible_triple_number'=>'566'],// #14
+            ['single_number'=>7,'triple_number'=>557,'visible_triple_number'=>'557'],// #15
+            ['single_number'=>7,'triple_number'=>368,'visible_triple_number'=>'368'],// #16
+            ['single_number'=>7,'triple_number'=>359,'visible_triple_number'=>'359'],// #17
+            ['single_number'=>7,'triple_number'=>449,'visible_triple_number'=>'449'],// #18
+            ['single_number'=>7,'triple_number'=>269,'visible_triple_number'=>'269'],// #19
+            ['single_number'=>7,'triple_number'=>133,'visible_triple_number'=>'133'],// #20
+            ['single_number'=>7,'triple_number'=>188,'visible_triple_number'=>'188'],// #21
+            ['single_number'=>7,'triple_number'=>458,'visible_triple_number'=>'458'],// #22
+
+            ['single_number'=>8,'triple_number'=>800,'visible_triple_number'=>'800'],// #1
+            ['single_number'=>8,'triple_number'=>567,'visible_triple_number'=>'567'],// #2
+            ['single_number'=>8,'triple_number'=>666,'visible_triple_number'=>'666'],// #3
+            ['single_number'=>8,'triple_number'=>170,'visible_triple_number'=>'170'],// #4
+            ['single_number'=>8,'triple_number'=>250,'visible_triple_number'=>'250'],// #5
+            ['single_number'=>8,'triple_number'=>260,'visible_triple_number'=>'260'],// #6
+            ['single_number'=>8,'triple_number'=>288,'visible_triple_number'=>'288'],// #7
+            ['single_number'=>8,'triple_number'=>189,'visible_triple_number'=>'189'],// #8
+            ['single_number'=>8,'triple_number'=>116,'visible_triple_number'=>'116'],// #9
+            ['single_number'=>8,'triple_number'=>233,'visible_triple_number'=>'233'],// #10
+            ['single_number'=>8,'triple_number'=>459,'visible_triple_number'=>'459'],// #11
+            ['single_number'=>8,'triple_number'=>125,'visible_triple_number'=>'125'],// #12
+            ['single_number'=>8,'triple_number'=>224,'visible_triple_number'=>'224'],// #13
+            ['single_number'=>8,'triple_number'=>477,'visible_triple_number'=>'447'],// #14
+            ['single_number'=>8,'triple_number'=>990,'visible_triple_number'=>'990'],// #15
+            ['single_number'=>8,'triple_number'=>134,'visible_triple_number'=>'134'],// #16
+            ['single_number'=>8,'triple_number'=>558,'visible_triple_number'=>'558'],// #17
+            ['single_number'=>8,'triple_number'=>369,'visible_triple_number'=>'369'],// #18
+            ['single_number'=>8,'triple_number'=>378,'visible_triple_number'=>'378'],// #19
+            ['single_number'=>8,'triple_number'=>440,'visible_triple_number'=>'440'],// #20
+            ['single_number'=>8,'triple_number'=>279,'visible_triple_number'=>'279'],// #21
+            ['single_number'=>8,'triple_number'=>468,'visible_triple_number'=>'468'],// #22
+
         ]);
 
 
