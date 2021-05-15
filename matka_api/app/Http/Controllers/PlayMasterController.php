@@ -85,6 +85,9 @@ class PlayMasterController extends Controller
 
         return response()->json(['success'=>1,'data'=> $output_array], 200,[],JSON_NUMERIC_CHECK);
     }
-
+    public function get_play_details_by_play_master_id($id){
+        $play_details= PlayMaster::findOrFail($id)->play_details;
+        return response()->json(['success'=>1,'data'=> PlayDetailsResource::collection($play_details)], 200,[],JSON_NUMERIC_CHECK);
+    }
 
 }
