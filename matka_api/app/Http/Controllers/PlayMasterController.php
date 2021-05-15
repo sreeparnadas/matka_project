@@ -38,7 +38,7 @@ class PlayMasterController extends Controller
     public function savePlayDetails(Request $request)
     {
         $playMaster = new PlayMaster();
-        //$playMaster->barcode_number = (string)Uuid::generate();
+        $playMaster->barcode_number = (string)Uuid::generate();
         $playMaster->draw_master_id = $request->input('drawMasterId');
         $playMaster->terminal_id = $request->input('terminalId');
 
