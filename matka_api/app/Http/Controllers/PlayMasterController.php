@@ -48,6 +48,7 @@ class PlayMasterController extends Controller
         $inputPlayMaster = (object)$requestedData['playMaster'];
         $inputPlayDetails = $requestedData['playDetails'];
 
+        //        Validation for PlayMaster
         $rules = array(
             'drawMasterId'=>'required|exists:draw_masters,id',
             'terminalId'=> ['required',
@@ -65,11 +66,10 @@ class PlayMasterController extends Controller
 
         $validator = Validator::make($requestedData['playMaster'],$rules,$messages );
 
-
         if ($validator->fails()) {
             return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
         }
-
+        //        Validation for PlayMaster complete
         $output_array = array();
 
         DB::beginTransaction();
