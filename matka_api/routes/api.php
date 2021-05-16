@@ -57,7 +57,7 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('gameTypes',[GameTypeController::class,'index']);
 
     //play_masters
-    Route::post('play',[PlayMasterController::class,'savePlayDetails']);
+    Route::post('buyTicket',[PlayMasterController::class,'savePlayDetails']);
 
     //game
     Route::get('playDetails/playId/{id}',[PlayMasterController::class,'get_play_details_by_play_master_id']);

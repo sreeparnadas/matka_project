@@ -45,6 +45,14 @@ class PlayMasterController extends Controller
     public function savePlayDetails(Request $request)
     {
         $requestedData = $request->json()->all();
+        $validator = Validator::make($requestedData,[
+            'playMaster' => 'required',
+            'playDetails' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+        }
         $inputPlayMaster = (object)$requestedData['playMaster'];
         $inputPlayDetails = $requestedData['playDetails'];
 
@@ -67,7 +75,7 @@ class PlayMasterController extends Controller
         $validator = Validator::make($requestedData['playMaster'],$rules,$messages );
 
         if ($validator->fails()) {
-            return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+            return response()->json(['position'=>2,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
         }
         //        Validation for PlayMaster complete
 
@@ -77,11 +85,12 @@ class PlayMasterController extends Controller
             "*.gameTypeId"=>'required|exists:game_types,id',
             '*.singleNumberId' => 'required_if:*.gameTypeId,==,1',
             '*.numberCombinationId' => 'required_if:*.gameTypeId,==,2',
-            '*.quantity' => 'bail|required|integer|min:1'
+            '*.quantity' => 'bail|required|integer|min:1',
+            '*.mrp' => 'bail|required|integer|min:1'
         );
         $validator = Validator::make($requestedData['playDetails'],$rules );
         if ($validator->fails()) {
-            return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+            return response()->json(['position'=>3,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
         }
         //end of validation for playDetails
 
