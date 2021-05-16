@@ -74,9 +74,12 @@ class PlayMasterController extends Controller
 
         //validation for playDetails
         $rules = array(
-            "*.gameTypeId"=>'required|exists:game_types,id'
+            "*.gameTypeId"=>'required|exists:game_types,id',
+            '*.singleNumberId' => 'required_if:*.gameTypeId,==,1',
+            '*.numberCombinationId' => 'required_if:*.gameTypeId,==,2',
+            '*.quantity' => 'bail|required|integer|min:1'
         );
-        $validator = Validator::make($requestedData['playDetails'],$rules,$messages );
+        $validator = Validator::make($requestedData['playDetails'],$rules );
         if ($validator->fails()) {
             return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
         }
