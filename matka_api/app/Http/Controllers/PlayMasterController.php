@@ -50,11 +50,17 @@ class PlayMasterController extends Controller
 
         $rules = array(
             'drawMasterId'=>'required|exists:draw_masters,id',
-            'terminalId'=>'required|exists:users,id'
+            'terminalId'=> ['required',
+                function($attribute, $value, $fail){
+                    $terminal=User::where('id', $value)->where('user_type_id','=',4)->first();
+                    if(!$terminal){
+                        return $fail($value.' is not a valid terminal id');
+                    }
+                }],
         );
         $messages = array(
             'drawMasterId.required'=>'Transaction Date is required',
-            'terminalId.required'=>'This terminal does not exist',
+            'terminalId.required'=>'Terminal Id is required',
         );
 
         $validator = Validator::make($requestedData['playMaster'],$rules,$messages );
