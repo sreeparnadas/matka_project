@@ -7,6 +7,7 @@ use App\Http\Controllers\NumberCombinationController;
 use App\Http\Controllers\DrawMasterController;
 use App\Http\Controllers\GameTypeController;
 use App\Http\Controllers\PlayMasterController;
+use App\Http\Controllers\SingleNumberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     //get all users
     Route::get("users",[UserController::class,'getAllUsers']);
 
+    //single_numbers
+    Route::get("singleNumbers",[SingleNumberController::class,'index']);
+
 
 });
 
@@ -44,6 +48,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 
 Route::group(array('prefix' => 'dev'), function() {
+
+    //single_numbers
+    Route::get("singleNumbers",[SingleNumberController::class,'index']);
 
     //number_combinations
     Route::get("numberCombinations",[NumberCombinationController::class,'index']);

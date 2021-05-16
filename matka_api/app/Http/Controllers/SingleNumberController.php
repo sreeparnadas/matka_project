@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SingleNumber;
 use Illuminate\Http\Request;
+use App\Http\Resources\SingleNumbers;
 
 class SingleNumberController extends Controller
 {
@@ -14,7 +15,8 @@ class SingleNumberController extends Controller
      */
     public function index()
     {
-        //
+        $result =  SingleNumber::get();
+        return response()->json(['success'=>1,'data'=>SingleNumbers::collection($result)], 200,[],JSON_NUMERIC_CHECK);
     }
 
     /**
