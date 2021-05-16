@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Webpatser\Uuid\Uuid;
 use App\Http\Resources\PlayMasterResource;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Validator;
 
 class PlayMasterController extends Controller
 {
@@ -47,6 +47,22 @@ class PlayMasterController extends Controller
         $requestedData = $request->json()->all();
         $inputPlayMaster = (object)$requestedData['playMaster'];
         $inputPlayDetails = $requestedData['playDetails'];
+
+        $rules = array(
+            'drawMasterId'=>'required|exists:draw_masters,id',
+            'terminalId'=>'required|exists:users,id'
+        );
+        $messages = array(
+            'drawMasterId.required'=>'Transaction Date is required',
+            'terminalId.required'=>'This terminal does not exist',
+        );
+
+        $validator = Validator::make($requestedData['playMaster'],$rules,$messages );
+
+
+        if ($validator->fails()) {
+            return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+        }
 
         $output_array = array();
 
