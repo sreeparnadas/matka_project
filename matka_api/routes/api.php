@@ -59,6 +59,9 @@ Route::group(array('prefix' => 'dev'), function() {
     //play_masters
     Route::post('play',[PlayMasterController::class,'savePlayDetails']);
 
+    //game
+    Route::get('playDetails/playId/{id}',[PlayMasterController::class,'get_play_details_by_play_master_id']);
+
 
 
 

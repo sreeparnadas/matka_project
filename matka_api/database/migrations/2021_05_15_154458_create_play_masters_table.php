@@ -18,7 +18,7 @@ class CreatePlayMastersTable extends Migration
             $table->id();
             $table->string('barcode_number')->unique();
             $table ->foreignId('draw_master_id')->references('id')->on('draw_masters')->onDelete('cascade');
-            $table ->foreignId('terminal_id')->references('id')->on('users')->onDelete('cascade');
+            $table ->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('activity_done_by')->default('self');
 

@@ -8,4 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class PlayDetails extends Model
 {
     use HasFactory;
+
+    /**
+     * @var mixed
+     */
+    private $play_master_id;
+    /**
+     * @var mixed
+     */
+    private $game_type_id;
+    /**
+     * @var mixed
+     */
+    private $number_position_id;
+    /**
+     * @var mixed
+     */
+    private $game_value;
+
+    public function game(){
+        return $this->belongsTo(GameType::class,'game_type_id');
+    }
 }
