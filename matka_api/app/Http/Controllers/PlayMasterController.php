@@ -60,7 +60,7 @@ class PlayMasterController extends Controller
                 }],
         );
         $messages = array(
-            'drawMasterId.required'=>'Transaction Date is required',
+            'drawMasterId.required'=>'Draw time is required',
             'terminalId.required'=>'Terminal Id is required',
         );
 
