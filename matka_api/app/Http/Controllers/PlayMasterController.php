@@ -70,6 +70,18 @@ class PlayMasterController extends Controller
             return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
         }
         //        Validation for PlayMaster complete
+
+
+        //validation for playDetails
+        $rules = array(
+            "*.gameTypeId"=>'required|exists:game_types,id'
+        );
+        $validator = Validator::make($requestedData['playDetails'],$rules,$messages );
+        if ($validator->fails()) {
+            return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+        }
+        //end of validation for playDetails
+
         $output_array = array();
 
         DB::beginTransaction();
