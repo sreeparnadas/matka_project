@@ -17,7 +17,7 @@ class CreateGameTypesTable extends Migration
             $table->id();
             $table->string('game_type_name',20)->nullable(true);
             $table->string('game_type_initial',10)->nullable(true);
-            $table->decimal('mrp',10,2)->default(0);
+            $table->decimal('mrp',5,2)->default(0);
             $table->decimal('winning_price',10,2)->default(0);
             $table->decimal('winning_bonus_percent',10,2)->default(0);
             $table->decimal('commission',10,2)->default(0);

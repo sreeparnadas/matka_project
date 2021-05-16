@@ -11,6 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed game_value
  * @property mixed id
  * @property mixed game
+ * @property mixed mrp
  */
 class PlayDetailsResource extends JsonResource
 {
@@ -27,6 +28,7 @@ class PlayDetailsResource extends JsonResource
             'game' => new GameTypeResource($this->game),
             'numberPositionId' => $this->number_position_id,
             'gameValue' => $this->game_value,
+            'mrp' => $this->mrp,
             'playDetailsId' => $this->id,
         ];
     }

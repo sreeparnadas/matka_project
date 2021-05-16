@@ -62,13 +62,18 @@ class PlayMasterController extends Controller
             $output_play_details = array();
             foreach($inputPlayDetails as $inputPlayDetail){
                 $detail = (object)$inputPlayDetail;
-                $playDetails = new PlayDetails();
-                $playDetails->play_master_id = $playMaster->id;
-                $playDetails->game_type_id = $detail->gameTypeId;
-                $playDetails->number_position_id = $detail->numberPositionId;
-                $playDetails->game_value = $detail->gameValue;
-                $playDetails->save();
-                $output_play_details[] = $playDetails;
+                //insert value for triple
+                if($detail->gameTypeId == 2){
+                    $playDetails = new PlayDetails();
+                    $playDetails->play_master_id = $playMaster->id;
+                    $playDetails->game_type_id = $detail->gameTypeId;
+                    $playDetails->number_position_id = $detail->numberPositionId;
+                    $playDetails->game_value = $detail->gameValue;
+                    $playDetails->mrp = $detail->mrp;
+                    $playDetails->save();
+                    $output_play_details[] = $playDetails;
+                }
+
             }
             $output_array['play_details'] = PlayDetailsResource::collection( $output_play_details);
 //            $output_array['play_details'] = $output_play_details;

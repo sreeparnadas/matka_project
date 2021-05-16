@@ -19,6 +19,7 @@ class CreatePlayDetailsTable extends Migration
             $table ->foreignId('game_type_id')->references('id')->on('game_types')->onDelete('cascade');
             $table ->foreignId('number_position_id')->references('id')->on('number_combinations')->onDelete('cascade');
             $table->integer('game_value')->nullable(false);
+            $table->decimal('mrp',5,2)->default(0);
 
             $table->timestamps();
         });
