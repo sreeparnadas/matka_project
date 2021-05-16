@@ -24,11 +24,11 @@ class PlayDetails extends Model
     /**
      * @var mixed
      */
-    private $game_value;
+    private $mrp;
     /**
      * @var mixed
      */
-    private $mrp;
+    private $quantity;
 
     public function game(){
         return $this->belongsTo(GameType::class,'game_type_id');

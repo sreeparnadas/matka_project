@@ -67,8 +67,8 @@ class PlayMasterController extends Controller
                     $playDetails = new PlayDetails();
                     $playDetails->play_master_id = $playMaster->id;
                     $playDetails->game_type_id = $detail->gameTypeId;
-                    $playDetails->number_position_id = $detail->numberPositionId;
-                    $playDetails->game_value = $detail->gameValue;
+                    $playDetails->number_position_id = $detail->numberCombinationId;
+                    $playDetails->quantity = $detail->quantity;
                     $playDetails->mrp = $detail->mrp;
                     $playDetails->save();
                     $output_play_details[] = $playDetails;
