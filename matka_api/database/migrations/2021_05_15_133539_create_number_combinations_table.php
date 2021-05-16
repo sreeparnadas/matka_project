@@ -15,7 +15,7 @@ class CreateNumberCombinationsTable extends Migration
     {
         Schema::create('number_combinations', function (Blueprint $table) {
             $table->id();
-            $table->integer('single_number')->nullable(false);
+            $table->foreignId('single_number_id')->references('id')->on('single_numbers')->onDelete('cascade');
             $table->integer('triple_number')->nullable(false)->unique();
             $table->string('visible_triple_number',3)->nullable(false);
             $table->timestamps();

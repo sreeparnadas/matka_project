@@ -73,6 +73,9 @@ class PlayMasterController extends Controller
                     $playDetails->save();
                     $output_play_details[] = $playDetails;
                 }
+                if($detail->gameTypeId == 1){
+
+                }
 
             }
             $output_array['play_details'] = PlayDetailsResource::collection( $output_play_details);
