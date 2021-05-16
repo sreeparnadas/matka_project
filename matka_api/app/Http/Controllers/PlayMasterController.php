@@ -6,6 +6,7 @@ use App\Http\Resources\PlayDetailsResource;
 use App\Http\Resources\TerminalResource;
 use App\Models\PlayMaster;
 use App\Models\PlayDetails;
+use App\Models\SingleNumber;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Webpatser\Uuid\Uuid;
@@ -60,6 +61,7 @@ class PlayMasterController extends Controller
             $output_array['play_master'] = new PlayMasterResource($playMaster);
 
             $output_play_details = array();
+            $singleArray = array();
             foreach($inputPlayDetails as $inputPlayDetail){
                 $detail = (object)$inputPlayDetail;
                 //insert value for triple
@@ -67,19 +69,29 @@ class PlayMasterController extends Controller
                     $playDetails = new PlayDetails();
                     $playDetails->play_master_id = $playMaster->id;
                     $playDetails->game_type_id = $detail->gameTypeId;
-                    $playDetails->number_position_id = $detail->numberCombinationId;
+                    $playDetails->number_combination_id = $detail->numberCombinationId;
                     $playDetails->quantity = $detail->quantity;
                     $playDetails->mrp = $detail->mrp;
                     $playDetails->save();
                     $output_play_details[] = $playDetails;
                 }
                 if($detail->gameTypeId == 1){
-
+                    $numberCombinationIds = SingleNumber::find($detail->singleNumberId)->number_combinations->pluck('id');
+                    $singleArray[] = $numberCombinationIds;
+                    foreach ($numberCombinationIds as $numberCombinationId){
+                        $playDetails = new PlayDetails();
+                        $playDetails->play_master_id = $playMaster->id;
+                        $playDetails->game_type_id = $detail->gameTypeId;
+                        $playDetails->number_combination_id = $numberCombinationId;
+                        $playDetails->quantity = $detail->quantity;
+                        $playDetails->mrp = $detail->mrp;
+                        $playDetails->save();
+                    }
                 }
 
             }
             $output_array['play_details'] = PlayDetailsResource::collection( $output_play_details);
-//            $output_array['play_details'] = $output_play_details;
+            $output_array['singleArray'] = $singleArray;
 
             $terminal = User::findOrFail($inputPlayMaster->terminalId);
             $terminal->closing_balance-= $ticketCost;
