@@ -47,7 +47,6 @@ class PlayMasterController extends Controller
         $requestedData = $request->json()->all();
         $inputPlayMaster = (object)$requestedData['playMaster'];
         $inputPlayDetails = $requestedData['playDetails'];
-        $ticketCost = $requestedData['ticketCost'];
 
         $output_array = array();
 
@@ -61,7 +60,6 @@ class PlayMasterController extends Controller
             $output_array['play_master'] = new PlayMasterResource($playMaster);
 
             $output_play_details = array();
-            $singleArray = array();
             foreach($inputPlayDetails as $inputPlayDetail){
                 $detail = (object)$inputPlayDetail;
                 //insert value for triple
@@ -77,30 +75,35 @@ class PlayMasterController extends Controller
                 }
                 if($detail->gameTypeId == 1){
                     $numberCombinationIds = SingleNumber::find($detail->singleNumberId)->number_combinations->pluck('id');
-                    $singleArray[] = $numberCombinationIds;
                     foreach ($numberCombinationIds as $numberCombinationId){
                         $playDetails = new PlayDetails();
                         $playDetails->play_master_id = $playMaster->id;
                         $playDetails->game_type_id = $detail->gameTypeId;
                         $playDetails->number_combination_id = $numberCombinationId;
                         $playDetails->quantity = $detail->quantity;
-                        $playDetails->mrp = $detail->mrp;
+                        $playDetails->mrp = round($detail->mrp/22,4);
                         $playDetails->save();
+                        $output_play_details[] = $playDetails;
+
                     }
                 }
 
             }
             $output_array['play_details'] = PlayDetailsResource::collection( $output_play_details);
-            $output_array['singleArray'] = $singleArray;
+
+            $amount = $playMaster->play_details->sum(function($t){
+                return $t->quantity * $t->mrp;
+            });
+            $output_array['amount'] = round($amount,0);
 
             $terminal = User::findOrFail($inputPlayMaster->terminalId);
-            $terminal->closing_balance-= $ticketCost;
+            $terminal->closing_balance-= $amount;
             $terminal->save();
 
             DB::commit();
         }catch (\Exception $e){
             DB::rollBack();
-            return response()->json(['success'=>0,'exception'=>$e->getMessage(),'error_line'=>$e->getLine()], 500);
+            return response()->json(['success'=>0,'exception'=>$e->getMessage(),'error_line'=>$e->getLine(),'file_name' => $e->getFile()], 500);
         }
 
         return response()->json(['success'=>1,'data'=> $output_array], 200,[],JSON_NUMERIC_CHECK);
