@@ -12,7 +12,7 @@ import {ProjectData} from '../../models/project-data.model';
 export class TerminalComponent implements OnInit {
   projectData: ProjectData;
   showDeveloperDiv = true;
-  switchcolorMode = false;
+
   singleNumbers: SingleNumber[] = [];
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
@@ -29,4 +29,8 @@ export class TerminalComponent implements OnInit {
     });
   }// end of ngOnIInit
 
+
+  getNumberCombinationsBySingle(singleNumber: any) {
+    console.log(singleNumber);
+  }
 }

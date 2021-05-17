@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     //single_numbers
     Route::get("singleNumbers",[SingleNumberController::class,'index']);
 
+    //number_combinations
+    Route::get("numberCombinations",[NumberCombinationController::class,'index']);
+    Route::get("numberCombinations/number/{id}",[NumberCombinationController::class,'getNumbersBySingleNumber']);
 
 });
 

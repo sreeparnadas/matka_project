@@ -12,4 +12,8 @@ class NumberCombination extends Model
     protected $hidden = [
         "created_at","updated_at"
     ];
+
+    public function single(){
+        return $this->belongsTo(SingleNumber::class,'single_number_id');
+    }
 }
