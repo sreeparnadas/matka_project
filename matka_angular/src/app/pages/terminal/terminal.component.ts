@@ -3,6 +3,7 @@ import {PlayGameService} from '../../services/play-game.service';
 import {SingleNumber} from '../../models/SingleNumber.model';
 import {CommonService} from '../../services/common.service';
 import {ProjectData} from '../../models/project-data.model';
+import {NumberCombinations} from '../../models/NumberCombinations.model';
 
 @Component({
   selector: 'app-terminal',
@@ -14,6 +15,7 @@ export class TerminalComponent implements OnInit {
   showDeveloperDiv = true;
 
   singleNumbers: SingleNumber[] = [];
+  numberCombinations: NumberCombinations[] = [];
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {
@@ -22,6 +24,12 @@ export class TerminalComponent implements OnInit {
     this.playGameService.getSingleNumberListener().subscribe((response: SingleNumber[]) => {
       this.singleNumbers = response;
     });
+
+    this.numberCombinations = this.playGameService.getAllTripleNumbers();
+    this.playGameService.getAllTripleNumberListener().subscribe((response: NumberCombinations[]) => {
+      this.numberCombinations = response;
+    });
+
     // variableSettings enabling
     this.projectData = this.commonService.getProjectData();
     this.commonService.getVariableSettingsListener().subscribe((response: ProjectData) => {
@@ -29,8 +37,4 @@ export class TerminalComponent implements OnInit {
     });
   }// end of ngOnIInit
 
-
-  getNumberCombinationsBySingle(singleNumber: any) {
-    console.log(singleNumber);
-  }
 }

@@ -4,6 +4,7 @@ import {GlobalVariable} from '../shared/global';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {SingleNumber} from '../models/SingleNumber.model';
 import {Subject} from 'rxjs';
+import {NumberCombinations} from '../models/NumberCombinations.model';
 
 
 @Injectable({
@@ -13,13 +14,21 @@ import {Subject} from 'rxjs';
 export class PlayGameService {
   singleNumbers: SingleNumber[] = [];
   singleNumberSubject = new Subject<SingleNumber[]>();
+
+  numberCombinations: NumberCombinations[] = [];
+  numberCombinationsSubject = new Subject<NumberCombinations[]>();
+
   constructor(private http: HttpClient) {
     // get single numbers
       this.http.get(GlobalVariable.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {
         this.singleNumbers = response.data;
         this.singleNumberSubject.next([...this.singleNumbers]);
       });
-      this.getTripleNumbersBySingleNumber(2);
+
+      this.http.get(GlobalVariable.BASE_API_URL + '/numberCombinations/number/1').subscribe((response: ServerResponse) => {
+        this.numberCombinations = response.data;
+        this.numberCombinationsSubject.next([...this.numberCombinations]);
+    });
   }
 
   getSingleNumbers(){
@@ -30,9 +39,11 @@ export class PlayGameService {
   }
 
   // get triple numbers list by single number
-  getTripleNumbersBySingleNumber(single){
-    this.http.get(GlobalVariable.BASE_API_URL + '/numberCombinations/number/' + single).subscribe((response: ServerResponse) => {
-      console.log(response.data);
-    });
+  getAllTripleNumbers(){
+    return [...this.numberCombinations];
+  }
+
+  getAllTripleNumberListener(){
+    return this.numberCombinationsSubject.asObservable();
   }
 }

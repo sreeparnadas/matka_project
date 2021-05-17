@@ -16,7 +16,7 @@ class NumberCombinationController extends Controller
     public function index()
     {
         $result = NumberCombination::get();
-        return response()->json(['success'=>1,'data'=>$result], 200,[],JSON_NUMERIC_CHECK);
+        return response()->json(['success'=>1,'data'=> NumberCombinationsResource::collection($result)], 200,[],JSON_NUMERIC_CHECK);
     }
 
     public function getNumbersBySingleNumber($id){

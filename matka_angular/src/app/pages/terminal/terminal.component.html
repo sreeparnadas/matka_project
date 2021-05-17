@@ -26,7 +26,7 @@
               <tr>
 
                 <th class="pink" *ngFor="let single of singleNumbers">
-                  <button (click)="getNumberCombinationsBySingle(single.singleNumber)" mat-fab color="primary" aria-label="Example icon button with a delete icon" class="mat-icon-button">
+                  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="mat-icon-button">
 <!--                    <mat-icon style="color: white">{{single.singleNumber}}</mat-icon>-->
                     <span>{{single.singleNumber}}</span>
 
@@ -40,8 +40,8 @@
                 <td  colspan="10" style="font-size: x-large;color: rgb(0, 0, 0);font-weight: bold; text-align: center; background-color: white;">1</td>
 
               </tr>
-              <tr>
-                <td colspan="2" class="pink">jjj</td>
+              <tr >
+                <td colspan="2" class="pink">jj</td>
                 <td colspan="2"  class="green">jjj</td>
                 <td colspan="2" class="pink">jjj</td>
                 <td colspan="2" class="green">jjj</td>
@@ -278,7 +278,9 @@
   <div class="col-4">
     variableSettings = {{ projectData | json }}
   </div>
-  <div class="col-4"></div>
+  <div class="col-4">
+    <pre>numberCombinations = {{numberCombinations | json}}</pre>
+  </div>
 </div>
 
 
