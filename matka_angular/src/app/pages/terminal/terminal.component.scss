@@ -331,3 +331,18 @@
     border-radius: 50%;
   }
 }
+
+.mat-icon-button {
+  padding: 0!important;
+  min-width: 0;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  line-height: 40px;
+  border-radius: 50%;
+}
+
+span .mat-fab .mat-button-wrapper {
+  display: block;
+  line-height: 24px;
+}

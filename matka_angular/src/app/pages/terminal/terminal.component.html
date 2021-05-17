@@ -25,16 +25,23 @@
             <thead>
               <tr>
 
-                <th class="pink">0</th>
-                <th class="green">1</th>
-                <th class="pink">2</th>
-                <th class="green">3</th>
-                <th class="pink">4</th>
-                <th class="green">5</th>
-                <th class="pink">6</th>
-                <th class="green">7</th>
-                <th class="pink">8</th>
-                <th class="green">9</th>
+                <th class="pink" *ngFor="let single of singleNumbers">
+                  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="mat-icon-button">
+<!--                    <mat-icon style="color: white">{{single.singleNumber}}</mat-icon>-->
+                    <span>{{single.singleNumber}}</span>
+
+                  </button>
+
+                </th>
+<!--                <th class="green">1</th>-->
+<!--                <th class="pink">2</th>-->
+<!--                <th class="green">3</th>-->
+<!--                <th class="pink">4</th>-->
+<!--                <th class="green">5</th>-->
+<!--                <th class="pink">6</th>-->
+<!--                <th class="green">7</th>-->
+<!--                <th class="pink">8</th>-->
+<!--                <th class="green">9</th>-->
               </tr>
             </thead>
             <tbody>
