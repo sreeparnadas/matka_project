@@ -74,8 +74,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onMatSliderInputChange($event: any) {
     let value = 'none';
     // tslint:disable-next-line:triple-equals
-    if ($event.value == 2){
+    if ($event.value == 1){
       value = 'dark-mode';
+    }
+    // tslint:disable-next-line:triple-equals
+    if ($event.value == 2){
+      value = 'green-mode';
     }
     // tslint:disable-next-line:triple-equals
     if ($event.value == 3){
