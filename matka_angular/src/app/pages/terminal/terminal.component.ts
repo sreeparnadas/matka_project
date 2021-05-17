@@ -16,6 +16,7 @@ export class TerminalComponent implements OnInit {
 
   singleNumbers: SingleNumber[] = [];
   numberCombinations: NumberCombinations[] = [];
+  columnNumber = 5;
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {

@@ -29,81 +29,15 @@
                   <button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="mat-icon-button">
 <!--                    <mat-icon style="color: white">{{single.singleNumber}}</mat-icon>-->
                     <span>{{single.singleNumber}}</span>
-
                   </button>
-
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr   >
-                <td  colspan="10" style="font-size: x-large;color: rgb(0, 0, 0);font-weight: bold; text-align: center; background-color: white;">1</td>
-
-              </tr>
-              <tr >
-                <td colspan="2" class="pink">jj</td>
-                <td colspan="2"  class="green">jjj</td>
-                <td colspan="2" class="pink">jjj</td>
-                <td colspan="2" class="green">jjj</td>
-                <td colspan="2" class="pink">jjj</td>
-
-
-              </tr>
-              <tr>
-
-                <td colspan="2"  class="green"></td>
-                <td colspan="2" class="pink"></td>
-                <td colspan="2" class="green"></td>
-                <td colspan="2" class="pink"></td>
-                <td colspan="2" class="green"></td>
-
-
-              </tr>
-              <tr>
-                <td colspan="2" class="pink">jjj</td>
-                <td colspan="2"  class="green">jjj</td>
-                <td colspan="2" class="pink">jjj</td>
-                <td colspan="2" class="green">jjj</td>
-                <td colspan="2" class="pink">jjj</td>
-
-
-              </tr>
-
-              <tr>
-
-                <td colspan="2"  class="green"></td>
-                <td colspan="2" class="pink"></td>
-                <td colspan="2" class="green"></td>
-                <td colspan="2" class="pink"></td>
-                <td colspan="2" class="green"></td>
-
-
-              </tr>
-              <tr>
-                <td colspan="2" class="pink">jjj</td>
-                <td colspan="2"  class="green">jjj</td>
-                <td colspan="2" class="pink">jjj</td>
-                <td colspan="2" class="green">jjj</td>
-                <td colspan="2" class="pink">jjj</td>
-
-
-              </tr>
-
-              <tr>
-
-                <td colspan="2"  class="green"></td>
-                <td colspan="2" class="pink"></td>
-                <td colspan="2" class="green"></td>
-                <td colspan="2" class="pink"></td>
-                <td colspan="2" class="green"></td>
-
-
-              </tr>
-
-
+                <tr *ngFor="let row of numberCombinations.slice(0, numberCombinations.length / columnNumber % 1 === 0 ? numberCombinations.length / columnNumber : numberCombinations.length / columnNumber + 1); let idx = index">
+                  <td colspan="2" *ngFor="let x of numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}</td>
+                </tr>
             </tbody>
-
-
           </table>
         </div>
         <div fxFlex="30">
@@ -276,7 +210,19 @@
     </pre>
   </div>
   <div class="col-4">
-    variableSettings = {{ projectData | json }}
+    <table class="table table-responsive table-bordered">
+      <tr *ngFor="let row of numberCombinations.slice(0, numberCombinations.length / columnNumber % 1 === 0 ? numberCombinations.length / columnNumber : numberCombinations.length / columnNumber + 1); let idx = index">
+        <td *ngFor="let x of numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</td>
+      </tr>
+    </table>
+
+    <div *ngFor="let row of numberCombinations.slice(0, numberCombinations.length / columnNumber % 1 === 0 ? numberCombinations.length / columnNumber : numberCombinations.length / columnNumber + 1); let idx = index">
+      <span *ngFor="let x of numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</span>
+    </div>
+
+    <pre>
+      variableSettings = {{ projectData | json }}
+    </pre>
   </div>
   <div class="col-4">
     <pre>numberCombinations = {{numberCombinations | json}}</pre>
