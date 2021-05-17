@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {User} from '../../models/user.model';
 import {Router} from '@angular/router';
 import { faUserEdit, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import {CommonService, VariableSettings} from '../../services/common.service';
 
 
 @Component({
@@ -12,6 +13,8 @@ import { faUserEdit, faUserAlt } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  variableSettings: VariableSettings;
+
   @Input() deviceXs: boolean;
   userSub: Subscription;
   isAuthenticated = false;
@@ -22,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   router: Router;
   faUserEdit = faUserEdit;
   faUserAlt = faUserAlt;
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,  private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
@@ -41,7 +44,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     });
     this.authService.autoLogin();
-  }
+
+    this.variableSettings = this.commonService.getVariableSettings();
+    this.commonService.getVariableSettingsListener().subscribe((response: VariableSettings) => {
+      this.variableSettings = response;
+    });
+
+  } // end of ngOnInit
 
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
@@ -58,5 +67,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
       color: 'white !important',
       'background-color': 'rgba(251,254,255,0.8)'
     };
+  }
+
+
+
+  onMatSliderInputChange($event: any) {
+    let value = 'none';
+    // tslint:disable-next-line:triple-equals
+    if ($event.value == 2){
+      value = 'dark-mode';
+    }
+    // tslint:disable-next-line:triple-equals
+    if ($event.value == 3){
+      value = 'color-mode';
+    }
+    this.variableSettings.colorScheme = value;
+    this.commonService.updateVariableSettings(this.variableSettings);
   }
 }
