@@ -1,316 +1,272 @@
-<style>
-  #background{
-    /* background-image: url("assets/images/curtain.jpg"); */
-    background-color: rgb(107, 104, 106);
 
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* background-position: center; */
-    width: 100%;
-    /* height: 100%; */
-    ;
-    /* background-color: rgb(83, 1, 1); */
+<div [ngClass]="switchcolorMode ?  'color-mode' :'dark-mode'" >
+  <label class="switch">
+    <input type="checkbox" >
+    <span class="slider round"></span>
+  </label>
+  <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
+    <div class="p-2 background body  bd-highlight" id="background">
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
 
-  }
-  .table {
-    height: 500px;
-  }
-  .table td{
-    border: 2px solid pink;
-    height: 0px;
-  }
-  .green{
-    /* background-color: rgb(68, 250, 61); */
-    background-color: rgb(187, 190, 187);
-    border-radius: 5px;
+        <div id="table-1" fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid rgb(0, 26, 255); ">
+          <!-- <div class="d-flex ml-3">
+            <div class="col-1 pink">0</div>
+            <div class="col-1 green">1</div>
+            <div class="col-1 pink">2</div>
+            <div class="col-1 green">3</div>
+            <div class="col-1 pink">4</div>
+            <div class="col-1 green">5</div>
+            <div class="col-1 pink">6</div>
+            <div class="col-1 green">7</div>
+            <div class="col-1 pink">8</div>
+            <div class="col-1 green">9</div>
+          </div> -->
+          <table class="table ml-4 mt-2" style="height: 400px !important; width: 350px;">
+            <thead>
+              <tr>
 
-  }
-  .pink{
-    /* background-color: hotpink; */
-    background-color: rgb(122, 114, 118);
-    border-radius: 5px;
-  }
-  .grad {
-  /* background-image: linear-gradient(to right, rgb(250, 191, 230), rgb(252, 8, 191)); */
-  border: 2px solid hotpink;
-  border-radius: 100px;
-  padding-left: 6px !important;
-  width: 35px;
-  max-height: 90% !important;
-  /* padding-left: 15px !important; */
+                <th class="pink">0</th>
+                <th class="green">1</th>
+                <th class="pink">2</th>
+                <th class="green">3</th>
+                <th class="pink">4</th>
+                <th class="green">5</th>
+                <th class="pink">6</th>
+                <th class="green">7</th>
+                <th class="pink">8</th>
+                <th class="green">9</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr   >
+                <td  colspan="10" style="font-size: x-large;color: rgb(0, 0, 0);font-weight: bold; text-align: center; background-color: white;">1</td>
 
-  }
-  .middle{
-    background-color: #cdb2dc;
-  }
-
-</style>
-
-
-
-
-
-
-<div class="d-flex flex-row bd-highlight mb-3" id="bg">
-  <div class="p-2 background  bd-highlight" id="background">
-    <div fxLayout="row" fxLayoutAlign="space-around center" >
-      <div id="table-1" fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid rgb(0, 26, 255); ">
-        <!-- <div class="d-flex ml-3">
-          <div class="col-1 pink">0</div>
-          <div class="col-1 green">1</div>
-          <div class="col-1 pink">2</div>
-          <div class="col-1 green">3</div>
-          <div class="col-1 pink">4</div>
-          <div class="col-1 green">5</div>
-          <div class="col-1 pink">6</div>
-          <div class="col-1 green">7</div>
-          <div class="col-1 pink">8</div>
-          <div class="col-1 green">9</div>
-        </div> -->
-        <table class="table ml-4 mt-2" style="height: 400px !important; width: 350px;">
-          <thead>
-            <tr>
-
-              <th class="pink">0</th>
-              <th class="green">1</th>
-              <th class="pink">2</th>
-              <th class="green">3</th>
-              <th class="pink">4</th>
-              <th class="green">5</th>
-              <th class="pink">6</th>
-              <th class="green">7</th>
-              <th class="pink">8</th>
-              <th class="green">9</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr   >
-              <td  colspan="10" style="font-size: x-large;color: rgb(0, 0, 0);font-weight: bold; text-align: center; background-color: white;">1</td>
-
-            </tr>
-            <tr>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2"  class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2" class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2" class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
 
 
-            </tr>
-            <tr>
+              </tr>
+              <tr>
 
-              <td colspan="2"  class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-
-
-            </tr>
-            <tr>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2"  class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2" class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
 
 
-            </tr>
-
-            <tr>
-
-              <td colspan="2"  class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2" class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
 
 
-            </tr>
-            <tr>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2"  class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2" class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
+              </tr>
+
+              <tr>
+
+                <td colspan="2"  class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
 
 
-            </tr>
-
-            <tr>
-
-              <td colspan="2"  class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2" class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
 
 
-            </tr>
+              </tr>
+
+              <tr>
+
+                <td colspan="2"  class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
 
 
-          </tbody>
+              </tr>
 
 
-        </table>
-      </div>
-      <div fxFlex="30">
-        <div style="padding-left: 50px;">
-          <img src="assets/images/wheel.gif" height="200px" style="padding-left: 20px;" alt="" >
+            </tbody>
+
+
+          </table>
         </div>
-      </div>
-      <div fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid gold; ">
-        <div>GAME1 RESULT SHEET</div>
-        <div style="text-align: end; color: white;">RESULT SHEET</div>
-        <table class="table ml-4 mt-2" style="height: 400px !important; width: 350px;">
-          <thead>
+        <div fxFlex="30">
+          <div style="padding-left: 50px;">
+            <img src="assets/images/wheel.gif" height="200px" style="padding-left: 20px;" alt="" >
+          </div>
+        </div>
+        <div fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid gold; ">
+          <div>GAME1 RESULT SHEET</div>
+          <div style="text-align: end; color: white;">RESULT SHEET</div>
+          <table class="table ml-4 mt-2" style="height: 400px !important; width: 350px;">
+            <thead>
+              <!-- <tr>
+
+                <th class="pink">0</th>
+                <th class="green">1</th>
+                <th class="pink">2</th>
+                <th class="green">3</th>
+                <th class="pink">4</th>
+                <th class="green">5</th>
+                <th class="pink">6</th>
+                <th class="green">7</th>
+                <th class="pink">8</th>
+                <th class="green">9</th>
+
+
+              </tr> -->
+            </thead>
             <!-- <tr>
-
-              <th class="pink">0</th>
-              <th class="green">1</th>
-              <th class="pink">2</th>
-              <th class="green">3</th>
-              <th class="pink">4</th>
-              <th class="green">5</th>
-              <th class="pink">6</th>
-              <th class="green">7</th>
-              <th class="pink">8</th>
-              <th class="green">9</th>
-
+              <td class="pink">0</td>
+              <td class="green">1</td>
+              <td class="pink">2</td>
+              <td class="green">3</td>
+              <td class="pink">4</td>
+              <td class="green">5</td>
+              <td class="pink">6</td>
+              <td class="green">7</td>
+              <td class="pink">8</td>
+              <td class="green">9</td>
 
             </tr> -->
-          </thead>
-          <!-- <tr>
-            <td class="pink">0</td>
-            <td class="green">1</td>
-            <td class="pink">2</td>
-            <td class="green">3</td>
-            <td class="pink">4</td>
-            <td class="green">5</td>
-            <td class="pink">6</td>
-            <td class="green">7</td>
-            <td class="pink">8</td>
-            <td class="green">9</td>
+            <tbody>
+              <!-- <tr   >
+                <td  colspan="10" style="font-size: x-large;color: rgb(0, 0, 0);font-weight: bold; text-align: center; background-color: white;">1</td>
 
-          </tr> -->
-          <tbody>
-            <!-- <tr   >
-              <td  colspan="10" style="font-size: x-large;color: rgb(0, 0, 0);font-weight: bold; text-align: center; background-color: white;">1</td>
-
-            </tr> -->
-            <tr>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2"  class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2" class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
+              </tr> -->
+              <tr>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2" class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
 
 
-            </tr>
-            <tr>
+              </tr>
+              <tr>
 
-              <td colspan="2"  class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-
-
-            </tr>
-            <tr>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2"  class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2" class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
 
 
-            </tr>
-
-            <tr>
-
-              <td colspan="2"  class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2" class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
 
 
-            </tr>
-            <tr>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2"  class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
-              <td colspan="2" class="green">jjj</td>
-              <td colspan="2" class="pink">jjj</td>
+              </tr>
+
+              <tr>
+
+                <td colspan="2"  class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
 
 
-            </tr>
-
-            <tr>
-
-              <td colspan="2"  class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
-              <td colspan="2" class="pink"></td>
-              <td colspan="2" class="green"></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2"  class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
+                <td colspan="2" class="green">jjj</td>
+                <td colspan="2" class="pink">jjj</td>
 
 
-            </tr>
+              </tr>
+
+              <tr>
+
+                <td colspan="2"  class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
+                <td colspan="2" class="pink"></td>
+                <td colspan="2" class="green"></td>
 
 
-          </tbody>
+              </tr>
 
 
-        </table>
-      </div>
-    </div>
-    <div class="d-flex">
-      <div class="col-4 ml-2 d-flex" style="background-color: rgb(221, 213, 176);height: 40px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
-        <div class="col-1 grad">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-5 " >RANDOM PICK</div>
-      </div>
-      <div class="col-4">
-        <div class="d-flex" style="background-color: rgb(223, 214, 177);height: 50px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
-          <div class="col-1" style="padding-left: 10px !important;">0</div>
-        <div class="col-1 middle">1</div>
-        <div class="col-1 middle">2</div>
-        <div class="col-1 middle">3</div>
-        <div class="col-1 middle">4</div>
-        <div class="col-1 middle">5</div>
-        <div class="col-1 middle">6</div>
-        <div class="col-1 middle">7</div>
-        <div class="col-1 middle">8</div>
-        <div class="col-1 middle">9</div>
+            </tbody>
 
+
+          </table>
         </div>
       </div>
-      <div class="col-4 ml-2 d-flex" style="background-color: rgb(197, 192, 167);height: 40px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
-        <div class="col-1 grad">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-1 grad ml-1">hh</div>
-        <div class="col-5 " >RANDOM PICK</div>
+      <div class="d-flex">
+        <div class="col-4 ml-2 d-flex" style="background-color: rgb(221, 213, 176);height: 40px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
+          <div class="col-1 grad">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-5 " >RANDOM PICK</div>
+        </div>
+        <div class="col-4">
+          <div class="d-flex" style="background-color: rgb(223, 214, 177);height: 50px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
+            <div class="col-1" style="padding-left: 10px !important;">0</div>
+          <div class="col-1 middle">1</div>
+          <div class="col-1 middle">2</div>
+          <div class="col-1 middle">3</div>
+          <div class="col-1 middle">4</div>
+          <div class="col-1 middle">5</div>
+          <div class="col-1 middle">6</div>
+          <div class="col-1 middle">7</div>
+          <div class="col-1 middle">8</div>
+          <div class="col-1 middle">9</div>
+
+          </div>
+        </div>
+        <div class="col-4 ml-2 d-flex" style="background-color: rgb(197, 192, 167);height: 40px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
+          <div class="col-1 grad">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-1 grad ml-1">hh</div>
+          <div class="col-5 " >RANDOM PICK</div>
+        </div>
       </div>
+      <!-- <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="assets/images/terminal.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Terminal</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div> -->
     </div>
-    <!-- <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="assets/images/terminal.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Terminal</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div> -->
   </div>
+
 
 </div>
 
@@ -324,3 +280,7 @@
   <div class="col-4"></div>
   <div class="col-4"></div>
 </div>
+
+
+
+

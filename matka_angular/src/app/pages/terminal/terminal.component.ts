@@ -9,6 +9,7 @@ import {SingleNumber} from '../../models/SingleNumber.model';
 })
 export class TerminalComponent implements OnInit {
   showDeveloperDiv = true;
+  switchcolorMode = false;
   singleNumbers: SingleNumber[] = [];
   constructor(private playGameService: PlayGameService) { }
 
@@ -19,5 +20,7 @@ export class TerminalComponent implements OnInit {
       this.singleNumbers = response;
     });
   }
+
+
 
 }
