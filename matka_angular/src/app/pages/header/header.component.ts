@@ -4,7 +4,9 @@ import {Subscription} from 'rxjs';
 import {User} from '../../models/user.model';
 import {Router} from '@angular/router';
 import { faUserEdit, faUserAlt } from '@fortawesome/free-solid-svg-icons';
-import {CommonService, VariableSettings} from '../../services/common.service';
+import {CommonService} from '../../services/common.service';
+import {ProjectSetting} from '@angular/cli/commands/analytics';
+import {ProjectData} from '../../models/project-data.model';
 
 
 @Component({
@@ -13,7 +15,7 @@ import {CommonService, VariableSettings} from '../../services/common.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  variableSettings: VariableSettings;
+  projectData: ProjectData;
 
   @Input() deviceXs: boolean;
   userSub: Subscription;
@@ -45,9 +47,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
     this.authService.autoLogin();
 
-    this.variableSettings = this.commonService.getVariableSettings();
-    this.commonService.getVariableSettingsListener().subscribe((response: VariableSettings) => {
-      this.variableSettings = response;
+    this.projectData = this.commonService.getProjectData();
+    this.commonService.getVariableSettingsListener().subscribe((response: ProjectData) => {
+      this.projectData = response;
     });
 
   } // end of ngOnInit
@@ -85,7 +87,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if ($event.value == 3){
       value = 'color-mode';
     }
-    this.variableSettings.colorScheme = value;
-    this.commonService.updateVariableSettings(this.variableSettings);
+    this.projectData.colorScheme = value;
+    this.commonService.updateVariableSettings(this.projectData);
   }
 }

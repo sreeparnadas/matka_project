@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PlayGameService} from '../../services/play-game.service';
 import {SingleNumber} from '../../models/SingleNumber.model';
-import {CommonService, VariableSettings} from '../../services/common.service';
+import {CommonService} from '../../services/common.service';
+import {ProjectData} from '../../models/project-data.model';
 
 @Component({
   selector: 'app-terminal',
@@ -9,7 +10,7 @@ import {CommonService, VariableSettings} from '../../services/common.service';
   styleUrls: ['./terminal.component.scss']
 })
 export class TerminalComponent implements OnInit {
-  variableSettings: VariableSettings;
+  projectData: ProjectData;
   showDeveloperDiv = true;
   switchcolorMode = false;
   singleNumbers: SingleNumber[] = [];
@@ -22,12 +23,10 @@ export class TerminalComponent implements OnInit {
       this.singleNumbers = response;
     });
     // variableSettings enabling
-    this.variableSettings = this.commonService.getVariableSettings();
-    this.commonService.getVariableSettingsListener().subscribe((response: VariableSettings) => {
-      this.variableSettings = response;
+    this.projectData = this.commonService.getProjectData();
+    this.commonService.getVariableSettingsListener().subscribe((response: ProjectData) => {
+      this.projectData = response;
     });
   }// end of ngOnIInit
-
-
 
 }

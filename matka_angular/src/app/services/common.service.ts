@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs';
+import {ProjectData} from '../models/project-data.model';
 
 
-
-export class VariableSettings{
-  colorScheme: string;
-}
 
 
 @Injectable({
@@ -14,19 +11,19 @@ export class VariableSettings{
 // @ts-ignore
 export class CommonService {
 
-  variableSettings: VariableSettings = {colorScheme: 'dark-mode'};
-  variableSettingsSubject = new Subject<VariableSettings>();
+  projectData: ProjectData = {colorScheme: 'dark-mode'};
+  projectDataSubject = new Subject<ProjectData>();
   constructor() {
 
   }
-  getVariableSettings(){
-    return {...this.variableSettings};
+  getProjectData(){
+    return {...this.projectData};
   }
   getVariableSettingsListener(){
-    return this.variableSettingsSubject.asObservable();
+    return this.projectDataSubject.asObservable();
   }
-  updateVariableSettings(variableSettings: VariableSettings){
-    this.variableSettings = variableSettings;
-    this.variableSettingsSubject.next({...this.variableSettings});
+  updateVariableSettings(projectData: ProjectData){
+    this.projectData = projectData;
+    this.projectDataSubject.next({...this.projectData});
   }
 }
