@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs';
 import {ProjectData} from '../models/project-data.model';
-
+import {HttpClient} from '@angular/common/http';
 
 
 
@@ -11,10 +11,14 @@ import {ProjectData} from '../models/project-data.model';
 // @ts-ignore
 export class CommonService {
 
-  projectData: ProjectData = {colorScheme: 'dark-mode'};
+  projectData: ProjectData;
   projectDataSubject = new Subject<ProjectData>();
-  constructor() {
-
+  private pictures: any;
+  constructor(private http: HttpClient) {
+    this.http.get('assets/ProjectData.json').subscribe((data: ProjectData) => {
+      this.projectData = data;
+      this.projectDataSubject.next({...this.projectData});
+    });
   }
   getProjectData(){
     return {...this.projectData};
