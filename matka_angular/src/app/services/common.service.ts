@@ -14,7 +14,7 @@ export class VariableSettings{
 // @ts-ignore
 export class CommonService {
 
-  variableSettings: VariableSettings = {colorScheme: 'red'};
+  variableSettings: VariableSettings = {colorScheme: 'dark-mode'};
   variableSettingsSubject = new Subject<VariableSettings>();
   constructor() {
 
