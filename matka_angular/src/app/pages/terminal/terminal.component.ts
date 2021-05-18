@@ -3,7 +3,6 @@ import {PlayGameService} from '../../services/play-game.service';
 import {SingleNumber} from '../../models/SingleNumber.model';
 import {CommonService} from '../../services/common.service';
 import {ProjectData} from '../../models/project-data.model';
-import {NumberCombinations} from '../../models/NumberCombinations.model';
 
 @Component({
   selector: 'app-terminal',
@@ -15,19 +14,6 @@ export class TerminalComponent implements OnInit {
   showDeveloperDiv = true;
 
   singleNumbers: SingleNumber[] = [];
-
-  numberCombinationsForZero: NumberCombinations[] = [];
-  numberCombinationsForOne: NumberCombinations[] = [];
-  numberCombinationsForTwo: NumberCombinations[] = [];
-  numberCombinationsForThree: NumberCombinations[] = [];
-  numberCombinationsForFour: NumberCombinations[] = [];
-  numberCombinationsForFive: NumberCombinations[] = [];
-  numberCombinationsForSix: NumberCombinations[] = [];
-  numberCombinationsForSeven: NumberCombinations[] = [];
-  numberCombinationsForEight: NumberCombinations[] = [];
-  numberCombinationsForNine: NumberCombinations[] = [];
-
-
   numberCombinationMatrix: SingleNumber[] = [];
 
   columnNumber = 5;
@@ -47,64 +33,6 @@ export class TerminalComponent implements OnInit {
       this.singleNumbers = response;
     });
 
-    this.numberCombinationsForZero = this.playGameService.getNumberCombinationsForZero();
-    this.playGameService.getNumberCombinationsForZeroListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForZero = response;
-    });
-
-    // single 1 => triple(22)
-    this.numberCombinationsForOne = this.playGameService.getNumberCombinationsForOne();
-    this.playGameService.getNumberCombinationsForOneListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForOne = response;
-    });
-
-    // single 2 => triple(22)
-    this.numberCombinationsForTwo = this.playGameService.getNumberCombinationsForTwo();
-    this.playGameService.getNumberCombinationsForTwoListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForTwo = response;
-    });
-
-    // single 3 => triple(22)
-    this.numberCombinationsForThree = this.playGameService.getNumberCombinationsForThree();
-    this.playGameService.getNumberCombinationsForThreeListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForThree = response;
-    });
-
-    // single 4 => triple(22)
-    this.numberCombinationsForFour = this.playGameService.getNumberCombinationsForFour();
-    this.playGameService.getNumberCombinationsForFourListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForFour = response;
-    });
-
-    // single 5 => triple(22)
-    this.numberCombinationsForFive = this.playGameService.getNumberCombinationsForFive();
-    this.playGameService.getNumberCombinationsForFiveListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForFive = response;
-    });
-
-    // single 6 => triple(22)
-    this.numberCombinationsForSix = this.playGameService.getNumberCombinationsForSix();
-    this.playGameService.getNumberCombinationsForSixListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForSix = response;
-    });
-
-    // single 7 => triple(22)
-    this.numberCombinationsForSeven = this.playGameService.getNumberCombinationsForSeven();
-    this.playGameService.getNumberCombinationsForSevenListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForSeven = response;
-    });
-
-    // single 8 => triple(22)
-    this.numberCombinationsForEight = this.playGameService.getNumberCombinationsForEight();
-    this.playGameService.getNumberCombinationsForEightListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForEight = response;
-    });
-
-    // single 9 => triple(22)
-    this.numberCombinationsForNine = this.playGameService.getNumberCombinationsForNine();
-    this.playGameService.getNumberCombinationsForNineListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinationsForNine = response;
-    });
 
     // variableSettings enabling
     this.projectData = this.commonService.getProjectData();
@@ -116,7 +44,6 @@ export class TerminalComponent implements OnInit {
   isActiveTripleContainter(idxSingle: number) {
     // tslint:disable-next-line:triple-equals
     return this.activeTripleContainerValue == idxSingle;
-
   }
 
   setActiveTripleContainerValue(i: number) {
