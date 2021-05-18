@@ -27,10 +27,19 @@ export class TerminalComponent implements OnInit {
   numberCombinationsForEight: NumberCombinations[] = [];
   numberCombinationsForNine: NumberCombinations[] = [];
 
+
+  numberCombinationMatrix: SingleNumber[] = [];
+
   columnNumber = 5;
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {
+
+    this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+    this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
+      this.numberCombinationMatrix = response;
+      console.log('testing', this.numberCombinationMatrix[0].numberCombinations);
+    });
 
     this.singleNumbers = this.playGameService.getSingleNumbers();
     this.playGameService.getSingleNumberListener().subscribe((response: SingleNumber[]) => {
@@ -40,7 +49,6 @@ export class TerminalComponent implements OnInit {
     this.numberCombinationsForZero = this.playGameService.getNumberCombinationsForZero();
     this.playGameService.getNumberCombinationsForZeroListener().subscribe((response: NumberCombinations[]) => {
       this.numberCombinationsForZero = response;
-      console.log(this.numberCombinationsForZero);
     });
 
     // single 1 => triple(22)

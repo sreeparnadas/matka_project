@@ -34,6 +34,16 @@
               </tr>
             </thead>
             <tbody>
+
+            <tr *ngFor="let row of numberCombinationsForZero.slice(0, numberCombinationsForZero.length % columnNumber  === 0 ? numberCombinationsForZero.length / columnNumber : numberCombinationsForZero.length / columnNumber + 1); let idx = index">
+              <td colspan="2" *ngFor="let x of numberCombinationsForZero.slice(idx * columnNumber, idx * columnNumber + columnNumber)">
+                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                  <mat-button-toggle value="bold">{{ x.visibleTripleNumber }}</mat-button-toggle>
+                </mat-button-toggle-group>
+
+              </td>
+            </tr>
+
                 <tr *ngFor="let row of numberCombinationsForZero.slice(0, numberCombinationsForZero.length % columnNumber  === 0 ? numberCombinationsForZero.length / columnNumber : numberCombinationsForZero.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of numberCombinationsForZero.slice(idx * columnNumber, idx * columnNumber + columnNumber)">
                     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
@@ -209,33 +219,15 @@
 
 
 <div class="d-flex" *ngIf="showDeveloperDiv">
-  <div class="d-flex">
-    <div class="col-4">
+    <div class="col-6">
     <pre>
-      singleNumbers = {{numberCombinationsForTwo | json}}
+      numberCombinationMatrix = {{numberCombinationMatrix | json}}
     </pre>
     </div>
-    <div class="col-4">
-      <table class="table table-responsive table-bordered">
-        <tr *ngFor="let row of numberCombinationsForZero.slice(0, numberCombinationsForZero.length / columnNumber % 1 === 0 ? numberCombinationsForZero.length / columnNumber : numberCombinationsForZero.length / columnNumber + 1); let idx = index">
-          <td *ngFor="let x of numberCombinationsForZero.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</td>
-        </tr>
-      </table>
-
-      <div *ngFor="let row of numberCombinationsForZero.slice(0, numberCombinationsForZero.length % columnNumber === 0 ? numberCombinationsForZero.length / columnNumber : numberCombinationsForZero.length / columnNumber + 1); let idx = index">
-        <span *ngFor="let x of numberCombinationsForZero.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</span>
-      </div>
-      <div>
-        {{20 / columnNumber % 1}}
-      </div>
-      <pre>
-      variableSettings = {{ projectData | json }}
-    </pre>
+    <div class="col-3">
     </div>
-    <div class="col-4">
-      <pre>numberCombinationsForZero = {{numberCombinationsForZero | json}}</pre>
+    <div class="col-3">
     </div>
-  </div>
 </div>
 
 

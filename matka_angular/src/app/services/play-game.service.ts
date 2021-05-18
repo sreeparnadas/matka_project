@@ -37,12 +37,22 @@ export class PlayGameService {
   numberCombinationsForEightSubject = new Subject<NumberCombinations[]>();
   numberCombinationsForNineSubject = new Subject<NumberCombinations[]>();
 
+  numberCombinationMatrix: SingleNumber[] = [];
+  numberCombinationMatrixSubject = new Subject<SingleNumber[]>();
+
+
+
   constructor(private http: HttpClient) {
     // get single numbers
       this.http.get(GlobalVariable.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {
         this.singleNumbers = response.data;
         this.singleNumberSubject.next([...this.singleNumbers]);
       });
+
+      this.http.get(GlobalVariable.BASE_API_URL + '/numberCombinations/matrix').subscribe((response: ServerResponse) => {
+      this.numberCombinationMatrix = response.data;
+      this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
+    });
 
       this.http.get(GlobalVariable.BASE_API_URL + '/numberCombinations/number/1').subscribe((response: ServerResponse) => {
         this.numberCombinationsForZero = response.data;
@@ -93,6 +103,7 @@ export class PlayGameService {
         this.numberCombinationsForNine = response.data;
         this.numberCombinationsForNineSubject.next([...this.numberCombinationsForNine]);
       });
+
   }
 
   getSingleNumbers(){
@@ -102,6 +113,12 @@ export class PlayGameService {
     return this.singleNumberSubject.asObservable();
   }
 
+  getNumberCombinationMatrix(){
+    return [...this.numberCombinationMatrix];
+  }
+  getNumberCombinationMatrixListener(){
+    return this.numberCombinationMatrixSubject.asObservable();
+  }
   // get triple numbers list by single number 0
   getNumberCombinationsForZero(){
     return [...this.numberCombinationsForZero];

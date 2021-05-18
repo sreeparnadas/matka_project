@@ -6,10 +6,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @property mixed id
- * @property mixed single_number
- * @property mixed number_combinations
+ * @property mixed triple_number
+ * @property mixed visible_triple_number
  */
-class SingleNumbers extends JsonResource
+class NumberCombinationSimpleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,9 +20,9 @@ class SingleNumbers extends JsonResource
     public function toArray($request)
     {
         return [
-            'singleNumberId' => $this->id,
-            'singleNumber' => $this->single_number,
-            'numberCombinations' => NumberCombinationSimpleResource::collection($this->number_combinations)
+            'numberCombinationId' => $this->id,
+            'tripleNumber' => $this->triple_number,
+            'visibleTripleNumber' => $this->visible_triple_number
         ];
     }
 }

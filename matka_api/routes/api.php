@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     //number_combinations
     Route::get("numberCombinations",[NumberCombinationController::class,'index']);
     Route::get("numberCombinations/number/{id}",[NumberCombinationController::class,'getNumbersBySingleNumber']);
-
+    Route::get("numberCombinations/matrix",[NumberCombinationController::class,'getAllInMatrix']);
 });
 
 
@@ -58,6 +58,7 @@ Route::group(array('prefix' => 'dev'), function() {
     //number_combinations
     Route::get("numberCombinations",[NumberCombinationController::class,'index']);
     Route::get("numberCombinations/number/{number}",[NumberCombinationController::class,'getNumbersBySingleNumber']);
+    Route::get("numberCombinations/matrix",[NumberCombinationController::class,'getAllInMatrix']);
 
     //draw_masters
     Route::get('drawTimes',[DrawMasterController::class,'index']);
