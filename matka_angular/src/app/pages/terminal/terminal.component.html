@@ -209,30 +209,32 @@
 
 
 <div class="d-flex" *ngIf="showDeveloperDiv">
-  <div class="col-4">
+  <div class="d-flex">
+    <div class="col-4">
     <pre>
-      singleNumbers = {{singleNumbers | json}}
+      singleNumbers = {{numberCombinationsForTwo | json}}
     </pre>
-  </div>
-  <div class="col-4">
-    <table class="table table-responsive table-bordered">
-      <tr *ngFor="let row of numberCombinations.slice(0, numberCombinations.length / columnNumber % 1 === 0 ? numberCombinations.length / columnNumber : numberCombinations.length / columnNumber + 1); let idx = index">
-        <td *ngFor="let x of numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</td>
-      </tr>
-    </table>
+    </div>
+    <div class="col-4">
+      <table class="table table-responsive table-bordered">
+        <tr *ngFor="let row of numberCombinations.slice(0, numberCombinations.length / columnNumber % 1 === 0 ? numberCombinations.length / columnNumber : numberCombinations.length / columnNumber + 1); let idx = index">
+          <td *ngFor="let x of numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</td>
+        </tr>
+      </table>
 
-    <div *ngFor="let row of numberCombinations.slice(0, numberCombinations.length % columnNumber === 0 ? numberCombinations.length / columnNumber : numberCombinations.length / columnNumber + 1); let idx = index">
-      <span *ngFor="let x of numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</span>
-    </div>
-    <div>
-      {{20 / columnNumber % 1}}
-    </div>
-    <pre>
+      <div *ngFor="let row of numberCombinations.slice(0, numberCombinations.length % columnNumber === 0 ? numberCombinations.length / columnNumber : numberCombinations.length / columnNumber + 1); let idx = index">
+        <span *ngFor="let x of numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">{{ x.visibleTripleNumber }}|</span>
+      </div>
+      <div>
+        {{20 / columnNumber % 1}}
+      </div>
+      <pre>
       variableSettings = {{ projectData | json }}
     </pre>
-  </div>
-  <div class="col-4">
-    <pre>numberCombinations = {{numberCombinations | json}}</pre>
+    </div>
+    <div class="col-4">
+      <pre>numberCombinations = {{numberCombinations | json}}</pre>
+    </div>
   </div>
 </div>
 
