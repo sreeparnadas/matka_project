@@ -22,13 +22,16 @@
                   </button>
                 </th>
               </tr>
+              <tr>
+                <th colspan="10" class="text-center">{{activeTripleContainerValue}}</th>
+              </tr>
               </thead>
               <tbody  id="triple-body-{{idxSingle}}" class="table-div-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
               <ng-container *ngIf="isActiveTripleContainter(idxSingle)">
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
                     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                      <mat-button-toggle class="triple-number-button" value="bold">{{ x.visibleTripleNumber }}</mat-button-toggle>
+                      <mat-button-toggle class="triple-number-button" value="bold" (click)="setGameInputSet(x)">{{ x.visibleTripleNumber }}</mat-button-toggle>
                     </mat-button-toggle-group>
                   </td>
                 </tr>
@@ -129,16 +132,12 @@
         </div>
         <div class="col-4">
           <div class="d-flex" style="background-color: rgb(223, 214, 177);height: 50px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
-            <div class="col-1" style="padding-left: 10px !important;">0</div>
-          <div class="col-1 middle">1</div>
-          <div class="col-1 middle">2</div>
-          <div class="col-1 middle">3</div>
-          <div class="col-1 middle">4</div>
-          <div class="col-1 middle">5</div>
-          <div class="col-1 middle">6</div>
-          <div class="col-1 middle">7</div>
-          <div class="col-1 middle">8</div>
-          <div class="col-1 middle">9</div>
+          <div class="chips-outer-div" *ngFor="let x of chips">
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="chips-button">
+              <mat-button-toggle  value="bold" >{{ x }}</mat-button-toggle>
+            </mat-button-toggle-group>
+
+          </div>
 
           </div>
         </div>

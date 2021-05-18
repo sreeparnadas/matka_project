@@ -3,6 +3,7 @@ import {PlayGameService} from '../../services/play-game.service';
 import {SingleNumber} from '../../models/SingleNumber.model';
 import {CommonService} from '../../services/common.service';
 import {ProjectData} from '../../models/project-data.model';
+import {UserGameInput} from '../../models/userGameInput.model';
 
 @Component({
   selector: 'app-terminal',
@@ -15,9 +16,12 @@ export class TerminalComponent implements OnInit {
 
   singleNumbers: SingleNumber[] = [];
   numberCombinationMatrix: SingleNumber[] = [];
+  chips: number[] = [];
+  userGameInput: UserGameInput[] = [];
 
   columnNumber = 5;
-  private activeTripleContainerValue = 0;
+  public activeTripleContainerValue = 0;
+  public selectedChip = 2;
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {
@@ -36,8 +40,10 @@ export class TerminalComponent implements OnInit {
 
     // variableSettings enabling
     this.projectData = this.commonService.getProjectData();
+    this.chips = this.projectData.chips;
     this.commonService.getVariableSettingsListener().subscribe((response: ProjectData) => {
       this.projectData = response;
+      this.chips = this.projectData.chips;
     });
   }// end of ngOnIInit
 
@@ -48,5 +54,15 @@ export class TerminalComponent implements OnInit {
 
   setActiveTripleContainerValue(i: number) {
     this.activeTripleContainerValue = i;
+  }
+
+  setGameInputSet(value){
+    console.log(value);
+    let tempPlayDetails = {
+      gameTypeId: 2,
+      numberCombinationId: value.numberCombinationId,
+      quantity: 10,
+      mrp: 1
+    };
   }
 }
