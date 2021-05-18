@@ -1,5 +1,36 @@
 
+$triple-selection-button-0: rgba(203, 155, 125, 0.74);
+$triple-selection-button-1: rgba(87, 103, 177, 0.55);
+$triple-selection-button-2: rgba(111, 203, 107, 0.8);
+$triple-selection-button-3: rgba(85, 69, 231, 0.82);
+$triple-selection-button-4: rgba(168, 100, 61, 0.82);
+$triple-selection-button-5: rgba(193, 153, 130, 0.82);
+$triple-selection-button-6: rgba(14, 139, 135, 0.82);
+$triple-selection-button-7: rgba(170, 49, 105, 0.82);
+$triple-selection-button-8: rgba(17, 97, 139, 0.82);
+$triple-selection-button-9: rgba(58, 173, 124, 0.82);
 
+
+
+
+$blue: rgb(50, 57, 178);
+$green: rgb(209, 229, 100);
+$orange: rgb(255, 189, 29);
+$purple: rgb(144, 19, 254);
+
+
+$triple-selection-background-colors: (
+    $triple-selection-button-0,
+    $triple-selection-button-1,
+    $triple-selection-button-2,
+    $triple-selection-button-3,
+    $triple-selection-button-4,
+    $triple-selection-button-5,
+    $triple-selection-button-6,
+    $triple-selection-button-7,
+    $triple-selection-button-8,
+    $triple-selection-button-9
+);
 
 
 .dark-mode{
@@ -345,4 +376,30 @@
 span .mat-fab .mat-button-wrapper {
   display: block;
   line-height: 24px;
+}
+
+
+@for $i from 0 through 9 {
+  #triple-body-#{$i}{
+    .triple-number-button{
+      background-color: nth($triple-selection-background-colors, $i+1) !important;
+    }
+  }
+}
+
+//#triple-body-0{
+//  .triple-number-button{
+//    background-color: $triple-selection-button-0 !important;
+//  }
+//}
+
+#triple-table{
+  thead td, thead th{
+    padding: 1px !important;
+  }
+  @for $i from 0 through 9 {
+    .triple-selection-button-#{$i}{
+      background-color: nth($triple-selection-background-colors, $i+1) !important;
+    }
+  }
 }

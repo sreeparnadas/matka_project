@@ -12,12 +12,12 @@
 <!--        this table is auto generated triple value table-->
         <div id="table-1" fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid rgb(0, 26, 255); ">
           <div>
-            <table class="table table-responsive">
+            <table class="table table-responsive" id="triple-table">
               <thead>
               <tr>
                 <th class="pink" *ngFor="let single of singleNumbers; let i = index">
-                  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="mat-icon-button" (click)="setActiveTripleContainerValue(i)">
-                    <!--                    <mat-icon style="color: white">{{single.singleNumber}}</mat-icon>-->
+
+                  <button mat-fab  class="triple-selection-button-{{i}}" (click)="setActiveTripleContainerValue(i)">
                     <span>{{single.singleNumber}}</span>
                   </button>
                 </th>
@@ -26,9 +26,9 @@
               <tbody  id="triple-body-{{idxSingle}}" class="table-div-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
               <ng-container *ngIf="isActiveTripleContainter(idxSingle)">
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
-                  <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">
+                  <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
                     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                      <mat-button-toggle value="bold">{{ x.visibleTripleNumber }}</mat-button-toggle>
+                      <mat-button-toggle class="triple-number-button" value="bold">{{ x.visibleTripleNumber }}</mat-button-toggle>
                     </mat-button-toggle-group>
                   </td>
                 </tr>
