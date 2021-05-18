@@ -21,6 +21,19 @@
             <div class="col-1 pink">8</div>
             <div class="col-1 green">9</div>
           </div> -->
+          <div class="table-div-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
+            <table class="table table-responsive">
+              <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
+                <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)">
+                  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                    <mat-button-toggle value="bold">{{ x.visibleTripleNumber }}</mat-button-toggle>
+                  </mat-button-toggle-group>
+                </td>
+              </tr>
+            </table>
+<!--            <pre>{{tableData.numberCombinations.length}}</pre>-->
+<!--            <hr>-->
+          </div>
           <table class="table ml-4 mt-2" style="height: 400px !important; width: 350px;">
             <thead>
               <tr>
@@ -40,18 +53,9 @@
                 <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
                   <mat-button-toggle value="bold">{{ x.visibleTripleNumber }}</mat-button-toggle>
                 </mat-button-toggle-group>
-
               </td>
             </tr>
 
-                <tr *ngFor="let row of numberCombinationsForZero.slice(0, numberCombinationsForZero.length % columnNumber  === 0 ? numberCombinationsForZero.length / columnNumber : numberCombinationsForZero.length / columnNumber + 1); let idx = index">
-                  <td colspan="2" *ngFor="let x of numberCombinationsForZero.slice(idx * columnNumber, idx * columnNumber + columnNumber)">
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                      <mat-button-toggle value="bold">{{ x.visibleTripleNumber }}</mat-button-toggle>
-                    </mat-button-toggle-group>
-
-                  </td>
-                </tr>
             </tbody>
           </table>
         </div>
