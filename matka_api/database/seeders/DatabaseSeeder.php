@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         NumberCombination::insert([
-            ['single_number_id' =>1, 'triple_number' => 000, 'visible_triple_number' => '000'],// #1
+            ['single_number_id' =>1, 'triple_number' => 000, 'visible_triple_number' => 'OOO'],// #1
             ['single_number_id' =>1, 'triple_number' => 127, 'visible_triple_number' => '127'],// #2
             ['single_number_id' =>1, 'triple_number' => 190, 'visible_triple_number' => '190'],// #3
             ['single_number_id' =>1, 'triple_number' => 280, 'visible_triple_number' => '280'],// #4
