@@ -31,6 +31,7 @@ export class TerminalComponent implements OnInit {
   numberCombinationMatrix: SingleNumber[] = [];
 
   columnNumber = 5;
+  private activeTripleContainerValue = 0;
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {
@@ -112,4 +113,13 @@ export class TerminalComponent implements OnInit {
     });
   }// end of ngOnIInit
 
+  isActiveTripleContainter(idxSingle: number) {
+    // tslint:disable-next-line:triple-equals
+    return this.activeTripleContainerValue == idxSingle;
+
+  }
+
+  setActiveTripleContainerValue(i: number) {
+    this.activeTripleContainerValue = i;
+  }
 }
