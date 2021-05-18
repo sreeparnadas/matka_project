@@ -15,7 +15,7 @@ export class PlayGameService {
   singleNumbers: SingleNumber[] = [];
   singleNumberSubject = new Subject<SingleNumber[]>();
 
-  numberCombinations: NumberCombinations[] = [];
+  numberCombinationsForZero: NumberCombinations[] = [];
   numberCombinationsForOne: NumberCombinations[] = [];
   numberCombinationsForTwo: NumberCombinations[] = [];
   numberCombinationsForThree: NumberCombinations[] = [];
@@ -26,7 +26,7 @@ export class PlayGameService {
   numberCombinationsForEight: NumberCombinations[] = [];
   numberCombinationsForNine: NumberCombinations[] = [];
 
-  numberCombinationsSubject = new Subject<NumberCombinations[]>();
+  numberCombinationsForZeroSubject = new Subject<NumberCombinations[]>();
   numberCombinationsForOneSubject = new Subject<NumberCombinations[]>();
   numberCombinationsForTwoSubject = new Subject<NumberCombinations[]>();
   numberCombinationsForThreeSubject = new Subject<NumberCombinations[]>();
@@ -45,8 +45,8 @@ export class PlayGameService {
       });
 
       this.http.get(GlobalVariable.BASE_API_URL + '/numberCombinations/number/1').subscribe((response: ServerResponse) => {
-        this.numberCombinations = response.data;
-        this.numberCombinationsSubject.next([...this.numberCombinations]);
+        this.numberCombinationsForZero = response.data;
+        this.numberCombinationsForZeroSubject.next([...this.numberCombinationsForZero]);
       });
 
       this.http.get(GlobalVariable.BASE_API_URL + '/numberCombinations/number/2').subscribe((response: ServerResponse) => {
@@ -103,11 +103,11 @@ export class PlayGameService {
   }
 
   // get triple numbers list by single number 0
-  getAllTripleNumbers(){
-    return [...this.numberCombinations];
+  getNumberCombinationsForZero(){
+    return [...this.numberCombinationsForZero];
   }
-  getAllTripleNumberListener(){
-    return this.numberCombinationsSubject.asObservable();
+  getNumberCombinationsForZeroListener(){
+    return this.numberCombinationsForZeroSubject.asObservable();
   }
 
   // get triple numbers list by single number 1

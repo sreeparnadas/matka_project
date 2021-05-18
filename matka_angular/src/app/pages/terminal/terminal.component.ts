@@ -16,7 +16,7 @@ export class TerminalComponent implements OnInit {
 
   singleNumbers: SingleNumber[] = [];
 
-  numberCombinations: NumberCombinations[] = [];
+  numberCombinationsForZero: NumberCombinations[] = [];
   numberCombinationsForOne: NumberCombinations[] = [];
   numberCombinationsForTwo: NumberCombinations[] = [];
   numberCombinationsForThree: NumberCombinations[] = [];
@@ -37,10 +37,10 @@ export class TerminalComponent implements OnInit {
       this.singleNumbers = response;
     });
 
-    this.numberCombinations = this.playGameService.getAllTripleNumbers();
-    this.playGameService.getAllTripleNumberListener().subscribe((response: NumberCombinations[]) => {
-      this.numberCombinations = response;
-      console.log(this.numberCombinations);
+    this.numberCombinationsForZero = this.playGameService.getNumberCombinationsForZero();
+    this.playGameService.getNumberCombinationsForZeroListener().subscribe((response: NumberCombinations[]) => {
+      this.numberCombinationsForZero = response;
+      console.log(this.numberCombinationsForZero);
     });
 
     // single 1 => triple(22)
