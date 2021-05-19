@@ -30,9 +30,12 @@
               <ng-container *ngIf="isActiveTripleContainter(idxSingle)">
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                      <mat-button-toggle class="triple-number-button" value="bold" (click)="setGameInputSet(x)">{{ x.visibleTripleNumber }}</mat-button-toggle>
-                    </mat-button-toggle-group>
+<!--                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">-->
+<!--                      <mat-button-toggle mat-raised-button matBadge="7" [matBadgeHidden]="false"  class="triple-number-button" value="bold" (click)="setGameInputSet(x)">{{ x.visibleTripleNumber }}</mat-button-toggle>-->
+<!--                    </mat-button-toggle-group>-->
+                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x)" name="fontStyle" aria-label="Font Style">
+                      {{ x.visibleTripleNumber }}
+                    </button>
                   </td>
                 </tr>
               </ng-container>

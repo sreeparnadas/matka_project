@@ -60,9 +60,11 @@ export class TerminalComponent implements OnInit {
     console.log(value);
     let numberWiseTotalQuantity = this.selectedChip;
     const index = this.userGameInput.findIndex(x => x.numberCombinationId === value.numberCombinationId);
+    // const numberIndex = this.numberCombinations.findIndex(x => x.numberCombinationId === this.activeTripleContainerValue);
     console.log(index);
     if (index > -1){
       this.userGameInput[index].quantity += this.selectedChip;
+      value.quantity = this.userGameInput[index].quantity;
     }else{
 
       let tempPlayDetails = {
@@ -72,7 +74,10 @@ export class TerminalComponent implements OnInit {
         mrp: 1
       };
       this.userGameInput.push(tempPlayDetails);
+      value.quantity = this.selectedChip;
     }
+
+    console.log(this.playGameService.getNumberCombinationMatrix());
 
   }
 
@@ -82,5 +87,8 @@ export class TerminalComponent implements OnInit {
 
   resetMatrixValue(){
     this.userGameInput = [];
+    this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+    console.log(this.playGameService.getNumberCombinationMatrix());
+
   }
 }
