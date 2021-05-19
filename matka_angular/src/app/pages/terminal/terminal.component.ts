@@ -17,7 +17,7 @@ export class TerminalComponent implements OnInit {
   singleNumbers: SingleNumber[] = [];
   numberCombinationMatrix: SingleNumber[] = [];
   chips: number[] = [];
-  userGameInput: UserGameInput[] = [];
+  userGameInput: any[] = [];
 
   columnNumber = 5;
   public activeTripleContainerValue = 0;
@@ -58,11 +58,29 @@ export class TerminalComponent implements OnInit {
 
   setGameInputSet(value){
     console.log(value);
-    let tempPlayDetails = {
-      gameTypeId: 2,
-      numberCombinationId: value.numberCombinationId,
-      quantity: 10,
-      mrp: 1
-    };
+    let numberWiseTotalQuantity = this.selectedChip;
+    const index = this.userGameInput.findIndex(x => x.numberCombinationId === value.numberCombinationId);
+    console.log(index);
+    if (index > -1){
+      this.userGameInput[index].quantity += this.selectedChip;
+    }else{
+
+      let tempPlayDetails = {
+        gameTypeId: 2,
+        numberCombinationId: value.numberCombinationId,
+        quantity: this.selectedChip,
+        mrp: 1
+      };
+      this.userGameInput.push(tempPlayDetails);
+    }
+
+  }
+
+  changeChip(value){
+    this.selectedChip = value;
+  }
+
+  resetMatrixValue(){
+    this.userGameInput = [];
   }
 }
