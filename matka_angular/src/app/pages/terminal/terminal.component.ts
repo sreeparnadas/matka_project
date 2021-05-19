@@ -4,6 +4,7 @@ import {SingleNumber} from '../../models/SingleNumber.model';
 import {CommonService} from '../../services/common.service';
 import {ProjectData} from '../../models/project-data.model';
 import {UserGameInput} from '../../models/userGameInput.model';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 @Component({
   selector: 'app-terminal',
@@ -22,11 +23,13 @@ export class TerminalComponent implements OnInit {
   columnNumber = 5;
   public activeTripleContainerValue = 0;
   public selectedChip = 2;
+  public clonedObject: SingleNumber[] = [];
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {
 
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+    this.clonedObject = cloneDeep(this.numberCombinationMatrix);
     this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
       this.numberCombinationMatrix = response;
       console.log('testing', this.numberCombinationMatrix[0].numberCombinations);
@@ -87,8 +90,10 @@ export class TerminalComponent implements OnInit {
 
   resetMatrixValue(){
     this.userGameInput = [];
-    this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+    this.numberCombinationMatrix = [];
+    // this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     console.log(this.playGameService.getNumberCombinationMatrix());
+    console.log(this.clonedObject);
 
   }
 }
