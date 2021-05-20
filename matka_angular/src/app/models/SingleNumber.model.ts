@@ -7,5 +7,6 @@ export class SingleNumber{
     numberCombinationId: number,
     tripleNumber: number,
     visibleTripleNumber: string
+    quantity?: number
   }[];
 }

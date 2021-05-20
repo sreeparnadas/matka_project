@@ -60,16 +60,6 @@ export class TerminalComponent implements OnInit {
   }
 
   setGameInputSet(value, idxSingle: number){
-    // const singleIndex = this.numberCombinationMatrix.findIndex(x => x.singleNumber === idxSingle);
-    // const singleArray = this.numberCombinationMatrix[singleIndex];
-    // console.log('single Array', singleArray);
-    // const objectIndex = singleArray.numberCombinations.findIndex(x => x.numberCombinationId === myValue.numberCombinationId);
-    // console.log('Object Index', objectIndex);
-    // const value = {...myValue};
-    // console.log(value);
-
-
-
     const numberWiseTotalQuantity = this.selectedChip;
     const index = this.userGameInput.findIndex(x => x.numberCombinationId === value.numberCombinationId);
     // const numberIndex = this.numberCombinations.findIndex(x => x.numberCombinationId === this.activeTripleContainerValue);
