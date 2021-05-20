@@ -12,6 +12,7 @@ import {AuthGuardDeveloperServiceService} from './services/auth-guard-developer-
 import {AuthGuardTerminalServiceService} from './services/auth-guard-terminal-service.service';
 import {AuthGuardStockistServiceService} from './services/auth-guard-stockist-service.service';
 import {BiIconComponent} from './pages/bi-icon/bi-icon.component';
+import {ManualResultComponent} from './pages/cpanel/manual-result/manual-result.component';
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'stockistCPanel', canActivate : [AuthGuardStockistServiceService], component: StockistComponent},
   {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
   {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},
+  {path: 'manual', canActivate : [AuthGuardAdminServiceService], component: ManualResultComponent},
   {path: 'bi-icon', component: BiIconComponent},
 ];
 
