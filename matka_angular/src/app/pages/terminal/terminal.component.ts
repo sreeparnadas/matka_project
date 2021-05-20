@@ -59,19 +59,29 @@ export class TerminalComponent implements OnInit {
     this.activeTripleContainerValue = i;
   }
 
-  setGameInputSet(value, idxSingle: number){
+  setGameInputSet(value, idxSingle: number, gameId: number){
+    console.log(value, gameId);
     const numberWiseTotalQuantity = this.selectedChip;
-    const index = this.userGameInput.findIndex(x => x.numberCombinationId === value.numberCombinationId);
-    // const numberIndex = this.numberCombinations.findIndex(x => x.numberCombinationId === this.activeTripleContainerValue);
-    console.log(index);
+    // tslint:disable-next-line:triple-equals
+    let index = -1;
+    // tslint:disable-next-line:triple-equals
+    if (gameId == 1){
+      index = this.userGameInput.findIndex(x => x.singleNumberId === value.singleNumberId);
+      // tslint:disable-next-line:triple-equals
+    }else if (gameId == 2){
+      index = this.userGameInput.findIndex(x => x.numberCombinationId === value.numberCombinationId);
+    }
+
+
     if (index > -1){
       this.userGameInput[index].quantity += this.selectedChip;
       value.quantity = this.userGameInput[index].quantity;
     }else{
 
       const tempPlayDetails = {
-        gameTypeId: 2,
+        gameTypeId: gameId,
         numberCombinationId: value.numberCombinationId,
+        singleNumberId: value.singleNumberId,
         quantity: this.selectedChip,
         mrp: 1
       };
