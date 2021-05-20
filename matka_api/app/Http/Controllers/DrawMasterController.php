@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DrawMasterResource;
 use App\Models\DrawMaster;
 use Illuminate\Http\Request;
 
@@ -15,13 +16,13 @@ class DrawMasterController extends Controller
     public function index()
     {
         $result = DrawMaster::get();
-        return response()->json(['success'=>1,'data'=>$result], 200,[],JSON_NUMERIC_CHECK);
+        return response()->json(['success'=>1,'data'=>DrawMasterResource::collection($result)], 200,[],JSON_NUMERIC_CHECK);
     }
 
     public function getActiveDraw()
     {
         $result = DrawMaster::where('active',1)->first();
-        return response()->json(['success'=>1,'data'=>$result], 200,[],JSON_NUMERIC_CHECK);
+        return response()->json(['success'=>1,'data'=> new DrawMasterResource($result)], 200,[],JSON_NUMERIC_CHECK);
     }
 
     /**

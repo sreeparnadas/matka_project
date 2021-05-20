@@ -53,6 +53,7 @@ import { StockistComponent } from './pages/stockist/stockist.component';
 import { TerminalComponent } from './pages/terminal/terminal.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
 import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
+import { ManualResultComponent } from './pages/cpanel/manual-result/manual-result.component';
 
 
 
@@ -79,6 +80,7 @@ import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
                 TerminalComponent,
                 DeveloperComponent,
                 BiIconComponent,
+                ManualResultComponent,
   ],
   imports: [
     BrowserModule,

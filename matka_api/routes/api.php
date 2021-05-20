@@ -46,6 +46,10 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get("numberCombinations",[NumberCombinationController::class,'index']);
     Route::get("numberCombinations/number/{id}",[NumberCombinationController::class,'getNumbersBySingleNumber']);
     Route::get("numberCombinations/matrix",[NumberCombinationController::class,'getAllInMatrix']);
+
+    //draw_masters
+    Route::get('drawTimes',[DrawMasterController::class,'index']);
+    Route::get('drawTimes/active',[DrawMasterController::class,'getActiveDraw']);
 });
 
 

@@ -1,0 +1,29 @@
+<mat-card>
+  <form [formGroup]="manualResultForm">
+    <mat-form-field fxFlex="30">
+      <mat-label>Draw time</mat-label>
+
+      <mat-select  formControlName="drawMasterId" placeholder="Category">
+        <mat-option *ngFor="let time of drawTimes" [value]="time.drawId">
+          {{time.endTime}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</mat-card>
+
+
+<div class="d-flex" *ngIf="true">
+  <div class="col-3">
+      <pre>
+<!--        drawTimes = {{drawTimes | json}}-->
+      </pre>
+  </div>
+  <div class="col-6">
+      <pre>
+       manualResultForm = {{manualResultForm.value | json}}
+      </pre>
+  </div>
+  <div class="col-3"><pre></pre>
+  </div>
+</div>
