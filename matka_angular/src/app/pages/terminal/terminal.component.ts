@@ -23,16 +23,16 @@ export class TerminalComponent implements OnInit {
   columnNumber = 5;
   public activeTripleContainerValue = 0;
   public selectedChip = 2;
-  public clonedObject: SingleNumber[] = [];
+  copyNumberMatrix: SingleNumber[];
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {
 
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
-    this.clonedObject = cloneDeep(this.numberCombinationMatrix);
+    // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
     this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
       this.numberCombinationMatrix = response;
-      console.log('testing', this.numberCombinationMatrix[0].numberCombinations);
+      this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
     });
 
     this.singleNumbers = this.playGameService.getSingleNumbers();
@@ -59,9 +59,18 @@ export class TerminalComponent implements OnInit {
     this.activeTripleContainerValue = i;
   }
 
-  setGameInputSet(value){
-    console.log(value);
-    let numberWiseTotalQuantity = this.selectedChip;
+  setGameInputSet(value, idxSingle: number){
+    // const singleIndex = this.numberCombinationMatrix.findIndex(x => x.singleNumber === idxSingle);
+    // const singleArray = this.numberCombinationMatrix[singleIndex];
+    // console.log('single Array', singleArray);
+    // const objectIndex = singleArray.numberCombinations.findIndex(x => x.numberCombinationId === myValue.numberCombinationId);
+    // console.log('Object Index', objectIndex);
+    // const value = {...myValue};
+    // console.log(value);
+
+
+
+    const numberWiseTotalQuantity = this.selectedChip;
     const index = this.userGameInput.findIndex(x => x.numberCombinationId === value.numberCombinationId);
     // const numberIndex = this.numberCombinations.findIndex(x => x.numberCombinationId === this.activeTripleContainerValue);
     console.log(index);
@@ -70,7 +79,7 @@ export class TerminalComponent implements OnInit {
       value.quantity = this.userGameInput[index].quantity;
     }else{
 
-      let tempPlayDetails = {
+      const tempPlayDetails = {
         gameTypeId: 2,
         numberCombinationId: value.numberCombinationId,
         quantity: this.selectedChip,
@@ -79,9 +88,6 @@ export class TerminalComponent implements OnInit {
       this.userGameInput.push(tempPlayDetails);
       value.quantity = this.selectedChip;
     }
-
-    console.log(this.playGameService.getNumberCombinationMatrix());
-
   }
 
   changeChip(value){
@@ -90,10 +96,6 @@ export class TerminalComponent implements OnInit {
 
   resetMatrixValue(){
     this.userGameInput = [];
-    this.numberCombinationMatrix = [];
-    // this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
-    console.log(this.playGameService.getNumberCombinationMatrix());
-    console.log(this.clonedObject);
-
+    this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
   }
 }

@@ -33,7 +33,7 @@
 <!--                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">-->
 <!--                      <mat-button-toggle mat-raised-button matBadge="7" [matBadgeHidden]="false"  class="triple-number-button" value="bold" (click)="setGameInputSet(x)">{{ x.visibleTripleNumber }}</mat-button-toggle>-->
 <!--                    </mat-button-toggle-group>-->
-                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x)" name="fontStyle" aria-label="Font Style">
+                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle)" name="fontStyle" aria-label="Font Style">
                       {{ x.visibleTripleNumber }}
                     </button>
                   </td>
@@ -182,11 +182,14 @@
 
 <div class="d-flex" *ngIf="showDeveloperDiv">
     <div class="col-6">
-    <pre>
-      numberCombinationMatrix = {{numberCombinationMatrix | json}}
-    </pre>
+      <pre>
+        numberCombinationMatrix = {{numberCombinationMatrix | json}}
+      </pre>
     </div>
-    <div class="col-3"> selectedChip = {{selectedChip}}
+    <div class="col-3">
+      <pre>
+        copyNumberMatrix = {{copyNumberMatrix | json}}
+      </pre>
     </div>
     <div class="col-3"><pre>userGameInput = {{userGameInput | json}}</pre>
     </div>
