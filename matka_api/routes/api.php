@@ -7,6 +7,7 @@ use App\Http\Controllers\NumberCombinationController;
 use App\Http\Controllers\DrawMasterController;
 use App\Http\Controllers\GameTypeController;
 use App\Http\Controllers\PlayMasterController;
+use App\Http\Controllers\ResultMasterController;
 use App\Http\Controllers\SingleNumberController;
 
 /*
@@ -73,7 +74,9 @@ Route::group(array('prefix' => 'dev'), function() {
     //game
     Route::get('playDetails/playId/{id}',[PlayMasterController::class,'get_play_details_by_play_master_id']);
 
-
+    //result_masters
+    Route::get('result_masters',[ResultMasterController::class, 'get_result_masters']);
+    Route::post('result_masters',[ResultMasterController::class, 'save_result_masters']);
 
 
 });

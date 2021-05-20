@@ -52,6 +52,14 @@
                   routerLinkActive="MyActiveMenu"
                   [routerLinkActiveOptions]="{exact: true}">Home</button>
         </div>
+        <div *ngIf="!deviceXs">
+          <button mat-button
+
+                  routerLinkActive="MyActiveMenu"
+                  [routerLinkActiveOptions]="{exact: true}">Manual</button>
+        </div>
+
+        
       </div>
       <div fxLayout="row">
         <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>

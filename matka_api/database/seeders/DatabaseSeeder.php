@@ -287,7 +287,10 @@ class DatabaseSeeder extends Seeder
             ['draw_name'=> 'Good afternoon','start_time'=>'12:00','end_time'=>'13:00','active'=>0],
             ['draw_name'=> 'Good evening','start_time'=>'13:00','end_time'=>'14:00','active'=>0],
             ['draw_name'=> 'Lets play','start_time'=>'14:00','end_time'=>'15:00','active'=>0],
-            ['draw_name'=> 'Good night','start_time'=>'15:00','end_time'=>'16:00','active'=>0]
+            ['draw_name'=> 'Good night','start_time'=>'15:00','end_time'=>'16:00','active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'10:00','end_time'=>' 11:30','active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'11:30','end_time'=>' 13:00','active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>' 12:00 ','end_time'=>' 13:00','active'=>0],
         ]);
 
         GameType::insert([
