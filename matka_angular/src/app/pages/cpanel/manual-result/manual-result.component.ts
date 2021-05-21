@@ -40,9 +40,8 @@ export class ManualResultComponent implements OnInit {
   }
 
 
-  setManualResultInForm(event){
-    console.log(event);
-    this.manualResultForm.patchValue({numberCombinationId: 7});
+  setManualResultInForm(numberCombination){
+    this.manualResultForm.patchValue({numberCombinationId: numberCombination.numberCombinationId});
   }
 
 }

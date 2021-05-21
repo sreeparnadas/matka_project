@@ -17,7 +17,7 @@
       <div class="p-2" *ngFor="let numberCombination of tableData.numberCombinations">
 
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-          <mat-button-toggle class="triple-number-button" value="bold" (click)="setManualResultInForm($event.target.value)"> {{numberCombination.visibleTripleNumber}} </mat-button-toggle>
+          <mat-button-toggle class="triple-number-button" value="bold" (click)="setManualResultInForm(numberCombination)"> {{numberCombination.visibleTripleNumber}} </mat-button-toggle>
         </mat-button-toggle-group>
 
       </div>
