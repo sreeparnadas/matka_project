@@ -27,7 +27,6 @@ export interface AuthResponseData {
 })
 export class AuthService {
   user = new BehaviorSubject<User>(null);
-
   constructor(private http: HttpClient, private router: Router) { }
   isAuthenticated(){
     console.log('I am checking', this.user.value);
@@ -78,17 +77,17 @@ export class AuthService {
     if (loadedUser.authKey){
       this.user.next(loadedUser);
 
-      if (loadedUser.isAdmin){
-        this.router.navigate(['/cPanel']);
-      }else if (loadedUser.isDeveloper){
-        this.router.navigate(['/developer']);
-      }else if (loadedUser.isStockist){
-        this.router.navigate(['/stockistCPanel']);
-      }else if (loadedUser.isTerminal){
-        this.router.navigate(['/terminal']);
-      }else{
-        this.router.navigate(['/']);
-      }
+      // if (loadedUser.isAdmin){
+      //   this.router.navigate(['/cPanel']);
+      // }else if (loadedUser.isDeveloper){
+      //   this.router.navigate(['/developer']);
+      // }else if (loadedUser.isStockist){
+      //   this.router.navigate(['/stockistCPanel']);
+      // }else if (loadedUser.isTerminal){
+      //   this.router.navigate(['/terminal']);
+      // }else{
+      //   this.router.navigate(['/']);
+      // }
     }
   }
   login(loginData){

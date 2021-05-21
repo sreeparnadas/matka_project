@@ -16,6 +16,7 @@ export class ManualResultComponent implements OnInit {
   drawTimes: DrawTime[] = [];
   public numberCombinationMatrix: SingleNumber[] = [];
   private copyNumberMatrix: SingleNumber[];
+  currentCombinationMatrixSelectedId: number;
   constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
     this.manualResultForm = new FormGroup({
       id: new FormControl(null),
@@ -23,6 +24,7 @@ export class ManualResultComponent implements OnInit {
       numberCombinationId: new FormControl(null, [Validators.required]),
     });
   }
+
 
 
   ngOnInit(): void {
@@ -39,9 +41,19 @@ export class ManualResultComponent implements OnInit {
       });
   }
 
+  iscurrentCombinationMatrixSelected(id: number){
+    return (id === this.currentCombinationMatrixSelectedId);
+  }
 
   setManualResultInForm(numberCombination){
     this.manualResultForm.patchValue({numberCombinationId: numberCombination.numberCombinationId});
+    this.currentCombinationMatrixSelectedId = numberCombination.numberCombinationId;
   }
 
+
+  getTrippleButtonStyle() {
+    return {
+      'background-color': 'red !important'
+    };
+  }
 }

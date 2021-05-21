@@ -1,27 +1,48 @@
 <mat-card>
   <form [formGroup]="manualResultForm">
-    <mat-form-field fxFlex="20">
-      <mat-label>Draw time</mat-label>
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <div class="p-2 d-flex flex-column col-3">
+        <div>
+            <mat-form-field fxFlex="80">
+              <mat-label>Draw time</mat-label>
+              <mat-select  formControlName="drawMasterId" placeholder="Category">
+                <mat-option *ngFor="let time of drawTimes" [value]="time.drawId">
+                  {{time.endTime}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
 
-      <mat-select  formControlName="drawMasterId" placeholder="Category">
-        <mat-option *ngFor="let time of drawTimes" [value]="time.drawId">
-          {{time.endTime}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-
-
-    <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
-      <div class="p-2">{{tableData.singleNumber}}</div>
-      <div class="p-2" *ngFor="let numberCombination of tableData.numberCombinations">
-
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-          <mat-button-toggle class="triple-number-button" value="bold" (click)="setManualResultInForm(numberCombination)"> {{numberCombination.visibleTripleNumber}} </mat-button-toggle>
-        </mat-button-toggle-group>
+        </div>
+        <div>
+          <button mat-btn>Save</button>
+        </div>
 
       </div>
+      <div class="p-2 d-flex flex-row col-8">
+        <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
+          <div class="p-2">
+            <button  mat-fab>
+              {{tableData.singleNumber}}
+            </button>
+          </div>
+          <div class="p-2" *ngFor="let numberCombination of tableData.numberCombinations">
+            <!--        <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">-->
+            <!--          <mat-button-toggle class="triple-number-button" value="bold" (click)="setManualResultInForm(numberCombination)"> {{numberCombination.visibleTripleNumber}} </mat-button-toggle>-->
+            <!--        </mat-button-toggle-group>-->
+
+            <button mat-fab class="triple-number-button" [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(numberCombination)">{{numberCombination.visibleTripleNumber}}</button>
+
+          </div>
+        </div>
+      </div>
+      <div class="p-2 bd-highlight">Flex item 3</div>
     </div>
+
+
+
+
   </form>
 </mat-card>
 
