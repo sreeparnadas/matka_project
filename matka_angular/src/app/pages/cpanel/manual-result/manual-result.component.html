@@ -2,7 +2,7 @@
   <form [formGroup]="manualResultForm">
     <div class="d-flex flex-row bd-highlight mb-3">
       <div class="p-2 d-flex flex-column col-3">
-        <div>
+        <div #targetDiv>
             <mat-form-field fxFlex="80">
               <mat-label>Draw time</mat-label>
               <mat-select  formControlName="drawMasterId" placeholder="Category">
@@ -16,6 +16,7 @@
 
         </div>
         <div>
+
           <div class="card" style="width: 18rem;">
             <div class="card-header">
               Upcoming result
@@ -50,6 +51,8 @@
   </form>
 
   <button (click)="gotoTop()">👆</button>
+
+  <button (click)="scroll(targetDiv)">Scroll to any Target</button>
 
 </mat-card>
 

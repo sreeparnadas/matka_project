@@ -67,4 +67,8 @@ export class ManualResultComponent implements OnInit {
       behavior: 'smooth'
     });
   }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
 }
