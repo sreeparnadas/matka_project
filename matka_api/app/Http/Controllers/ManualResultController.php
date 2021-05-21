@@ -22,9 +22,18 @@ class ManualResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function save_manual_result(Request $request)
     {
-        //
+        $requestedData = (object)$request->json()->all();
+//        $inputManual = (object)$requestedData;
+
+        $manualResult = new ManualResult();
+        $manualResult->draw_master_id = $requestedData->drawMasterId;
+        $manualResult->number_combination_id = $requestedData->numberCombinationId;
+        $manualResult->save();
+
+        return response()->json(['success'=>1,'data'=> $manualResult], 200,[],JSON_NUMERIC_CHECK);
+
     }
 
     /**
