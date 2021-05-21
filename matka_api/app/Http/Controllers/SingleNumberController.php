@@ -15,7 +15,7 @@ class SingleNumberController extends Controller
      */
     public function index()
     {
-        $result =  SingleNumber::get();
+        $result =  SingleNumber::orderBy('single_order')->get();
         return response()->json(['success'=>1,'data'=>SingleNumbers::collection($result)], 200,[],JSON_NUMERIC_CHECK);
     }
 

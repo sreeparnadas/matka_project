@@ -79,14 +79,6 @@ export class AuthService {
 
       // if (loadedUser.isAdmin){
       //   this.router.navigate(['/cPanel']);
-      // }else if (loadedUser.isDeveloper){
-      //   this.router.navigate(['/developer']);
-      // }else if (loadedUser.isStockist){
-      //   this.router.navigate(['/stockistCPanel']);
-      // }else if (loadedUser.isTerminal){
-      //   this.router.navigate(['/terminal']);
-      // }else{
-      //   this.router.navigate(['/']);
       // }
     }
   }

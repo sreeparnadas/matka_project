@@ -22,6 +22,8 @@ export class ManualResultComponent implements OnInit {
       id: new FormControl(null),
       drawMasterId: new FormControl(null, [Validators.required]),
       numberCombinationId: new FormControl(null, [Validators.required]),
+      single: new FormControl(null),
+      triple: new FormControl(null),
     });
   }
 
@@ -45,8 +47,9 @@ export class ManualResultComponent implements OnInit {
     return (id === this.currentCombinationMatrixSelectedId);
   }
 
-  setManualResultInForm(numberCombination){
-    this.manualResultForm.patchValue({numberCombinationId: numberCombination.numberCombinationId});
+  setManualResultInForm(single: number, numberCombination){
+    // tslint:disable-next-line:max-line-length
+    this.manualResultForm.patchValue({numberCombinationId: numberCombination.numberCombinationId, single, triple: numberCombination.visibleTripleNumber});
     this.currentCombinationMatrixSelectedId = numberCombination.numberCombinationId;
   }
 
@@ -55,5 +58,13 @@ export class ManualResultComponent implements OnInit {
     return {
       'background-color': 'red !important'
     };
+  }
+
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }

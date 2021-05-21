@@ -26,7 +26,7 @@ class NumberCombinationController extends Controller
         return response()->json(['success'=>1,'data'=> NumberCombinationsResource::collection($result)], 200,[],JSON_NUMERIC_CHECK);
     }
     public function getAllInMatrix(){
-        $singleNumbers = SingleNumber::get();
+        $singleNumbers = SingleNumber::orderBy('single_order')->get();
 
         return response()->json(['success'=>1,'data'=> SingleNumbers::collection($singleNumbers)], 200,[],JSON_NUMERIC_CHECK);
     }

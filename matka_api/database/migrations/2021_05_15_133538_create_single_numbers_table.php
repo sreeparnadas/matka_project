@@ -16,6 +16,7 @@ class CreateSingleNumbersTable extends Migration
         Schema::create('single_numbers', function (Blueprint $table) {
             $table->id();
             $table->integer('single_number')->nullable(false);
+            $table->integer('single_order')->nullable(false);
             $table->timestamps();
         });
     }

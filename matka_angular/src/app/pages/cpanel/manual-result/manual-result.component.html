@@ -16,7 +16,17 @@
 
         </div>
         <div>
-          <button mat-btn>Save</button>
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              Upcoming result
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{manualResultForm.value.triple}}</li>
+              <li class="list-group-item">{{manualResultForm.value.single}}</li>
+            </ul>
+          </div>
+
+          <button type="button" class="btn btn-primary mt-2">Save</button>
         </div>
 
       </div>
@@ -28,11 +38,8 @@
             </button>
           </div>
           <div class="p-2" *ngFor="let numberCombination of tableData.numberCombinations">
-            <!--        <mat-button-toggle-group  name="fontStyle" aria-label="Font Style">-->
-            <!--          <mat-button-toggle class="triple-number-button" value="bold" (click)="setManualResultInForm(numberCombination)"> {{numberCombination.visibleTripleNumber}} </mat-button-toggle>-->
-            <!--        </mat-button-toggle-group>-->
 
-            <button mat-fab class="triple-number-button" [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(numberCombination)">{{numberCombination.visibleTripleNumber}}</button>
+            <button mat-fab class="triple-number-button" [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(tableData.singleNumber, numberCombination)">{{numberCombination.visibleTripleNumber}}</button>
 
           </div>
         </div>
@@ -40,10 +47,10 @@
       <div class="p-2 bd-highlight">Flex item 3</div>
     </div>
 
-
-
-
   </form>
+
+  <button (click)="gotoTop()">👆</button>
+
 </mat-card>
 
 
