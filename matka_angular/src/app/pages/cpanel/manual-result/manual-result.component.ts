@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DrawTime} from '../../../models/DrawTime.model';
 import {ManualResultService} from '../../../services/manual-result.service';
 import {SingleNumber} from '../../../models/SingleNumber.model';
+import {PlayGameService} from '../../../services/play-game.service';
 
 @Component({
   selector: 'app-manual-result',
@@ -13,7 +14,9 @@ export class ManualResultComponent implements OnInit {
 
   manualResultForm: FormGroup;
   drawTimes: DrawTime[] = [];
-  constructor(private manualResultService: ManualResultService) {
+  public numberCombinationMatrix: SingleNumber[] = [];
+  private copyNumberMatrix: SingleNumber[];
+  constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
     this.manualResultForm = new FormGroup({
       id: new FormControl(null),
       drawMasterId: new FormControl(null, [Validators.required]),
@@ -26,8 +29,20 @@ export class ManualResultComponent implements OnInit {
       this.drawTimes = this.manualResultService.getAllDrawTimes();
       this.manualResultService.getAllDrawTimesListener().subscribe((response: DrawTime[]) => {
         this.drawTimes = response;
-        console.log(this.drawTimes);
       });
+
+      this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+        // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
+      this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
+        this.numberCombinationMatrix = response;
+        this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
+      });
+  }
+
+
+  setManualResultInForm(event){
+    console.log(event);
+    this.manualResultForm.patchValue({numberCombinationId: 7});
   }
 
 }

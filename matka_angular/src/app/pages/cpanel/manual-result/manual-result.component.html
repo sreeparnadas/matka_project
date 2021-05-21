@@ -1,6 +1,6 @@
 <mat-card>
   <form [formGroup]="manualResultForm">
-    <mat-form-field fxFlex="30">
+    <mat-form-field fxFlex="20">
       <mat-label>Draw time</mat-label>
 
       <mat-select  formControlName="drawMasterId" placeholder="Category">
@@ -9,6 +9,19 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+
+
+    <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
+      <div class="p-2">{{tableData.singleNumber}}</div>
+      <div class="p-2" *ngFor="let numberCombination of tableData.numberCombinations">
+
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle class="triple-number-button" value="bold" (click)="setManualResultInForm($event.target.value)"> {{numberCombination.visibleTripleNumber}} </mat-button-toggle>
+        </mat-button-toggle-group>
+
+      </div>
+    </div>
   </form>
 </mat-card>
 
@@ -16,7 +29,7 @@
 <div class="d-flex" *ngIf="true">
   <div class="col-3">
       <pre>
-<!--        drawTimes = {{drawTimes | json}}-->
+        numberCombinationMatrix = {{numberCombinationMatrix | json}}
       </pre>
   </div>
   <div class="col-6">
