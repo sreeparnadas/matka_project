@@ -9,6 +9,7 @@ use App\Http\Controllers\GameTypeController;
 use App\Http\Controllers\PlayMasterController;
 use App\Http\Controllers\ResultMasterController;
 use App\Http\Controllers\SingleNumberController;
+use App\Http\Controllers\ManualResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,10 @@ Route::group(array('prefix' => 'dev'), function() {
     //result_masters
     Route::get('result_masters',[ResultMasterController::class, 'get_result_masters']);
     Route::post('result_masters',[ResultMasterController::class, 'save_result_masters']);
+
+    //manual_result
+
+    Route::post('manualResult',[ManualResultController::class, 'save_manual_result']);
 
 
 });
