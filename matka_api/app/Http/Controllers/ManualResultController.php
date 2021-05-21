@@ -30,6 +30,7 @@ class ManualResultController extends Controller
         $manualResult = new ManualResult();
         $manualResult->draw_master_id = $requestedData->drawMasterId;
         $manualResult->number_combination_id = $requestedData->numberCombinationId;
+        $manualResult->game_date ='2021-05-21';
         $manualResult->save();
 
         return response()->json(['success'=>1,'data'=> $manualResult], 200,[],JSON_NUMERIC_CHECK);

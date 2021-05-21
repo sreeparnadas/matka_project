@@ -19,7 +19,7 @@ class CreateManualResultsTable extends Migration
             $table->foreignId('draw_master_id')->references('id')->on('draw_masters')->onDelete('cascade');
             $table->foreignId('number_combination_id')->references('id')->on('number_combinations')->onDelete('cascade');
 
-            $table->time('game_date');
+            $table->date('game_date');
 
             $table->tinyInteger('inforce')->default(1);
             $table->timestamps();
