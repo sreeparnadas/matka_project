@@ -6,6 +6,7 @@ import {SingleNumber} from '../../../models/SingleNumber.model';
 import {PlayGameService} from '../../../services/play-game.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import Swal from 'sweetalert2';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-manual-result',
@@ -37,6 +38,7 @@ export class ManualResultComponent implements OnInit {
   currentCombinationMatrixSelectedId: number;
   currentState = 'initial';
   private validatorError: any;
+  isProduction = environment.production;
   constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
     this.manualResultForm = new FormGroup({
       id: new FormControl(null),

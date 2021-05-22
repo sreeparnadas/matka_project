@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="p-2 bd-highlight">
+      <div class="p-2 bd-highlight" *ngIf="isProduction">
         <h3>Change the div size</h3>
         <button (click)="changeState()">Change Size</button>
         <br />
@@ -63,7 +63,7 @@
 </mat-card>
 
 
-<div class="d-flex" *ngIf="true">
+<div class="d-flex" *ngIf="isProduction">
   <div class="col-3">
       <pre>
         numberCombinationMatrix = {{numberCombinationMatrix | json}}
