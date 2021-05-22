@@ -5,6 +5,7 @@ import {CommonService} from '../../services/common.service';
 import {ProjectData} from '../../models/project-data.model';
 import {UserGameInput} from '../../models/userGameInput.model';
 import * as cloneDeep from 'lodash/cloneDeep';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-terminal',
@@ -24,6 +25,7 @@ export class TerminalComponent implements OnInit {
   public activeTripleContainerValue = 0;
   public selectedChip = 2;
   copyNumberMatrix: SingleNumber[];
+  isProduction = environment.production;
   constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
 
   ngOnInit(): void {
