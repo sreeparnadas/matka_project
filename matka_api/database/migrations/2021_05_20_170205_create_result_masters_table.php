@@ -23,6 +23,7 @@ class CreateResultMastersTable extends Migration
 
             $table->tinyInteger('inforce')->default(1);
             $table->timestamps();
+            $table->unique(['draw_master_id', 'game_date']);
         });
     }
 

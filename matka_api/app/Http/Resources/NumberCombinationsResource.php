@@ -25,7 +25,7 @@ class NumberCombinationsResource extends JsonResource
             'numberCombinationId' => $this->id,
             'tripleNumber' => $this->triple_number,
             'visibleTripleNumber' => $this->visible_triple_number,
-            'single' => new SingleNumbers($this->single)
+            'single' => new SingleNumbers($this->single),
         ];
     }
 }

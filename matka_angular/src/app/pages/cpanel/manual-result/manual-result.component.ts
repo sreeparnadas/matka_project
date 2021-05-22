@@ -5,6 +5,7 @@ import {ManualResultService} from '../../../services/manual-result.service';
 import {SingleNumber} from '../../../models/SingleNumber.model';
 import {PlayGameService} from '../../../services/play-game.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-manual-result',
@@ -35,6 +36,7 @@ export class ManualResultComponent implements OnInit {
   private copyNumberMatrix: SingleNumber[];
   currentCombinationMatrixSelectedId: number;
   currentState = 'initial';
+  private validatorError: any;
   constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
     this.manualResultForm = new FormGroup({
       id: new FormControl(null),
@@ -92,5 +94,50 @@ export class ManualResultComponent implements OnInit {
 
   changeState() {
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
+  }
+
+  saveManualResult(){
+    this.validatorError = null;
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to save this result?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, save It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        this.manualResultService.saveManualResult(this.manualResultForm.value).subscribe(response => {
+          if (response.success === 1){
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Result saved',
+              showConfirmButton: false,
+              timer: 1000
+            });
+          }else if (response.error.success === 0){
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Something went wrong',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }else{
+            this.validatorError = response.error;
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        });
+      }
+    });
   }
 }

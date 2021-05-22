@@ -51,6 +51,10 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     //draw_masters
     Route::get('drawTimes',[DrawMasterController::class,'index']);
     Route::get('drawTimes/active',[DrawMasterController::class,'getActiveDraw']);
+
+    //manual_result
+
+    Route::post('manualResult',[ManualResultController::class, 'save_manual_result']);
 });
 
 

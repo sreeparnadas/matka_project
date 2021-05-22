@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ManualResultResource;
 use App\Models\ManualResult;
+use App\Models\ResultMaster;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ManualResultController extends Controller
 {
@@ -25,17 +29,37 @@ class ManualResultController extends Controller
      */
     public function save_manual_result(Request $request)
     {
-        $requestedData = (object)$request->json()->all();
-//        $inputManual = (object)$requestedData;
+        $rules = array(
+            'drawMasterId'=>'required|exists:draw_masters,id',
+            'numberCombinationId'=>'required|exists:number_combinations,id',
+        );
+        $validator = Validator::make($request->all(),$rules);
 
-        $manualResult = new ManualResult();
-        $manualResult->draw_master_id = $requestedData->drawMasterId;
-        $manualResult->number_combination_id = $requestedData->numberCombinationId;
-        $manualResult->game_date ='2021-05-21';
-        $manualResult->save();
+        if($validator->fails()){
+            return response()->json(['success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+        }
+        $requestedData = (object)$request->json()->all();
+
+        try{
+
+            $manualResult = new ManualResult();
+            $manualResult->draw_master_id = $requestedData->drawMasterId;
+            $manualResult->number_combination_id = $requestedData->numberCombinationId;
+            $manualResult->game_date = Carbon::today();
+            $manualResult->save();
+
+            $resultMaster = new ResultMaster();
+            $resultMaster->draw_master_id = $requestedData->drawMasterId;
+            $resultMaster->number_combination_id = $requestedData->numberCombinationId;
+            $resultMaster->game_date = Carbon::today();
+            $resultMaster->save();
+
+        }catch (\Exception $e){
+            DB::rollBack();
+            return response()->json(['success'=>0,'exception'=>$e->getMessage(),'error_line'=>$e->getLine(),'file_name' => $e->getFile()], 500);
+        }
 
         return response()->json(['success'=>1,'data'=> new ManualResultResource($manualResult)], 200,[],JSON_NUMERIC_CHECK);
-
     }
 
     /**

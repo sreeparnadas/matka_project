@@ -17,4 +17,16 @@ class ManualResult extends Model
      * @var mixed
      */
     private $draw_master_id;
+    /**
+     * @var \Illuminate\Support\Carbon|mixed
+     */
+    private $game_date;
+
+    public function draw_master(){
+        return $this->belongsTo(DrawMaster::class,'draw_master_id');
+    }
+
+    public function number_combination(){
+        return $this->belongsTo(NumberCombination::class,'number_combination_id');
+    }
 }

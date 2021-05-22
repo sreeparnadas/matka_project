@@ -5,6 +5,17 @@ import {ServerResponse} from '../models/ServerResponse.model';
 import {DrawTime} from '../models/DrawTime.model';
 import {Subject} from 'rxjs';
 
+export interface ManualResultSaveResponse{
+  success: number;
+  data: {
+    manualResultId: number,
+    drawMaster: object,
+    numberCombination: object,
+    single: object,
+    gameDate: string
+  };
+  error?: any;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +41,7 @@ export class ManualResultService {
     return this.drawTimeSubject.asObservable();
   }
 
+  saveManualResult(formData){
+    return this.http.post<ManualResultSaveResponse>(GlobalVariable.BASE_API_URL + '/manualResult', formData);
+  }
 }
