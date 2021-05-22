@@ -30,7 +30,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private router: Router) { }
   isAuthenticated(){
-    console.log('I am checking', this.user.value);
+    // console.log('I am checking', this.user.value);
     if (this.user.value){
       return true;
     }else{
