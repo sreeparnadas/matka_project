@@ -40,7 +40,7 @@
           </div>
           <div class="p-2" *ngFor="let numberCombination of tableData.numberCombinations">
 
-            <button mat-fab class="triple-number-button" [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(tableData.singleNumber, numberCombination)">{{numberCombination.visibleTripleNumber}}</button>
+            <button mat-fab matBadge="{{tableData.singleNumber}}" [matBadgeHidden]="currentCombinationMatrixSelectedId != numberCombination.numberCombinationId" class="triple-number-button" [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(tableData.singleNumber, numberCombination)">{{numberCombination.visibleTripleNumber}}</button>
 
           </div>
         </div>
