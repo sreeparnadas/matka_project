@@ -4,11 +4,28 @@ import {DrawTime} from '../../../models/DrawTime.model';
 import {ManualResultService} from '../../../services/manual-result.service';
 import {SingleNumber} from '../../../models/SingleNumber.model';
 import {PlayGameService} from '../../../services/play-game.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-manual-result',
   templateUrl: './manual-result.component.html',
-  styleUrls: ['./manual-result.component.scss']
+  styleUrls: ['./manual-result.component.scss'],
+  animations: [
+    trigger('changeDivSize', [
+      state('initial', style({
+        backgroundColor: 'green',
+        width: '100px',
+        height: '100px'
+      })),
+      state('final', style({
+        backgroundColor: 'red',
+        width: '200px',
+        height: '200px'
+      })),
+      transition('initial=>final', animate('1500ms')),
+      transition('final=>initial', animate('1000ms'))
+    ]),
+  ]
 })
 export class ManualResultComponent implements OnInit {
 
@@ -17,6 +34,7 @@ export class ManualResultComponent implements OnInit {
   public numberCombinationMatrix: SingleNumber[] = [];
   private copyNumberMatrix: SingleNumber[];
   currentCombinationMatrixSelectedId: number;
+  currentState = 'initial';
   constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
     this.manualResultForm = new FormGroup({
       id: new FormControl(null),
@@ -70,5 +88,9 @@ export class ManualResultComponent implements OnInit {
 
   scroll(el: HTMLElement) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+  }
+
+  changeState() {
+    this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
   }
 }

@@ -45,7 +45,13 @@
           </div>
         </div>
       </div>
-      <div class="p-2 bd-highlight">Flex item 3</div>
+      <div class="p-2 bd-highlight">
+        <h3>Change the div size</h3>
+        <button (click)="changeState()">Change Size</button>
+        <br />
+        <div [@changeDivSize]=currentState></div>
+        <br />
+      </div>
     </div>
 
   </form>
