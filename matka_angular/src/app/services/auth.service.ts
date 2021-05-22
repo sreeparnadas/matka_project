@@ -5,7 +5,7 @@ import {BehaviorSubject, Subject, throwError} from 'rxjs';
 import {User} from '../models/user.model';
 import {Router} from '@angular/router';
 // global.ts file is created in shared folder to store all global variables.
-import {GlobalVariable} from '../shared/global';
+import {environment} from '../../environments/environment';
 
 export interface AuthResponseData {
   success: number;
@@ -26,6 +26,7 @@ export interface AuthResponseData {
   providedIn: 'root'
 })
 export class AuthService {
+  private BASE_API_URL = environment.BASE_API_URL;
   user = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private router: Router) { }
   isAuthenticated(){
@@ -83,7 +84,7 @@ export class AuthService {
     }
   }
   login(loginData){
-    return this.http.post<AuthResponseData>(GlobalVariable.BASE_API_URL + '/login', loginData)
+    return this.http.post<AuthResponseData>(this.BASE_API_URL + '/login', loginData)
       .pipe(catchError(this.serverError), tap(resData => {
         // tslint:disable-next-line:max-line-length
         // console.log(resData);

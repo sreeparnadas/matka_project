@@ -12,6 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'http://kfatafat.com/matka_api/public/api/*'
     ];
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {GlobalVariable} from '../shared/global';
+import {environment} from '../../environments/environment';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {SingleNumber} from '../models/SingleNumber.model';
 import {Subject} from 'rxjs';
@@ -16,17 +16,18 @@ export class PlayGameService {
   singleNumberSubject = new Subject<SingleNumber[]>();
   numberCombinationMatrix: SingleNumber[] = [];
   numberCombinationMatrixSubject = new Subject<SingleNumber[]>();
+  private BASE_API_URL = environment.BASE_API_URL;
 
 
 
   constructor(private http: HttpClient) {
     // get single numbers
-      this.http.get(GlobalVariable.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {
+      this.http.get(this.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {
         this.singleNumbers = response.data;
         this.singleNumberSubject.next([...this.singleNumbers]);
       });
 
-      this.http.get(GlobalVariable.BASE_API_URL + '/numberCombinations/matrix').subscribe((response: ServerResponse) => {
+      this.http.get(this.BASE_API_URL + '/numberCombinations/matrix').subscribe((response: ServerResponse) => {
       this.numberCombinationMatrix = response.data;
       this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
     });
