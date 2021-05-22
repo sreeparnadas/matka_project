@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ManualResultResource;
 use App\Models\ManualResult;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class ManualResultController extends Controller
         $manualResult->game_date ='2021-05-21';
         $manualResult->save();
 
-        return response()->json(['success'=>1,'data'=> $manualResult], 200,[],JSON_NUMERIC_CHECK);
+        return response()->json(['success'=>1,'data'=> new ManualResultResource($manualResult)], 200,[],JSON_NUMERIC_CHECK);
 
     }
 
