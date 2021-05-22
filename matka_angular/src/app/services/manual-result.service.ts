@@ -4,6 +4,8 @@ import {environment} from '../../environments/environment';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {DrawTime} from '../models/DrawTime.model';
 import {Subject} from 'rxjs';
+import {ErrorService} from './error.service';
+import {catchError, tap} from 'rxjs/operators';
 
 export interface ManualResultSaveResponse{
   success: number;
@@ -26,7 +28,7 @@ export class ManualResultService {
   drawTimes: DrawTime[] = [];
   drawTimeSubject = new Subject<DrawTime[]>();
   private BASE_API_URL = environment.BASE_API_URL;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private errorService: ErrorService) {
     // get all draw time
     this.http.get(this.BASE_API_URL + '/drawTimes').subscribe((response: ServerResponse) => {
       this.drawTimes = response.data;
@@ -43,6 +45,9 @@ export class ManualResultService {
   }
 
   saveManualResult(formData){
-    return this.http.post<ManualResultSaveResponse>(this.BASE_API_URL + '/manualResult', formData);
+    return this.http.post<ManualResultSaveResponse>(this.BASE_API_URL + '/manualResult', formData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        console.log(response);
+      }));
   }
 }

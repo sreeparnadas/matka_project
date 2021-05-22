@@ -118,14 +118,6 @@ export class ManualResultComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
-          }else if (response.error.success === 0){
-            Swal.fire({
-              position: 'top-end',
-              icon: 'error',
-              title: 'Something went wrong',
-              showConfirmButton: false,
-              timer: 3000
-            });
           }else{
             this.validatorError = response.error;
             Swal.fire({
@@ -136,6 +128,9 @@ export class ManualResultComponent implements OnInit {
               timer: 3000
             });
           }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
         });
       }
     });

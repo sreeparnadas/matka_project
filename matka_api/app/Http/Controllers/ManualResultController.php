@@ -30,7 +30,14 @@ class ManualResultController extends Controller
     public function save_manual_result(Request $request)
     {
         $rules = array(
-            'drawMasterId'=>'required|exists:draw_masters,id',
+            'drawMasterId'=>['required','exists:draw_masters,id',
+                    function($attribute, $value, $fail){
+                        $existingManual=ManualResult::where('draw_master_id', $value)->where('game_date','=',Carbon::today())->first();
+                        if($existingManual){
+                            $fail($value.' Duplicate entry');
+                        }
+                    }
+                ],
             'numberCombinationId'=>'required|exists:number_combinations,id',
         );
         $validator = Validator::make($request->all(),$rules);
@@ -40,6 +47,7 @@ class ManualResultController extends Controller
         }
         $requestedData = (object)$request->json()->all();
 
+        DB::beginTransaction();
         try{
 
             $manualResult = new ManualResult();
@@ -54,9 +62,10 @@ class ManualResultController extends Controller
             $resultMaster->game_date = Carbon::today();
             $resultMaster->save();
 
+            DB::commit();
         }catch (\Exception $e){
             DB::rollBack();
-            return response()->json(['success'=>0,'exception'=>$e->getMessage(),'error_line'=>$e->getLine(),'file_name' => $e->getFile()], 500);
+            return response()->json(['success'=>0, 'data' => null, 'error'=>$e->getMessage()], 500);
         }
 
         return response()->json(['success'=>1,'data'=> new ManualResultResource($manualResult)], 200,[],JSON_NUMERIC_CHECK);
