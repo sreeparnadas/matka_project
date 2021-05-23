@@ -10,8 +10,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\UserType;
 use App\Models\NumberCombination;
-
-
+use App\Models\ResultMaster;
 
 class DatabaseSeeder extends Seeder
 {
@@ -305,6 +304,32 @@ class DatabaseSeeder extends Seeder
 
 
         //Transaction types
+
+
+        //resultMaster
+
+        ResultMaster::insert([
+
+            //1st
+            ['draw_master_id'=>1,'number_combination_id'=>100,'game_date'=>'2021-05-22'],
+            ['draw_master_id'=>2,'number_combination_id'=>120,'game_date'=>'2021-05-22'],
+            ['draw_master_id'=>3,'number_combination_id'=>180,'game_date'=>'2021-05-22'],
+            ['draw_master_id'=>4,'number_combination_id'=>140,'game_date'=>'2021-05-22'],
+            ['draw_master_id'=>5,'number_combination_id'=>125,'game_date'=>'2021-05-22'],
+            ['draw_master_id'=>6,'number_combination_id'=>135,'game_date'=>'2021-05-22'],
+            ['draw_master_id'=>7,'number_combination_id'=>148,'game_date'=>'2021-05-22'],
+            ['draw_master_id'=>8,'number_combination_id'=>103,'game_date'=>'2021-05-22'],
+            //2nd
+            ['draw_master_id'=>1,'number_combination_id'=>157,'game_date'=>'2021-05-21'],
+            ['draw_master_id'=>2,'number_combination_id'=>200,'game_date'=>'2021-05-21'],
+            ['draw_master_id'=>3,'number_combination_id'=>98,'game_date'=>'2021-05-21'],
+            ['draw_master_id'=>4,'number_combination_id'=>120,'game_date'=>'2021-05-21'],
+            ['draw_master_id'=>5,'number_combination_id'=>168,'game_date'=>'2021-05-21'],
+            ['draw_master_id'=>6,'number_combination_id'=>16,'game_date'=>'2021-05-21'],
+            ['draw_master_id'=>7,'number_combination_id'=>79,'game_date'=>'2021-05-21'],
+            ['draw_master_id'=>8,'number_combination_id'=>145,'game_date'=>'2021-05-21'],
+
+        ]);
 
     }
 }
