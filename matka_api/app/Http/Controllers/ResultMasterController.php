@@ -12,10 +12,23 @@ class ResultMasterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function get_result_masters()
+    public function get_results()
     {
-        $request= ResultMaster::get();
-        return response()->json(['success'=>1,'data'=>$request], 200,[],JSON_NUMERIC_CHECK);
+        $result_dates= ResultMaster::distinct()->pluck('game_date');
+
+        $result_array = array();
+        foreach($result_dates as $result_date){
+            $data = ResultMaster::select('result_masters.game_date','draw_masters.end_time','number_combinations.triple_number',
+                'number_combinations.visible_triple_number','single_numbers.single_number')
+                ->join('draw_masters','result_masters.draw_master_id','draw_masters.id')
+                ->join('number_combinations','result_masters.number_combination_id','number_combinations.id')
+                ->join('single_numbers','number_combinations.single_number_id','single_numbers.id')
+                ->where('result_masters.game_date',$result_date)
+                ->get();
+            $result_array[] = $data;
+        }
+
+        return response()->json(['success'=>1,'data'=>$result_array], 200,[],JSON_NUMERIC_CHECK);
     }
 
     /**
@@ -36,7 +49,7 @@ class ResultMasterController extends Controller
      */
     public function save_result_masters(Request $request)
     {
-        
+
     }
 
     /**
