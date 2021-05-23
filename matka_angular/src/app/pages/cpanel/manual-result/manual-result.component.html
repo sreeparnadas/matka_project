@@ -56,9 +56,11 @@
 
   </form>
 
-  <button (click)="gotoTop()">👆</button>
+  
 
-  <button (click)="scroll(targetDiv)">Scroll to any Target</button>
+  <button mat-fab (click)="scroll(targetDiv)">
+    <i class="bi bi-arrow-up-circle"></i>
+  </button>
 
 </mat-card>
 
