@@ -39,6 +39,7 @@ export class ManualResultComponent implements OnInit {
   currentState = 'initial';
   private validatorError: any;
   isProduction = environment.production;
+  showDevArea = false;
   constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
     this.manualResultForm = new FormGroup({
       id: new FormControl(null),
