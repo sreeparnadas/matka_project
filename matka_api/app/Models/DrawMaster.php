@@ -12,4 +12,8 @@ class DrawMaster extends Model
     protected $hidden = [
         "created_at","updated_at"
     ];
+
+    public function result_masters(){
+        return $this->hasMany(ResultMaster::class,'draw_master_id');
+    }
 }

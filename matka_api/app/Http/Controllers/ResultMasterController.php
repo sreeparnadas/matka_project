@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DrawMaster;
 use App\Models\ResultMaster;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Query\Builder;
 
 class ResultMasterController extends Controller
 {
@@ -18,14 +22,19 @@ class ResultMasterController extends Controller
 
         $result_array = array();
         foreach($result_dates as $result_date){
-            $data = ResultMaster::select('result_masters.game_date','draw_masters.end_time','number_combinations.triple_number',
+            $temp_array['date'] = $result_date;
+
+            $data = DrawMaster::select('result_masters.game_date','draw_masters.end_time','number_combinations.triple_number',
                 'number_combinations.visible_triple_number','single_numbers.single_number')
-                ->join('draw_masters','result_masters.draw_master_id','draw_masters.id')
-                ->join('number_combinations','result_masters.number_combination_id','number_combinations.id')
-                ->join('single_numbers','number_combinations.single_number_id','single_numbers.id')
-                ->where('result_masters.game_date',$result_date)
+                ->leftJoin('result_masters', function ($join) use ($result_date) {
+                    $join->on('draw_masters.id','=','result_masters.draw_master_id')
+                        ->where('result_masters.game_date','=', $result_date);
+                })
+                ->leftJoin('number_combinations','result_masters.number_combination_id','number_combinations.id')
+                ->leftJoin('single_numbers','number_combinations.single_number_id','single_numbers.id')
                 ->get();
-            $result_array[] = $data;
+            $temp_array['result'] = $data;
+            $result_array[] = $temp_array;
         }
 
         return response()->json(['success'=>1,'data'=>$result_array], 200,[],JSON_NUMERIC_CHECK);
