@@ -319,6 +319,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>112,'game_date'=>'2021-05-22'],
             ['draw_master_id'=>7,'number_combination_id'=>100,'game_date'=>'2021-05-22'],
             ['draw_master_id'=>8,'number_combination_id'=>117,'game_date'=>'2021-05-22'],
+
             ['draw_master_id'=>1,'number_combination_id'=>197,'game_date'=>'2021-05-21'],
             ['draw_master_id'=>2,'number_combination_id'=>161,'game_date'=>'2021-05-21'],
             ['draw_master_id'=>3,'number_combination_id'=>18,'game_date'=>'2021-05-21'],
@@ -327,6 +328,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>139,'game_date'=>'2021-05-21'],
             ['draw_master_id'=>7,'number_combination_id'=>61,'game_date'=>'2021-05-21'],
             ['draw_master_id'=>8,'number_combination_id'=>181,'game_date'=>'2021-05-21'],
+
             ['draw_master_id'=>1,'number_combination_id'=>97,'game_date'=>'2021-05-20'],
             ['draw_master_id'=>2,'number_combination_id'=>38,'game_date'=>'2021-05-20'],
             ['draw_master_id'=>3,'number_combination_id'=>118,'game_date'=>'2021-05-20'],
@@ -335,6 +337,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>112,'game_date'=>'2021-05-20'],
             ['draw_master_id'=>7,'number_combination_id'=>82,'game_date'=>'2021-05-20'],
             ['draw_master_id'=>8,'number_combination_id'=>208,'game_date'=>'2021-05-20'],
+
             ['draw_master_id'=>1,'number_combination_id'=>125,'game_date'=>'2021-05-19'],
             ['draw_master_id'=>2,'number_combination_id'=>51,'game_date'=>'2021-05-19'],
             ['draw_master_id'=>3,'number_combination_id'=>82,'game_date'=>'2021-05-19'],
@@ -343,6 +346,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>20,'game_date'=>'2021-05-19'],
             ['draw_master_id'=>7,'number_combination_id'=>186,'game_date'=>'2021-05-19'],
             ['draw_master_id'=>8,'number_combination_id'=>175,'game_date'=>'2021-05-19'],
+
             ['draw_master_id'=>1,'number_combination_id'=>19,'game_date'=>'2021-05-18'],
             ['draw_master_id'=>2,'number_combination_id'=>200,'game_date'=>'2021-05-18'],
             ['draw_master_id'=>3,'number_combination_id'=>59,'game_date'=>'2021-05-18'],
@@ -351,6 +355,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>114,'game_date'=>'2021-05-18'],
             ['draw_master_id'=>7,'number_combination_id'=>220,'game_date'=>'2021-05-18'],
             ['draw_master_id'=>8,'number_combination_id'=>133,'game_date'=>'2021-05-18'],
+
             ['draw_master_id'=>1,'number_combination_id'=>4,'game_date'=>'2021-05-17'],
             ['draw_master_id'=>2,'number_combination_id'=>40,'game_date'=>'2021-05-17'],
             ['draw_master_id'=>3,'number_combination_id'=>185,'game_date'=>'2021-05-17'],
@@ -359,6 +364,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>85,'game_date'=>'2021-05-17'],
             ['draw_master_id'=>7,'number_combination_id'=>85,'game_date'=>'2021-05-17'],
             ['draw_master_id'=>8,'number_combination_id'=>53,'game_date'=>'2021-05-17'],
+
             ['draw_master_id'=>1,'number_combination_id'=>203,'game_date'=>'2021-05-16'],
             ['draw_master_id'=>2,'number_combination_id'=>65,'game_date'=>'2021-05-16'],
             ['draw_master_id'=>3,'number_combination_id'=>33,'game_date'=>'2021-05-16'],
@@ -367,6 +373,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>166,'game_date'=>'2021-05-16'],
             ['draw_master_id'=>7,'number_combination_id'=>61,'game_date'=>'2021-05-16'],
             ['draw_master_id'=>8,'number_combination_id'=>26,'game_date'=>'2021-05-16'],
+
             ['draw_master_id'=>1,'number_combination_id'=>153,'game_date'=>'2021-05-15'],
             ['draw_master_id'=>2,'number_combination_id'=>81,'game_date'=>'2021-05-15'],
             ['draw_master_id'=>3,'number_combination_id'=>39,'game_date'=>'2021-05-15'],
@@ -375,6 +382,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>101,'game_date'=>'2021-05-15'],
             ['draw_master_id'=>7,'number_combination_id'=>196,'game_date'=>'2021-05-15'],
             ['draw_master_id'=>8,'number_combination_id'=>92,'game_date'=>'2021-05-15'],
+
             ['draw_master_id'=>1,'number_combination_id'=>217,'game_date'=>'2021-05-14'],
             ['draw_master_id'=>2,'number_combination_id'=>188,'game_date'=>'2021-05-14'],
             ['draw_master_id'=>3,'number_combination_id'=>5,'game_date'=>'2021-05-14'],
@@ -383,6 +391,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>103,'game_date'=>'2021-05-14'],
             ['draw_master_id'=>7,'number_combination_id'=>47,'game_date'=>'2021-05-14'],
             ['draw_master_id'=>8,'number_combination_id'=>102,'game_date'=>'2021-05-14'],
+
             ['draw_master_id'=>1,'number_combination_id'=>118,'game_date'=>'2021-05-13'],
             ['draw_master_id'=>2,'number_combination_id'=>195,'game_date'=>'2021-05-13'],
             ['draw_master_id'=>3,'number_combination_id'=>122,'game_date'=>'2021-05-13'],
@@ -391,6 +400,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>109,'game_date'=>'2021-05-13'],
             ['draw_master_id'=>7,'number_combination_id'=>59,'game_date'=>'2021-05-13'],
             ['draw_master_id'=>8,'number_combination_id'=>80,'game_date'=>'2021-05-13'],
+
             ['draw_master_id'=>1,'number_combination_id'=>192,'game_date'=>'2021-05-12'],
             ['draw_master_id'=>2,'number_combination_id'=>144,'game_date'=>'2021-05-12'],
             ['draw_master_id'=>3,'number_combination_id'=>145,'game_date'=>'2021-05-12'],
@@ -399,6 +409,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>10,'game_date'=>'2021-05-12'],
             ['draw_master_id'=>7,'number_combination_id'=>38,'game_date'=>'2021-05-12'],
             ['draw_master_id'=>8,'number_combination_id'=>79,'game_date'=>'2021-05-12'],
+
             ['draw_master_id'=>1,'number_combination_id'=>60,'game_date'=>'2021-05-11'],
             ['draw_master_id'=>2,'number_combination_id'=>61,'game_date'=>'2021-05-11'],
             ['draw_master_id'=>3,'number_combination_id'=>90,'game_date'=>'2021-05-11'],
@@ -407,6 +418,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>112,'game_date'=>'2021-05-11'],
             ['draw_master_id'=>7,'number_combination_id'=>80,'game_date'=>'2021-05-11'],
             ['draw_master_id'=>8,'number_combination_id'=>98,'game_date'=>'2021-05-11'],
+
             ['draw_master_id'=>1,'number_combination_id'=>199,'game_date'=>'2021-05-10'],
             ['draw_master_id'=>2,'number_combination_id'=>192,'game_date'=>'2021-05-10'],
             ['draw_master_id'=>3,'number_combination_id'=>181,'game_date'=>'2021-05-10'],
@@ -415,6 +427,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>44,'game_date'=>'2021-05-10'],
             ['draw_master_id'=>7,'number_combination_id'=>172,'game_date'=>'2021-05-10'],
             ['draw_master_id'=>8,'number_combination_id'=>44,'game_date'=>'2021-05-10'],
+
             ['draw_master_id'=>1,'number_combination_id'=>118,'game_date'=>'2021-05-09'],
             ['draw_master_id'=>2,'number_combination_id'=>163,'game_date'=>'2021-05-09'],
             ['draw_master_id'=>3,'number_combination_id'=>210,'game_date'=>'2021-05-09'],
@@ -423,6 +436,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>49,'game_date'=>'2021-05-09'],
             ['draw_master_id'=>7,'number_combination_id'=>206,'game_date'=>'2021-05-09'],
             ['draw_master_id'=>8,'number_combination_id'=>189,'game_date'=>'2021-05-09'],
+
             ['draw_master_id'=>1,'number_combination_id'=>63,'game_date'=>'2021-05-08'],
             ['draw_master_id'=>2,'number_combination_id'=>187,'game_date'=>'2021-05-08'],
             ['draw_master_id'=>3,'number_combination_id'=>103,'game_date'=>'2021-05-08'],
@@ -431,6 +445,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>153,'game_date'=>'2021-05-08'],
             ['draw_master_id'=>7,'number_combination_id'=>20,'game_date'=>'2021-05-08'],
             ['draw_master_id'=>8,'number_combination_id'=>35,'game_date'=>'2021-05-08'],
+
             ['draw_master_id'=>1,'number_combination_id'=>44,'game_date'=>'2021-05-07'],
             ['draw_master_id'=>2,'number_combination_id'=>23,'game_date'=>'2021-05-07'],
             ['draw_master_id'=>3,'number_combination_id'=>20,'game_date'=>'2021-05-07'],
@@ -439,6 +454,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>160,'game_date'=>'2021-05-07'],
             ['draw_master_id'=>7,'number_combination_id'=>14,'game_date'=>'2021-05-07'],
             ['draw_master_id'=>8,'number_combination_id'=>88,'game_date'=>'2021-05-07'],
+
             ['draw_master_id'=>1,'number_combination_id'=>166,'game_date'=>'2021-05-06'],
             ['draw_master_id'=>2,'number_combination_id'=>7,'game_date'=>'2021-05-06'],
             ['draw_master_id'=>3,'number_combination_id'=>93,'game_date'=>'2021-05-06'],
@@ -455,6 +471,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>100,'game_date'=>'2021-05-05'],
             ['draw_master_id'=>7,'number_combination_id'=>104,'game_date'=>'2021-05-05'],
             ['draw_master_id'=>8,'number_combination_id'=>26,'game_date'=>'2021-05-05'],
+
             ['draw_master_id'=>1,'number_combination_id'=>55,'game_date'=>'2021-05-04'],
             ['draw_master_id'=>2,'number_combination_id'=>64,'game_date'=>'2021-05-04'],
             ['draw_master_id'=>3,'number_combination_id'=>43,'game_date'=>'2021-05-04'],
@@ -463,6 +480,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>206,'game_date'=>'2021-05-04'],
             ['draw_master_id'=>7,'number_combination_id'=>3,'game_date'=>'2021-05-04'],
             ['draw_master_id'=>8,'number_combination_id'=>200,'game_date'=>'2021-05-04'],
+
             ['draw_master_id'=>1,'number_combination_id'=>51,'game_date'=>'2021-05-03'],
             ['draw_master_id'=>2,'number_combination_id'=>1,'game_date'=>'2021-05-03'],
             ['draw_master_id'=>3,'number_combination_id'=>130,'game_date'=>'2021-05-03'],
@@ -471,6 +489,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>194,'game_date'=>'2021-05-03'],
             ['draw_master_id'=>7,'number_combination_id'=>85,'game_date'=>'2021-05-03'],
             ['draw_master_id'=>8,'number_combination_id'=>66,'game_date'=>'2021-05-03'],
+
             ['draw_master_id'=>1,'number_combination_id'=>17,'game_date'=>'2021-05-02'],
             ['draw_master_id'=>2,'number_combination_id'=>52,'game_date'=>'2021-05-02'],
             ['draw_master_id'=>3,'number_combination_id'=>77,'game_date'=>'2021-05-02'],
@@ -479,6 +498,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>61,'game_date'=>'2021-05-02'],
             ['draw_master_id'=>7,'number_combination_id'=>117,'game_date'=>'2021-05-02'],
             ['draw_master_id'=>8,'number_combination_id'=>165,'game_date'=>'2021-05-02'],
+
             ['draw_master_id'=>1,'number_combination_id'=>37,'game_date'=>'2021-05-01'],
             ['draw_master_id'=>2,'number_combination_id'=>167,'game_date'=>'2021-05-01'],
             ['draw_master_id'=>3,'number_combination_id'=>106,'game_date'=>'2021-05-01'],
@@ -487,6 +507,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>127,'game_date'=>'2021-05-01'],
             ['draw_master_id'=>7,'number_combination_id'=>44,'game_date'=>'2021-05-01'],
             ['draw_master_id'=>8,'number_combination_id'=>74,'game_date'=>'2021-05-01'],
+
             ['draw_master_id'=>1,'number_combination_id'=>14,'game_date'=>'2021-04-30'],
             ['draw_master_id'=>2,'number_combination_id'=>181,'game_date'=>'2021-04-30'],
             ['draw_master_id'=>3,'number_combination_id'=>197,'game_date'=>'2021-04-30'],
@@ -495,6 +516,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>66,'game_date'=>'2021-04-30'],
             ['draw_master_id'=>7,'number_combination_id'=>31,'game_date'=>'2021-04-30'],
             ['draw_master_id'=>8,'number_combination_id'=>132,'game_date'=>'2021-04-30'],
+
             ['draw_master_id'=>1,'number_combination_id'=>24,'game_date'=>'2021-04-29'],
             ['draw_master_id'=>2,'number_combination_id'=>71,'game_date'=>'2021-04-29'],
             ['draw_master_id'=>3,'number_combination_id'=>213,'game_date'=>'2021-04-29'],
@@ -503,6 +525,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>217,'game_date'=>'2021-04-29'],
             ['draw_master_id'=>7,'number_combination_id'=>152,'game_date'=>'2021-04-29'],
             ['draw_master_id'=>8,'number_combination_id'=>193,'game_date'=>'2021-04-29'],
+
             ['draw_master_id'=>1,'number_combination_id'=>52,'game_date'=>'2021-04-28'],
             ['draw_master_id'=>2,'number_combination_id'=>217,'game_date'=>'2021-04-28'],
             ['draw_master_id'=>3,'number_combination_id'=>69,'game_date'=>'2021-04-28'],
@@ -511,6 +534,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>75,'game_date'=>'2021-04-28'],
             ['draw_master_id'=>7,'number_combination_id'=>104,'game_date'=>'2021-04-28'],
             ['draw_master_id'=>8,'number_combination_id'=>166,'game_date'=>'2021-04-28'],
+
             ['draw_master_id'=>1,'number_combination_id'=>33,'game_date'=>'2021-04-27'],
             ['draw_master_id'=>2,'number_combination_id'=>107,'game_date'=>'2021-04-27'],
             ['draw_master_id'=>3,'number_combination_id'=>131,'game_date'=>'2021-04-27'],
@@ -519,6 +543,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>121,'game_date'=>'2021-04-27'],
             ['draw_master_id'=>7,'number_combination_id'=>29,'game_date'=>'2021-04-27'],
             ['draw_master_id'=>8,'number_combination_id'=>200,'game_date'=>'2021-04-27'],
+
             ['draw_master_id'=>1,'number_combination_id'=>115,'game_date'=>'2021-04-26'],
             ['draw_master_id'=>2,'number_combination_id'=>133,'game_date'=>'2021-04-26'],
             ['draw_master_id'=>3,'number_combination_id'=>123,'game_date'=>'2021-04-26'],
@@ -527,7 +552,8 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>57,'game_date'=>'2021-04-26'],
             ['draw_master_id'=>7,'number_combination_id'=>83,'game_date'=>'2021-04-26'],
             ['draw_master_id'=>8,'number_combination_id'=>154,'game_date'=>'2021-04-26'],
-            ['draw_master_id'=>1,'number_combination_id'=>218,'game_date'=>'2021-04-24'],
+
+            ['draw_master_id'=>1,'number_combination_id'=>218,'game_date'=>'2021-04-25'],
             ['draw_master_id'=>2,'number_combination_id'=>10,'game_date'=>'2021-04-25'],
             ['draw_master_id'=>3,'number_combination_id'=>106,'game_date'=>'2021-04-25'],
             ['draw_master_id'=>4,'number_combination_id'=>108,'game_date'=>'2021-04-25'],
@@ -535,6 +561,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>120,'game_date'=>'2021-04-25'],
             ['draw_master_id'=>7,'number_combination_id'=>182,'game_date'=>'2021-04-25'],
             ['draw_master_id'=>8,'number_combination_id'=>22,'game_date'=>'2021-04-25'],
+
             ['draw_master_id'=>1,'number_combination_id'=>196,'game_date'=>'2021-04-24'],
             ['draw_master_id'=>2,'number_combination_id'=>87,'game_date'=>'2021-04-24'],
             ['draw_master_id'=>3,'number_combination_id'=>166,'game_date'=>'2021-04-24'],
@@ -542,7 +569,8 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>5,'number_combination_id'=>84,'game_date'=>'2021-04-24'],
             ['draw_master_id'=>6,'number_combination_id'=>202,'game_date'=>'2021-04-24'],
             ['draw_master_id'=>7,'number_combination_id'=>71,'game_date'=>'2021-04-24'],
-            ['draw_master_id'=>8,'number_combination_id'=>186,'game_date'=>'2021-04-23'],
+            ['draw_master_id'=>8,'number_combination_id'=>186,'game_date'=>'2021-04-24'],
+
             ['draw_master_id'=>1,'number_combination_id'=>25,'game_date'=>'2021-04-23'],
             ['draw_master_id'=>2,'number_combination_id'=>76,'game_date'=>'2021-04-23'],
             ['draw_master_id'=>3,'number_combination_id'=>96,'game_date'=>'2021-04-23'],
@@ -551,6 +579,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>60,'game_date'=>'2021-04-23'],
             ['draw_master_id'=>7,'number_combination_id'=>146,'game_date'=>'2021-04-23'],
             ['draw_master_id'=>8,'number_combination_id'=>9,'game_date'=>'2021-04-23'],
+
             ['draw_master_id'=>1,'number_combination_id'=>124,'game_date'=>'2021-04-22'],
             ['draw_master_id'=>2,'number_combination_id'=>53,'game_date'=>'2021-04-22'],
             ['draw_master_id'=>3,'number_combination_id'=>179,'game_date'=>'2021-04-22'],
@@ -559,6 +588,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>36,'game_date'=>'2021-04-22'],
             ['draw_master_id'=>7,'number_combination_id'=>25,'game_date'=>'2021-04-22'],
             ['draw_master_id'=>8,'number_combination_id'=>82,'game_date'=>'2021-04-22'],
+
             ['draw_master_id'=>1,'number_combination_id'=>18,'game_date'=>'2021-04-21'],
             ['draw_master_id'=>2,'number_combination_id'=>105,'game_date'=>'2021-04-21'],
             ['draw_master_id'=>3,'number_combination_id'=>82,'game_date'=>'2021-04-21'],
@@ -567,6 +597,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>216,'game_date'=>'2021-04-21'],
             ['draw_master_id'=>7,'number_combination_id'=>218,'game_date'=>'2021-04-21'],
             ['draw_master_id'=>8,'number_combination_id'=>185,'game_date'=>'2021-04-21'],
+
             ['draw_master_id'=>1,'number_combination_id'=>153,'game_date'=>'2021-04-20'],
             ['draw_master_id'=>2,'number_combination_id'=>89,'game_date'=>'2021-04-20'],
             ['draw_master_id'=>3,'number_combination_id'=>163,'game_date'=>'2021-04-20'],
@@ -575,6 +606,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>184,'game_date'=>'2021-04-20'],
             ['draw_master_id'=>7,'number_combination_id'=>44,'game_date'=>'2021-04-20'],
             ['draw_master_id'=>8,'number_combination_id'=>146,'game_date'=>'2021-04-20'],
+
             ['draw_master_id'=>1,'number_combination_id'=>159,'game_date'=>'2021-04-19'],
             ['draw_master_id'=>2,'number_combination_id'=>143,'game_date'=>'2021-04-19'],
             ['draw_master_id'=>3,'number_combination_id'=>111,'game_date'=>'2021-04-19'],
@@ -583,6 +615,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>32,'game_date'=>'2021-04-19'],
             ['draw_master_id'=>7,'number_combination_id'=>120,'game_date'=>'2021-04-19'],
             ['draw_master_id'=>8,'number_combination_id'=>123,'game_date'=>'2021-04-19'],
+
             ['draw_master_id'=>1,'number_combination_id'=>13,'game_date'=>'2021-04-18'],
             ['draw_master_id'=>2,'number_combination_id'=>33,'game_date'=>'2021-04-18'],
             ['draw_master_id'=>3,'number_combination_id'=>202,'game_date'=>'2021-04-18'],
@@ -591,6 +624,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>83,'game_date'=>'2021-04-18'],
             ['draw_master_id'=>7,'number_combination_id'=>50,'game_date'=>'2021-04-18'],
             ['draw_master_id'=>8,'number_combination_id'=>189,'game_date'=>'2021-04-18'],
+
             ['draw_master_id'=>1,'number_combination_id'=>112,'game_date'=>'2021-04-17'],
             ['draw_master_id'=>2,'number_combination_id'=>44,'game_date'=>'2021-04-17'],
             ['draw_master_id'=>3,'number_combination_id'=>204,'game_date'=>'2021-04-17'],
@@ -599,6 +633,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>91,'game_date'=>'2021-04-17'],
             ['draw_master_id'=>7,'number_combination_id'=>168,'game_date'=>'2021-04-17'],
             ['draw_master_id'=>8,'number_combination_id'=>208,'game_date'=>'2021-04-17'],
+
             ['draw_master_id'=>1,'number_combination_id'=>57,'game_date'=>'2021-04-16'],
             ['draw_master_id'=>2,'number_combination_id'=>67,'game_date'=>'2021-04-16'],
             ['draw_master_id'=>3,'number_combination_id'=>8,'game_date'=>'2021-04-16'],
@@ -607,6 +642,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>81,'game_date'=>'2021-04-16'],
             ['draw_master_id'=>7,'number_combination_id'=>65,'game_date'=>'2021-04-16'],
             ['draw_master_id'=>8,'number_combination_id'=>218,'game_date'=>'2021-04-16'],
+
             ['draw_master_id'=>1,'number_combination_id'=>144,'game_date'=>'2021-04-15'],
             ['draw_master_id'=>2,'number_combination_id'=>171,'game_date'=>'2021-04-15'],
             ['draw_master_id'=>3,'number_combination_id'=>208,'game_date'=>'2021-04-15'],
@@ -615,6 +651,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>210,'game_date'=>'2021-04-15'],
             ['draw_master_id'=>7,'number_combination_id'=>11,'game_date'=>'2021-04-15'],
             ['draw_master_id'=>8,'number_combination_id'=>22,'game_date'=>'2021-04-15'],
+
             ['draw_master_id'=>1,'number_combination_id'=>201,'game_date'=>'2021-04-14'],
             ['draw_master_id'=>2,'number_combination_id'=>43,'game_date'=>'2021-04-14'],
             ['draw_master_id'=>3,'number_combination_id'=>219,'game_date'=>'2021-04-14'],
@@ -623,6 +660,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>155,'game_date'=>'2021-04-14'],
             ['draw_master_id'=>7,'number_combination_id'=>75,'game_date'=>'2021-04-14'],
             ['draw_master_id'=>8,'number_combination_id'=>45,'game_date'=>'2021-04-14'],
+
             ['draw_master_id'=>1,'number_combination_id'=>118,'game_date'=>'2021-04-13'],
             ['draw_master_id'=>2,'number_combination_id'=>48,'game_date'=>'2021-04-13'],
             ['draw_master_id'=>3,'number_combination_id'=>168,'game_date'=>'2021-04-13'],
@@ -631,6 +669,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>122,'game_date'=>'2021-04-13'],
             ['draw_master_id'=>7,'number_combination_id'=>102,'game_date'=>'2021-04-13'],
             ['draw_master_id'=>8,'number_combination_id'=>89,'game_date'=>'2021-04-13'],
+
             ['draw_master_id'=>1,'number_combination_id'=>84,'game_date'=>'2021-04-12'],
             ['draw_master_id'=>2,'number_combination_id'=>110,'game_date'=>'2021-04-12'],
             ['draw_master_id'=>3,'number_combination_id'=>104,'game_date'=>'2021-04-12'],
@@ -639,6 +678,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>164,'game_date'=>'2021-04-12'],
             ['draw_master_id'=>7,'number_combination_id'=>62,'game_date'=>'2021-04-12'],
             ['draw_master_id'=>8,'number_combination_id'=>128,'game_date'=>'2021-04-12'],
+
             ['draw_master_id'=>1,'number_combination_id'=>181,'game_date'=>'2021-04-11'],
             ['draw_master_id'=>2,'number_combination_id'=>111,'game_date'=>'2021-04-11'],
             ['draw_master_id'=>3,'number_combination_id'=>214,'game_date'=>'2021-04-11'],
@@ -647,6 +687,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>208,'game_date'=>'2021-04-11'],
             ['draw_master_id'=>7,'number_combination_id'=>91,'game_date'=>'2021-04-11'],
             ['draw_master_id'=>8,'number_combination_id'=>86,'game_date'=>'2021-04-11'],
+
             ['draw_master_id'=>1,'number_combination_id'=>93,'game_date'=>'2021-04-10'],
             ['draw_master_id'=>2,'number_combination_id'=>121,'game_date'=>'2021-04-10'],
             ['draw_master_id'=>3,'number_combination_id'=>107,'game_date'=>'2021-04-10'],
@@ -655,6 +696,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>6,'game_date'=>'2021-04-10'],
             ['draw_master_id'=>7,'number_combination_id'=>70,'game_date'=>'2021-04-10'],
             ['draw_master_id'=>8,'number_combination_id'=>24,'game_date'=>'2021-04-10'],
+
             ['draw_master_id'=>1,'number_combination_id'=>196,'game_date'=>'2021-04-09'],
             ['draw_master_id'=>2,'number_combination_id'=>100,'game_date'=>'2021-04-09'],
             ['draw_master_id'=>3,'number_combination_id'=>80,'game_date'=>'2021-04-09'],
@@ -663,6 +705,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>220,'game_date'=>'2021-04-09'],
             ['draw_master_id'=>7,'number_combination_id'=>153,'game_date'=>'2021-04-09'],
             ['draw_master_id'=>8,'number_combination_id'=>189,'game_date'=>'2021-04-09'],
+
             ['draw_master_id'=>1,'number_combination_id'=>105,'game_date'=>'2021-04-08'],
             ['draw_master_id'=>2,'number_combination_id'=>107,'game_date'=>'2021-04-08'],
             ['draw_master_id'=>3,'number_combination_id'=>121,'game_date'=>'2021-04-08'],
@@ -671,6 +714,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>215,'game_date'=>'2021-04-08'],
             ['draw_master_id'=>7,'number_combination_id'=>203,'game_date'=>'2021-04-08'],
             ['draw_master_id'=>8,'number_combination_id'=>37,'game_date'=>'2021-04-08'],
+
             ['draw_master_id'=>1,'number_combination_id'=>209,'game_date'=>'2021-04-07'],
             ['draw_master_id'=>2,'number_combination_id'=>121,'game_date'=>'2021-04-07'],
             ['draw_master_id'=>3,'number_combination_id'=>117,'game_date'=>'2021-04-07'],
@@ -679,6 +723,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>35,'game_date'=>'2021-04-07'],
             ['draw_master_id'=>7,'number_combination_id'=>124,'game_date'=>'2021-04-07'],
             ['draw_master_id'=>8,'number_combination_id'=>202,'game_date'=>'2021-04-07'],
+
             ['draw_master_id'=>1,'number_combination_id'=>181,'game_date'=>'2021-04-06'],
             ['draw_master_id'=>2,'number_combination_id'=>187,'game_date'=>'2021-04-06'],
             ['draw_master_id'=>3,'number_combination_id'=>197,'game_date'=>'2021-04-06'],
@@ -687,6 +732,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>49,'game_date'=>'2021-04-06'],
             ['draw_master_id'=>7,'number_combination_id'=>12,'game_date'=>'2021-04-06'],
             ['draw_master_id'=>8,'number_combination_id'=>37,'game_date'=>'2021-04-06'],
+
             ['draw_master_id'=>1,'number_combination_id'=>103,'game_date'=>'2021-04-05'],
             ['draw_master_id'=>2,'number_combination_id'=>87,'game_date'=>'2021-04-05'],
             ['draw_master_id'=>3,'number_combination_id'=>187,'game_date'=>'2021-04-05'],
@@ -695,6 +741,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>144,'game_date'=>'2021-04-05'],
             ['draw_master_id'=>7,'number_combination_id'=>41,'game_date'=>'2021-04-05'],
             ['draw_master_id'=>8,'number_combination_id'=>75,'game_date'=>'2021-04-05'],
+
             ['draw_master_id'=>1,'number_combination_id'=>72,'game_date'=>'2021-04-04'],
             ['draw_master_id'=>2,'number_combination_id'=>24,'game_date'=>'2021-04-04'],
             ['draw_master_id'=>3,'number_combination_id'=>61,'game_date'=>'2021-04-04'],
@@ -703,6 +750,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>188,'game_date'=>'2021-04-04'],
             ['draw_master_id'=>7,'number_combination_id'=>217,'game_date'=>'2021-04-04'],
             ['draw_master_id'=>8,'number_combination_id'=>173,'game_date'=>'2021-04-04'],
+
             ['draw_master_id'=>1,'number_combination_id'=>70,'game_date'=>'2021-04-03'],
             ['draw_master_id'=>2,'number_combination_id'=>88,'game_date'=>'2021-04-03'],
             ['draw_master_id'=>3,'number_combination_id'=>45,'game_date'=>'2021-04-03'],
@@ -711,6 +759,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>9,'game_date'=>'2021-04-03'],
             ['draw_master_id'=>7,'number_combination_id'=>11,'game_date'=>'2021-04-03'],
             ['draw_master_id'=>8,'number_combination_id'=>168,'game_date'=>'2021-04-03'],
+
             ['draw_master_id'=>1,'number_combination_id'=>35,'game_date'=>'2021-04-02'],
             ['draw_master_id'=>2,'number_combination_id'=>117,'game_date'=>'2021-04-02'],
             ['draw_master_id'=>3,'number_combination_id'=>171,'game_date'=>'2021-04-02'],
@@ -719,6 +768,7 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>6,'number_combination_id'=>70,'game_date'=>'2021-04-02'],
             ['draw_master_id'=>7,'number_combination_id'=>99,'game_date'=>'2021-04-02'],
             ['draw_master_id'=>8,'number_combination_id'=>58,'game_date'=>'2021-04-02'],
+
             ['draw_master_id'=>1,'number_combination_id'=>44,'game_date'=>'2021-04-01'],
             ['draw_master_id'=>2,'number_combination_id'=>11,'game_date'=>'2021-04-01'],
             ['draw_master_id'=>3,'number_combination_id'=>15,'game_date'=>'2021-04-01'],
