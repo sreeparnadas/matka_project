@@ -18,7 +18,7 @@ class ResultMasterController extends Controller
      */
     public function get_results()
     {
-        $result_dates= ResultMaster::distinct()->pluck('game_date');
+        $result_dates= ResultMaster::distinct()->orderBy('game_date','desc')->pluck('game_date');
 
         $result_array = array();
         foreach($result_dates as $result_date){
