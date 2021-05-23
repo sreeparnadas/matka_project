@@ -10,7 +10,6 @@ use App\Http\Controllers\PlayMasterController;
 use App\Http\Controllers\ResultMasterController;
 use App\Http\Controllers\SingleNumberController;
 use App\Http\Controllers\ManualResultController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,6 +51,10 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('drawTimes',[DrawMasterController::class,'index']);
     Route::get('drawTimes/active',[DrawMasterController::class,'getActiveDraw']);
 
+    //result_masters
+    Route::get('results',[ResultMasterController::class, 'get_results']);
+    Route::post('result_masters',[ResultMasterController::class, 'save_result_masters']);
+
     //manual_result
 
     Route::post('manualResult',[ManualResultController::class, 'save_manual_result']);
@@ -84,7 +87,7 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('playDetails/playId/{id}',[PlayMasterController::class,'get_play_details_by_play_master_id']);
 
     //result_masters
-    Route::get('result_masters',[ResultMasterController::class, 'get_result_masters']);
+    Route::get('results',[ResultMasterController::class, 'get_results']);
     Route::post('result_masters',[ResultMasterController::class, 'save_result_masters']);
 
     //manual_result
