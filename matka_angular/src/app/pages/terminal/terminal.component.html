@@ -14,14 +14,14 @@
               <tr>
                 <th class="pink" *ngFor="let single of singleNumbers; let i = index">
 
-                  <button mat-fab matBadge="*" [matBadgeHidden]="activeTripleContainerValue!=i"  class="triple-selection-button-{{i}}" (click)="setActiveTripleContainerValue(i)">
+                  <button mat-fab matBadge="*" [matBadgeHidden]="activeTripleContainerValue!=i"  class="triple-selection-button-{{i}} tripple-selection-button" (click)="setActiveTripleContainerValue(i)">
                     <span>{{single.singleNumber}}</span>
                   </button>
                 </th>
               </tr>
               <tr>
                 <th colspan="10" class="text-center">
-                  <button mat-fab  class="">
+                  <button mat-fab  class="tripple-selection-button">
                     <span>{{singleNumbers[activeTripleContainerValue].singleNumber}}</span>
                   </button>
               </tr>
