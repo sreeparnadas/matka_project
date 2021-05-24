@@ -309,6 +309,11 @@ class DatabaseSeeder extends Seeder
         //resultMaster
 
         ResultMaster::insert([
+            ['draw_master_id'=>1,'number_combination_id'=>54,'game_date'=>'2021-05-24'],
+            ['draw_master_id'=>2,'number_combination_id'=>11,'game_date'=>'2021-05-24'],
+            ['draw_master_id'=>3,'number_combination_id'=>65,'game_date'=>'2021-05-24'],
+            ['draw_master_id'=>4,'number_combination_id'=>55,'game_date'=>'2021-05-24'],
+            ['draw_master_id'=>5,'number_combination_id'=>37,'game_date'=>'2021-05-24'],
 
             ['draw_master_id'=>1,'number_combination_id'=>44,'game_date'=>'2021-05-23'],
             ['draw_master_id'=>2,'number_combination_id'=>11,'game_date'=>'2021-05-23'],
