@@ -10,6 +10,7 @@ use App\Http\Controllers\PlayMasterController;
 use App\Http\Controllers\ResultMasterController;
 use App\Http\Controllers\SingleNumberController;
 use App\Http\Controllers\ManualResultController;
+use App\Http\Controllers\Test;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -90,6 +91,10 @@ Route::group(array('prefix' => 'dev'), function() {
     //manual_result
 
     Route::post('manualResult',[ManualResultController::class, 'save_manual_result']);
+
+
+    //test
+    Route::get('test',[Test::class, 'index']);
 
 
 });
