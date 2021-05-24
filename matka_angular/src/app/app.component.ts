@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy{
   mediaSub: Subscription;
   deviceXs: boolean;
 
-  direction = "row";
+  direction = 'row';
 
   toggleDirection() {
     const next = (DIRECTIONS.indexOf(this.direction) +1 ) % DIRECTIONS.length;

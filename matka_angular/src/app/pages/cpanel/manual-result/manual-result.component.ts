@@ -7,7 +7,9 @@ import {PlayGameService} from '../../../services/play-game.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import Swal from 'sweetalert2';
 import {environment} from '../../../../environments/environment';
-import {formatDate} from "@angular/common";
+import {formatDate} from '@angular/common';
+import {ServerResponse} from '../../../models/ServerResponse.model';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-manual-result',
@@ -31,7 +33,7 @@ import {formatDate} from "@angular/common";
   ]
 })
 export class ManualResultComponent implements OnInit {
-
+  private BASE_API_URL = environment.BASE_API_URL;
   manualResultForm: FormGroup;
   drawTimes: DrawTime[] = [];
   public numberCombinationMatrix: SingleNumber[] = [];
@@ -41,7 +43,7 @@ export class ManualResultComponent implements OnInit {
   private validatorError: any;
   isProduction = environment.production;
   showDevArea = false;
-  constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
+  constructor(private http: HttpClient, private manualResultService: ManualResultService, private playGameService: PlayGameService) {
     const now = new Date();
     const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
     this.manualResultForm = new FormGroup({
@@ -57,9 +59,14 @@ export class ManualResultComponent implements OnInit {
 
 
   ngOnInit(): void {
-      this.drawTimes = this.manualResultService.getAllDrawTimes();
-      this.manualResultService.getAllDrawTimesListener().subscribe((response: DrawTime[]) => {
-        this.drawTimes = response;
+      // this.drawTimes = this.manualResultService.getAllDrawTimes();
+      // this.manualResultService.getAllDrawTimesListener().subscribe((response: DrawTime[]) => {
+      //   this.drawTimes = response;
+      // });
+      const now = new Date();
+      const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
+      this.http.get(this.BASE_API_URL + '/drawTimes/dates/' + currentSQLDate).subscribe((response: ServerResponse) => {
+        this.drawTimes = response.data;
       });
 
       this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
