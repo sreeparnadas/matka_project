@@ -7,7 +7,7 @@ import { faBaby } from '@fortawesome/free-solid-svg-icons';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import {AuthService} from './services/auth.service';
-
+import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,10 +30,22 @@ export class AppComponent implements OnInit, OnDestroy{
     this.direction = DIRECTIONS[next];
   }
 
-  constructor(public mediaObserver: MediaObserver, private authService: AuthService){
+  constructor(public mediaObserver: MediaObserver, private authService: AuthService, private titleService: Title, private metaService: Meta){
   }
   ngOnInit(): void {
-      this.mediaSub = this.mediaObserver.media$.subscribe(
+
+    this.titleService.setTitle(this.title);
+    this.metaService.addTags([
+      { name: 'keywords', content: 'Kfatafat online games' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: 'coder hui' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'date', content: '2021-05-25', scheme: 'YYYY-MM-DD' },
+      { charset: 'UTF-8' }
+    ]);
+
+
+    this.mediaSub = this.mediaObserver.media$.subscribe(
         (result: MediaChange) => {
           console.log(result.mqAlias);
           this.deviceXs = (result.mqAlias === 'xs' ? true : false);
