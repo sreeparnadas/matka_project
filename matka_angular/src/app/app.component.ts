@@ -7,14 +7,14 @@ import { faBaby } from '@fortawesome/free-solid-svg-icons';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import {AuthService} from './services/auth.service';
-import { Title, Meta } from '@angular/platform-browser';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy{
-  title = 'base-project';
+  title = 'Fatafat';
   active = 1;
   events: string[] = [];
   opened: boolean;
@@ -30,11 +30,11 @@ export class AppComponent implements OnInit, OnDestroy{
     this.direction = DIRECTIONS[next];
   }
 
-  constructor(public mediaObserver: MediaObserver, private authService: AuthService, private titleService: Title, private metaService: Meta){
+  constructor(public mediaObserver: MediaObserver, private authService: AuthService, private pageTitle: Title, private metaService: Meta){
   }
   ngOnInit(): void {
 
-    this.titleService.setTitle(this.title);
+    this.pageTitle.setTitle(this.title);
     this.metaService.addTags([
       { name: 'keywords', content: 'Kfatafat online games' },
       { name: 'robots', content: 'index, follow' },
