@@ -149,4 +149,12 @@ export class ManualResultComponent implements OnInit {
       }
     });
   }
+
+  gameDatepickerChange($event: Event) {
+    // getting game after date change
+    const currentSQLDate = formatDate(this.manualResultForm.value.transaction_date, 'yyyy-MM-dd', 'en');
+    this.http.get(this.BASE_API_URL + '/drawTimes/dates/' + currentSQLDate).subscribe((response: ServerResponse) => {
+      this.drawTimes = response.data;
+    });
+  }
 }
