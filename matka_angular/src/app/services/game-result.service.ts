@@ -17,7 +17,7 @@ export class GameResultService {
   resultSubject = new Subject<GameResult[]>();
   constructor(private http: HttpClient) {
     // @ts-ignore
-    this.http.get('http://127.0.0.1:8000/api/dev/results').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/dev/results').subscribe((response: ServerResponse) => {
         this.resultList = response.data;
         this.resultSubject.next([...this.resultList]);
     });

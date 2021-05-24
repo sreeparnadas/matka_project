@@ -313,6 +313,11 @@ class DatabaseSeeder extends Seeder
             ['draw_master_id'=>1,'number_combination_id'=>44,'game_date'=>'2021-05-23'],
             ['draw_master_id'=>2,'number_combination_id'=>11,'game_date'=>'2021-05-23'],
             ['draw_master_id'=>3,'number_combination_id'=>15,'game_date'=>'2021-05-23'],
+            ['draw_master_id'=>4,'number_combination_id'=>55,'game_date'=>'2021-05-23'],
+            ['draw_master_id'=>5,'number_combination_id'=>17,'game_date'=>'2021-05-23'],
+            ['draw_master_id'=>6,'number_combination_id'=>47,'game_date'=>'2021-05-23'],
+            ['draw_master_id'=>7,'number_combination_id'=>15,'game_date'=>'2021-05-23'],
+            ['draw_master_id'=>8,'number_combination_id'=>86,'game_date'=>'2021-05-23'],
 
             //1st
             ['draw_master_id'=>1,'number_combination_id'=>200,'game_date'=>'2021-05-22'],
