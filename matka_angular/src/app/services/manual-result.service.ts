@@ -28,7 +28,10 @@ export class ManualResultService {
   drawTimes: DrawTime[] = [];
   drawTimeSubject = new Subject<DrawTime[]>();
   private BASE_API_URL = environment.BASE_API_URL;
+
+
   constructor(private http: HttpClient, private errorService: ErrorService) {
+
     // get all draw time
     this.http.get(this.BASE_API_URL + '/drawTimes').subscribe((response: ServerResponse) => {
       this.drawTimes = response.data;

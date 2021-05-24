@@ -5,7 +5,18 @@ import {ServerResponse} from '../models/ServerResponse.model';
 import {SingleNumber} from '../models/SingleNumber.model';
 import {Subject} from 'rxjs';
 import {NumberCombinations} from '../models/NumberCombinations.model';
+import {catchError, tap} from 'rxjs/operators';
+import {ErrorService} from './error.service';
 
+
+export interface GameInputSaveResponse{
+  success: number;
+  data: {
+    play_master: object,
+    play_details: []
+  };
+  error?: any;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +31,7 @@ export class PlayGameService {
 
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private errorService: ErrorService) {
     // get single numbers
       this.http.get(this.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {
         this.singleNumbers = response.data;
@@ -46,5 +57,13 @@ export class PlayGameService {
   }
   getNumberCombinationMatrixListener(){
     return this.numberCombinationMatrixSubject.asObservable();
+  }
+
+  saveUserPlayInputDetails(inputData){
+
+    return this.http.post<GameInputSaveResponse>(this.BASE_API_URL + '/buyTicket', inputData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        console.log('service ', response);
+    }));
   }
 }

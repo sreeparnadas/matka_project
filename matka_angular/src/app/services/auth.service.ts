@@ -10,13 +10,7 @@ import {environment} from '../../environments/environment';
 export interface AuthResponseData {
   success: number;
   data: {
-    user: {
-          userId: number,
-          pin: string,
-          userName: string,
-          userTypeId: number,
-          userTypeName: string
-    };
+    user: User;
     token: string;
   };
   message: string;
@@ -70,11 +64,14 @@ export class AuthService {
   autoLogin(){
     console.log('autoLogin working');
     // tslint:disable-next-line:max-line-length
-    const userData: {id: number, userName: string, _authKey: string, userTypeId: number, userTypeName: string} = JSON.parse(localStorage.getItem('user'));
+    const userData: User = JSON.parse(localStorage.getItem('user'));
+    // console.log('userData', userData);
     if (!userData){
       return;
     }
-    const loadedUser = new User(userData.id, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName);
+    // tslint:disable-next-line:max-line-length
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, userData.balance);
+    // console.log('loadedUser', loadedUser);
     if (loadedUser.authKey){
       this.user.next(loadedUser);
 
@@ -93,7 +90,8 @@ export class AuthService {
             resData.data.user.userName,
             resData.data.token,
             resData.data.user.userTypeId,
-              resData.data.user.userTypeName);
+              resData.data.user.userTypeName,
+          resData.data.user.balance);
             this.user.next(user); // here two user is used one is user and another user is subject of rxjs
             localStorage.setItem('user', JSON.stringify(user));
           }

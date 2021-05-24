@@ -14,7 +14,7 @@ import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy{
-  title = 'Fatafat';
+  title = 'kfatafat';
   active = 1;
   events: string[] = [];
   opened: boolean;

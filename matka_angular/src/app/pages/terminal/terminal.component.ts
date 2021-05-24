@@ -6,6 +6,9 @@ import {ProjectData} from '../../models/project-data.model';
 import {UserGameInput} from '../../models/userGameInput.model';
 import * as cloneDeep from 'lodash/cloneDeep';
 import {environment} from '../../../environments/environment';
+import {AuthService} from '../../services/auth.service';
+import {User} from '../../models/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-terminal',
@@ -15,7 +18,7 @@ import {environment} from '../../../environments/environment';
 export class TerminalComponent implements OnInit {
   projectData: ProjectData;
   showDeveloperDiv = true;
-
+  user: User;
   singleNumbers: SingleNumber[] = [];
   numberCombinationMatrix: SingleNumber[] = [];
   chips: number[] = [];
@@ -26,10 +29,11 @@ export class TerminalComponent implements OnInit {
   public selectedChip = 2;
   copyNumberMatrix: SingleNumber[];
   isProduction = environment.production;
-  constructor(private playGameService: PlayGameService, private commonService: CommonService) { }
+  constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) { }
 
   ngOnInit(): void {
 
+    this.user = this.authService.user.value;
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
     this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
@@ -50,6 +54,7 @@ export class TerminalComponent implements OnInit {
       this.projectData = response;
       this.chips = this.projectData.chips;
     });
+
   }// end of ngOnIInit
 
   isActiveTripleContainter(idxSingle: number) {
@@ -62,7 +67,6 @@ export class TerminalComponent implements OnInit {
   }
 
   setGameInputSet(value, idxSingle: number, gameId: number){
-    console.log(value, gameId);
     const numberWiseTotalQuantity = this.selectedChip;
     // tslint:disable-next-line:triple-equals
     let index = -1;
@@ -99,5 +103,49 @@ export class TerminalComponent implements OnInit {
   resetMatrixValue(){
     this.userGameInput = [];
     this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
+  }
+
+  saveUserPlayInputDetails(){
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to save this result?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, save It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        let masterData = {
+          playMaster: {drawMasterId: 1, terminalId: this.user.userId},
+          playDetails: this.userGameInput
+        };
+        this.playGameService.saveUserPlayInputDetails(masterData).subscribe(response => {
+          if (response.success === 1){
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Result saved',
+              showConfirmButton: false,
+              timer: 1000
+            });
+
+            this.resetMatrixValue();
+          }else{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
+        });
+      }
+    });
   }
 }

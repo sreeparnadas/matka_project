@@ -2,11 +2,12 @@
 
 export class User{
   // tslint:disable-next-line:variable-name
-  constructor(public id: number,
+  constructor(public userId: number,
               public userName: string,
-              private _authKey: string,
+              public _authKey: string,
               public userTypeId: number,
-              public userTypeName: string
+              public userTypeName: string,
+              public balance: number
   ){}
 
 

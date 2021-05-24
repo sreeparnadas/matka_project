@@ -3,7 +3,7 @@
     <div class="d-flex flex-row bd-highlight mb-3">
       <div class="p-2 d-flex flex-column col-3">
 
-        <div>
+        <div *ngIf="false">
           <mat-form-field class="example-full-width" fxFlex="70">
             <mat-label>Game date (dd/mm/yyyy)</mat-label>
             <input matInput [matDatepicker]="gameDatePicker" formControlName="transaction_date" placeholder="dd/mm/yyyy" (dateChange)="gameDatepickerChange($event)">

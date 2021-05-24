@@ -53,10 +53,13 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('drawTimes/active',[DrawMasterController::class,'getActiveDraw']);
     Route::get('drawTimes/dates/{date}',[DrawMasterController::class,'get_incomplete_games_by_date']);
 
-
     //manual_result
 
     Route::post('manualResult',[ManualResultController::class, 'save_manual_result']);
+
+    //play_masters
+    Route::post('buyTicket',[PlayMasterController::class,'savePlayDetails']);
+
 });
 
 
@@ -82,6 +85,7 @@ Route::group(array('prefix' => 'dev'), function() {
 
     //play_masters
     Route::post('buyTicket',[PlayMasterController::class,'savePlayDetails']);
+
 
     //game
     Route::get('playDetails/playId/{id}',[PlayMasterController::class,'get_play_details_by_play_master_id']);
