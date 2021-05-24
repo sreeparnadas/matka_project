@@ -406,8 +406,8 @@ span .mat-fab .mat-button-wrapper {
 
 
 .chips-button{
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 50px;
 }
 //.chips-outer-div{
@@ -417,4 +417,10 @@ span .mat-fab .mat-button-wrapper {
 
 .triple-table-thead tr:nth-child(1){
   line-height: 76px;
+}
+
+
+.tripple-selection-button{
+  height: 35px !important;
+  width: 35px !important;
 }
