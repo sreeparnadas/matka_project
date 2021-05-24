@@ -2,19 +2,29 @@
   <form [formGroup]="manualResultForm">
     <div class="d-flex flex-row bd-highlight mb-3">
       <div class="p-2 d-flex flex-column col-3">
-        <div #targetDiv>
-            <mat-form-field fxFlex="80">
-              <mat-label>Draw time</mat-label>
-              <mat-select  formControlName="drawMasterId" placeholder="Category">
-                <mat-option *ngFor="let time of drawTimes" [value]="time.drawId">
-                  {{time.endTime}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-        </div>
-        <div>
 
+        <div>
+          <mat-form-field class="example-full-width" fxFlex="70">
+            <mat-label>Sale date (dd/mm/yyyy)</mat-label>
+            <input matInput [matDatepicker]="saleDatePicker" formControlName="transaction_date" placeholder="dd/mm/yyyy">
+            <mat-datepicker-toggle matSuffix [for]="saleDatePicker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #saleDatePicker></mat-datepicker>
+          </mat-form-field>
         </div>
+
+        <div #targetDiv>
+          <mat-form-field fxFlex="70">
+            <mat-label>Draw time</mat-label>
+            <mat-select  formControlName="drawMasterId" placeholder="Category">
+              <mat-option *ngFor="let time of drawTimes" [value]="time.drawId">
+                {{time.endTime}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
         <div>
 
           <div class="card" style="width: 18rem;">

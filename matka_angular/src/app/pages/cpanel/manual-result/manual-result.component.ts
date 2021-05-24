@@ -7,6 +7,7 @@ import {PlayGameService} from '../../../services/play-game.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import Swal from 'sweetalert2';
 import {environment} from '../../../../environments/environment';
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-manual-result',
@@ -41,12 +42,15 @@ export class ManualResultComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
   constructor(private manualResultService: ManualResultService, private playGameService: PlayGameService) {
+    const now = new Date();
+    const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
     this.manualResultForm = new FormGroup({
       id: new FormControl(null),
       drawMasterId: new FormControl(null, [Validators.required]),
       numberCombinationId: new FormControl(null, [Validators.required]),
       single: new FormControl(null),
       triple: new FormControl(null),
+      transaction_date: new FormControl(currentSQLDate),
     });
   }
 
