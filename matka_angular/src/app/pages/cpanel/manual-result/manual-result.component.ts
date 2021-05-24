@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import {environment} from '../../../../environments/environment';
 import {formatDate} from '@angular/common';
 import {ServerResponse} from '../../../models/ServerResponse.model';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-manual-result',

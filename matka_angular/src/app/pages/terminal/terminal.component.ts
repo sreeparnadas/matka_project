@@ -29,6 +29,7 @@ export class TerminalComponent implements OnInit {
   public selectedChip = 2;
   copyNumberMatrix: SingleNumber[];
   isProduction = environment.production;
+  showDevArea = false;
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) { }
 
   ngOnInit(): void {

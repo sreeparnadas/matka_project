@@ -7,6 +7,7 @@ import { faUserEdit, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import {CommonService} from '../../services/common.service';
 import {ProjectSetting} from '@angular/cli/commands/analytics';
 import {ProjectData} from '../../models/project-data.model';
+import {environment} from '../../../environments/environment';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   router: Router;
   faUserEdit = faUserEdit;
   faUserAlt = faUserAlt;
+  isProduction = environment.production;
   constructor(private authService: AuthService,  private commonService: CommonService) { }
 
   ngOnInit(): void {
