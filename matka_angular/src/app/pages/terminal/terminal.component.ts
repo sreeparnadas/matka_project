@@ -108,7 +108,7 @@ export class TerminalComponent implements OnInit {
   saveUserPlayInputDetails(){
     Swal.fire({
       title: 'Confirmation',
-      text: 'Do you sure to save this result?',
+      text: 'Do you sure to buy ticket?',
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
