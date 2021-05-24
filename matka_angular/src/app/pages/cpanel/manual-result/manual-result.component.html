@@ -5,12 +5,12 @@
 
         <div>
           <mat-form-field class="example-full-width" fxFlex="70">
-            <mat-label>Sale date (dd/mm/yyyy)</mat-label>
-            <input matInput [matDatepicker]="saleDatePicker" formControlName="transaction_date" placeholder="dd/mm/yyyy">
-            <mat-datepicker-toggle matSuffix [for]="saleDatePicker">
+            <mat-label>Game date (dd/mm/yyyy)</mat-label>
+            <input matInput [matDatepicker]="gameDatePicker" formControlName="transaction_date" placeholder="dd/mm/yyyy" (dateChange)="gameDatepickerChange($event)">
+            <mat-datepicker-toggle matSuffix [for]="gameDatePicker">
               <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
             </mat-datepicker-toggle>
-            <mat-datepicker #saleDatePicker></mat-datepicker>
+            <mat-datepicker #gameDatePicker></mat-datepicker>
           </mat-form-field>
         </div>
 
