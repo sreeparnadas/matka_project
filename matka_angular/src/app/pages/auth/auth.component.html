@@ -12,31 +12,30 @@
         <div id="content">
 
           <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
-          <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+          <form  [formGroup]="loginForm"  *ngIf="!isLoading">
             <h1>Login</h1>
 <!--            <mat-error>User ID or Password is wrong</mat-error>-->
             <mat-form-field>
-              <input type="text" matInput placeholder="Username"
-                     id="email"
-                     class=""
-                     ngModel
-                     name="email"
-                     required
-                     minlength="6">
+              <input type="text" matInput formControlName="email" id="email">
+<!--              <input type="text" matInput placeholder="Username"-->
+<!--                     id="email"-->
+<!--                     formControlName="email"-->
+<!--                     name="email"-->
+<!--                     >-->
             </mat-form-field>
 
             <mat-form-field>
-              <input showHideInput type="password" matInput id="password" class="" ngModel name="password" placeholder="Password" required>
+              <input type="password" matInput formControlName="password" id="password">
+<!--              <input showHideInput type="password" id="password" class=""  formControlName="password"  placeholder="Password">-->
               <i matSuffix
                  class="material-icons"
                  showHideTrigger="password"
-
               ></i>
             </mat-form-field>
             <!--                 [showHideStatus]="{ materialIcon: true, id: 'password' }"-->
 
         <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="end start" fxLayoutGap="10px" fxLayoutGap.xs="0">
-          <button mat-button class="btn btn-primary" type="submit" >Login</button>
+          <button mat-button class="btn btn-primary" type="button" (click)="onSubmit()" >Login</button>
         </div>
 
 
