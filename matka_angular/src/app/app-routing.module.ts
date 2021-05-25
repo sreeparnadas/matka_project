@@ -42,6 +42,11 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/cpanel/cpanel.module')
       .then(mod => mod.CpanelModule)
   },
+  {
+    path: 'terminal',
+    loadChildren: () => import('./modules/general/terminal/terminal.module')
+      .then(mod => mod.TerminalModule)
+  },
   // {path: 'auth', component: AuthComponent},
   // {path: 'player', component: AuthComponent},
   // {path: 'power', component: AuthComponent},

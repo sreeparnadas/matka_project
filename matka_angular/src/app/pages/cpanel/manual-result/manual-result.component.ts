@@ -10,6 +10,7 @@ import {environment} from '../../../../environments/environment';
 import {formatDate} from '@angular/common';
 import {ServerResponse} from '../../../models/ServerResponse.model';
 import {HttpClient} from '@angular/common/http';
+import {MatCard} from '@angular/material/card';
 
 @Component({
   selector: 'app-manual-result',

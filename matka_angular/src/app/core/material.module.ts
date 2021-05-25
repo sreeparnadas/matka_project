@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 // import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatCardModule} from '@angular/material/card';
+// import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
@@ -30,7 +30,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
-import {MatBadgeModule} from '@angular/material/badge';
+// import {MatBadgeModule} from '@angular/material/badge';
 
 
 // @ts-ignore
@@ -41,7 +41,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatButtonModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatDatepickerModule,
+    // MatDatepickerModule,
     // MatFormFieldModule,
     MatRadioModule,
     MatSelectModule,
@@ -52,7 +52,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatToolbarModule,
     MatListModule,
     MatGridListModule,
-    MatCardModule,
+    // MatCardModule,
     MatStepperModule,
     MatTabsModule,
     MatExpansionModule,
@@ -69,7 +69,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     // MatPaginatorModule,
     // MatRippleModule,
     MatNativeDateModule,
-    MatBadgeModule
+    // MatBadgeModule
   ]
 })
 export class MaterialModule {

@@ -49,12 +49,14 @@ import {TooltipModule} from 'ng2-tooltip-directive';
 import { HighlightDirective } from './directives/highlight.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { StockistComponent } from './pages/stockist/stockist.component';
-import { TerminalComponent } from './pages/terminal/terminal.component';
+// import { TerminalComponent } from './pages/terminal/terminal.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
 import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
-import { ManualResultComponent } from './pages/cpanel/manual-result/manual-result.component';
 import { AuthModule } from './modules/general/auth/auth.module';
 import { CpanelModule } from './modules/general/cpanel/cpanel.module';
+import {ManualResultModule} from './modules/general/cpanel/manual-result/manual-result.module';
+import { TerminalModule } from './modules/general/terminal/terminal.module';
+
 
 
 
@@ -77,10 +79,9 @@ import { CpanelModule } from './modules/general/cpanel/cpanel.module';
     LoaidngRollerComponent,
     HighlightDirective,
     StockistComponent,
-    TerminalComponent,
+    // TerminalComponent,
     DeveloperComponent,
     BiIconComponent,
-    ManualResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,6 +112,8 @@ import { CpanelModule } from './modules/general/cpanel/cpanel.module';
     TooltipModule,
     AuthModule,
     CpanelModule,
+    ManualResultModule,
+    TerminalModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},
