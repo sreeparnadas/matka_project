@@ -56,6 +56,8 @@ import { AuthModule } from './modules/general/auth/auth.module';
 import { CpanelModule } from './modules/general/cpanel/cpanel.module';
 import {ManualResultModule} from './modules/general/cpanel/manual-result/manual-result.module';
 import { TerminalModule } from './modules/general/terminal/terminal.module';
+import {DeveloperModule} from './modules/general/developer/developer.module';
+// import { DeveloperModule } from './modules/general/developer/developer.module';
 
 
 
@@ -80,7 +82,7 @@ import { TerminalModule } from './modules/general/terminal/terminal.module';
     HighlightDirective,
     StockistComponent,
     // TerminalComponent,
-    DeveloperComponent,
+    // DeveloperComponent,
     BiIconComponent,
   ],
   imports: [
@@ -114,6 +116,7 @@ import { TerminalModule } from './modules/general/terminal/terminal.module';
     CpanelModule,
     ManualResultModule,
     TerminalModule,
+    DeveloperModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},

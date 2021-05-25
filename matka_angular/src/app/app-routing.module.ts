@@ -47,12 +47,17 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/terminal/terminal.module')
       .then(mod => mod.TerminalModule)
   },
+  {
+    path: 'developer',
+    loadChildren: () => import('./modules/general/developer/developer.module')
+      .then(mod => mod.DeveloperModule)
+  },
   // {path: 'auth', component: AuthComponent},
   // {path: 'player', component: AuthComponent},
   // {path: 'power', component: AuthComponent},
   // {path: 'cPanel', canActivate : [AuthGuardAdminServiceService], component: CpanelComponent},
   {path: 'stockistCPanel', canActivate : [AuthGuardStockistServiceService], component: StockistComponent},
-  {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
+  // {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
   {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},
   {path: 'manual', canActivate : [AuthGuardAdminServiceService], component: ManualResultComponent},
   {path: 'bi-icon', component: BiIconComponent},
