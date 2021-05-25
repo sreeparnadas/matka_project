@@ -1,0 +1,1 @@
+wt -p "Command Prompt" -d e:\matka_project ; new-tab -p "Matka Angular Ng" -d e:\matka_project\matka_angular; split-pane -p "Matka Api Php" -d e:\matka_project\matka_api; new-tab -p "Matka Angular"; new-tab -p "Matka Project"
