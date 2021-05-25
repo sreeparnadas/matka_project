@@ -57,6 +57,11 @@ import { CpanelModule } from './modules/general/cpanel/cpanel.module';
 import {ManualResultModule} from './modules/general/cpanel/manual-result/manual-result.module';
 import { TerminalModule } from './modules/general/terminal/terminal.module';
 import {DeveloperModule} from './modules/general/developer/developer.module';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
 
@@ -117,6 +122,11 @@ import {DeveloperModule} from './modules/general/developer/developer.module';
     ManualResultModule,
     TerminalModule,
     DeveloperModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatListModule,
+    MatToolbarModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},
