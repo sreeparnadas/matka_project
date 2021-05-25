@@ -20,7 +20,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PictureCarouselComponent } from './pages/home/picture-carousel/picture-carousel.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { AuthComponent } from './pages/auth/auth.component';
+// import { AuthComponent } from './pages/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorInterceptor} from './services/auth-interceptor.interceptor';
 // import { OwnerComponent } from './pages/owner/owner.component';
@@ -48,12 +48,13 @@ import {NgxMousetrapModule} from 'ngx-mousetrap';
 import {TooltipModule} from 'ng2-tooltip-directive';
 import { HighlightDirective } from './directives/highlight.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-import { CpanelComponent } from './pages/cpanel/cpanel.component';
 import { StockistComponent } from './pages/stockist/stockist.component';
 import { TerminalComponent } from './pages/terminal/terminal.component';
 import { DeveloperComponent } from './pages/developer/developer.component';
 import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
 import { ManualResultComponent } from './pages/cpanel/manual-result/manual-result.component';
+import { AuthModule } from './modules/general/auth/auth.module';
+import { CpanelModule } from './modules/general/cpanel/cpanel.module';
 
 
 
@@ -65,8 +66,8 @@ import { ManualResultComponent } from './pages/cpanel/manual-result/manual-resul
     HeaderComponent,
     HomeComponent,
     PictureCarouselComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
+    // AuthComponent,
+    // LoadingSpinnerComponent,
     // OwnerComponent,
     SncakBarComponent,
     ConfirmationDialogComponent,
@@ -75,12 +76,11 @@ import { ManualResultComponent } from './pages/cpanel/manual-result/manual-resul
     LoaidngHourglassComponent,
     LoaidngRollerComponent,
     HighlightDirective,
-                CpanelComponent,
-                StockistComponent,
-                TerminalComponent,
-                DeveloperComponent,
-                BiIconComponent,
-                ManualResultComponent,
+    StockistComponent,
+    TerminalComponent,
+    DeveloperComponent,
+    BiIconComponent,
+    ManualResultComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,6 +109,8 @@ import { ManualResultComponent } from './pages/cpanel/manual-result/manual-resul
     }),
     NgxMousetrapModule.forRoot(),
     TooltipModule,
+    AuthModule,
+    CpanelModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},

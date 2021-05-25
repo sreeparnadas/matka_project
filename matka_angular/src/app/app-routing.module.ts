@@ -22,10 +22,30 @@ import {ManualResultComponent} from './pages/cpanel/manual-result/manual-result.
 // @ts-ignore
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'auth', component: AuthComponent},
-  {path: 'player', component: AuthComponent},
-  {path: 'power', component: AuthComponent},
-  {path: 'cPanel', canActivate : [AuthGuardAdminServiceService], component: CpanelComponent},
+  {
+    path: 'auth',
+    loadChildren: () => import('./modules/general/auth/auth.module')
+      .then(mod => mod.AuthModule)
+  },
+  {
+    path: 'player',
+    loadChildren: () => import('./modules/general/auth/auth.module')
+      .then(mod => mod.AuthModule)
+  },
+  {
+    path: 'power',
+    loadChildren: () => import('./modules/general/auth/auth.module')
+      .then(mod => mod.AuthModule)
+  },
+  {
+    path: 'cPanel',
+    loadChildren: () => import('./modules/general/cpanel/cpanel.module')
+      .then(mod => mod.CpanelModule)
+  },
+  // {path: 'auth', component: AuthComponent},
+  // {path: 'player', component: AuthComponent},
+  // {path: 'power', component: AuthComponent},
+  // {path: 'cPanel', canActivate : [AuthGuardAdminServiceService], component: CpanelComponent},
   {path: 'stockistCPanel', canActivate : [AuthGuardStockistServiceService], component: StockistComponent},
   {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
   {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},

@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import { faAtlas} from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-auth',
