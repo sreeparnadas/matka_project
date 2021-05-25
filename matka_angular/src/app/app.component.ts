@@ -8,6 +8,7 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import {AuthService} from './services/auth.service';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
+import {CanonicalService} from './services/canonical.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,10 +31,11 @@ export class AppComponent implements OnInit, OnDestroy{
     this.direction = DIRECTIONS[next];
   }
 
-  constructor(public mediaObserver: MediaObserver, private authService: AuthService, private pageTitle: Title, private metaService: Meta){
+  // tslint:disable-next-line:max-line-length
+  constructor(public mediaObserver: MediaObserver, private authService: AuthService, private pageTitle: Title, private metaService: Meta, private canonicalService: CanonicalService){
   }
   ngOnInit(): void {
-
+    this.canonicalService.setCanonicalURL();
     this.pageTitle.setTitle(this.title);
     this.metaService.addTags([
       { name: 'keywords', content: 'Kfatafat online games' },
