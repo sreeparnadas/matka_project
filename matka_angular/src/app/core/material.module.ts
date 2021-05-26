@@ -58,17 +58,17 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
     // MatExpansionModule,
     // MatButtonToggleModule,
     // MatChipsModule,
-    MatIconModule,
+    // MatIconModule,
     // MatProgressSpinnerModule,
     // MatProgressBarModule,
-    MatDialogModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatTableModule,
+    // MatDialogModule,
+    // MatTooltipModule,
+    // MatSnackBarModule,
+    // MatTableModule,
     // MatSortModule,
     // MatPaginatorModule,
     // MatRippleModule,
-    MatNativeDateModule,
+    // MatNativeDateModule,
     // MatBadgeModule
   ]
 })
