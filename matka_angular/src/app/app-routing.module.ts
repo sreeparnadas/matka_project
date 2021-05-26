@@ -43,6 +43,11 @@ const routes: Routes = [
       .then(mod => mod.CpanelModule)
   },
   {
+    path: 'manual',
+    loadChildren: () => import('./modules/general/cpanel/manual-result/manual-result.module')
+      .then(mod => mod.ManualResultModule)
+  },
+  {
     path: 'terminal',
     loadChildren: () => import('./modules/general/terminal/terminal.module')
       .then(mod => mod.TerminalModule)
@@ -59,7 +64,7 @@ const routes: Routes = [
   {path: 'stockistCPanel', canActivate : [AuthGuardStockistServiceService], component: StockistComponent},
   // {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
   {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},
-  {path: 'manual', canActivate : [AuthGuardAdminServiceService], component: ManualResultComponent},
+  // {path: 'manual', canActivate : [AuthGuardAdminServiceService], component: ManualResultComponent},
   {path: 'bi-icon', component: BiIconComponent},
 ];
 

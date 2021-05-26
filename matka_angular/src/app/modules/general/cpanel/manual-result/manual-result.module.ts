@@ -29,8 +29,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatDatepickerModule,
     MatSelectModule,
     MatBadgeModule,
-    BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule,
   ],
   exports: [
     ManualResultComponent

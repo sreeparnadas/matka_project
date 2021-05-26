@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import {DEFAULT_CURRENCY_CODE, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -50,13 +50,13 @@ import { HighlightDirective } from './directives/highlight.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { StockistComponent } from './pages/stockist/stockist.component';
 // import { TerminalComponent } from './pages/terminal/terminal.component';
-import { DeveloperComponent } from './pages/developer/developer.component';
+// import { DeveloperComponent } from './pages/developer/developer.component';
 import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
-import { AuthModule } from './modules/general/auth/auth.module';
-import { CpanelModule } from './modules/general/cpanel/cpanel.module';
-import {ManualResultModule} from './modules/general/cpanel/manual-result/manual-result.module';
-import { TerminalModule } from './modules/general/terminal/terminal.module';
-import {DeveloperModule} from './modules/general/developer/developer.module';
+// import { AuthModule } from './modules/general/auth/auth.module';
+// import { CpanelModule } from './modules/general/cpanel/cpanel.module';
+// import {ManualResultModule} from './modules/general/cpanel/manual-result/manual-result.module';
+// import { TerminalModule } from './modules/general/terminal/terminal.module';
+// import {DeveloperModule} from './modules/general/developer/developer.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSliderModule} from '@angular/material/slider';
@@ -92,7 +92,7 @@ import {MatIconModule} from '@angular/material/icon';
     BiIconComponent,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
@@ -118,11 +118,11 @@ import {MatIconModule} from '@angular/material/icon';
     }),
     NgxMousetrapModule.forRoot(),
     TooltipModule,
-    AuthModule,
-    CpanelModule,
-    ManualResultModule,
-    TerminalModule,
-    DeveloperModule,
+    // AuthModule,
+    // CpanelModule,
+    // ManualResultModule,
+    // TerminalModule,
+    // DeveloperModule,
     MatMenuModule,
     MatSidenavModule,
     MatSliderModule,
