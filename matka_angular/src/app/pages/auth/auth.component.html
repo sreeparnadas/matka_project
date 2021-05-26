@@ -16,7 +16,7 @@
             <h1>Login</h1>
 <!--            <mat-error>User ID or Password is wrong</mat-error>-->
             <mat-form-field>
-              <input type="text" matInput formControlName="email" id="email">
+              <input type="text" matInput formControlName="email" id="email" placeholder="User ID">
 <!--              <input type="text" matInput placeholder="Username"-->
 <!--                     id="email"-->
 <!--                     formControlName="email"-->
@@ -25,11 +25,11 @@
             </mat-form-field>
 
             <mat-form-field>
-              <input type="password" matInput formControlName="password" id="password">
-<!--              <input showHideInput type="password" id="password" class=""  formControlName="password"  placeholder="Password">-->
+              <input type="password"  matInput showHideInput formControlName="password" id="password" placeholder="Password">
               <i matSuffix
                  class="material-icons"
                  showHideTrigger="password"
+                 [showHideStatus]="{ materialIcon: true, id: 'password' }"
               ></i>
             </mat-form-field>
             <!--                 [showHideStatus]="{ materialIcon: true, id: 'password' }"-->

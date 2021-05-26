@@ -8,6 +8,7 @@ import {LoadingSpinnerComponent} from '../../../shared/loading-spinner/loading-s
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {ShowHidePasswordModule} from 'ngx-show-hide-password';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatInputModule} from '@angular/material/input';
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    ShowHidePasswordModule
   ],
   exports: [
     AuthComponent

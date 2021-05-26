@@ -113,7 +113,7 @@ import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
     NgxPaginationModule,
     NgSelectModule,
     ShowHidePasswordModule,
-    PopoverModule,
+    // PopoverModule,
     NgxFancyLoggerModule.forRoot({
       showTime: false,
       logLevel: LogLevel.WARNING,

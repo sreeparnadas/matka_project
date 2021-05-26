@@ -9,7 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatListModule} from '@angular/material/list';
-import {FlexModule} from "@angular/flex-layout";
+import {FlexModule} from '@angular/flex-layout';
 
 
 @NgModule({
