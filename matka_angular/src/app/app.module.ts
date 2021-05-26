@@ -18,7 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // import { HomeComponent } from './pages/home/home.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PictureCarouselComponent } from './pages/home/picture-carousel/picture-carousel.component';
+// import { PictureCarouselComponent } from './pages/home/picture-carousel/picture-carousel.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 // import { AuthComponent } from './pages/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
@@ -28,7 +28,7 @@ import {NgxPrintModule} from 'ngx-print';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SncakBarComponent } from './common/sncak-bar/sncak-bar.component';
-import { ConfirmationDialogComponent } from './common/confirmation-dialog/confirmation-dialog.component';
+// import { ConfirmationDialogComponent } from './common/confirmation-dialog/confirmation-dialog.component';
 import { LoaidngRippleComponent } from './shared/loaidng-ripple/loaidng-ripple.component';
 import { LoaidngEllipsisComponent } from './shared/loaidng-ellipsis/loaidng-ellipsis.component';
 import { LoaidngHourglassComponent } from './shared/loaidng-hourglass/loaidng-hourglass.component';
@@ -80,12 +80,12 @@ import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
     AppComponent,
     // HeaderComponent,
     // HomeComponent,
-    PictureCarouselComponent,
+    // PictureCarouselComponent,
     // AuthComponent,
     // LoadingSpinnerComponent,
     // OwnerComponent,
     SncakBarComponent,
-    ConfirmationDialogComponent,
+    // ConfirmationDialogComponent,
     LoaidngRippleComponent,
     LoaidngEllipsisComponent,
     LoaidngHourglassComponent,
