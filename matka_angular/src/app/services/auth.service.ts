@@ -98,6 +98,11 @@ export class AuthService {
       }));  // this.handleError is a method created by me
   }
 
+  updateUserBalance(userData: User){
+    this.user.next(userData); // here two user is used one is user and another user is subject of rxjs
+    localStorage.setItem('user', JSON.stringify(userData));
+  }
+
 
 
   logout(){

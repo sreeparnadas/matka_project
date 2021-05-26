@@ -12,7 +12,11 @@ import {ErrorService} from './error.service';
 export interface GameInputSaveResponse{
   success: number;
   data: {
-    play_master: object,
+    play_master: {
+      barcodeNumber: string,
+      drawTime: object,
+      terminal: object
+    },
     play_details: []
   };
   error?: any;

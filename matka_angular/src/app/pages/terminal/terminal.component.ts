@@ -19,6 +19,7 @@ export class TerminalComponent implements OnInit {
   projectData: ProjectData;
   showDeveloperDiv = true;
   user: User;
+  terminalBalance: number;
   singleNumbers: SingleNumber[] = [];
   numberCombinationMatrix: SingleNumber[] = [];
   chips: number[] = [];
@@ -117,7 +118,7 @@ export class TerminalComponent implements OnInit {
       confirmButtonText: 'Yes, save It!'
     }).then((result) => {
       if (result.isConfirmed){
-        let masterData = {
+        const masterData = {
           playMaster: {drawMasterId: 1, terminalId: this.user.userId},
           playDetails: this.userGameInput
         };
@@ -131,7 +132,11 @@ export class TerminalComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
-
+            // console.log(response.data.play_master.terminal.balance);
+            const userData: User = JSON.parse(localStorage.getItem('user'));
+            // tslint:disable-next-line:max-line-length
+            const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, 1550);
+            this.authService.updateUserBalance(loadedUser);
             this.resetMatrixValue();
           }else{
             Swal.fire({

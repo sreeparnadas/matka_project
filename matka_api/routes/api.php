@@ -67,6 +67,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 Route::group(array('prefix' => 'dev'), function() {
 
+    Route::get("users",[UserController::class,'getAllUsers']);
+    Route::patch("users",[UserController::class,'update']);
+
     //single_numbers
     Route::get("singleNumbers",[SingleNumberController::class,'index']);
 

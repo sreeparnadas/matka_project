@@ -165,7 +165,7 @@
         <button mat-button [routerLink]="['terminal']">
 
           <i class="bi bi-bookmark-star-fill" style="font-size: 25px;"></i>
-          <span class="logo">Terminal</span>
+          <span class="logo">{{user.userName}}</span>
         </button>
         <div *ngIf="!deviceXs">
           <button mat-button
@@ -174,6 +174,7 @@
                   [routerLinkActiveOptions]="{exact: true}">Home</button>
           <mat-slider min="1" max="5" step="1" value="1" (input)="onMatSliderInputChange($event)"></mat-slider>
         </div>
+        <div class="text-white"> Balance {{user.balance}}</div>
       </div>
       <div fxLayout="row">
           <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
