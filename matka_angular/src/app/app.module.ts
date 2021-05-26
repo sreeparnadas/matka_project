@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { HeaderComponent } from './pages/header/header.component';
+// import { HeaderComponent } from './pages/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -51,7 +51,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { StockistComponent } from './pages/stockist/stockist.component';
 // import { TerminalComponent } from './pages/terminal/terminal.component';
 // import { DeveloperComponent } from './pages/developer/developer.component';
-import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
+// import { BiIconComponent } from './pages/bi-icon/bi-icon.component';
 // import { AuthModule } from './modules/general/auth/auth.module';
 // import { CpanelModule } from './modules/general/cpanel/cpanel.module';
 // import {ManualResultModule} from './modules/general/cpanel/manual-result/manual-result.module';
@@ -65,6 +65,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeModule } from './modules/general/home/home.module';
 import { HeaderModule } from './modules/general/header/header.module';
+import { StockistModule } from './modules/general/stockist/stockist.module';
+import { FooterModule } from './modules/general/footer/footer.module';
+import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
 
@@ -88,10 +91,10 @@ import { HeaderModule } from './modules/general/header/header.module';
     LoaidngHourglassComponent,
     LoaidngRollerComponent,
     HighlightDirective,
-    StockistComponent,
+    // StockistComponent,
     // TerminalComponent,
     // DeveloperComponent,
-    BiIconComponent,
+    // BiIconComponent,
   ],
   imports: [
     // BrowserModule,
@@ -101,7 +104,7 @@ import { HeaderModule } from './modules/general/header/header.module';
     BrowserAnimationsModule,
     FontAwesomeModule,
     MaterialModule,
-    FlexLayoutModule,
+    // FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -132,7 +135,10 @@ import { HeaderModule } from './modules/general/header/header.module';
     MatToolbarModule,
     MatIconModule,
     HomeModule,
-    HeaderModule
+    HeaderModule,
+    StockistModule,
+    FooterModule,
+    BiIconModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},
