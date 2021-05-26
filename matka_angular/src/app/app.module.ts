@@ -24,29 +24,29 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorInterceptor} from './services/auth-interceptor.interceptor';
 // import { OwnerComponent } from './pages/owner/owner.component';
-import {NgxPrintModule} from 'ngx-print';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
-import {NgxPaginationModule} from 'ngx-pagination';
-import { SncakBarComponent } from './common/sncak-bar/sncak-bar.component';
-// import { ConfirmationDialogComponent } from './common/confirmation-dialog/confirmation-dialog.component';
-import { LoaidngRippleComponent } from './shared/loaidng-ripple/loaidng-ripple.component';
-import { LoaidngEllipsisComponent } from './shared/loaidng-ellipsis/loaidng-ellipsis.component';
-import { LoaidngHourglassComponent } from './shared/loaidng-hourglass/loaidng-hourglass.component';
-import { LoaidngRollerComponent } from './shared/loaidng-roller/loaidng-roller.component';
+// import {NgxPrintModule} from 'ngx-print';
+// import {Ng2SearchPipeModule} from 'ng2-search-filter';
+// import {NgxPaginationModule} from 'ngx-pagination';
+// import { SncakBarComponent } from './common/sncak-bar/sncak-bar.component';
+// // import { ConfirmationDialogComponent } from './common/confirmation-dialog/confirmation-dialog.component';
+// import { LoaidngRippleComponent } from './shared/loaidng-ripple/loaidng-ripple.component';
+// import { LoaidngEllipsisComponent } from './shared/loaidng-ellipsis/loaidng-ellipsis.component';
+// import { LoaidngHourglassComponent } from './shared/loaidng-hourglass/loaidng-hourglass.component';
+// import { LoaidngRollerComponent } from './shared/loaidng-roller/loaidng-roller.component';
 import { DateAdapter } from '@angular/material/core';
 import { DateFormat } from './date-format';
-import {NgSelectModule} from '@ng-select/ng-select';
+// import {NgSelectModule} from '@ng-select/ng-select';
 
-import {ShowHidePasswordModule} from 'ngx-show-hide-password';
+// import {ShowHidePasswordModule} from 'ngx-show-hide-password';
 
 
 
-import {PopoverModule} from 'ngx-smart-popover';
-import {LogLevel, NgxFancyLoggerModule} from 'ngx-fancy-logger';
-
-import {NgxMousetrapModule} from 'ngx-mousetrap';
-import {TooltipModule} from 'ng2-tooltip-directive';
-import { HighlightDirective } from './directives/highlight.directive';
+// import {PopoverModule} from 'ngx-smart-popover';
+// import {LogLevel, NgxFancyLoggerModule} from 'ngx-fancy-logger';
+//
+// import {NgxMousetrapModule} from 'ngx-mousetrap';
+// import {TooltipModule} from 'ng2-tooltip-directive';
+// import { HighlightDirective } from './directives/highlight.directive';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { StockistComponent } from './pages/stockist/stockist.component';
 // import { TerminalComponent } from './pages/terminal/terminal.component';
@@ -84,13 +84,13 @@ import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
     // AuthComponent,
     // LoadingSpinnerComponent,
     // OwnerComponent,
-    SncakBarComponent,
+    // SncakBarComponent,
     // ConfirmationDialogComponent,
-    LoaidngRippleComponent,
-    LoaidngEllipsisComponent,
-    LoaidngHourglassComponent,
-    LoaidngRollerComponent,
-    HighlightDirective,
+    // LoaidngRippleComponent,
+    // LoaidngEllipsisComponent,
+    // LoaidngHourglassComponent,
+    // LoaidngRollerComponent,
+    // HighlightDirective,
     // StockistComponent,
     // TerminalComponent,
     // DeveloperComponent,
@@ -100,29 +100,29 @@ import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
     // BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule,
+    // FormsModule,
     BrowserAnimationsModule,
-    FontAwesomeModule,
-    MaterialModule,
+    // FontAwesomeModule,
+    // MaterialModule,
     // FlexLayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxPrintModule,
-    Ng2SearchPipeModule,
-    NgxPaginationModule,
-    NgSelectModule,
-    ShowHidePasswordModule,
+    // FormsModule,
+    // ReactiveFormsModule,
+    // HttpClientModule,
+    // NgxPrintModule,
+    // Ng2SearchPipeModule,
+    // NgxPaginationModule,
+    // NgSelectModule,
+    // ShowHidePasswordModule,
     // PopoverModule,
-    NgxFancyLoggerModule.forRoot({
-      showTime: false,
-      logLevel: LogLevel.WARNING,
-      levelColor: {
-        [LogLevel.ERROR]: 'brown'
-      }
-    }),
-    NgxMousetrapModule.forRoot(),
-    TooltipModule,
+    // NgxFancyLoggerModule.forRoot({
+    //   showTime: false,
+    //   logLevel: LogLevel.WARNING,
+    //   levelColor: {
+    //     [LogLevel.ERROR]: 'brown'
+    //   }
+    // }),
+    // NgxMousetrapModule.forRoot(),
+    // TooltipModule,
     // AuthModule,
     // CpanelModule,
     // ManualResultModule,
