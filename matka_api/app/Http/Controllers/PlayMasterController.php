@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PlayGameSave;
 use App\Http\Resources\PlayDetailsResource;
 use App\Http\Resources\TerminalResource;
+use App\Http\Resources\UserResource;
 use App\Models\PlayMaster;
 use App\Models\PlayDetails;
 use App\Models\SingleNumber;

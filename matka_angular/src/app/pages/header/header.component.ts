@@ -29,11 +29,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   faUserEdit = faUserEdit;
   faUserAlt = faUserAlt;
   isProduction = environment.production;
+  public user: User;
   constructor(private authService: AuthService,  private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe(user => {
       if (user){
+        this.user = user;
+        console.log(this.user);
         this.isAuthenticated = user.isAuthenticated;
         this.isAdmin = user.isAdmin;
         this.isDeveloper = user.isDeveloper;
