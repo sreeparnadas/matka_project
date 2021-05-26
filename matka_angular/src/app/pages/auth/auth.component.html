@@ -13,7 +13,7 @@
 
           <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
           <form  [formGroup]="loginForm"  *ngIf="!isLoading">
-            <h1>Login</h1>
+            <h1>{{loginType}} Login</h1>
 <!--            <mat-error>User ID or Password is wrong</mat-error>-->
             <mat-form-field>
               <input type="text" matInput formControlName="email" id="email" placeholder="User ID">

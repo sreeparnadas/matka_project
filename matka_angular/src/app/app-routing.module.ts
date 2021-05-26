@@ -25,17 +25,26 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./modules/general/auth/auth.module')
-      .then(mod => mod.AuthModule)
+      .then(mod => mod.AuthModule),
+    data: {
+      loginType: 'All'
+    }
   },
   {
     path: 'player',
     loadChildren: () => import('./modules/general/auth/auth.module')
-      .then(mod => mod.AuthModule)
+      .then(mod => mod.AuthModule),
+    data: {
+      loginType: 'Terminal'
+    }
   },
   {
     path: 'power',
     loadChildren: () => import('./modules/general/auth/auth.module')
-      .then(mod => mod.AuthModule)
+      .then(mod => mod.AuthModule),
+    data: {
+      loginType: 'Admin'
+    }
   },
   {
     path: 'cPanel',

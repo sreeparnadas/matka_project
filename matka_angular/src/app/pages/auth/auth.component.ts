@@ -4,7 +4,7 @@ import {AuthResponseData, AuthService} from '../../services/auth.service';
 import {StorageMap} from '@ngx-pwa/local-storage';
 import {Md5} from 'ts-md5';
 import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Data, Router} from '@angular/router';
 import { faAtlas} from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 
@@ -19,7 +19,12 @@ export class AuthComponent implements OnInit {
   isLoading = false;
   faAtlas = faAtlas;
   loginForm: FormGroup;
-  constructor(private authService: AuthService, private storage: StorageMap, private router: Router) {
+  // tslint:disable-next-line:max-line-length
+  loginType: string;
+  // tslint:disable-next-line:max-line-length
+  constructor(private authService: AuthService, private storage: StorageMap, private router: Router, private activatedRoute: ActivatedRoute) {
+    const data: Data = this.activatedRoute.snapshot.data;
+    this.loginType = data.loginType;
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
