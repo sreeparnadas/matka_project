@@ -15,7 +15,7 @@ import { MaterialModule } from './core/material.module';
 
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HomeComponent } from './pages/home/home.component';
+// import { HomeComponent } from './pages/home/home.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PictureCarouselComponent } from './pages/home/picture-carousel/picture-carousel.component';
@@ -63,6 +63,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { HomeModule } from './modules/general/home/home.module';
+import { HeaderModule } from './modules/general/header/header.module';
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
 
@@ -73,8 +75,8 @@ import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    HomeComponent,
+    // HeaderComponent,
+    // HomeComponent,
     PictureCarouselComponent,
     // AuthComponent,
     // LoadingSpinnerComponent,
@@ -128,7 +130,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatSliderModule,
     MatListModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    HomeModule,
+    HeaderModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},
