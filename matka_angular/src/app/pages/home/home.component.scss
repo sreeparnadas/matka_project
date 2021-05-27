@@ -70,6 +70,51 @@
 
 
 
+.mobile{
+  #title-1-div{
+    text-align: center; font-weight: bolder;color: white;background-color: blueviolet;
+    span{
+      text-align: center;
+      font-size: 10px;
+    }
+  }
+  #title-2-div{
+    background-color: rgb(247, 124, 43);color: white;text-align: center;
+    span{
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+  #title-3-div{
+    color: rgb(177, 26, 26); text-align: center;
+    #title-3-div-child-1{
+      font-size: 16px;
+    }
+    #title-3-div-child-2{
+      font-size: 16px;
+    }
+  }
+  #title-4-div{
+    color: red; text-align: center;
+    div{
+      font-size: 10px;
+    }
+  }
+  #table-div{
+    color: red; text-align: center;
+    table{
+      font-size: 16px;
+      box-shadow: 10px 10px 5px #888;
+      thead{
+        text-align: center; color: white; background-color: rgb(247, 124, 43);
+      }
+    }
+  }
+}
+
+
+
+
 .table td{
   border: 1px solid black;
   padding: .15rem !important;

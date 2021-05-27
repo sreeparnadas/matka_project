@@ -1,61 +1,41 @@
+<div [ngClass]="deviceXs?'mobile':'desktop'">
+  <h1>Your are using {{deviceXs}}</h1>
 
-<div class="" style="text-align: center; font-weight: bolder;color: white;background-color: blueviolet;">
-  <span class="x8" style="text-align: center;">Kolkata 1st Fatafat Today Result ✔ Sabse Pahle Yaha Par Milta Hai ♛ Live कोलकाता Fatafat Chart Dekho ♤♦♣ Patti Aur Single Ke Sath.</span>
-</div>
+  <div id="title-1-div">
+    <span style="">Kolkata 1st Fatafat Today Result ✔ Sabse Pahle Yaha Par Milta Hai ♛ Live कोलकाता Fatafat Chart Dekho ♤♦♣ Patti Aur Single Ke Sath.</span>
+  </div>
 
-<div class="" style="background-color: rgb(247, 124, 43);color: white;text-align: center;">
-  <span class="x7" style="text-align: center;">Lucky Number 1st Chart  Kya Result Aayega.</span>
-</div>
+  <div id="title-2-div">
+    <span>Lucky Number 1st Chart  Kya Result Aayega.</span>
+  </div>
 
-<div style="color: rgb(177, 26, 26); text-align: center;">
-  <div class="x6">Kolkata 1st Today Result Sabse Pahle Dekho</div>
-  <div class="x6">{{currentDate}}</div>
-</div>
+  <div id="title-3-div">
+    <div id="title-3-div-child-1">Kolkata 1st Today Result Sabse Pahle Dekho</div>
+    <div id="title-3-div-child-2">{{currentDate}}</div>
+  </div>
 
-<div style="color: red; text-align: center;">
-  <div class="x8">*No Fake Result* | हम #Fake Result Update नहीं करते</div>
-</div>
+  <div id="title-4-div">
+    <div>*No Fake Result* | हम #Fake Result Update नहीं करते</div>
+  </div>
 
-<div style="color: red; text-align: center;">
-  <div class="" *ngFor="let tableData of resultList; let i = index">
-    <table class="table table-responsive x6"  style="box-shadow: 10px 10px 5px #888;">
-      <thead style="text-align: center; color: white; background-color: rgb(247, 124, 43);">
-        <tr>
-          <th scope="col" *ngFor="let drawTime of tableData.result">{{drawTime.end_time.slice(0,5)}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td scope="row" *ngFor="let result of tableData.result">
-            {{result.visible_triple_number || '***'}}
-            <div class="mt-3">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div id="table-div" >
+    <div  *ngFor="let tableData of resultList; let i = index">
+      <table class="table table-responsive" >
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let drawTime of tableData.result">{{drawTime.end_time.slice(0,5)}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td scope="row" *ngFor="let result of tableData.result">
+              {{result.visible_triple_number || '***'}}
+              <div class="mt-3">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
-<hr>
-<hr>
-<hr>
-<hr>
-
-<!--  <div class="ml-3 mt-3" *ngFor="let tableData of resultList; let i = index">-->
-<!--    <div style="text-align: center; color: blue">{{tableData.date}}</div>-->
-<!--    <table class="table"  style="box-shadow: 10px 10px 5px #888;">-->
-<!--      <thead style="text-align: center; color: white; font-size: xx-large; font-weight: bold; background-color: rgb(247, 124, 43); height: 100px;">-->
-<!--        <tr>-->
-<!--          <th scope="col" *ngFor="let drawTime of tableData.result">{{drawTime.end_time.slice(0,5)}}</th>-->
-<!--        </tr>-->
-<!--      </thead>-->
-<!--      <tbody style="text-align: center; font-size: xx-large;font-weight: bolder; ">-->
-<!--        <tr>-->
-<!--          <td scope="row" *ngFor="let result of tableData.result">-->
-<!--            {{result.visible_triple_number || '***'}}-->
-<!--            <div class="mt-3">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div></td>-->
-<!--        </tr>-->
-<!--      </tbody>-->
-<!--    </table>-->
-<!--  </div>-->
-<!--</div>-->

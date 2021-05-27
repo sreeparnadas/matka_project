@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import {AuthService} from './services/auth.service';
 import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 import {CanonicalService} from './services/canonical.service';
+import {CommonService} from './services/common.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,7 +31,12 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   // tslint:disable-next-line:max-line-length
-  constructor(public mediaObserver: MediaObserver, private authService: AuthService, private pageTitle: Title, private metaService: Meta, private canonicalService: CanonicalService){
+  constructor(public mediaObserver: MediaObserver, private authService: AuthService, private pageTitle: Title, private metaService: Meta
+              // tslint:disable-next-line:align
+              , private canonicalService: CanonicalService
+              // tslint:disable-next-line:align
+              , private commonService: CommonService){
+
   }
   ngOnInit(): void {
     this.canonicalService.setCanonicalURL();
@@ -50,6 +56,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.mediaSub = this.mediaObserver.media$.subscribe(
         (result: MediaChange) => {
           this.deviceXs = (result.mqAlias === 'xs' ? true : false);
+          this.commonService.setDeviceXs(this.deviceXs);
         }
       );
 

@@ -10,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 // @ts-ignore
 export class CommonService {
-
+  deviceXs = false;
   projectData: ProjectData;
   projectDataSubject = new Subject<ProjectData>();
   private pictures: any;
@@ -29,5 +29,11 @@ export class CommonService {
   updateVariableSettings(projectData: ProjectData){
     this.projectData = projectData;
     this.projectDataSubject.next({...this.projectData});
+  }
+  setDeviceXs(dx: boolean){
+    this.deviceXs = dx;
+  }
+  getDeviceXs(): boolean{
+    return this.deviceXs;
   }
 }
