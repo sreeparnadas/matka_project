@@ -79,8 +79,10 @@
 
       <mat-menu #menu="matMenu" style="width: 20px !important;">
         <button mat-menu-item [routerLink]="['admin']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
+        <button mat-menu-item [routerLink]="['manual']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Manual</button>
         <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
       </mat-menu>
+
     </mat-toolbar-row>
   </mat-toolbar>
   <!--  header for admin is completed-->
