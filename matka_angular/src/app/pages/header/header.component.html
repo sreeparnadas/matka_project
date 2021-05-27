@@ -1,7 +1,7 @@
 
 
-  <div class="navbar ml-3" style="text-align: center; font-weight: bolder;color: white;background-color: blueviolet;" *ngIf="!isAuthenticated">
-    <h1 class="ml-3" style="text-align: center; padding-left: 145px;">Kolkata 1st Fatafat Today Result 🏆 Sabse Pahle ✔️</h1>
+  <div class="" style="text-align: center; font-weight: bolder;color: white;background-color: blueviolet;" *ngIf="!isAuthenticated">
+    <span class="h1" style="font-size: 4vw; text-align: center;">Kolkata 1st Fatafat Today Result 🏆 Sabse Pahle ✔️</span>
   </div>
 
 
@@ -79,8 +79,10 @@
 
       <mat-menu #menu="matMenu" style="width: 20px !important;">
         <button mat-menu-item [routerLink]="['admin']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
+        <button mat-menu-item [routerLink]="['manual']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Manual</button>
         <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
       </mat-menu>
+
     </mat-toolbar-row>
   </mat-toolbar>
   <!--  header for admin is completed-->

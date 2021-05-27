@@ -13,6 +13,7 @@ import {HttpClient} from '@angular/common/http';
 import {MatCard} from '@angular/material/card';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
+import {CommonService} from "../../../services/common.service";
 
 @Component({
   selector: 'app-manual-result',
@@ -46,8 +47,18 @@ export class ManualResultComponent implements OnInit {
   private validatorError: any;
   isProduction = environment.production;
   showDevArea = false;
+  deviceXs: boolean;
   // tslint:disable-next-line:max-line-length
-  constructor(private http: HttpClient, private manualResultService: ManualResultService, private playGameService: PlayGameService, private route: ActivatedRoute, private router: Router) {
+  constructor(private http: HttpClient, private manualResultService: ManualResultService
+              // tslint:disable-next-line:align
+              , private playGameService: PlayGameService
+              // tslint:disable-next-line:align
+              , private route: ActivatedRoute
+              // tslint:disable-next-line:align
+              , private router: Router
+              // tslint:disable-next-line:align
+              , private commonService: CommonService) {
+    this.deviceXs = this.commonService.deviceXs;
     const now = new Date();
     const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
     this.manualResultForm = new FormGroup({
@@ -79,7 +90,7 @@ export class ManualResultComponent implements OnInit {
       mergeMap(route => route.data)
     ).subscribe(data =>
       console.log('data', data)
-    )
+    );
 
     const now = new Date();
     const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');

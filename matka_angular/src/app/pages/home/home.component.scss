@@ -1,4 +1,202 @@
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+@media screen and (min-width: 601px) {
+  .x1 {
+    font-size: 69px;
+  }
+  .x2 {
+    font-size: 62px;
+  }
+  .x3 {
+    font-size: 55px;
+  }
+  .x4 {
+    font-size: 51px;
+  }
 
+  .x5 {
+    font-size: 46px;
+  }
+  .x6 {
+    font-size: 41px;
+  }
+  .x7 {
+    font-size: 32px;
+  }
+  .x8 {
+    font-size: 23px;
+  }
+  .x9 {
+    font-size: 14px;
+  }
+  .x10 {
+    font-size: 7px;
+  }
+
+}
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  .x1 {
+    font-size: 30px;
+  }
+  .x2 {
+    font-size: 27px;
+  }
+  .x3 {
+    font-size: 24px;
+  }
+  .x4 {
+    font-size: 22px;
+  }
+  .x5 {
+    font-size: 20px;
+  }
+  .x6 {
+    font-size: 16px;
+  }
+  .x7 {
+    font-size: 14px;
+  }
+  .x8 {
+    font-size: 10px;
+  }
+  .x9 {
+    font-size: 6px;
+  }
+  .x10 {
+    font-size: 3px;
+  }
+}
+
+
+
+.mobile{
+  #title-1-div{
+    text-align: center; font-weight: bolder;color: white;background-color: blueviolet;
+    span{
+      text-align: center;
+      font-size: 10px;
+    }
+  }
+  #title-2-div{
+    background-color: rgb(247, 124, 43);color: white;text-align: center;
+    span{
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+  #title-3-div{
+    color: rgb(177, 26, 26); text-align: center;
+    #title-3-div-child-1{
+      font-size: 16px;
+    }
+    #title-3-div-child-2{
+      font-size: 16px;
+    }
+  }
+  #title-4-div{
+    color: red; text-align: center;
+    div{
+      font-size: 10px;
+    }
+  }
+  #table-div{
+    color: red; text-align: center;
+    table{
+      font-size: 14px;
+      box-shadow: 3px 3px 2px #888;
+      thead{
+        text-align: center; color: white; background-color: rgb(247, 124, 43);
+        tr{
+          th{
+            font-size: 17px;
+            padding: 1px !important;
+
+          }
+        }
+      }
+      tbody{
+        background-color: #eae6e6;
+        tr{
+          td{
+            font-size: 17px;
+            padding: 1px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.desktop{
+  #title-1-div{
+    text-align: center; font-weight: bolder;color: white;background-color: blueviolet;
+    span{
+      text-align: center;
+      font-size: 23px;
+    }
+  }
+  #title-2-div{
+    background-color: rgb(247, 124, 43);color: white;text-align: center;
+    span{
+      text-align: center;
+      font-size: 32px;
+    }
+  }
+  #title-3-div{
+    color: rgb(177, 26, 26); text-align: center;
+    #title-3-div-child-1{
+      font-size: 36px;
+    }
+    #title-3-div-child-2{
+      font-size: 36px;
+    }
+  }
+  #title-4-div{
+    color: red; text-align: center;
+    div{
+      font-size: 23px;
+    }
+  }
+  #table-div{
+    color: red; text-align: center;
+    width: 100%;
+    table{
+      font-size: 23px;
+      box-shadow: 10px 10px 5px #888;
+      thead{
+        text-align: center; color: white; background-color: rgb(247, 124, 43);
+        tr{
+          th{
+            font-size: 41px;
+            padding: 5px !important;
+
+          }
+        }
+      }
+      tbody{
+        background-color: #eae6e6;
+        tr{
+          td{
+            font-size: 41px;
+            padding: 5px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.table td{
+  border: 1px solid black;
+  padding: .15rem !important;
+}
+.table th{
+  border: 1px solid black;
+  padding: .15rem !important;
+}
 
 .cards {
   overflow: auto;
