@@ -1,10 +1,9 @@
-<mat-card>
+<mat-card [ngClass]="deviceXs?'mobile':'desktop'">
   <form [formGroup]="manualResultForm">
-    <div class="d-flex flex-row bd-highlight mb-3">
-      <div class="p-2 d-flex flex-column col-3">
-
+    <div class="d-flex flex-column bd-highlight mb-3">
+      <div class="p-2 bd-highlight">
         <div *ngIf="false">
-          <mat-form-field class="example-full-width" fxFlex="70">
+          <mat-form-field>
             <mat-label>Game date (dd/mm/yyyy)</mat-label>
             <input matInput [matDatepicker]="gameDatePicker" formControlName="transaction_date" placeholder="dd/mm/yyyy" (dateChange)="gameDatepickerChange($event)">
             <mat-datepicker-toggle matSuffix [for]="gameDatePicker">
@@ -39,31 +38,25 @@
 
           <button type="button" class="btn btn-primary mt-2" (click)="saveManualResult()">Save</button>
         </div>
-
       </div>
-      <div class="p-2 d-flex flex-row col-8">
-        <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
-          <div class="p-2">
-            <button  mat-fab>
-              {{tableData.singleNumber}}
-            </button>
-          </div>
-          <div class="p-2" *ngFor="let numberCombination of tableData.numberCombinations">
+      <div class="p-2 bd-highlight">
+        <div class="d-flex flex-row bd-highlight mb-3">
 
-            <button mat-fab matBadge="{{tableData.singleNumber}}" [matBadgeHidden]="currentCombinationMatrixSelectedId != numberCombination.numberCombinationId" class="triple-number-button" [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(tableData.singleNumber, numberCombination)">{{numberCombination.visibleTripleNumber}}</button>
-
+          <div class="p-2 d-flex flex-row col-8">
+            <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
+              <div class="p-1">
+                <button  mat-fab class="single-number-button">
+                  {{tableData.singleNumber}}
+                </button>
+              </div>
+              <div class="p-1" *ngFor="let numberCombination of tableData.numberCombinations">
+                <button class="triple-number-button"  mat-fab matBadge="{{tableData.singleNumber}}" [matBadgeHidden]="currentCombinationMatrixSelectedId != numberCombination.numberCombinationId" class="triple-number-button" [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(tableData.singleNumber, numberCombination);scroll(targetDiv)">{{numberCombination.visibleTripleNumber}}</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="p-2 bd-highlight" *ngIf="!isProduction">
-        <h3>Change the div size</h3>
-        <button (click)="changeState()">Change Size</button>
-        <br />
-        <div [@changeDivSize]=currentState></div>
-        <br />
-      </div>
     </div>
-
   </form>
 
 

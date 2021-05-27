@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GameResultService} from '../../services/game-result.service';
 import {GameResult} from '../../models/GameResult.model';
 import {Meta} from '@angular/platform-browser';
-import {formatDate} from "@angular/common";
+import {formatDate} from '@angular/common';
 import {CommonService} from '../../services/common.service';
 
 @Component({
