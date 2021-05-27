@@ -5,7 +5,7 @@ import { faBaby } from '@fortawesome/free-solid-svg-icons';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import {AuthService} from './services/auth.service';
-// import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 import {CanonicalService} from './services/canonical.service';
 import {CommonService} from './services/common.service';
 @Component({
@@ -32,7 +32,8 @@ export class AppComponent implements OnInit, OnDestroy{
 
   // tslint:disable-next-line:max-line-length
   constructor(public mediaObserver: MediaObserver, private authService: AuthService
-              // , private pageTitle: Title, private metaService: Meta
+              // tslint:disable-next-line:align
+              , private pageTitle: Title, private metaService: Meta
               // tslint:disable-next-line:align
               , private canonicalService: CanonicalService
               // tslint:disable-next-line:align
@@ -41,17 +42,16 @@ export class AppComponent implements OnInit, OnDestroy{
   }
   ngOnInit(): void {
     this.canonicalService.setCanonicalURL();
-    // this.pageTitle.setTitle(this.title);
-    // this.metaService.addTags([
-    //   { name: 'keywords', content: 'Kfatafat online games' },
-    //   { name: 'robots', content: 'index, follow' },
-    //   { name: 'author', content: 'kfatafat kolkata' },
-    //   { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    //   { name: 'date', content: '2021-05-25', scheme: 'YYYY-MM-DD' },
-    //   { charset: 'UTF-8' },
-    //   { description: 'kfatafat⭐ORIGNAL WEBSITE ⭐ Today All Bazi Tips KOLKATA Fatafat Result Live Update. Kolkata Fatafat Result . कोलकाता फटाफट RESULT, Prediction the result and win, try your luck..\n' +
-    //       '‎Kolkata Fatafat · ‎OLD Kolkata  kFatafat Result · ‎Kolkata fun lucky number · ‎Kolkata FF FUN result since 1960' }
-    // ]);
+    this.pageTitle.setTitle(this.title);
+    this.metaService.addTags([
+      { name: 'keywords', content: 'Kfatafat online games' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'author', content: 'kfatafat kolkata' },
+      { name: 'date', content: '2021-05-25', scheme: 'YYYY-MM-DD' },
+      { charset: 'UTF-8' },
+      { description: 'kfatafat⭐ORIGNAL WEBSITE ⭐ Today All Bazi Tips KOLKATA Fatafat Result Live Update. Kolkata Fatafat Result . कोलकाता फटाफट RESULT, Prediction the result and win, try your luck..\n' +
+          '‎Kolkata Fatafat · ‎OLD Kolkata  kFatafat Result · ‎Kolkata fun lucky number · ‎Kolkata FF FUN result since 1960' }
+    ]);
 
 
     this.mediaSub = this.mediaObserver.media$.subscribe(
