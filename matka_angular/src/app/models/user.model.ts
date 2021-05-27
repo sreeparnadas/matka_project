@@ -42,7 +42,4 @@ export class User{
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 4;
   }
-  setUserBalance(balance: number){
-    this.balance = balance;
-  }
 }

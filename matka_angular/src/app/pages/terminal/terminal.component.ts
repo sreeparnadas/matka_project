@@ -35,7 +35,7 @@ export class TerminalComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.user = this.authService.user.value;
+    this.user = this.authService.userBehaviorSubject.value;
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
     this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
@@ -132,11 +132,9 @@ export class TerminalComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
-            // console.log(response.data.play_master.terminal.balance);
-            const userData: User = JSON.parse(localStorage.getItem('user'));
-            // tslint:disable-next-line:max-line-length
-            const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, 1550);
-            this.authService.updateUserBalance(loadedUser);
+
+            // updating terminal balance from here
+            this.authService.deductUserBalanceBy(10);
             this.resetMatrixValue();
           }else{
             Swal.fire({

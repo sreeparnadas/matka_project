@@ -4,7 +4,15 @@ import {AuthGuardAdminServiceService} from '../../../../services/auth-guard-admi
 import {ManualResultComponent} from '../../../../pages/cpanel/manual-result/manual-result.component';
 
 const routes: Routes = [
-  { path: '', canActivate : [AuthGuardAdminServiceService], component: ManualResultComponent }
+  { path: '',
+    canActivate : [AuthGuardAdminServiceService],
+    component: ManualResultComponent,
+    data: {
+      title: 'About',
+      description: 'Description Meta Tag Content',
+      ogUrl: 'your og url'
+    }
+  }
 ];
 
 @NgModule({

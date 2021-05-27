@@ -33,10 +33,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService,  private commonService: CommonService) { }
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSub = this.authService.userBehaviorSubject.subscribe(user => {
       if (user){
         this.user = user;
-        console.log(this.user);
+        console.log('user in header ', this.user);
         this.isAuthenticated = user.isAuthenticated;
         this.isAdmin = user.isAdmin;
         this.isDeveloper = user.isDeveloper;

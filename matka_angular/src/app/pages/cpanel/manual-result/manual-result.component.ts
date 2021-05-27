@@ -11,6 +11,8 @@ import {formatDate} from '@angular/common';
 import {ServerResponse} from '../../../models/ServerResponse.model';
 import {HttpClient} from '@angular/common/http';
 import {MatCard} from '@angular/material/card';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {filter, map, mergeMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-manual-result',
@@ -44,7 +46,8 @@ export class ManualResultComponent implements OnInit {
   private validatorError: any;
   isProduction = environment.production;
   showDevArea = false;
-  constructor(private http: HttpClient, private manualResultService: ManualResultService, private playGameService: PlayGameService) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private http: HttpClient, private manualResultService: ManualResultService, private playGameService: PlayGameService, private route: ActivatedRoute, private router: Router) {
     const now = new Date();
     const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
     this.manualResultForm = new FormGroup({
@@ -64,15 +67,29 @@ export class ManualResultComponent implements OnInit {
       // this.manualResultService.getAllDrawTimesListener().subscribe((response: DrawTime[]) => {
       //   this.drawTimes = response;
       // });
-      const now = new Date();
-      const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
-      this.http.get(this.BASE_API_URL + '/drawTimes/dates/' + currentSQLDate).subscribe((response: ServerResponse) => {
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.route),
+      map(route => {
+        while (route.firstChild) { route = route.firstChild; }
+        return route;
+      }),
+      filter(route => route.outlet === 'primary'),
+      mergeMap(route => route.data)
+    ).subscribe(data =>
+      console.log('data', data)
+    )
+
+    const now = new Date();
+    const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
+    this.http.get(this.BASE_API_URL + '/drawTimes/dates/' + currentSQLDate).subscribe((response: ServerResponse) => {
         this.drawTimes = response.data;
       });
 
-      this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+    this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
         // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
-      this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
+    this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
         this.numberCombinationMatrix = response;
         this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
       });

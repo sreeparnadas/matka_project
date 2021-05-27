@@ -21,32 +21,32 @@ export interface AuthResponseData {
 })
 export class AuthService {
   private BASE_API_URL = environment.BASE_API_URL;
-  user = new BehaviorSubject<User>(null);
+  userBehaviorSubject = new BehaviorSubject<User>(null);
   constructor(private http: HttpClient, private router: Router) { }
+
   isAuthenticated(){
-    // console.log('I am checking', this.user.value);
-    if (this.user.value){
+    if (this.userBehaviorSubject.value){
       return true;
     }else{
       return false;
     }
   }
   isAdmin(){
-    if (this.user.value && this.user.value.isAdmin){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isAdmin){
      return true;
     }else{
       return false;
     }
   }
   isDeveloper(): boolean{
-    if (this.user.value && this.user.value.isDeveloper){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isDeveloper){
       return true;
     }else{
       return false;
     }
   }
   isStockist(): boolean{
-    if (this.user.value && this.user.value.isStockist){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isStockist){
       return true;
     }else{
       return false;
@@ -54,7 +54,7 @@ export class AuthService {
   }
 
   isTerminal(): boolean{
-    if (this.user.value && this.user.value.isTerminal){
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isTerminal){
       return true;
     }else{
       return false;
@@ -62,18 +62,15 @@ export class AuthService {
   }
 
   autoLogin(){
-    console.log('autoLogin working');
     // tslint:disable-next-line:max-line-length
     const userData: User = JSON.parse(localStorage.getItem('user'));
-    // console.log('userData', userData);
     if (!userData){
       return;
     }
     // tslint:disable-next-line:max-line-length
     const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, userData.balance);
-    // console.log('loadedUser', loadedUser);
     if (loadedUser.authKey){
-      this.user.next(loadedUser);
+      this.userBehaviorSubject.next(loadedUser);
 
       // if (loadedUser.isAdmin){
       //   this.router.navigate(['/cPanel']);
@@ -84,7 +81,6 @@ export class AuthService {
     return this.http.post<AuthResponseData>(this.BASE_API_URL + '/login', loginData)
       .pipe(catchError(this.serverError), tap(resData => {
         // tslint:disable-next-line:max-line-length
-        // console.log(resData);
         if (resData.success === 1){
             const user = new User(resData.data.user.userId,
             resData.data.user.userName,
@@ -92,21 +88,34 @@ export class AuthService {
             resData.data.user.userTypeId,
               resData.data.user.userTypeName,
           resData.data.user.balance);
-            this.user.next(user); // here two user is used one is user and another user is subject of rxjs
+            this.userBehaviorSubject.next(user);
             localStorage.setItem('user', JSON.stringify(user));
           }
       }));  // this.handleError is a method created by me
   }
 
-  updateUserBalance(userData: User){
-    this.user.next(userData); // here two user is used one is user and another user is subject of rxjs
-    localStorage.setItem('user', JSON.stringify(userData));
+  updateUserBalance(newBalance: number){
+    const userData: User = JSON.parse(localStorage.getItem('user'));
+    // tslint:disable-next-line:max-line-length
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, newBalance);
+    // userData.balance = newBalance;
+    this.userBehaviorSubject.next(loadedUser); // here two user is used one is user and another user is subject of rxjs
+    localStorage.setItem('user', JSON.stringify(loadedUser));
+  }
+  // Deduct user balance by new number
+  deductUserBalanceBy(deductibleAmount: number){
+    const userData: User = JSON.parse(localStorage.getItem('user'));
+    // tslint:disable-next-line:max-line-length
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, (userData.balance - deductibleAmount));
+    // userData.balance = newBalance;
+    this.userBehaviorSubject.next(loadedUser); // here two user is used one is user and another user is subject of rxjs
+    localStorage.setItem('user', JSON.stringify(loadedUser));
   }
 
 
 
   logout(){
-    this.user.next(null);
+    this.userBehaviorSubject.next(null);
     localStorage.removeItem('user');
     this.router.navigate(['/']).then(r => {
       if (r) {
@@ -118,7 +127,6 @@ export class AuthService {
   }
 
   private serverError(err: any) {
-    // console.log('sever error:', err);  // debug
     if (err instanceof Response) {
       return throwError('backend server error');
       // if you're using lite-server, use the following line
@@ -136,7 +144,6 @@ export class AuthService {
     return throwError(err);
   }
   private handleError(errorResponse: HttpErrorResponse){
-    console.log(errorResponse);
     if (errorResponse.error.message.includes('1062')){
       return throwError('Record already exists');
     }else {
