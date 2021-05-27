@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GameResultService} from '../../services/game-result.service';
 import {GameResult} from '../../models/GameResult.model';
 import {Meta} from '@angular/platform-browser';
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-home',
@@ -19,13 +20,15 @@ export class HomeComponent implements OnInit {
 
   resultList: GameResult[] = [];
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(private GameResultService: GameResultService, private metaTagService: Meta) {
-
+  currentDate: string;
+  constructor(private gameResultService: GameResultService, private metaTagService: Meta) {
+    const now = new Date();
+    this.currentDate = formatDate(now, 'dd-MM-yyyy', 'en');
   }
 
   ngOnInit(){
-    this.resultList = this.GameResultService.getResultList();
-    this.GameResultService.getResultListListener().subscribe((response: GameResult[]) => {
+    this.resultList = this.gameResultService.getResultList();
+    this.gameResultService.getResultListListener().subscribe((response: GameResult[]) => {
       this.resultList = response;
     });
 

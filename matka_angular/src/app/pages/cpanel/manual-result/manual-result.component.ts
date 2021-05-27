@@ -79,7 +79,7 @@ export class ManualResultComponent implements OnInit {
       mergeMap(route => route.data)
     ).subscribe(data =>
       console.log('data', data)
-    )
+    );
 
     const now = new Date();
     const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
