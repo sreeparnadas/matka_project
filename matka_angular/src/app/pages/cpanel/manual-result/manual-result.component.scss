@@ -1,47 +1,30 @@
+.triple-number-button:hover{
+  background-color: rgb(103, 108, 103) !important;
+}
 
 .mobile{
-  .single-number-button{
-  }
-  .triple-number-button{
-    border-radius: 20px !important;
-  }
-  .triple-number-button:hover{
-    background-color: rgb(103, 108, 103) !important;
-  }
-  .mat-fab .mat-button-wrapper {
-    padding: 16px 0;
-    display: inline-block;
-    line-height: 24px;
-  }
-  .mat-fab {
-    box-sizing: border-box;
-    position: relative;
+  .coder-fab {
+    width: 35px;
+    height: 35px;
+    line-height: 14px;
+    font-size: 14px;
 
-    user-select: none;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    -webkit-tap-highlight-color: transparent;
-    display: inline-block;
-    white-space: nowrap;
-    text-decoration: none;
-    vertical-align: baseline;
-    text-align: center;
-    margin: 0;
-    overflow: visible;
-    transform: translate3d(0, 0, 0);
-    transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    min-width: 0;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    padding: 0;
-    flex-shrink: 1;
-  }
-  .mat-button-wrapper{
-    color: red;
+    &::ng-deep .mat-button-wrapper{
+      line-height: 14px;
+      padding: 0;
+
+      .mat-icon {
+        font-size: 12px;
+        padding-right: 4px;
+        padding-top: 4px;
+      }
+    }
   }
 }
+
+
+
+
 
 .scroll-arrow{
   border-radius: 50%;
