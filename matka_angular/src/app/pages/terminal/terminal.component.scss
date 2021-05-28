@@ -405,11 +405,6 @@ span .mat-fab .mat-button-wrapper {
   }
 }
 
-//#triple-body-0{
-//  .triple-number-button{
-//    background-color: $triple-selection-button-0 !important;
-//  }
-//}
 
 #triple-table{
   thead td, thead th{
@@ -439,8 +434,21 @@ span .mat-fab .mat-button-wrapper {
 
 
 .tripple-selection-button{
-  height: 35px !important;
-  width: 35px !important;
+  width: 35px;
+  height: 35px;
+  line-height: 14px;
+  font-size: 14px;
+
+  &::ng-deep .mat-button-wrapper{
+    line-height: 14px;
+    padding: 0;
+
+    .mat-icon {
+      font-size: 12px;
+      padding-right: 4px;
+      padding-top: 4px;
+    }
+  }
 }
 
 .right-td{
