@@ -33,6 +33,24 @@ $triple-selection-background-colors: (
 );
 
 
+.coder-fab {
+  width: 35px;
+  height: 35px;
+  line-height: 14px;
+  font-size: 14px;
+
+  &::ng-deep .mat-button-wrapper{
+    line-height: 14px;
+    padding: 0;
+
+    .mat-icon {
+      font-size: 12px;
+      padding-right: 4px;
+      padding-top: 4px;
+    }
+  }
+}
+
 .dark-mode{
   #background{
     /* background-image: url("assets/images/curtain.jpg"); */

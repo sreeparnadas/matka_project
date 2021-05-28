@@ -4,6 +4,7 @@ import {GameResult} from '../../models/GameResult.model';
 import {Meta} from '@angular/platform-browser';
 import {formatDate} from '@angular/common';
 import {CommonService} from '../../services/common.service';
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,8 @@ export class HomeComponent implements OnInit {
   // tslint:disable-next-line:no-shadowed-variable
   currentDate: string;
   deviceXs: boolean;
+  showDevArea = false;
+  isProduction = environment.production;
   constructor(private gameResultService: GameResultService, private metaTagService: Meta, private commonService: CommonService) {
     const now = new Date();
     this.currentDate = formatDate(now, 'dd-MM-yyyy', 'en');

@@ -6,6 +6,7 @@ import {HomeComponent} from '../../../pages/home/home.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HomeRoutingModule,
     FlexLayoutModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatSlideToggleModule
   ]
 })
 export class HomeModule { }
