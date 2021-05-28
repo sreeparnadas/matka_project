@@ -4,9 +4,6 @@
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background">
       <div fxLayout="row" fxLayoutAlign="space-around center" >
-
-
-<!--        this table is auto generated triple value table-->
         <div id="table-1" fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid rgb(0, 26, 255); ">
           <div>
             <table class="table table-responsive" id="triple-table">
@@ -19,7 +16,7 @@
                   </button>
                 </th>
               </tr>
-<!--              activeTripleContainerValue is the index value of singleNumbers array-->
+              <!--              activeTripleContainerValue is the index value of singleNumbers array-->
               <tr *ngIf="singleNumbers && activeTripleContainerValue > -1">
                 <th colspan="10" class="text-center">
                   <button mat-fab  class="tripple-selection-button coder-fab">
@@ -31,9 +28,9 @@
               <ng-container *ngIf="isActiveTripleContainter(idxSingle)">
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
-<!--                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">-->
-<!--                      <mat-button-toggle mat-raised-button matBadge="7" [matBadgeHidden]="false"  class="triple-number-button" value="bold" (click)="setGameInputSet(x)">{{ x.visibleTripleNumber }}</mat-button-toggle>-->
-<!--                    </mat-button-toggle-group>-->
+                    <!--                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">-->
+                    <!--                      <mat-button-toggle mat-raised-button matBadge="7" [matBadgeHidden]="false"  class="triple-number-button" value="bold" (click)="setGameInputSet(x)">{{ x.visibleTripleNumber }}</mat-button-toggle>-->
+                    <!--                    </mat-button-toggle-group>-->
                     <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style">
                       {{ x.visibleTripleNumber }}
                     </button>
@@ -53,7 +50,7 @@
           <div>{{currentDate}}</div>
           <div>GAME1 RESULT SHEET</div>
           <div style="text-align: end; color: white;">RESULT SHEET</div>
-<!--           describe the table-->
+          <!--           describe the table-->
           <!-- <table class="table ml-4 mt-2" style="height: 400px !important; width: 350px;">
             <thead>
             </thead>
@@ -145,87 +142,87 @@
 
               <tbody>
 
-                <tr >
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                </tr>
+              <tr >
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+              </tr>
 
-                <tr >
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
+              <tr >
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
 
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                </tr>
-                <tr >
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                  <td colspan="2"  class="right-td">
-                    10:00 AM
-                  </td>
-                </tr>
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+              </tr>
+              <tr >
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+                <td colspan="2"  class="right-td">
+                  10:00 AM
+                </td>
+              </tr>
 
-                <tr >
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                  <td colspan="2"  class="right-td1">
-                    555 <br>
-                    5
-                  </td>
-                </tr>
+              <tr >
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+                <td colspan="2"  class="right-td1">
+                  555 <br>
+                  5
+                </td>
+              </tr>
 
               </tbody>
             </table>
@@ -242,14 +239,14 @@
           <span class="text-white text-center">SINGLES</span>
           <div class="d-flex justify-content-between" style="background-color: rgb(223, 214, 177);height: 50px; border: 3px solid black;">
             <div class="chips-outer-div" *ngFor="let single of singleNumbers">
-                <button class="p-2"  style="border-radius: 20%;" (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
+              <button class="p-2"  style="border-radius: 20%;" (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
             </div>
           </div>
 
 
           <div class="d-flex justify-content-between" style="background-color: rgb(223, 214, 177);height: 50px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
             <div class="chips-outer-div " *ngFor="let x of chips">
-                <button class="coder-fab m-2" mat-fab value="bold" (click)="changeChip(x)">{{ x }}</button>
+              <button class="coder-fab m-2" mat-fab value="bold" (click)="changeChip(x)">{{ x }}</button>
             </div>
           </div>
 
@@ -291,18 +288,18 @@
 </div>
 
 <div class="d-flex" *ngIf="!isProduction && showDevArea">
-    <div class="col-6">
+  <div class="col-6">
       <pre>
         numberCombinationMatrix = {{numberCombinationMatrix | json}}
       </pre>
-    </div>
-    <div class="col-3">
+  </div>
+  <div class="col-3">
       <pre>
         user = {{user | json}}
       </pre>
-    </div>
-    <div class="col-3"><pre>userGameInput = {{userGameInput | json}}</pre>
-    </div>
+  </div>
+  <div class="col-3"><pre>userGameInput = {{userGameInput | json}}</pre>
+  </div>
 </div>
 
 
