@@ -20,6 +20,7 @@
     <div  *ngFor="let tableData of resultList; let i = index">
       <table class="table" >
         <thead>
+        <tr><td style="background-color: #85592e;" colspan="8">{{tableData.date}}</td></tr>
           <tr>
             <th scope="col" *ngFor="let drawTime of tableData.result">{{drawTime.end_time.slice(0,5)}}</th>
           </tr>
@@ -36,6 +37,21 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+
+
+<div class="d-flex" >
+  <div class="col-3">
+      <pre>
+        numberCombinationMatrix = {{resultList | json}}
+      </pre>
+  </div>
+  <div class="col-6">
+
+  </div>
+  <div class="col-3"><pre></pre>
   </div>
 </div>
 
