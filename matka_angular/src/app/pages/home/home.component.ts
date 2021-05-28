@@ -4,7 +4,7 @@ import {GameResult} from '../../models/GameResult.model';
 import {Meta} from '@angular/platform-browser';
 import {formatDate} from '@angular/common';
 import {CommonService} from '../../services/common.service';
-import {environment} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',

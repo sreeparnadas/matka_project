@@ -9,6 +9,7 @@ import {environment} from '../../../environments/environment';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user.model';
 import Swal from 'sweetalert2';
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-terminal',
@@ -31,7 +32,14 @@ export class TerminalComponent implements OnInit {
   copyNumberMatrix: SingleNumber[];
   isProduction = environment.production;
   showDevArea = false;
-  constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) { }
+  currentDate: string;
+ deviceXs: boolean;
+
+  constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) {
+    const now = new Date();
+    this.currentDate = formatDate(now, 'dd-MM-yyyy', 'en');
+    this.deviceXs = this.commonService.deviceXs;
+  }
 
   ngOnInit(): void {
 
