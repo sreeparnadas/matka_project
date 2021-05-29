@@ -76,11 +76,11 @@ export class CommonService {
       }
       let currentTime = '';
       if (this.hour > 11){
-        // tslint:disable-next-line:max-line-length
-        currentTime = (this.hour - 12) + ':' + (this.minute < 10 ? '0' + this.minute : this.minute) + ':' + (this.second < 10 ? '0' + this.second : this.second) + 'PM';
+        currentTime = ((this.hour - 12) < 10 ? '0' + (this.hour - 12) : (this.hour - 12)) + ':' +
+          (this.minute < 10 ? '0' + this.minute : this.minute) + ':' + (this.second < 10 ? '0' + this.second : this.second) + 'PM';
       }else{
-        // tslint:disable-next-line:max-line-length
-        currentTime = this.hour + ':' + (this.minute < 10 ? '0' + this.minute : this.minute) + ':' + (this.second < 10 ? '0' + this.second : this.second) + 'AM';
+        currentTime = ((this.hour) < 10 ? '0' + (this.hour) : (this.hour)) + ':' + (this.minute < 10 ? '0' + this.minute : this.minute) +
+          ':' + (this.second < 10 ? '0' + this.second : this.second) + 'AM';
       }
 
       this.currentTimeBehaviorSubject.next(currentTime);

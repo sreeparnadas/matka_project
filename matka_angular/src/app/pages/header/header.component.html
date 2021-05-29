@@ -55,7 +55,11 @@
           <i class="bi bi-gem" style="font-size: 25px;"></i>
           <span class="logo">Admin</span>
         </button>
-        {{allwaysTime}}
+
+        <div class="clock-container clock2">
+          <div class="time">{{alwaysTime}}</div>
+        </div>
+
         <div *ngIf="!deviceXs">
           <button mat-button
                   [routerLink]="['/']"
@@ -98,6 +102,9 @@
             <i class="bi bi-gear-wide-connected" style="font-size: 25px;"></i>
             <span class="logo">Developer</span>
           </button>
+          <div class="clock-container clock2" *ngIf="alwaysTime">
+            <div class="time">{{alwaysTime}}</div>
+          </div>
           <div *ngIf="!deviceXs">
             <button mat-button
                     [routerLink]="['/']"
@@ -132,6 +139,9 @@
           <i class="bi bi-person-fill" style="font-size: 25px;"></i>
           <span class="logo">Stockist</span>
         </button>
+        <div class="clock-container clock2" *ngIf="alwaysTime">
+          <div class="time">{{alwaysTime}}</div>
+        </div>
         <div *ngIf="!deviceXs">
           <button mat-button
                   [routerLink]="['/']"
@@ -170,6 +180,7 @@
           <i class="bi bi-bookmark-star-fill" style="font-size: 25px;"></i>
           <span class="logo">{{user.userName}}</span>
         </button>
+
         <div *ngIf="!deviceXs">
           <button mat-button
                   [routerLink]="['/']"
@@ -178,7 +189,11 @@
           <mat-slider min="1" max="5" step="1" value="1" (input)="onMatSliderInputChange($event)"></mat-slider>
         </div>
         <div class="text-white"> Balance {{user.balance}}</div>
+        <div class="clock-container clock2 ml-5" *ngIf="alwaysTime">
+          <div class="time">{{alwaysTime}}</div>
+        </div>
       </div>
+
       <div fxLayout="row">
           <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
       </div>
@@ -186,7 +201,6 @@
 <!--    for mobile view-->
     <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
       <button mat-button [matMenuTriggerFor]="menu" style="line-height: 18px !important; font-size: small; padding-top: 15px;"><i class="ri-menu-line"></i>Menu</button>
-
 
         <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;"><i class="ri-smartphone-line"></i>Terminal</span>
 

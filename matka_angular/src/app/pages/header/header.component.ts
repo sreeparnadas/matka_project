@@ -17,7 +17,7 @@ import {environment} from '../../../environments/environment';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   projectData: ProjectData;
-  allwaysTime: number;
+  alwaysTime: number;
   @Input() deviceXs: boolean;
   userSub: Subscription;
   isAuthenticated = false;
@@ -35,11 +35,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.commonService.value$.asObservable().subscribe(response => {
       // console.log(response);
-      // this.allwaysTime = response;
+      // this.alwaysTime = response;
     });
 
     this.commonService.currentTimeBehaviorSubject.asObservable().subscribe(response => {
-      this.allwaysTime = response;
+      this.alwaysTime = response;
     });
 
     this.userSub = this.authService.userBehaviorSubject.subscribe(user => {

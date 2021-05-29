@@ -18,6 +18,7 @@ import {formatDate} from '@angular/common';
 })
 export class TerminalComponent implements OnInit {
   projectData: ProjectData;
+  alwaysTime: number;
   showDeveloperDiv = true;
   user: User;
   singleNumbers: SingleNumber[] = [];
@@ -32,12 +33,10 @@ export class TerminalComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
   currentDate: string;
-  currentTime: string;
   deviceXs: boolean;
 
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) {
     this.currentDate = this.commonService.getCurrentDate();
-    // this.currentTime = this.commonService.getCurrentTime();
     this.deviceXs = this.commonService.deviceXs;
   }
 
@@ -56,6 +55,9 @@ export class TerminalComponent implements OnInit {
       this.singleNumbers = response;
     });
 
+    this.commonService.currentTimeBehaviorSubject.asObservable().subscribe(response => {
+      this.alwaysTime = response;
+    });
 
     // variableSettings enabling
     this.projectData = this.commonService.getProjectData();
