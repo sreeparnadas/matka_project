@@ -68,6 +68,8 @@ import { HeaderModule } from './modules/general/header/header.module';
 import { StockistModule } from './modules/general/stockist/stockist.module';
 import { FooterModule } from './modules/general/footer/footer.module';
 import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
+import {NgxPrinterModule} from "ngx-printer";
+import { LttleDummyComponent } from './pages/cpanel/lttle-dummy/lttle-dummy.component';
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
 
@@ -78,6 +80,7 @@ import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
 @NgModule({
   declarations: [
     AppComponent,
+    LttleDummyComponent,
     // HeaderComponent,
     // HomeComponent,
     // PictureCarouselComponent,
@@ -100,6 +103,7 @@ import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
     // BrowserModule,
     AppRoutingModule,
     NgbModule,
+    NgxPrinterModule.forRoot({printOpenWindow: false}),
     // FormsModule,
     BrowserAnimationsModule,
     // FontAwesomeModule,

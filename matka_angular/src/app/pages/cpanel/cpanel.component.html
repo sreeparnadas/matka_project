@@ -64,5 +64,28 @@
         </table>
       </div>
 
+      <ng-template #PrintTemplate let-name="title">
+        <span>Little dummy Template</span>
+        <h1>
+          Test template to print Sukanta
+        </h1>
+        <span>Some text</span>
+      </ng-template>
 
+
+      <div id="printDiv" directPrint="true" style="border: 1px solid black;">
+        Div to print
+        <h1>
+          Test div to print
+        </h1>
+        <span>Vfl Bochum 1848</span><br />
+        <span ngxNoPrint>FC Schalke 05 - this should NOT print</span>
+        <br>
+
+        <img id="imId2" src="assets/images/developer.jpg" style="width: 50px; height: 50px; margin: 5px;"/>
+
+      </div>
+
+      <button (click)="printDiv()">Print div</button>
+      <button (click)="printTemplate()">Print Template</button>
     </div>
