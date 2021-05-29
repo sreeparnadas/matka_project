@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject, timer} from 'rxjs';
 import {ProjectData} from '../models/project-data.model';
 import {HttpClient} from '@angular/common/http';
 import {formatDate} from '@angular/common';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {environment} from '../../environments/environment';
+import {concatMap, tap} from "rxjs/operators";
 
 
 @Injectable({
@@ -12,6 +13,11 @@ import {environment} from '../../environments/environment';
 })
 // @ts-ignore
 export class CommonService {
+
+
+  value$ = new BehaviorSubject(20);
+  currentValue = 0;
+
   deviceXs = false;
   projectData: ProjectData;
   public currentTime: object;
@@ -19,6 +25,13 @@ export class CommonService {
   private pictures: any;
   private BASE_API_URL = environment.BASE_API_URL;
   constructor(private http: HttpClient) {
+
+    setInterval(() => {
+      this.currentValue += 10;
+      this.value$.next(this.currentValue);
+      // just testing if it is working
+    }, 1000);
+
     this.http.get('assets/ProjectData.json').subscribe((data: ProjectData) => {
       this.projectData = data;
       this.projectDataSubject.next({...this.projectData});
@@ -63,5 +76,11 @@ export class CommonService {
     }
     const currentTime = formatDate(now, 'hh:mm:ss', 'en') + ' ' + meridiem;
     return currentTime;
+  }
+
+  loadValue(i) {
+    this.currentValue += i;
+    this.value$.next(this.currentValue);
+    console.log(this.currentValue);
   }
 }
