@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 class CommonFunctionController extends Controller
 {
     public function getServerTime(){
-        $current_time = Carbon::now()->format('H:i:s');
-        return json_encode($current_time);
+        $current_time = Carbon::now();
+        return array('hour' => $current_time->hour, 'minute' => $current_time->minute, 'second' => $current_time->second);
     }
 }

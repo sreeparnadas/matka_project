@@ -16,14 +16,21 @@ export class CommonService {
 
 
   value$ = new BehaviorSubject(20);
+  currentTimeBehaviorSubject = new  BehaviorSubject(null);
   currentValue = 0;
 
   deviceXs = false;
   projectData: ProjectData;
-  public currentTime: object;
+  public serverTime: {hour: number, minute: number, second: number};
+  serverTimeSubject = new Subject<{hour: number, minute: number, second: number}>();
   projectDataSubject = new Subject<ProjectData>();
   private pictures: any;
   private BASE_API_URL = environment.BASE_API_URL;
+
+  public hour: number;
+  public minute: number;
+  public second: number;
+
   constructor(private http: HttpClient) {
 
     setInterval(() => {
@@ -32,15 +39,61 @@ export class CommonService {
       // just testing if it is working
     }, 1000);
 
+
+
     this.http.get('assets/ProjectData.json').subscribe((data: ProjectData) => {
       this.projectData = data;
       this.projectDataSubject.next({...this.projectData});
     });
 
-    this.http.get(this.BASE_API_URL + '/serverTime').subscribe(response => {
-      this.currentTime = response;
-      // return this.currentTime;
+    this.http.get(this.BASE_API_URL + '/serverTime').subscribe((response: {hour: number, minute: number, second: number}) => {
+      this.serverTime = response;
+      this.hour = this.serverTime.hour;
+      this.minute = this.serverTime.minute;
+      this.second = this.serverTime.second;
+      this.serverTimeSubject.next(this.serverTime);
     });
+
+    setInterval(() => {
+
+      if (this.hour === 23 && this.minute === 59 && this.second > 58)   {
+        this.hour = 0;
+        this.minute = 0;
+        this.second = 1;
+      }
+      if (this.second > 58 && this.minute === 59){
+        this.minute = 0;
+        this.second = 1;
+        this.hour++;
+        if (this.hour === 24){
+          this.hour = 0;
+        }
+      }else if (this.second > 58){
+        this.second = 0;
+        this.minute++;
+      }else{
+        this.second++;
+      }
+      let currentTime = '';
+      if (this.hour > 11){
+        // tslint:disable-next-line:max-line-length
+        currentTime = (this.hour - 12) + ':' + (this.minute < 10 ? '0' + this.minute : this.minute) + ':' + (this.second < 10 ? '0' + this.second : this.second) + 'PM';
+      }else{
+        // tslint:disable-next-line:max-line-length
+        currentTime = this.hour + ':' + (this.minute < 10 ? '0' + this.minute : this.minute) + ':' + (this.second < 10 ? '0' + this.second : this.second) + 'AM';
+      }
+
+      this.currentTimeBehaviorSubject.next(currentTime);
+      // just testing if it is working
+    }, 1000);
+  }
+
+  getServerTime(){
+    return {...this.serverTime};
+  }
+
+  getServerTimeListener(){
+    return this.serverTimeSubject.asObservable();
   }
   getProjectData(){
     return {...this.projectData};
@@ -62,20 +115,6 @@ export class CommonService {
     const now = new Date();
     const currentDate = formatDate(now, 'dd-MM-yyyy', 'en');
     return currentDate;
-  }
-
-  getCurrentTime(){
-    console.log('time in func', this.currentTime);
-    const now = new Date();
-    const hour = now.getHours();
-    let meridiem = '';
-    if (hour >= 12){
-      meridiem = 'PM';
-    }else{
-      meridiem = 'AM';
-    }
-    const currentTime = formatDate(now, 'hh:mm:ss', 'en') + ' ' + meridiem;
-    return currentTime;
   }
 
   loadValue(i) {

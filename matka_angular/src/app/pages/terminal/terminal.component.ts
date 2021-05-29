@@ -33,11 +33,11 @@ export class TerminalComponent implements OnInit {
   showDevArea = false;
   currentDate: string;
   currentTime: string;
- deviceXs: boolean;
+  deviceXs: boolean;
 
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) {
     this.currentDate = this.commonService.getCurrentDate();
-    this.currentTime = this.commonService.getCurrentTime();
+    // this.currentTime = this.commonService.getCurrentTime();
     this.deviceXs = this.commonService.deviceXs;
   }
 
@@ -161,4 +161,6 @@ export class TerminalComponent implements OnInit {
       }
     });
   }
+
+
 }

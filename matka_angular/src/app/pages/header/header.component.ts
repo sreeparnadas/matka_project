@@ -34,9 +34,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.commonService.value$.asObservable().subscribe(response => {
-      console.log(response);
+      // console.log(response);
+      // this.allwaysTime = response;
+    });
+
+    this.commonService.currentTimeBehaviorSubject.asObservable().subscribe(response => {
       this.allwaysTime = response;
     });
+
     this.userSub = this.authService.userBehaviorSubject.subscribe(user => {
       if (user){
         this.user = user;
