@@ -9,7 +9,7 @@ import {environment} from '../../../environments/environment';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user.model';
 import Swal from 'sweetalert2';
-import {formatDate} from "@angular/common";
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-terminal',
@@ -20,7 +20,6 @@ export class TerminalComponent implements OnInit {
   projectData: ProjectData;
   showDeveloperDiv = true;
   user: User;
-  terminalBalance: number;
   singleNumbers: SingleNumber[] = [];
   numberCombinationMatrix: SingleNumber[] = [];
   chips: number[] = [];
@@ -132,17 +131,18 @@ export class TerminalComponent implements OnInit {
         };
         this.playGameService.saveUserPlayInputDetails(masterData).subscribe(response => {
           if (response.success === 1){
+            const responseData = response.data;
             // @ts-ignore
             Swal.fire({
               position: 'top-end',
               icon: 'success',
-              title: 'Result saved',
+              title: 'Ticket purchased',
               showConfirmButton: false,
               timer: 1000
             });
 
             // updating terminal balance from here
-            this.authService.deductUserBalanceBy(10);
+            this.authService.setUserBalanceBy(responseData.play_master.terminal.balance);
             this.resetMatrixValue();
           }else{
             Swal.fire({

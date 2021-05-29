@@ -11,6 +11,7 @@ use App\Http\Controllers\ResultMasterController;
 use App\Http\Controllers\SingleNumberController;
 use App\Http\Controllers\ManualResultController;
 use App\Http\Controllers\Test;
+use App\Http\Controllers\PlayController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -58,7 +59,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('manualResult',[ManualResultController::class, 'save_manual_result']);
 
     //play_masters
-    Route::post('buyTicket',[PlayMasterController::class,'savePlayDetails']);
+    Route::post('buyTicket',[PlayController::class,'save_play_details']);
 
 });
 
@@ -87,7 +88,7 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('gameTypes',[GameTypeController::class,'index']);
 
     //play_masters
-    Route::post('buyTicket',[PlayMasterController::class,'savePlayDetails']);
+    Route::post('buyTicket',[PlayController::class,'save_play_details']);
 
 
     //game
@@ -95,7 +96,6 @@ Route::group(array('prefix' => 'dev'), function() {
 
     //result_masters
     Route::get('results',[ResultMasterController::class, 'get_results']);
-    Route::post('result_masters',[ResultMasterController::class, 'save_result_masters']);
 
     //manual_result
 

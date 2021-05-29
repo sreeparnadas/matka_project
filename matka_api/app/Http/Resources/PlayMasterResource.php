@@ -14,6 +14,7 @@ use App\Http\Resources\DrawMasterResource;
  * @property mixed user_id
  * @property mixed terminal
  * @property mixed draw_time
+ * @property mixed created_at
  */
 class PlayMasterResource extends JsonResource
 {
@@ -29,6 +30,7 @@ class PlayMasterResource extends JsonResource
             'barcodeNumber' => Str::substr($this->barcode_number,0,8),
             'drawTime' => new DrawMasterResource($this->draw_time),
             'terminal' => new TerminalResource($this->terminal),
+            'ticketTakenTime' => $this->created_at
         ];
     }
 }

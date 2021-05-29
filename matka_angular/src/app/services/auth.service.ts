@@ -112,7 +112,15 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(loadedUser));
   }
 
-
+  // Deduct user balance by new number
+  setUserBalanceBy(balance: number){
+    const userData: User = JSON.parse(localStorage.getItem('user'));
+    // tslint:disable-next-line:max-line-length
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, balance);
+    // userData.balance = newBalance;
+    this.userBehaviorSubject.next(loadedUser); // here two user is used one is user and another user is subject of rxjs
+    localStorage.setItem('user', JSON.stringify(loadedUser));
+  }
 
   logout(){
     this.userBehaviorSubject.next(null);

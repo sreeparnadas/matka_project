@@ -7,20 +7,8 @@ import {Subject} from 'rxjs';
 import {NumberCombinations} from '../models/NumberCombinations.model';
 import {catchError, tap} from 'rxjs/operators';
 import {ErrorService} from './error.service';
+import {GameInputSaveResponse} from '../models/GameInputSaveResponse.model';
 
-
-export interface GameInputSaveResponse{
-  success: number;
-  data: {
-    play_master: {
-      barcodeNumber: string,
-      drawTime: object,
-      terminal: object
-    },
-    play_details: []
-  };
-  error?: any;
-}
 
 @Injectable({
   providedIn: 'root'
