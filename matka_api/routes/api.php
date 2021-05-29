@@ -12,6 +12,7 @@ use App\Http\Controllers\SingleNumberController;
 use App\Http\Controllers\ManualResultController;
 use App\Http\Controllers\Test;
 use App\Http\Controllers\PlayController;
+use App\Http\Controllers\CommonFunctionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,6 +33,7 @@ Route::post("login",[UserController::class,'login']);
 
 
 Route::post("register",[UserController::class,'register']);
+Route::get("serverTime",[CommonFunctionController::class,'getServerTime']);
 
 Route::group(['middleware' => 'auth:sanctum'], function(){
     //All secure URL's

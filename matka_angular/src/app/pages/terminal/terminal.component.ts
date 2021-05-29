@@ -32,11 +32,12 @@ export class TerminalComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
   currentDate: string;
+  currentTime: string;
  deviceXs: boolean;
 
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) {
-    const now = new Date();
-    this.currentDate = formatDate(now, 'dd-MM-yyyy', 'en');
+    this.currentDate = this.commonService.getCurrentDate();
+    this.currentTime = this.commonService.getCurrentTime();
     this.deviceXs = this.commonService.deviceXs;
   }
 
