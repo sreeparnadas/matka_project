@@ -5,7 +5,8 @@ import {Meta} from '@angular/platform-browser';
 import {formatDate} from '@angular/common';
 import {CommonService} from '../../services/common.service';
 import {environment} from '../../../environments/environment';
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -37,6 +38,23 @@ export class HomeComponent implements OnInit {
       this.resultList = response;
     });
 
+  }
+
+  public openPDF(): void {
+    const DATA = document.getElementById('table-div');
+
+    html2canvas(DATA).then(canvas => {
+
+      const fileWidth = 208;
+      const fileHeight = canvas.height * fileWidth / canvas.width;
+
+      const FILEURI = canvas.toDataURL('image/png')
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+
+      PDF.save('angular-demo.pdf');
+    });
   }
 
 }

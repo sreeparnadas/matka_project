@@ -16,6 +16,10 @@
     <div>*No Fake Result* | हम #Fake Result Update नहीं करते</div>
   </div>
 
+  <div class="col-md-4 text-right">
+    <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+  </div>
+
   <div id="table-div" >
     <div  *ngFor="let tableData of resultList; let i = index">
       <table class="table" >
