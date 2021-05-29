@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgxPrinterService} from 'ngx-printer';
 import { ViewChild, TemplateRef, ElementRef } from '@angular/core';
-import {LttleDummyComponent} from './lttle-dummy/lttle-dummy.component';
 import {Subscription} from 'rxjs';
 import {ngxPrintMarkerPosition } from 'ngx-printer';
 
@@ -13,8 +12,7 @@ import {ngxPrintMarkerPosition } from 'ngx-printer';
 export class CpanelComponent implements OnInit {
   @ViewChild('PrintTemplate')
   private PrintTemplateTpl: TemplateRef<any>;
-  @ViewChild(LttleDummyComponent, { read: ElementRef })
-  PrintComponent: ElementRef;
+
 
   printWindowSubscription: Subscription;
 
