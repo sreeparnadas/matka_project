@@ -76,6 +76,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/bi-icon/bi-icon.module')
       .then(mod => mod.BiIconModule)
   },
+  { path: 'Receipt', loadChildren: () => import('./pages/cpanel/receipt/receipt.module').then(m => m.ReceiptModule) },
   // {path: 'auth', component: AuthComponent},
   // {path: 'player', component: AuthComponent},
   // {path: 'power', component: AuthComponent},

@@ -6,6 +6,9 @@ import {MatCardModule} from '@angular/material/card';
 import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {CpanelComponent} from '../../../pages/cpanel/cpanel.component';
+import {ManualResultModule} from './manual-result/manual-result.module';
+import {NgxPrintModule} from 'ngx-print';
+import {ReceiptModule} from '../../../pages/cpanel/receipt/receipt.module';
 
 
 @NgModule({
@@ -14,7 +17,9 @@ import {CpanelComponent} from '../../../pages/cpanel/cpanel.component';
     CpanelRoutingModule,
     MatCardModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxPrintModule,
+    ReceiptModule
   ],
   exports: [
     CpanelComponent

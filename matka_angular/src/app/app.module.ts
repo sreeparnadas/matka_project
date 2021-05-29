@@ -69,6 +69,7 @@ import { StockistModule } from './modules/general/stockist/stockist.module';
 import { FooterModule } from './modules/general/footer/footer.module';
 import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
 import {NgxPrinterModule} from 'ngx-printer';
+// import {NgxPrintModule} from "ngx-print";
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
 

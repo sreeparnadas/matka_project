@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {NgxPrinterService} from 'ngx-printer';
+import {NgxPrinterService, PrintItem} from 'ngx-printer';
 import { ViewChild, TemplateRef, ElementRef } from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {ngxPrintMarkerPosition } from 'ngx-printer';
+import {ReceiptComponent} from './receipt/receipt.component';
+
 
 @Component({
   selector: 'app-cpanel',
@@ -13,8 +15,11 @@ export class CpanelComponent implements OnInit {
   @ViewChild('PrintTemplate')
   private PrintTemplateTpl: TemplateRef<any>;
 
+  @ViewChild(ReceiptComponent, { read: ElementRef })
+  PrintComponent: ElementRef;
 
   printWindowSubscription: Subscription;
+  $printItems: Observable<PrintItem[]>;
 
 
 
@@ -24,6 +29,7 @@ export class CpanelComponent implements OnInit {
         console.log('Print window is open:', val);
       }
     );
+    this.$printItems = this.ngxPrinterService.$printItems;
   }
 
   ngOnInit(): void {
@@ -39,4 +45,15 @@ export class CpanelComponent implements OnInit {
     this.ngxPrinterService.printAngular(this.PrintTemplateTpl);
   }
 
+  printHTMLElementToCurrentWithCustomCSS() {
+    this.ngxPrinterService.printOpenWindow = false;
+    this.ngxPrinterService.renderClass = 'current-window';
+    this.ngxPrinterService.printHTMLElement(this.PrintComponent.nativeElement);
+    this.ngxPrinterService.printOpenWindow = true;
+    this.ngxPrinterService.renderClass = 'default';
+  }
+
+  printerMarkerClicked() {
+    alert('Print marker clicked');
+  }
 }

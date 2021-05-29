@@ -64,7 +64,7 @@
         </table>
       </div>
 
-      <ng-template #PrintTemplate let-name="title">
+      <ng-template id="test" #PrintTemplate let-name="title">
         <span>Little dummy Template</span>
         <h1>
           Test template to print Sukanta
@@ -81,11 +81,31 @@
         <span>Vfl Bochum 1848</span><br />
         <span ngxNoPrint>FC Schalke 05 - this should NOT print</span>
         <br>
-
+          <app-receipt [helloText]="'Hello!'"   class="dummy-bg"></app-receipt>
         <img id="imId2" src="assets/images/developer.jpg" style="width: 50px; height: 50px; margin: 5px;"/>
 
       </div>
 
+
       <button (click)="printDiv()">Print div</button>
       <button (click)="printTemplate()">Print Template</button>
+      <button (click)="printHTMLElementToCurrentWithCustomCSS()">Print Template</button>
+
+
+
+      <div  id="print-section">
+
+        print this
+
+      </div>
+
+      <button
+        [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 1px'}}"
+        printSectionId="print-section"
+        ngxPrint>print</button>
+
+
+      <div ngxPrintItemMarker directPrint="true"> sdfs sdf</div>
+
+
     </div>
