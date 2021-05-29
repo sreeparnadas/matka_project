@@ -27,8 +27,7 @@ export class HomeComponent implements OnInit {
   showDevArea = false;
   isProduction = environment.production;
   constructor(private gameResultService: GameResultService, private metaTagService: Meta, private commonService: CommonService) {
-    const now = new Date();
-    this.currentDate = formatDate(now, 'dd-MM-yyyy', 'en');
+    this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
   }
 
