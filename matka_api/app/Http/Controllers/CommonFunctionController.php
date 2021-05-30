@@ -10,6 +10,7 @@ class CommonFunctionController extends Controller
 {
     public function getServerTime(){
         $current_time = Carbon::now();
-        return array('hour' => $current_time->hour, 'minute' => $current_time->minute, 'second' => $current_time->second);
+        return array('hour' => $current_time->hour, 'minute' => $current_time->minute,
+            'second' => $current_time->second, 'meridiem' => $current_time->meridiem);
     }
 }

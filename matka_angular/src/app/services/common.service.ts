@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {formatDate} from '@angular/common';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {environment} from '../../environments/environment';
-import {concatMap, tap} from "rxjs/operators";
+import {concatMap, tap} from 'rxjs/operators';
 
 
 @Injectable({
@@ -21,8 +21,9 @@ export class CommonService {
 
   deviceXs = false;
   projectData: ProjectData;
-  public serverTime: {hour: number, minute: number, second: number};
-  serverTimeSubject = new Subject<{hour: number, minute: number, second: number}>();
+  public serverTime: {hour: number, minute: number, second: number, 'meridiem': string};
+  public currentTimeObj: {hour: number, minute: number, second: number, 'meridiem': string};
+  serverTimeSubject = new Subject<{hour: number, minute: number, second: number, 'meridiem': string}>();
   projectDataSubject = new Subject<ProjectData>();
   private pictures: any;
   private BASE_API_URL = environment.BASE_API_URL;
@@ -46,41 +47,48 @@ export class CommonService {
       this.projectDataSubject.next({...this.projectData});
     });
 
-    this.http.get(this.BASE_API_URL + '/serverTime').subscribe((response: {hour: number, minute: number, second: number}) => {
+    this.http.get(this.BASE_API_URL + '/serverTime')
+      .subscribe((response: {hour: number, minute: number, second: number, 'meridiem': string}) => {
       this.serverTime = response;
-      this.hour = this.serverTime.hour;
-      this.minute = this.serverTime.minute;
-      this.second = this.serverTime.second;
+      this.currentTimeObj = this.serverTime;
+      // this.hour = this.serverTime.hour;
+      // this.minute = this.serverTime.minute;
+      // this.second = this.serverTime.second;
+
       this.serverTimeSubject.next(this.serverTime);
     });
 
     setInterval(() => {
 
-      if (this.hour === 23 && this.minute === 59 && this.second > 58)   {
-        this.hour = 0;
-        this.minute = 0;
-        this.second = 1;
+      if (this.currentTimeObj.hour === 23 && this.currentTimeObj.minute === 59 && this.currentTimeObj.second > 58)   {
+        this.currentTimeObj.hour = 0;
+        this.currentTimeObj.minute = 0;
+        this.currentTimeObj.second = 1;
       }
-      if (this.second > 58 && this.minute === 59){
-        this.minute = 0;
-        this.second = 1;
-        this.hour++;
-        if (this.hour === 24){
-          this.hour = 0;
+      if (this.currentTimeObj.second > 58 && this.currentTimeObj.minute === 59){
+        this.currentTimeObj.minute = 0;
+        this.currentTimeObj.second = 1;
+        this.currentTimeObj.hour++;
+        if (this.currentTimeObj.hour === 24){
+          this.currentTimeObj.hour = 0;
         }
-      }else if (this.second > 58){
-        this.second = 0;
-        this.minute++;
+      }else if (this.currentTimeObj.second > 58){
+        this.currentTimeObj.second = 0;
+        this.currentTimeObj.minute++;
       }else{
-        this.second++;
+        this.currentTimeObj.second++;
       }
       let currentTime = '';
-      if (this.hour > 11){
-        currentTime = ((this.hour - 12) < 10 ? '0' + (this.hour - 12) : (this.hour - 12)) + ':' +
-          (this.minute < 10 ? '0' + this.minute : this.minute) + ':' + (this.second < 10 ? '0' + this.second : this.second) + 'PM';
+      let tempHour = this.currentTimeObj.hour < 10 ? '0' + this.currentTimeObj.hour : this.currentTimeObj.hour;
+      const tempMinute = this.currentTimeObj.minute < 10 ? '0' + this.currentTimeObj.minute : this.currentTimeObj.minute;
+      const tempSecond = this.currentTimeObj.second < 10 ? '0' + this.currentTimeObj.second : this.currentTimeObj.second;
+      const tempMeridiem = this.currentTimeObj.meridiem;
+      if (this.currentTimeObj.hour > 12){
+        tempHour = this.currentTimeObj.hour - 12;
+        tempHour = tempHour < 10 ? '0' + tempHour : tempHour;
+        currentTime = tempHour + ':' + tempMinute + ':' + tempSecond + '' + tempMeridiem;
       }else{
-        currentTime = ((this.hour) < 10 ? '0' + (this.hour) : (this.hour)) + ':' + (this.minute < 10 ? '0' + this.minute : this.minute) +
-          ':' + (this.second < 10 ? '0' + this.second : this.second) + 'AM';
+        currentTime = tempHour + ':' + tempMinute + ':' + tempSecond + '' + tempMeridiem;
       }
 
       this.currentTimeBehaviorSubject.next(currentTime);
