@@ -40,7 +40,7 @@ class GenerateResult extends Command
     public function handle()
     {
         $resultMaster = new ResultMaster();
-        $resultMaster->draw_master_id = 1;
+        $resultMaster->draw_master_id = 2;
         $resultMaster->number_combination_id = 10;
         $resultMaster->game_date = Carbon::today();
         $resultMaster->save();

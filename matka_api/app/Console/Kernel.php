@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\GenerateResult::class,
+        '\App\Console\Commands\GenerateResult',
     ];
 
     /**
@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('generate:result')->dailyAt('10:18')->timezone('Asia/Kolkata');
+        $schedule->command('generate:result')->everyMinute()->timezone('Asia/Kolkata');
     }
 
     /**

@@ -10,6 +10,7 @@ export class GameInputSaveResponse{
         drawName?: string,
         startTime?: string,
         endTime?: string,
+        visibleTime?: string,
         active?: number
       },
       terminal?: {

@@ -11,6 +11,8 @@ import {User} from '../../models/user.model';
 import Swal from 'sweetalert2';
 import {formatDate} from '@angular/common';
 import {DrawTime} from '../../models/DrawTime.model';
+import {NgxPrinterService, PrintItem} from 'ngx-printer';
+import {GameInputSaveResponse} from '../../models/GameInputSaveResponse.model';
 
 @Component({
   selector: 'app-terminal',
@@ -36,8 +38,13 @@ export class TerminalComponent implements OnInit {
   showDevArea = false;
   currentDate: string;
   deviceXs: boolean;
+  public lastPurchasedTicketDetails: GameInputSaveResponse;
+  public lastPurchasedTicketSingle: {singleNumber: number, quantity: number}[];
+  public lastPurchasedTicketTriple: {visibleTripleNumber: number, quantity: number, singleNumber: number}[];
 
-  constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService) {
+  constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService,
+              private ngxPrinterService: NgxPrinterService
+  ) {
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
   }
@@ -141,6 +148,9 @@ export class TerminalComponent implements OnInit {
         };
         this.playGameService.saveUserPlayInputDetails(masterData).subscribe(response => {
           if (response.success === 1){
+            this.lastPurchasedTicketDetails = response;
+            this.lastPurchasedTicketSingle = response.data.game_input.single_game_data;
+            this.lastPurchasedTicketTriple = response.data.game_input.triple_game_data;
             const responseData = response.data;
             // @ts-ignore
             Swal.fire({
@@ -171,5 +181,9 @@ export class TerminalComponent implements OnInit {
     });
   }
 
-
+  printDiv() {
+    this.ngxPrinterService.printOpenWindow = false;
+    this.ngxPrinterService.printDiv('printDiv');
+    this.ngxPrinterService.printOpenWindow = false;
+  }
 }
