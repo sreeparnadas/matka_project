@@ -10,6 +10,7 @@ import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user.model';
 import Swal from 'sweetalert2';
 import {formatDate} from '@angular/common';
+import {DrawTime} from '../../models/DrawTime.model';
 
 @Component({
   selector: 'app-terminal',
@@ -23,6 +24,7 @@ export class TerminalComponent implements OnInit {
   user: User;
   singleNumbers: SingleNumber[] = [];
   numberCombinationMatrix: SingleNumber[] = [];
+  activeDrawTime: DrawTime;
   chips: number[] = [];
   userGameInput: any[] = [];
 
@@ -65,6 +67,11 @@ export class TerminalComponent implements OnInit {
     this.commonService.getVariableSettingsListener().subscribe((response: ProjectData) => {
       this.projectData = response;
       this.chips = this.projectData.chips;
+    });
+
+    this.activeDrawTime = this.commonService.getActiveDrawTime();
+    this.commonService.getActiveDrawTimeListener().subscribe((response: DrawTime) => {
+        this.activeDrawTime = response;
     });
 
   }// end of ngOnIInit
@@ -129,7 +136,7 @@ export class TerminalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         const masterData = {
-          playMaster: {drawMasterId: 1, terminalId: this.user.userId},
+          playMaster: {drawMasterId: this.activeDrawTime.drawId, terminalId: this.user.userId},
           playDetails: this.userGameInput
         };
         this.playGameService.saveUserPlayInputDetails(masterData).subscribe(response => {

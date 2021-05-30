@@ -8,6 +8,7 @@ import {NumberCombinations} from '../models/NumberCombinations.model';
 import {catchError, tap} from 'rxjs/operators';
 import {ErrorService} from './error.service';
 import {GameInputSaveResponse} from '../models/GameInputSaveResponse.model';
+import {DrawTime} from '../models/DrawTime.model';
 
 
 @Injectable({
@@ -19,6 +20,8 @@ export class PlayGameService {
   singleNumberSubject = new Subject<SingleNumber[]>();
   numberCombinationMatrix: SingleNumber[] = [];
   numberCombinationMatrixSubject = new Subject<SingleNumber[]>();
+  // activeDrawTime: DrawTime;
+  // activeDrawTimeSubject = new Subject<DrawTime>();
   private BASE_API_URL = environment.BASE_API_URL;
 
 
@@ -31,9 +34,14 @@ export class PlayGameService {
       });
 
       this.http.get(this.BASE_API_URL + '/numberCombinations/matrix').subscribe((response: ServerResponse) => {
-      this.numberCombinationMatrix = response.data;
-      this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
-    });
+        this.numberCombinationMatrix = response.data;
+        this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
+      });
+    // get active draw
+    //   this.http.get(this.BASE_API_URL + '/drawTimes/active').subscribe((response: ServerResponse) => {
+    //     this.activeDrawTime = response.data;
+    //     this.activeDrawTimeSubject.next({...this.activeDrawTime});
+    //   });
 
   }
 
@@ -50,6 +58,13 @@ export class PlayGameService {
   getNumberCombinationMatrixListener(){
     return this.numberCombinationMatrixSubject.asObservable();
   }
+
+  // getActiveDrawTime(){
+  //   return {...this.activeDrawTime};
+  // }
+  // getActiveDrawTimeListener(){
+  //   return this.activeDrawTimeSubject.asObservable();
+  // }
 
   saveUserPlayInputDetails(inputData){
 

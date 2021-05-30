@@ -5,6 +5,7 @@ export class DrawTime{
   drawName: string;
   startTime: string;
   endTime: string;
+  visibleTime?: string;
   active: number;
 
 }

@@ -284,14 +284,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DrawMaster::insert([
-            ['draw_name'=> 'Good morning','start_time'=>'12:00','end_time'=>'10:00','active'=>1],
-            ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'11:30','active'=>0],
-            ['draw_name'=> 'Good evening','start_time'=>'11:30','end_time'=>'13:00','active'=>0],
-            ['draw_name'=> 'Lets play','start_time'=>'13:00','end_time'=>'14:30','active'=>0],
-            ['draw_name'=> 'Good night','start_time'=>'14:30','end_time'=>'16:00','active'=>0],
-            ['draw_name'=> 'Good morning','start_time'=>'16:00','end_time'=>'17:30','active'=>0],
-            ['draw_name'=> 'Good afternoon','start_time'=>'17:30','end_time'=>'19:00','active'=>0],
-            ['draw_name'=> 'Good morning','start_time'=>'19:00 ','end_time'=>'20:30','active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'12:00','end_time'=>'10:00','visible_time'=>'10:00 am','active'=>1],
+            ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'11:30','visible_time'=>'11:30 am','active'=>0],
+            ['draw_name'=> 'Good evening','start_time'=>'11:30','end_time'=>'13:00','visible_time'=>'01:00 pm','active'=>0],
+            ['draw_name'=> 'Lets play','start_time'=>'13:00','end_time'=>'14:30','visible_time'=>'02:00 pm','active'=>0],
+            ['draw_name'=> 'Good night','start_time'=>'14:30','end_time'=>'16:00','visible_time'=>'04:00 pm','active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'16:00','end_time'=>'17:30','visible_time'=>'05:30 pm','active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'17:30','end_time'=>'19:00','visible_time'=>'07:00 pm','active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'19:00 ','end_time'=>'20:30','visible_time'=>'08:30 pm','active'=>0],
         ]);
 
         GameType::insert([

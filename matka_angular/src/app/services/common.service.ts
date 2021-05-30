@@ -6,6 +6,7 @@ import {formatDate} from '@angular/common';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {environment} from '../../environments/environment';
 import {concatMap, tap} from 'rxjs/operators';
+import {DrawTime} from '../models/DrawTime.model';
 
 
 @Injectable({
@@ -28,9 +29,8 @@ export class CommonService {
   private pictures: any;
   private BASE_API_URL = environment.BASE_API_URL;
 
-  public hour: number;
-  public minute: number;
-  public second: number;
+  activeDrawTime: DrawTime;
+  activeDrawTimeSubject = new Subject<DrawTime>();
 
   constructor(private http: HttpClient) {
 
@@ -51,10 +51,6 @@ export class CommonService {
       .subscribe((response: {hour: number, minute: number, second: number, 'meridiem': string}) => {
       this.serverTime = response;
       this.currentTimeObj = this.serverTime;
-      // this.hour = this.serverTime.hour;
-      // this.minute = this.serverTime.minute;
-      // this.second = this.serverTime.second;
-
       this.serverTimeSubject.next(this.serverTime);
     });
 
@@ -94,6 +90,13 @@ export class CommonService {
       this.currentTimeBehaviorSubject.next(currentTime);
       // just testing if it is working
     }, 1000);
+
+
+    // get active draw
+    this.http.get(this.BASE_API_URL + '/dev/drawTimes/active').subscribe((response: ServerResponse) => {
+      this.activeDrawTime = response.data;
+      this.activeDrawTimeSubject.next({...this.activeDrawTime});
+    });
   }
 
   getServerTime(){
@@ -130,4 +133,12 @@ export class CommonService {
     this.value$.next(this.currentValue);
     console.log(this.currentValue);
   }
+
+  getActiveDrawTime(){
+    return {...this.activeDrawTime};
+  }
+  getActiveDrawTimeListener(){
+    return this.activeDrawTimeSubject.asObservable();
+  }
+
 }

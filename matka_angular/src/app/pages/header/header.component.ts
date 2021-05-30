@@ -8,6 +8,7 @@ import {CommonService} from '../../services/common.service';
 import {ProjectSetting} from '@angular/cli/commands/analytics';
 import {ProjectData} from '../../models/project-data.model';
 import {environment} from '../../../environments/environment';
+import {DrawTime} from '../../models/DrawTime.model';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   faUserAlt = faUserAlt;
   isProduction = environment.production;
   public user: User;
+  activeDrawTime: DrawTime;
+
   constructor(private authService: AuthService,  private commonService: CommonService) { }
 
   ngOnInit(): void {
@@ -63,6 +66,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.projectData = this.commonService.getProjectData();
     this.commonService.getVariableSettingsListener().subscribe((response: ProjectData) => {
       this.projectData = response;
+    });
+
+    this.activeDrawTime = this.commonService.getActiveDrawTime();
+
+    this.commonService.getActiveDrawTimeListener().subscribe((response: DrawTime) => {
+      this.activeDrawTime = response;
     });
 
   } // end of ngOnInit

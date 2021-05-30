@@ -18,6 +18,7 @@ class CreateDrawMastersTable extends Migration
             $table->string('draw_name',100)->nullable(true);
             $table->time('start_time');
             $table->time('end_time');
+            $table->string('visible_time',20)->nullable(true);
             $table->tinyInteger('active')->default(0);
             $table->timestamps();
         });

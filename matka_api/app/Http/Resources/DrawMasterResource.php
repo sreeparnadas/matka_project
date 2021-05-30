@@ -10,6 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed start_time
  * @property mixed end_time
  * @property mixed active
+ * @property mixed visible_time
  */
 class DrawMasterResource extends JsonResource
 {
@@ -26,6 +27,7 @@ class DrawMasterResource extends JsonResource
             'drawName' => $this->draw_name,
             'startTime' => $this->start_time,
             'endTime' => $this->end_time,
+            'visibleTime' => $this->visible_time,
             'active' => $this->active
         ];
     }

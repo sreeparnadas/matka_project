@@ -189,9 +189,11 @@
           <mat-slider min="1" max="5" step="1" value="1" (input)="onMatSliderInputChange($event)"></mat-slider>
         </div>
         <div class="text-white"> Balance {{user.balance}}</div>
-        <div class="clock-container clock2 ml-5" *ngIf="alwaysTime">
+        <div class="clock-container clock2 ml-5 mt-0 pt-1" *ngIf="alwaysTime">
           <div class="time">{{alwaysTime}}</div>
         </div>
+
+        <span>Next draw: {{activeDrawTime.visibleTime}}</span>
       </div>
 
       <div fxLayout="row">
