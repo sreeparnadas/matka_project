@@ -188,8 +188,8 @@
 
 </div>
 
-<!--start testing print-->
-<div id="print-section" directPrint="true" style="border: 1px solid black;" *ngIf="lastPurchasedTicketDetails">
+<!--start testing print 2-->
+<!-- <div id="print-section" directPrint="true" style="border: 1px solid black;" *ngIf="lastPurchasedTicketDetails">
   Kfatafat
   <div class="d-flex flex-column bd-highlight mb-1">
     <div class="bd-highlight">Terminal: {{lastPurchasedTicketDetails.data.play_master.terminal.terminalId}}</div>
@@ -225,6 +225,53 @@
             {{x.visibleTripleNumber}} - {{x.quantity}},&nbsp;
           </td>
         </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
+
+
+
+<div id="print-section" directPrint="true" style="border: 2px solid black; margin-left: 0; " *ngIf="lastPurchasedTicketDetails">
+  Kfatafat
+  <div class="">
+    <div >Terminal: {{lastPurchasedTicketDetails.data.play_master.terminal.terminalId}}</div>
+    <div >Ticket ID: {{lastPurchasedTicketDetails.data.play_master.barcodeNumber}}</div>
+    <div >Draw time: {{lastPurchasedTicketDetails.data.play_master.drawTime.visibleTime}}</div>
+    <div >Ticket time: {{lastPurchasedTicketDetails.data.play_master.ticketTakenTime}}</div>
+    <div >Total point: {{lastPurchasedTicketDetails.data.amount}}</div>
+  </div>
+  <div>
+    <div style="font-weight: bold;" *ngIf="lastPurchasedTicketSingle">Single</div>
+    <table>
+      <tbody>
+        <tr *ngFor="let single of lastPurchasedTicketSingle.
+        slice(0, lastPurchasedTicketSingle.length % 5  === 0 ?
+         lastPurchasedTicketSingle.length / 5 :
+          lastPurchasedTicketSingle.length / 5 + 1); let idx = index">
+          <td *ngFor="let x of lastPurchasedTicketSingle.slice(idx * 5, idx * 5 + 5)" style="white-space: nowrap">
+            {{x.singleNumber}}-{{x.quantity}},
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <div style="font-weight: bold;" *ngIf="lastPurchasedTicketTriple">Triple</div>
+    <table>
+      <tbody>
+        <tr *ngFor="let triple of lastPurchasedTicketTriple.
+        slice(0, lastPurchasedTicketTriple.length % 5  === 0 ?
+         lastPurchasedTicketTriple.length / 5 :
+          lastPurchasedTicketTriple.length / 5 + 1); let idx = index">
+          <td *ngFor="let x of lastPurchasedTicketTriple.slice(idx * 5, idx * 5 + 5)" style="white-space: nowrap">
+            {{x.visibleTripleNumber}} - {{x.quantity}},
+          </td>
+
+        </tr>
+
       </tbody>
     </table>
   </div>
