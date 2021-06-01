@@ -189,7 +189,7 @@
 </div>
 
 <!--start testing print-->
-<div id="printDiv" directPrint="true" style="border: 1px solid black;" *ngIf="lastPurchasedTicketDetails">
+<div id="print-section" directPrint="true" style="border: 1px solid black;" *ngIf="lastPurchasedTicketDetails">
   Kfatafat
   <div class="d-flex flex-column bd-highlight mb-1">
     <div class="bd-highlight">Terminal: {{lastPurchasedTicketDetails.data.play_master.terminal.terminalId}}</div>
@@ -198,33 +198,45 @@
     <div class="bd-highlight">Ticket time: {{lastPurchasedTicketDetails.data.play_master.ticketTakenTime}}</div>
     <div class="bd-highlight">Total point: {{lastPurchasedTicketDetails.data.amount}}</div>
   </div>
-  <div class="d-flex flex-column-reverse bd-highlight ml-3">
+  <div class="d-flex">
     <h4 *ngIf="lastPurchasedTicketSingle">Single</h4>
-    <div class="d-flex flex-row bd-highlight mb-3" *ngFor="let single of lastPurchasedTicketSingle.
+    <table>
+      <tbody>
+        <tr *ngFor="let single of lastPurchasedTicketSingle.
          slice(0, lastPurchasedTicketSingle.length % 5  === 0 ?
           lastPurchasedTicketSingle.length / 5 :
            lastPurchasedTicketSingle.length / 5 + 1); let idx = index">
-      <div class="bd-highlight" *ngFor="let x of lastPurchasedTicketSingle.slice(idx * 5, idx * 5 + 5)">
-      {{x.singleNumber}} - {{x.quantity}},&nbsp;
-      </div>
-    </div>
+          <td *ngFor="let x of lastPurchasedTicketSingle.slice(idx * 5, idx * 5 + 5)">
+            {{x.singleNumber}} - {{x.quantity}},&nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-  <div class="d-flex flex-column-reverse bd-highlight">
+  <div class="d-flex">
     <h4 *ngIf="lastPurchasedTicketTriple">Triple</h4>
-    <div class="d-flex flex-row bd-highlight mb-3" *ngFor="let triple of lastPurchasedTicketTriple.
+    <table>
+      <tbody>
+        <tr *ngFor="let triple of lastPurchasedTicketTriple.
          slice(0, lastPurchasedTicketTriple.length % 5  === 0 ?
           lastPurchasedTicketTriple.length / 5 :
            lastPurchasedTicketTriple.length / 5 + 1); let idx = index">
-      <div class="bd-highlight" *ngFor="let x of lastPurchasedTicketTriple.slice(idx * 5, idx * 5 + 5)">
-        {{x.visibleTripleNumber}} - {{x.quantity}},&nbsp;
-      </div>
-    </div>
+          <td *ngFor="let x of lastPurchasedTicketTriple.slice(idx * 5, idx * 5 + 5)">
+            {{x.visibleTripleNumber}} - {{x.quantity}},&nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
 </div>
+
+
 <button (click)="printDiv()">Print div</button>
 <!--end testing print-->
+
+
+
+<button [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>print</button>
 
 <div class="d-flex" *ngIf="!isProduction">
   <div class="col-3">
@@ -235,7 +247,7 @@
 <div class="d-flex" *ngIf="!isProduction && showDevArea">
   <div class="col-6">
       <pre>
-        numberCombinationMatrix = {{numberCombinationMatrix | json}}
+        singleNumbers = {{singleNumbers | json}}
       </pre>
   </div>
   <div class="col-3">

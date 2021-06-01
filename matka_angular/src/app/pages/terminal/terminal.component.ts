@@ -13,6 +13,7 @@ import {formatDate} from '@angular/common';
 import {DrawTime} from '../../models/DrawTime.model';
 import {NgxPrinterService, PrintItem} from 'ngx-printer';
 import {GameInputSaveResponse} from '../../models/GameInputSaveResponse.model';
+import {NgxPrintModule} from 'ngx-print';
 
 @Component({
   selector: 'app-terminal',
@@ -34,6 +35,7 @@ export class TerminalComponent implements OnInit {
   public activeTripleContainerValue = 0;
   public selectedChip = 2;
   copyNumberMatrix: SingleNumber[];
+  copySingleNumber: SingleNumber[];
   isProduction = environment.production;
   showDevArea = false;
   currentDate: string;
@@ -62,6 +64,7 @@ export class TerminalComponent implements OnInit {
     this.singleNumbers = this.playGameService.getSingleNumbers();
     this.playGameService.getSingleNumberListener().subscribe((response: SingleNumber[]) => {
       this.singleNumbers = response;
+      this.copySingleNumber = JSON.parse(JSON.stringify(this.singleNumbers));
     });
 
     this.commonService.currentTimeBehaviorSubject.asObservable().subscribe(response => {
@@ -129,6 +132,7 @@ export class TerminalComponent implements OnInit {
   resetMatrixValue(){
     this.userGameInput = [];
     this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
+    this.singleNumbers = JSON.parse(JSON.stringify(this.copySingleNumber));
   }
 
   saveUserPlayInputDetails(){
@@ -149,8 +153,8 @@ export class TerminalComponent implements OnInit {
         this.playGameService.saveUserPlayInputDetails(masterData).subscribe(response => {
           if (response.success === 1){
             this.lastPurchasedTicketDetails = response;
-            this.lastPurchasedTicketSingle = response.data.game_input.single_game_data;
-            this.lastPurchasedTicketTriple = response.data.game_input.triple_game_data;
+            this.lastPurchasedTicketSingle = this.lastPurchasedTicketDetails.data.game_input.single_game_data;
+            this.lastPurchasedTicketTriple = this.lastPurchasedTicketDetails.data.game_input.triple_game_data;
             const responseData = response.data;
             // @ts-ignore
             Swal.fire({
