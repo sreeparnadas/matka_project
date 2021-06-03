@@ -84,7 +84,11 @@ export class TerminalComponent implements OnInit {
         this.activeDrawTime = response;
     });
 
+
   }// end of ngOnIInit
+
+
+
 
   isActiveTripleContainter(idxSingle: number) {
     // tslint:disable-next-line:triple-equals
@@ -135,6 +139,13 @@ export class TerminalComponent implements OnInit {
     this.singleNumbers = JSON.parse(JSON.stringify(this.copySingleNumber));
   }
 
+  printDiv() {
+    this.ngxPrinterService.printOpenWindow = false;
+    this.ngxPrinterService.printDiv('print-section');
+    this.ngxPrinterService.printOpenWindow = false;
+  }
+
+
   saveUserPlayInputDetails(){
     Swal.fire({
       title: 'Confirmation',
@@ -164,10 +175,14 @@ export class TerminalComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
-
             // updating terminal balance from here
             this.authService.setUserBalanceBy(responseData.play_master.terminal.balance);
             this.resetMatrixValue();
+
+            setTimeout(function() {
+              document.getElementById('print-button').click();
+            }.bind(this), 3000);
+
           }else{
             Swal.fire({
               position: 'top-end',
@@ -185,9 +200,4 @@ export class TerminalComponent implements OnInit {
     });
   }
 
-  printDiv() {
-    this.ngxPrinterService.printOpenWindow = false;
-    this.ngxPrinterService.printDiv('printDiv');
-    this.ngxPrinterService.printOpenWindow = false;
-  }
 }
