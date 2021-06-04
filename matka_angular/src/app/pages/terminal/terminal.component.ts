@@ -47,7 +47,7 @@ export class TerminalComponent implements OnInit {
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService,
               private ngxPrinterService: NgxPrinterService, private renderer: Renderer2
   ) {
-    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
+    // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
     // this.renderer.setStyle(document.body.firstChild., 'background-image', ' url("assets/images/curtain.jpg")');
     const layer = document.querySelector('.layer');
     this.renderer.setStyle(layer, 'background-color', ' rgba(78, 180, 248, 0.1)');
@@ -57,7 +57,7 @@ export class TerminalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));

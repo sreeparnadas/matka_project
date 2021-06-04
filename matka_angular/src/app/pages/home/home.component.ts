@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {GameResultService} from '../../services/game-result.service';
 import {GameResult} from '../../models/GameResult.model';
 import {Meta} from '@angular/platform-browser';
@@ -27,12 +27,14 @@ export class HomeComponent implements OnInit {
   deviceXs: boolean;
   showDevArea = false;
   isProduction = environment.production;
-  constructor(private gameResultService: GameResultService, private metaTagService: Meta, private commonService: CommonService) {
+  constructor(private gameResultService: GameResultService, private metaTagService: Meta, private commonService: CommonService, private renderer: Renderer2) {
+
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
   }
 
   ngOnInit(){
+    this.renderer.setStyle(document.body, 'background-image', 'none');
     this.resultList = this.gameResultService.getResultList();
     this.gameResultService.getResultListListener().subscribe((response: GameResult[]) => {
       this.resultList = response;
