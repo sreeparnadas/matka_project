@@ -1,4 +1,6 @@
 
+
+
 $triple-selection-button-0: rgba(203, 155, 125, 0.74);
 $triple-selection-button-1: rgba(87, 103, 177, 0.55);
 $triple-selection-button-2: rgba(111, 203, 107, 0.8);
@@ -468,3 +470,17 @@ span .mat-fab .mat-button-wrapper {
 //   padding-top: 85px;
 // }
 
+
+
+//#outer-div{
+//  background-image: url("/src/assets/images/curtain.jpg") !important;
+//}
+
+.layer {
+  background-color: rgba(248, 242, 242, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+}

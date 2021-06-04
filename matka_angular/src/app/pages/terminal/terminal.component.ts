@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {PlayGameService} from '../../services/play-game.service';
 import {SingleNumber} from '../../models/SingleNumber.model';
 import {CommonService} from '../../services/common.service';
@@ -45,8 +45,10 @@ export class TerminalComponent implements OnInit {
   public lastPurchasedTicketTriple: {visibleTripleNumber: number, quantity: number, singleNumber: number}[];
 
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService,
-              private ngxPrinterService: NgxPrinterService
+              private ngxPrinterService: NgxPrinterService, private renderer: Renderer2
   ) {
+    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
+    // this.renderer.setStyle(document.body.firstChild., 'background-image', ' url("assets/images/curtain.jpg")');
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
   }
