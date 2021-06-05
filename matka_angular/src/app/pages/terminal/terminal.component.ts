@@ -30,6 +30,7 @@ export class TerminalComponent implements OnInit {
   activeDrawTime: DrawTime;
   chips: number[] = [];
   userGameInput: any[] = [];
+  public totalTicketPurchased: number;
 
   columnNumber = 5;
   public activeTripleContainerValue = 0;
@@ -132,6 +133,11 @@ export class TerminalComponent implements OnInit {
       this.userGameInput.push(tempPlayDetails);
       value.quantity = this.selectedChip;
     }
+
+    this.totalTicketPurchased = this.userGameInput.map(a => a.quantity).reduce(function(a, b)
+    {
+      return a + b;
+    });
   }
 
   changeChip(value){
@@ -142,6 +148,7 @@ export class TerminalComponent implements OnInit {
     this.userGameInput = [];
     this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
     this.singleNumbers = JSON.parse(JSON.stringify(this.copySingleNumber));
+    this.totalTicketPurchased = 0;
   }
 
   printDiv() {
