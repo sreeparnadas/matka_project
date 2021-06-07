@@ -29,6 +29,26 @@ class User extends Authenticatable
      * @var mixed
      */
     private $closing_balance;
+    /**
+     * @var mixed
+     */
+    private $user_name;
+    /**
+     * @var mixed|string
+     */
+    private $email;
+    /**
+     * @var mixed|string
+     */
+    private $password;
+    /**
+     * @var int|mixed
+     */
+    private $user_type_id;
+    /**
+     * @var int|mixed
+     */
+    private $opening_balance;
 
     public function setPasswordAttribute($password)
     {

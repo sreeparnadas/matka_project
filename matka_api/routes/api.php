@@ -107,5 +107,9 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('test',[Test::class, 'index']);
 
 
+    Route::get('stockists',[\App\Http\Controllers\StockistController::class, 'getAllStockists']);
+    Route::post('stockists',[\App\Http\Controllers\StockistController::class, 'createStockist']);
+
+
 });
 
