@@ -69,6 +69,9 @@ import { StockistModule } from './modules/general/stockist/stockist.module';
 import { FooterModule } from './modules/general/footer/footer.module';
 import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
 import {NgxPrinterModule} from 'ngx-printer';
+import { MasterStockistComponent } from './pages/cpanel/master-stockist/master-stockist.component';
+// import { MasterStockistModule } from './modules/general/cpanel/master-stockist/master-stockist.module';
+import {MatTabsModule} from '@angular/material/tabs';
 // import {NgxPrintModule} from "ngx-print";
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
@@ -80,6 +83,7 @@ import {NgxPrinterModule} from 'ngx-printer';
 @NgModule({
   declarations: [
     AppComponent,
+    // MasterStockistComponent,
     // HeaderComponent,
     // HomeComponent,
     // PictureCarouselComponent,
@@ -141,7 +145,9 @@ import {NgxPrinterModule} from 'ngx-printer';
     HeaderModule,
     StockistModule,
     FooterModule,
-    BiIconModule
+    BiIconModule,
+    // MasterStockistModule,
+    MatTabsModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},

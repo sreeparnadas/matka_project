@@ -4,6 +4,8 @@ import { ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {ngxPrintMarkerPosition } from 'ngx-printer';
 import {ReceiptComponent} from './receipt/receipt.component';
+import {User} from '../../models/user.model';
+import {AuthService} from '../../services/auth.service';
 
 
 @Component({
@@ -20,10 +22,11 @@ export class CpanelComponent implements OnInit {
 
   printWindowSubscription: Subscription;
   $printItems: Observable<PrintItem[]>;
+  user: User;
 
 
 
-  constructor(private ngxPrinterService: NgxPrinterService) {
+  constructor(private ngxPrinterService: NgxPrinterService, private authService: AuthService) {
     this.printWindowSubscription = this.ngxPrinterService.$printWindowOpen.subscribe(
       val => {
         console.log('Print window is open:', val);
@@ -33,6 +36,7 @@ export class CpanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.authService.userBehaviorSubject.value;
   }
   printDiv() {
     this.ngxPrinterService.printOpenWindow = false;

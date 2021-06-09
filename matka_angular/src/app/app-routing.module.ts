@@ -13,6 +13,7 @@ import {AuthGuardTerminalServiceService} from './services/auth-guard-terminal-se
 import {AuthGuardStockistServiceService} from './services/auth-guard-stockist-service.service';
 import {BiIconComponent} from './pages/bi-icon/bi-icon.component';
 import {ManualResultComponent} from './pages/cpanel/manual-result/manual-result.component';
+import {MasterStockistComponent} from './pages/cpanel/master-stockist/master-stockist.component';
 
 
 
@@ -52,6 +53,11 @@ const routes: Routes = [
       .then(mod => mod.CpanelModule)
   },
   {
+    path: 'masterStockist',
+    loadChildren: () => import('./modules/general/cpanel/master-stockist/master-stockist.module')
+      .then(mod => mod.MasterStockistModule)
+  },
+  {
     path: 'manual',
     loadChildren: () => import('./modules/general/cpanel/manual-result/manual-result.module')
       .then(mod => mod.ManualResultModule)
@@ -71,6 +77,7 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/stockist/stockist.module')
       .then(mod => mod.StockistModule)
   },
+
   {
     path: 'bi-icon',
     loadChildren: () => import('./modules/general/bi-icon/bi-icon.module')
@@ -85,6 +92,7 @@ const routes: Routes = [
   // {path: 'terminal', canActivate : [AuthGuardTerminalServiceService], component: TerminalComponent},
   // {path: 'developer', canActivate : [AuthGuardDeveloperServiceService], component: DeveloperComponent},
   // {path: 'manual', canActivate : [AuthGuardAdminServiceService], component: ManualResultComponent},
+  // {path: 'masterStockist', canActivate : [AuthGuardAdminServiceService], component: MasterStockistComponent},
   // {path: 'bi-icon', component: BiIconComponent},
 ];
 
