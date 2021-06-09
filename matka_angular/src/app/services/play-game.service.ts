@@ -9,6 +9,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {ErrorService} from './error.service';
 import {GameInputSaveResponse} from '../models/GameInputSaveResponse.model';
 import {DrawTime} from '../models/DrawTime.model';
+import {GameResult} from '../models/GameResult.model';
 
 
 @Injectable({
@@ -20,6 +21,8 @@ export class PlayGameService {
   singleNumberSubject = new Subject<SingleNumber[]>();
   numberCombinationMatrix: SingleNumber[] = [];
   numberCombinationMatrixSubject = new Subject<SingleNumber[]>();
+  currentDateResult: GameResult;
+  currentDateResultSubject = new Subject<GameResult>();
   // activeDrawTime: DrawTime;
   // activeDrawTimeSubject = new Subject<DrawTime>();
   private BASE_API_URL = environment.BASE_API_URL;
@@ -37,6 +40,12 @@ export class PlayGameService {
         this.numberCombinationMatrix = response.data;
         this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
       });
+
+      this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
+       this.currentDateResult = response.data;
+       this.currentDateResultSubject.next({...this.currentDateResult});
+      });
+
     // get active draw
     //   this.http.get(this.BASE_API_URL + '/drawTimes/active').subscribe((response: ServerResponse) => {
     //     this.activeDrawTime = response.data;
@@ -59,6 +68,12 @@ export class PlayGameService {
     return this.numberCombinationMatrixSubject.asObservable();
   }
 
+  getCurrentDateResult(){
+    return {...this.currentDateResult};
+  }
+  getCurrentDateResultListener(){
+    return this.currentDateResultSubject.asObservable();
+  }
   // getActiveDrawTime(){
   //   return {...this.activeDrawTime};
   // }
