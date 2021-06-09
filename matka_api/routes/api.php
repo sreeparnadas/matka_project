@@ -63,6 +63,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     //play_masters
     Route::post('buyTicket',[PlayController::class,'save_play_details']);
 
+    Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
+
 });
 
 
@@ -98,6 +100,7 @@ Route::group(array('prefix' => 'dev'), function() {
 
     //result_masters
     Route::get('results',[ResultMasterController::class, 'get_results']);
+    Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
 
     //manual_result
 
