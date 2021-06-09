@@ -58,4 +58,15 @@ class StockistController extends Controller
 
         return response()->json(['success'=>1,'data'=> new UserResource($user)], 200,[],JSON_NUMERIC_CHECK);
     }
+
+    public function updateStockist(Request $request){
+        $requestedData = (object)$request->json()->all();
+        $id = $requestedData->id;
+        $user_name = $requestedData->userName;
+        $stockist = User::findOrFail($id);
+        $stockist->user_name = $user_name;
+        $stockist->save();
+        return response()->json(['success'=>1,'data'=> new UserResource($stockist)], 200,[],JSON_NUMERIC_CHECK);
+
+    }
 }

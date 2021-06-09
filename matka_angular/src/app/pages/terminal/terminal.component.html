@@ -41,11 +41,13 @@
             </table>
           </div>
         </div>
+
         <div fxFlex="30">
           <div style="padding-left: 20px;">
             <img src="assets/images/wheel.gif" height="200px" style="padding-left: 20px;" alt="" >
           </div>
         </div>
+
         <div fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid gold; color: white; font-weight: bold; ">
           <div>{{currentDate}}&nbsp;
           </div>
@@ -155,7 +157,7 @@
           <span class="text-white text-center">SINGLES</span>
           <div class="d-flex justify-content-between" style="background-color: rgb(223, 214, 177);height: 50px; border: 3px solid black;">
             <div class="chips-outer-div" *ngFor="let single of singleNumbers">
-              <button matBadge="{{single.quantity}}" class="p-2"  style="border-radius: 20%;" (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
+              <button matBadge="{{single.quantity}}" class="p-2"  style="border-radius: 50%;" (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
             </div>
           </div>
 

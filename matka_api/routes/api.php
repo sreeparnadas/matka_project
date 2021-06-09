@@ -13,6 +13,7 @@ use App\Http\Controllers\ManualResultController;
 use App\Http\Controllers\Test;
 use App\Http\Controllers\PlayController;
 use App\Http\Controllers\CommonFunctionController;
+use App\Http\Controllers\StockistController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -107,8 +108,9 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('test',[Test::class, 'index']);
 
 
-    Route::get('stockists',[\App\Http\Controllers\StockistController::class, 'getAllStockists']);
-    Route::post('stockists',[\App\Http\Controllers\StockistController::class, 'createStockist']);
+    Route::get('stockists',[StockistController::class, 'getAllStockists']);
+    Route::post('stockists',[StockistController::class, 'createStockist']);
+    Route::put('stockists',[StockistController::class, 'updateStockist']);
 
 
 });

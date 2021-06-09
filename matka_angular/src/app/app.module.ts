@@ -72,6 +72,7 @@ import {NgxPrinterModule} from 'ngx-printer';
 import { MasterStockistComponent } from './pages/cpanel/master-stockist/master-stockist.component';
 // import { MasterStockistModule } from './modules/general/cpanel/master-stockist/master-stockist.module';
 import {MatTabsModule} from '@angular/material/tabs';
+import {NgMarqueeModule} from 'ng-marquee-improved';
 // import {NgxPrintModule} from "ngx-print";
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
@@ -147,7 +148,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     FooterModule,
     BiIconModule,
     // MasterStockistModule,
-    MatTabsModule
+    MatTabsModule,
+    NgMarqueeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},
