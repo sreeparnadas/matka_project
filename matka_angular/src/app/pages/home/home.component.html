@@ -30,7 +30,7 @@
             <tr *ngFor="let row of tableData.result.slice(0, tableData.result.length % columnNumber  === 0 ?
                tableData.result.length / columnNumber : tableData.result.length / columnNumber + 1); let idx = index">
               <td scope="row" *ngFor="let result of tableData.result.slice(idx * columnNumber, idx * columnNumber + columnNumber)">
-                <span class="font-weight-bold text-danger bg-warning">{{result.end_time.slice(0,5)}}</span>
+                <div class=" result-heading">{{result.end_time.slice(0,5)}}</div>
                 <div class="bd-highlight">{{result.visible_triple_number || '***'}}</div>
                 <div class="bd-highlight">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div>
               </td>
