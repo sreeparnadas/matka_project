@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
   deviceXs: boolean;
   showDevArea = false;
   isProduction = environment.production;
+  columnNumber = 8;
+
   constructor(private gameResultService: GameResultService, private metaTagService: Meta, private commonService: CommonService, private renderer: Renderer2) {
 
     this.currentDate = this.commonService.getCurrentDate();
