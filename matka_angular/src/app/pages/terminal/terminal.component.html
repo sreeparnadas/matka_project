@@ -4,9 +4,8 @@
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background" >
       <div fxLayout="row" fxLayoutAlign="space-around center" >
-        <div id="table-1" fxFlex="35" class=" ml-2 mt-2" style="border: 2px solid rgb(0, 26, 255); ">
-          <div>
-            <table class="table table-responsive" id="triple-table">
+        <div id="table-1" fxFlex="35" class=" ml-2 mt-2" >
+            <table class="table" id="triple-table" style="border: 5px solid lightgoldenrodyellow;">
               <thead class="mt-5 triple-table-thead">
               <tr>
                 <th class="pink" *ngFor="let single of singleNumbers; let i = index">
@@ -39,14 +38,13 @@
               </ng-container>
               </tbody>
             </table>
-          </div>
         </div>
 
         <div fxFlex="30">
           <div style="">
             <img src="assets/images/wheel.gif" height="200px" style="padding-left: 20px;" alt="" >
 
-            
+
 
           </div>
         </div>
@@ -58,7 +56,7 @@
           <div style="text-align: end; color: white;">RESULT SHEET</div>
           <div class="container right-container" >
 
-            <table class="table table-responsive" id="triple-table">
+            <table class="table table-responsive" id="result-table">
 
               <tbody>
 
