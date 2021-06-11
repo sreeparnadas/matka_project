@@ -15,6 +15,7 @@ import {NgxPrinterService, PrintItem} from 'ngx-printer';
 import {GameInputSaveResponse} from '../../models/GameInputSaveResponse.model';
 import {NgxPrintModule} from 'ngx-print';
 import { GameResult } from 'src/app/models/GameResult.model';
+import {CurrentGameResult} from '../../models/CurrentGameResult.model';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class TerminalComponent implements OnInit {
   chips: number[] = [];
   userGameInput: any[] = [];
   public totalTicketPurchased: number;
-  currentDateResult: GameResult[] = [];
+  currentDateResult: CurrentGameResult;
 
   columnNumber = 5;
   public activeTripleContainerValue = 0;
@@ -93,7 +94,7 @@ export class TerminalComponent implements OnInit {
         this.activeDrawTime = response;
     });
     this.currentDateResult = this.playGameService.getCurrentDateResult();
-    this.playGameService.getCurrentDateResultListener().subscribe((response: GameResult[]) => {
+    this.playGameService.getCurrentDateResultListener().subscribe((response: CurrentGameResult) => {
       this.currentDateResult = response;
       console.log(this.currentDateResult);
     });

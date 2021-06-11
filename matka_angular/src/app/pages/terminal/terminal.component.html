@@ -60,87 +60,89 @@
 
               <tbody>
 
-              <tr >
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
+<!--              <tr>--> length = {{(currentDateResult.result | json)}}
+              <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % 5  === 0 ?
+               currentDateResult.result.length / 5 : currentDateResult.result.length / 5 + 1); let idx = index">
+<!--                <td colspan="2" class="right-td" *ngFor="let result of currentDateResult.result.slice(idx * 5, idx * 5 + 5)">-->
+<!--                  {{result.end_time}}<br>{{result.triple_number}}<br>{{result.visible_triple_number}}-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
               </tr>
 
-              <tr >
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
+<!--              <tr >-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
 
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-              </tr>
-              <tr >
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-                <td colspan="2"  class="right-td">
-                  10:00 AM
-                </td>
-              </tr>
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              <tr >-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td">-->
+<!--                  10:00 AM-->
+<!--                </td>-->
+<!--              </tr>-->
 
-              <tr >
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-                <td colspan="2"  class="right-td1">
-                  555 <br>
-                  5
-                </td>
-              </tr>
+<!--              <tr >-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--                <td colspan="2"  class="right-td1">-->
+<!--                  555 <br>-->
+<!--                  5-->
+<!--                </td>-->
+<!--              </tr>-->
 
               </tbody>
             </table>
