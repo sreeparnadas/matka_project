@@ -37,6 +37,8 @@ export class TerminalComponent implements OnInit {
   currentDateResult: CurrentGameResult;
 
   columnNumber = 5;
+  columnNumber2 = 8;
+
   public activeTripleContainerValue = 0;
   public selectedChip = 2;
   copyNumberMatrix: SingleNumber[];

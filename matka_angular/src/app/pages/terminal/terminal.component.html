@@ -60,25 +60,17 @@
 
               <tbody>
 
-<!--              <tr>--> length = {{(currentDateResult.result | json)}}
-              <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % 5  === 0 ?
-               currentDateResult.result.length / 5 : currentDateResult.result.length / 5 + 1); let idx = index">
-<!--                <td colspan="2" class="right-td" *ngFor="let result of currentDateResult.result.slice(idx * 5, idx * 5 + 5)">-->
-<!--                  {{result.end_time}}<br>{{result.triple_number}}<br>{{result.visible_triple_number}}-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-              </tr>
+<!--              <tr>-->
+   <!-- length = {{(currentDateResult.result | json)}} -->
+                  <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber2  === 0 ? currentDateResult.result.length / columnNumber2 : currentDateResult.result.length / columnNumber2 + 1); let idx = index">
+                    <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
+
+                      <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
+                      <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
+                      <div class="bd-highlight current-result">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div>
+
+                    </td>
+                  </tr>
 
 <!--              <tr >-->
 <!--                <td colspan="2"  class="right-td1">-->
