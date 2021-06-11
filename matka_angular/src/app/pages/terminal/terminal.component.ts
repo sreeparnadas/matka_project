@@ -54,6 +54,7 @@ export class TerminalComponent implements OnInit {
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService,
               private ngxPrinterService: NgxPrinterService, private renderer: Renderer2
   ) {
+    
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
     // this.renderer.setStyle(document.body.firstChild., 'background-image', ' url("assets/images/curtain.jpg")');
     const layer = document.querySelector('.layer');
