@@ -309,6 +309,7 @@ class DatabaseSeeder extends Seeder
             ['draw_name'=> 'Good morning','start_time'=>'19:00 ','end_time'=>'19:30','visible_time'=>'19:00 pm','active'=>0],
             ['draw_name'=> 'Good morning','start_time'=>'19:30 ','end_time'=>'20:00','visible_time'=>'19:30 pm','active'=>0],
             ['draw_name'=> 'Good morning','start_time'=>'20:00 ','end_time'=>'20:30','visible_time'=>'20:00 pm','active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'20:30 ','end_time'=>'21:00','visible_time'=>'20:30 pm','active'=>0],
 
 
         ]);
