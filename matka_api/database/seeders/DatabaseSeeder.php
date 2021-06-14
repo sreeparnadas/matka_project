@@ -285,6 +285,7 @@ class DatabaseSeeder extends Seeder
 
         DrawMaster::insert([
 
+            ['draw_name'=> 'Good morning','start_time'=>'08:30 ','end_time'=>'09:00','visible_time'=>'20:30 pm','active'=>0],
             ['draw_name'=> 'Good morning','start_time'=>'09:00','end_time'=>'09:30','visible_time'=>'09:00 am','active'=>1],
             ['draw_name'=> 'Good morning','start_time'=>'09:30','end_time'=>'10:00','visible_time'=>'09:30 am','active'=>1],
             ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'10:30','visible_time'=>'10:00 am','active'=>0],
@@ -308,8 +309,8 @@ class DatabaseSeeder extends Seeder
             ['draw_name'=> 'Good morning','start_time'=>'19:00 ','end_time'=>'19:30','visible_time'=>'19:00 pm','active'=>0],
             ['draw_name'=> 'Good morning','start_time'=>'19:30 ','end_time'=>'20:00','visible_time'=>'19:30 pm','active'=>0],
             ['draw_name'=> 'Good morning','start_time'=>'20:00 ','end_time'=>'20:30','visible_time'=>'20:00 pm','active'=>0],
-            ['draw_name'=> 'Good morning','start_time'=>'20:30 ','end_time'=>'21:00','visible_time'=>'20:30 pm','active'=>0],
-            
+
+
         ]);
 
         GameType::insert([
