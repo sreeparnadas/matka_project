@@ -3,7 +3,7 @@
 
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background" >
-      <div fxLayout="row" fxLayoutAlign="space-around center" >
+      <div fxLayout="row" fxLayoutAlign="" >
         <div id="table-1" fxFlex="35" class=" ml-2 mt-2" >
             <table class="table" id="triple-table" style="border: 5px solid lightgoldenrodyellow;">
               <thead class="mt-5 triple-table-thead">
@@ -38,17 +38,23 @@
               </ng-container>
               </tbody>
             </table>
+
+            <div class="col-4  " style="padding-top: 10px;" >
+              <div class="left-div ml-1 mt-5">
+                play : {{totalTicketPurchased}}
+              </div>
+            </div>
         </div>
 
         <div fxFlex="30">
           <div style="text-align: center;">
 
             <div style="padding-top: 50px;">
-              <img src="assets/images/wheel.gif" height="200px" style="padding-left: 60px;" alt="" ><br>
+              <img src="assets/images/wheel.gif" height="200px" style="padding-left: 60px;" alt="" ><br> `
 
-              <div style="padding-top: 50px;">
+              <div style="">
                 <span class="text-white text-center"><h1>SINGLES</h1> </span>
-                <div class="d-flex justify-content-between" style="background-color: rgba(151, 1, 1, 0.5);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double;">
+                <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double;">
                   <!-- <div class="chips-outer-div" > -->
                     <button matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"   (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
                   <!-- </div> -->
@@ -159,16 +165,26 @@
 
               </tbody>
             </table>
+
+
+
+            <div class=" d-flex" style="height: 40px; border-radius: 10px;">
+              <button style="font-size: 65%; width: 20%;" class="btn btn-info  btn-responsive">INFO</button>
+              <button (click)="resetMatrixValue()" style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">CLEAR</button>
+              <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">REPEAT</button>
+              <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">DOUBLE</button>
+              <button (click)="saveUserPlayInputDetails()" style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">BUY</button>
+            </div>
           </div>
 
         </div>
       </div>
       <div class="d-flex">
-        <div class="col-4 ml-2 mt-2" >
+        <!-- <div class="col-4 ml-2 mt-2" >
           <div class="left-div ml-2">
             play : {{totalTicketPurchased}}
           </div>
-        </div>
+        </div> -->
         <div class="col-4">
 
 
@@ -188,13 +204,13 @@
           </div> -->
 
         </div>
-        <div class="col-4 ml-2 d-flex" style="height: 40px; border-radius: 10px;">
+        <!-- <div class="col-4 ml-2 d-flex" style="height: 40px; border-radius: 10px;">
           <button style="font-size: 65%; width: 20%;" class="btn btn-info  btn-responsive">INFO</button>
           <button (click)="resetMatrixValue()" style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">CLEAR</button>
           <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">REPEAT</button>
           <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">DOUBLE</button>
           <button (click)="saveUserPlayInputDetails()" style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">BUY</button>
-        </div>
+        </div> -->
       </div>
 
       <!-- <div class="card" style="width: 18rem;">
