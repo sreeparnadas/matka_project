@@ -39,7 +39,7 @@
               </tbody>
             </table>
 
-            <div class="col-4  " style="padding-top: 10px;" >
+            <div class="col-4" style="padding-top: 10px;" >
               <div class="left-div ml-1 mt-5">
                 play : {{totalTicketPurchased}}
               </div>
@@ -50,7 +50,7 @@
           <div style="text-align: center;">
 
             <div style="padding-top: 50px;">
-              <img src="assets/images/wheel.gif" height="200px" style="padding-left: 60px;" alt="" ><br> `
+              <img src="assets/images/wheel.gif" height="200px" style="padding-left: 60px;" alt="" ><br>
 
               <div style="">
                 <span class="text-white text-center"><h1>SINGLES</h1> </span>
@@ -74,13 +74,35 @@
         </div>
 
         <div fxFlex="35" class=" ml-2 mt-2" style=" color: white; font-weight: bold; ">
-          <div>{{currentDate}}&nbsp;
+          <!-- <div>{{currentDate}}&nbsp;
           </div>
           <div>GAME1 RESULT SHEET</div>
-          <div style="text-align: end; color: white;">RESULT SHEET</div>
+          <div style="text-align: end; color: white;">RESULT SHEET</div> -->
           <div class="container right-container" >
+            <table class="" >
+              <thead >
+                <tr >
+                  <th colspan="4">
+                    <div>{{currentDate}}&nbsp;
+                    </div>
+                    <!-- <div>GAME1 RESULT SHEET</div> -->
+                  </th>
+                  <th colspan="4" style="padding-left: 100px;">
+                    <div style="text-align: end; color: white;">RESULT SHEET</div>
+                  </th>
+                </tr>
+              </thead>
+            </table>
 
             <table class="table " id="result-table" >
+
+
+
+              <!-- <thead>
+                <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber3  === 0 ? currentDateResult.result.length / columnNumber3 : currentDateResult.result.length / columnNumber3 + 1); let idx = index">
+                  <th scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber3, idx * columnNumber3 + columnNumber3)" class="text-center align-middle"></th>
+                </tr>
+              </thead> -->
 
               <tbody>
 
