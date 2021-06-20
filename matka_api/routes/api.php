@@ -15,6 +15,7 @@ use App\Http\Controllers\PlayController;
 use App\Http\Controllers\CommonFunctionController;
 use App\Http\Controllers\StockistController;
 use App\Http\Controllers\CentralController;
+use App\Http\Controllers\NextGameDrawController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -119,5 +120,6 @@ Route::group(array('prefix' => 'dev'), function() {
 
     Route::post('createAutoResult', [CentralController::class, 'createResult']);
 
+    Route::get('nextDraw', [NextGameDrawController::class, 'index']);
 });
 
