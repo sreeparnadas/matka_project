@@ -14,6 +14,7 @@ use App\Http\Controllers\Test;
 use App\Http\Controllers\PlayController;
 use App\Http\Controllers\CommonFunctionController;
 use App\Http\Controllers\StockistController;
+use App\Http\Controllers\CentralController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -115,6 +116,8 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::post('stockists',[StockistController::class, 'createStockist']);
     Route::put('stockists',[StockistController::class, 'updateStockist']);
 
+
+    Route::post('createAutoResult', [CentralController::class, 'createResult']);
 
 });
 

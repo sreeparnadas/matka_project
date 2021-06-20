@@ -100,7 +100,6 @@ export class TerminalComponent implements OnInit {
     this.currentDateResult = this.playGameService.getCurrentDateResult();
     this.playGameService.getCurrentDateResultListener().subscribe((response: CurrentGameResult) => {
       this.currentDateResult = response;
-      console.log(this.currentDateResult);
     });
 
 

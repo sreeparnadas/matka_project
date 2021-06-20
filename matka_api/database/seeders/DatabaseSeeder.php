@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\UserType;
 use App\Models\NumberCombination;
 use App\Models\ResultMaster;
+use App\Models\NextGameDraw;
 
 class DatabaseSeeder extends Seeder
 {
@@ -815,6 +816,8 @@ class DatabaseSeeder extends Seeder
 
 
         ]);
+
+        NextGameDraw::create(['next_draw_id' => 2, 'last_draw_id' => 1]);
 
     }
 }
