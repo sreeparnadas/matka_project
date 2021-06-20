@@ -520,3 +520,7 @@ span .mat-fab .mat-button-wrapper {
     background-color: nth($triple-selection-background-colors, $i+1) !important;
   }
 }
+
+.selectedChipStyle{
+  background-color: goldenrod;
+}
