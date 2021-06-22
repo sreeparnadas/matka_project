@@ -7,6 +7,7 @@ import {CommonService} from '../../services/common.service';
 import {environment} from '../../../environments/environment';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import {WatchDrawService} from '../../services/watch-draw.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,7 +30,10 @@ export class HomeComponent implements OnInit {
   isProduction = environment.production;
   columnNumber = 8;
 
-  constructor(private gameResultService: GameResultService, private metaTagService: Meta, private commonService: CommonService, private renderer: Renderer2) {
+  nextDrawId: any;
+
+  constructor(private gameResultService: GameResultService, private metaTagService: Meta,
+              private commonService: CommonService, private renderer: Renderer2, private watchDrawService: WatchDrawService) {
 
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
@@ -41,6 +45,9 @@ export class HomeComponent implements OnInit {
     this.gameResultService.getResultListListener().subscribe((response: GameResult[]) => {
       this.resultList = response;
     });
+
+    this.nextDrawId = this.watchDrawService.getNextDraw();
+    console.log('this:', this.nextDrawId);
 
   }
 

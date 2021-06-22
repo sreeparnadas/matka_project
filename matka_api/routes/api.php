@@ -119,7 +119,8 @@ Route::group(array('prefix' => 'dev'), function() {
 
 
     Route::post('createAutoResult', [CentralController::class, 'createResult']);
+    Route::post('autoResult', [ResultMasterController::class, 'save_auto_result']);
 
-    Route::get('nextDraw', [NextGameDrawController::class, 'index']);
+    Route::get('nextDrawId', [NextGameDrawController::class, 'getNextDrawIdOnly']);
 });
 

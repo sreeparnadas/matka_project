@@ -12,4 +12,9 @@ class NextGameDrawController extends Controller
         $data = NextGameDraw::first();
         return $data;
     }
+
+    public function getNextDrawIdOnly(){
+        $nextGameDrawObj = NextGameDraw::first();
+        return $nextGameDrawObj->next_draw_id;
+    }
 }

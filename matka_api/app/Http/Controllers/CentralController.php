@@ -23,15 +23,10 @@ class CentralController extends Controller
             DrawMaster::findOrFail($nextDrawId)->update(['active' => 1]);
         }
 
-        $selectRandomResult = NumberCombination::all()->random(1)->first();
 
+        $resultMasterController = new ResultMasterController();
+        $jsonData = $resultMasterController->save_auto_result($lastDrawId);
 
-        $request->request->add(
-            ['drawMasterId'=> $lastDrawId, 'numberCombinationId' => $selectRandomResult->id]
-        );
-
-        $manualResultCtrlObj = new ManualResultController();
-        $jsonData = $manualResultCtrlObj->save_manual_result($request);
         $resultCreatedObj = json_decode($jsonData->content(),true);
 
 //        $actionId = 'score_update';
@@ -61,8 +56,9 @@ class CentralController extends Controller
 
             return response()->json(['success'=>1, 'message' => 'Result added'], 200);
         }else{
-            return response()->json(['success'=>0, 'message' => 'Result not added'], 500);
+            return response()->json(['success'=>0, 'message' => 'Result not added'], 401);
         }
 
     }
+
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\DrawMaster;
+use App\Models\ManualResult;
+use App\Models\NextGameDraw;
+use App\Models\NumberCombination;
 use App\Models\ResultMaster;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -88,53 +91,25 @@ class ResultMasterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function save_result_masters(Request $request)
+    public function save_auto_result($draw_id)
     {
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ResultMaster  $resultMaster
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ResultMaster $resultMaster)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ResultMaster  $resultMaster
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ResultMaster $resultMaster)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ResultMaster  $resultMaster
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ResultMaster $resultMaster)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ResultMaster  $resultMaster
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ResultMaster $resultMaster)
-    {
-        //
+        $manualResult = ManualResult::where('game_date',Carbon::today())
+            ->where('draw_master_id',$draw_id)->first();
+        if(!empty($manualResult)){
+            $number_combination_for_result = $manualResult->number_combination_id;
+        }else{
+            $selectRandomResult = NumberCombination::all()->random(1)->first();
+            $number_combination_for_result = $selectRandomResult->id;
+        }
+        $resultMaster = new ResultMaster();
+        $resultMaster->draw_master_id = $draw_id;
+        $resultMaster->number_combination_id = $number_combination_for_result;
+        $resultMaster->game_date = Carbon::today();
+        $resultMaster->save();
+        if(isset($resultMaster->id)){
+            return response()->json(['success'=>1, 'data' => 'added result'], 200);
+        }else{
+            return response()->json(['success'=>0, 'data' => 'result not added'], 500);
+        }
     }
 }

@@ -56,12 +56,6 @@ class ManualResultController extends Controller
             $manualResult->game_date = Carbon::today();
             $manualResult->save();
 
-            $resultMaster = new ResultMaster();
-            $resultMaster->draw_master_id = $requestedData->drawMasterId;
-            $resultMaster->number_combination_id = $requestedData->numberCombinationId;
-            $resultMaster->game_date = Carbon::today();
-            $resultMaster->save();
-
             DB::commit();
         }catch (\Exception $e){
             DB::rollBack();
