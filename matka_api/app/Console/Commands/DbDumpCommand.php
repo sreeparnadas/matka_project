@@ -65,18 +65,20 @@ class DbDumpCommand extends Command
 //        $destination = $dir . DIRECTORY_SEPARATOR . "$database-" . '.sql';
 
         // Omit view definer so we do not come across missing user on another system
-//        $removeDefiner = "| sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/'";
+//        $removeDefiner = "| sed -e 's/DEFINER[ ]=[ ][^]\/\/'";
 
         // Avoid database prefix being written into dump file
 //        $removeDbPrefix = "| sed -e 's/`$database`.`/`/g'";
 
 //        $command = "mysqldump -h $host -u$user -p$password $database $removeDefiner $removeDbPrefix > $destination";
-        $command = "mysqldump -h $host -u$user -p$password $database  > $destination";
+        $command = "mysqldump -h $host -u$user -p$password --routines -B $database  > $destination";
 
         $this->consoleHandler()->executeCommand($command);
 
-        $this->output->success("Database `$database` dumped successfully");
-        $this->output->text("Destination: `$destination`");
-        $this->output->newLine();
+//        $this->output->success("Database `$database` dumped successfully");
+        $this->output->text($destination);
+//        $this->output->text("Destination: `$destination`");
+//        $this->output->newLine();
+
     }
 }

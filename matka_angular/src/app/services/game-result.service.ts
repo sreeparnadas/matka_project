@@ -29,4 +29,11 @@ export class GameResultService {
   getResultListListener(){
     return this.resultSubject.asObservable();
   }
+
+  getUpdatedResult(){
+    this.http.get(this.BASE_API_URL + '/dev/results').subscribe((response: ServerResponse) => {
+      this.resultList = response.data;
+      this.resultSubject.next([...this.resultList]);
+    });
+  }
 }

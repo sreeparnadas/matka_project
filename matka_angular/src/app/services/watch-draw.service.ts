@@ -5,6 +5,8 @@ import {Subject} from 'rxjs';
 import {ProjectData} from '../models/project-data.model';
 import {GameResultService} from './game-result.service';
 import {GameResult} from '../models/GameResult.model';
+import {ServerResponse} from '../models/ServerResponse.model';
+import {PlayGameService} from './play-game.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,8 @@ export class WatchDrawService {
   private BASE_API_URL = environment.BASE_API_URL;
   private nextDrawId: any;
   nextDrawSubject = new Subject<number>();
-  resultList: GameResult[] = [];
 
-  constructor(private http: HttpClient, private gameResultService: GameResultService) {
+  constructor(private http: HttpClient, private gameResultService: GameResultService, private playGameService: PlayGameService) {
 
     setInterval(() => {
       this.http.get(this.BASE_API_URL + '/dev/nextDrawId').subscribe((response) => {
@@ -26,12 +27,13 @@ export class WatchDrawService {
         if (this.nextDrawId != response){
           this.nextDrawId = response;
           this.nextDrawSubject.next(this.nextDrawId);
-          this.resultList = this.gameResultService.getResultList();
-          console.log('resultList===', this.resultList);
+          this.gameResultService.getUpdatedResult();
+          this.playGameService.getTodayResult();
         }
       });
     }, 10000);
   }
+
 
   getNextDraw(){
     return {...this.nextDrawId};

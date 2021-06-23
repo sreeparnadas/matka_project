@@ -13,6 +13,7 @@ import {GameResult} from '../models/GameResult.model';
 import {CurrentGameResult} from '../models/CurrentGameResult.model';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -83,10 +84,16 @@ export class PlayGameService {
   // }
 
   saveUserPlayInputDetails(inputData){
-
     return this.http.post<GameInputSaveResponse>(this.BASE_API_URL + '/buyTicket', inputData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
         console.log('service ', response);
     }));
+  }
+
+  getTodayResult(){
+    this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
+      this.currentDateResult = response.data;
+      this.currentDateResultSubject.next({...this.currentDateResult});
+    });
   }
 }

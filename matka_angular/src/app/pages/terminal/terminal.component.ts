@@ -16,6 +16,7 @@ import {GameInputSaveResponse} from '../../models/GameInputSaveResponse.model';
 import {NgxPrintModule} from 'ngx-print';
 import { GameResult } from 'src/app/models/GameResult.model';
 import {CurrentGameResult} from '../../models/CurrentGameResult.model';
+import {WatchDrawService} from '../../services/watch-draw.service';
 
 
 @Component({
@@ -53,7 +54,7 @@ export class TerminalComponent implements OnInit {
   public lastPurchasedTicketTriple: {visibleTripleNumber: number, quantity: number, singleNumber: number}[];
 
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService,
-              private ngxPrinterService: NgxPrinterService, private renderer: Renderer2
+              private ngxPrinterService: NgxPrinterService, private renderer: Renderer2, private watchDrawService: WatchDrawService
   ) {
 
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');

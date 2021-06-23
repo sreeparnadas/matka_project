@@ -45,10 +45,6 @@ export class HomeComponent implements OnInit {
     this.gameResultService.getResultListListener().subscribe((response: GameResult[]) => {
       this.resultList = response;
     });
-
-    this.nextDrawId = this.watchDrawService.getNextDraw();
-    console.log('this:', this.nextDrawId);
-
   }
 
   public openPDF(): void {
