@@ -24,8 +24,7 @@ class TerminalResource extends JsonResource
             'terminalId' => $this->id,
             'terminalName' => $this->user_name,
             'pin' => $this->email,
-            'balance' =>$this->closing_balance,
-            'stockist_id' =>,
+            'balance' =>$this->closing_balance
         ];
     }
 }

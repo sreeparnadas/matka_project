@@ -15,12 +15,7 @@ use App\Http\Controllers\PlayController;
 use App\Http\Controllers\CommonFunctionController;
 use App\Http\Controllers\StockistController;
 use App\Http\Controllers\CentralController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\NextGameDrawController;
-=======
-use App\Http\Controllers\TerminalController;
-
->>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | API Routes
