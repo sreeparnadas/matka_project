@@ -15,7 +15,12 @@ use App\Http\Controllers\PlayController;
 use App\Http\Controllers\CommonFunctionController;
 use App\Http\Controllers\StockistController;
 use App\Http\Controllers\CentralController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\NextGameDrawController;
+=======
+use App\Http\Controllers\TerminalController;
+
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -116,6 +121,11 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('stockists',[StockistController::class, 'getAllStockists']);
     Route::post('stockists',[StockistController::class, 'createStockist']);
     Route::put('stockists',[StockistController::class, 'updateStockist']);
+
+
+    Route::get('terminals',[TerminalController::class, 'getAllTerminals']);
+    Route::post('terminals',[TerminalController::class, 'createTerminal']);
+    Route::put('terminals',[TerminalController::class, 'updateTerminal']);
 
 
     Route::post('createAutoResult', [CentralController::class, 'createResult']);
