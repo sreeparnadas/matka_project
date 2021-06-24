@@ -60,4 +60,20 @@ class User extends Authenticatable
     public function user_type(){
         return $this->belongsTo(UserType::class,'user_type_id');
     }
+
+    public function stockist_to_terminal(){
+        return $this->hasOne(StockistToTerminal::class, 'terminal_id');
+    }
+
+    public function getStockistIdAttribute(){
+        $stockistToTerminal= $this->stockist_to_terminal;
+        if(!$stockistToTerminal){
+            return null;
+        }
+        return $stockistToTerminal->stockist_id;
+    }
+
+    
+
+
 }

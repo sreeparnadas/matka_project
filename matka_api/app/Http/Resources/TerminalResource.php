@@ -2,7 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\User;
+
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\StockistResource;
 
 /**
  * @property mixed id
@@ -24,7 +27,10 @@ class TerminalResource extends JsonResource
             'terminalId' => $this->id,
             'terminalName' => $this->user_name,
             'pin' => $this->email,
-            'balance' =>$this->closing_balance
+            'balance' =>$this->closing_balance,
+            // 'stockist' =>($this->stockist_id!= null) ? new StockistResource($this->stockist_id) : null,
+            'stockist' => is_null($this->stockist_id) ? 'empty':new StockistResource(User::find($this->stockist_id)->first())
+
         ];
     }
 }

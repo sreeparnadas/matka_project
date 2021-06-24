@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\StockistResource;
 use App\Models\User;
 use App\Models\UserType;
 use App\Models\CustomVoucher;
@@ -14,7 +14,7 @@ class StockistController extends Controller
 {
     public function getAllStockists(){
         $stockists = UserType::find(3)->users;
-        return UserResource::collection($stockists);
+        return StockistResource::collection($stockists);
     }
     public function createStockist(Request $request){
         $requestedData = (object)$request->json()->all();
@@ -56,7 +56,7 @@ class StockistController extends Controller
             return response()->json(['success'=>0, 'data' => null, 'error'=>$e->getMessage()], 500);
         }
 
-        return response()->json(['success'=>1,'data'=> new UserResource($user)], 200,[],JSON_NUMERIC_CHECK);
+        return response()->json(['success'=>1,'data'=> new StockistResource($user)], 200,[],JSON_NUMERIC_CHECK);
     }
 
     public function updateStockist(Request $request){
@@ -66,7 +66,7 @@ class StockistController extends Controller
         $stockist = User::findOrFail($id);
         $stockist->user_name = $user_name;
         $stockist->save();
-        return response()->json(['success'=>1,'data'=> new UserResource($stockist)], 200,[],JSON_NUMERIC_CHECK);
+        return response()->json(['success'=>1,'data'=> new StockistResource($stockist)], 200,[],JSON_NUMERIC_CHECK);
 
     }
 }

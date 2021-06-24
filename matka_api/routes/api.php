@@ -16,6 +16,8 @@ use App\Http\Controllers\CommonFunctionController;
 use App\Http\Controllers\StockistController;
 use App\Http\Controllers\CentralController;
 use App\Http\Controllers\NextGameDrawController;
+use App\Http\Controllers\TerminalController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -122,11 +124,14 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('terminals',[TerminalController::class, 'getAllTerminals']);
     Route::post('terminals',[TerminalController::class, 'createTerminal']);
     Route::put('terminals',[TerminalController::class, 'updateTerminal']);
+    Route::get('terminals/{id}',[TerminalController::class, 'getStockistByTerminalId']);
 
 
     Route::post('createAutoResult', [CentralController::class, 'createResult']);
     Route::post('autoResult', [ResultMasterController::class, 'save_auto_result']);
 
     Route::get('nextDrawId', [NextGameDrawController::class, 'getNextDrawIdOnly']);
+
+
 });
 

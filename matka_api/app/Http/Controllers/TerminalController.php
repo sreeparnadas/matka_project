@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\CustomVoucher;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TerminalResource;
 use App\Models\StockistToTerminal;
 use Illuminate\Http\Request;
 /////// for log
@@ -18,7 +19,12 @@ class TerminalController extends Controller
 {
     public function getAllTerminals(){
         $terminals = UserType::find(4)->users;
-        return UserResource::collection($terminals);
+        return TerminalResource::collection($terminals);
+    }
+
+    public function getStockistByTerminalId(){
+        $trminals = User::find(StockistToTerminal::whereTerminalId(14)->first()->stockist_id);
+        return response()->json(['success'=>0, 'data' => $trminals], 500);
     }
 
 
