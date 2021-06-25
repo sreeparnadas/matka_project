@@ -49,12 +49,12 @@
         <div fxFlex="30">
           <div style="text-align: center;">
 
-            <div style="padding-top: 50px;">
+            <div style="padding-top: 17px; padding-left: 40px;">
 
               <ngx-wheel
                 #wheel
-                width='400'
-                height='400'
+                width='270'
+                height='270'
                 spinDuration='8'
                 [items]='items'
                 [innerRadius]='20'
@@ -67,7 +67,7 @@
                 (onSpinStart)='before()'
                 (onSpinComplete)='after()'
               ></ngx-wheel>
-              <div class="buttons">
+              <!-- <div class="buttons">
                 <button (click)="spin(0)">Prize 0</button>
                 <button (click)="spin(1)">Prize 1</button>
                 <button (click)="spin(2)">Prize 2</button>
@@ -80,7 +80,7 @@
                 <button (click)="spin(9)">Prize 9</button>
                 <button (click)="spin(10)">Prize 10</button>
                 <button (click)="spin(11)">Prize 11</button>
-              </div>
+              </div> -->
 
 
 
@@ -89,13 +89,13 @@
 
               <div style="">
                 <span class="text-white text-center"><h1>SINGLES</h1> </span>
-                <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double;">
+                <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%;">
                   <!-- <div class="chips-outer-div" > -->
                     <button matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"   (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
                   <!-- </div> -->
                 </div>
 
-                <div class="d-flex justify-content-between" style="background-color: rgb(62, 233, 85);height: 50px; border-radius: 10px; border: 5px solid rgb(55, 75, 255); border-style: double;">
+                <div class="d-flex justify-content-between" style="background-color: rgb(62, 233, 85);height: 50px; border-radius: 10px; border: 5px solid rgb(55, 75, 255); border-style: double; width: 110%;">
                   <div class="chips-outer-div " *ngFor="let x of chips">
                     <button class="coder-fab m-1 " [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" (click)="changeChip(x)">{{ x }}</button>
                   </div>
@@ -225,12 +225,12 @@
 
 
 
-            <div class=" d-flex" style="height: 40px; border-radius: 10px; background-color: rgb(250, 234, 210);">
-              <button style="font-size: 65%; width: 20%;" class="btn btn-lg  btn-responsive btn-outline-primary">INFO</button>
-              <button (click)="resetMatrixValue()" style="font-size: 65%; width: 20%;" class="btn btn-outline-success ml-1 btn-responsive">CLEAR</button>
-              <button style="font-size: 65%; width: 20%;" class="btn btn-outline-dark ml-1 btn-responsive">REPEAT</button>
+            <div class=" d-flex" style="height: 40px; border-radius: 10px;">
+              <button style="font-size: 65%; width: 20%;" class="btn btn-lg  btn-responsive btn-primary">INFO</button>
+              <button (click)="resetMatrixValue()" style="font-size: 65%; width: 20%;" class="btn btn-success ml-1 btn-responsive">CLEAR</button>
+              <button style="font-size: 65%; width: 20%;" class="btn btn-danger ml-1 btn-responsive">REPEAT</button>
               <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">DOUBLE</button>
-              <button (click)="saveUserPlayInputDetails()" style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">BUY</button>
+              <button (click)="saveUserPlayInputDetails()" style="font-size: 65%; width: 20%;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
             </div>
           </div>
 
