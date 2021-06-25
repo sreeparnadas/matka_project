@@ -57,6 +57,7 @@
     "ngx-printer": "^0.9.2",
     "ngx-show-hide-password": "^2.3.0",
     "ngx-smart-popover": "^1.4.0",
+    "ngx-wheel": "^4.0.5",
     "pdfmake": "^0.1.65",
     "remixicon": "^2.5.0",
     "rxjs": "^6.6.6",

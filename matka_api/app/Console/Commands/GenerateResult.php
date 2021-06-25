@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\NextGameDraw;
 use App\Models\ResultMaster;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class GenerateResult extends Command
 {
@@ -39,11 +41,6 @@ class GenerateResult extends Command
      */
     public function handle()
     {
-        $resultMaster = new ResultMaster();
-        $resultMaster->draw_master_id = 2;
-        $resultMaster->number_combination_id = 10;
-        $resultMaster->game_date = Carbon::today();
-        $resultMaster->save();
-        $this->info('Result generated');
+        LOG::info(Carbon::today());
     }
 }

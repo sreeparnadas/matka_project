@@ -14,6 +14,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxPrintModule} from 'ngx-print';
+import {NgxWheelModule} from 'ngx-wheel';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {NgxPrintModule} from 'ngx-print';
     MatButtonModule,
     MatButtonToggleModule,
     FlexLayoutModule,
-    NgxPrintModule
+    NgxPrintModule,
+    NgxWheelModule
   ],
   declarations: [
     TerminalComponent

@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {Component, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {PlayGameService} from '../../services/play-game.service';
 import {SingleNumber} from '../../models/SingleNumber.model';
 import {CommonService} from '../../services/common.service';
@@ -17,6 +17,7 @@ import {NgxPrintModule} from 'ngx-print';
 import { GameResult } from 'src/app/models/GameResult.model';
 import {CurrentGameResult} from '../../models/CurrentGameResult.model';
 import {WatchDrawService} from '../../services/watch-draw.service';
+import { NgxWheelComponent, TextAlignment, TextOrientation } from 'ngx-wheel';
 
 
 @Component({
@@ -25,6 +26,14 @@ import {WatchDrawService} from '../../services/watch-draw.service';
   styleUrls: ['./terminal.component.scss']
 })
 export class TerminalComponent implements OnInit {
+  @ViewChild(NgxWheelComponent, { static: false }) wheel;
+  seed = [...Array(12).keys()];
+  idToLandOn: any;
+  items: any[];
+  textOrientation: TextOrientation = TextOrientation.HORIZONTAL;
+  textAlignment: TextAlignment = TextAlignment.OUTER;
+
+
   projectData: ProjectData;
   alwaysTime: number;
   showDeveloperDiv = true;
@@ -67,6 +76,18 @@ export class TerminalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.idToLandOn = this.seed[Math.floor(Math.random() * this.seed.length)];
+    const colors = ['#FF0000', '#000000']
+    this.items = this.seed.map((value) => ({
+      fillStyle: colors[value % 2],
+      text: `Prize ${value}`,
+      id: value,
+      textFillStyle: 'white',
+      textFontSize: '16'
+    }));
+
+
+
     this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
@@ -105,6 +126,24 @@ export class TerminalComponent implements OnInit {
 
 
   }// end of ngOnIInit
+
+
+  reset() {
+    this.wheel.reset()
+  }
+  before() {
+    alert('Your wheel is about to spin')
+  }
+
+  async spin(prize) {
+    this.idToLandOn = prize
+    await new Promise(resolve => setTimeout(resolve, 0));
+    this.wheel.spin()
+  }
+
+  after() {
+    alert('You have been bamboozled')
+  }
 
 
 
