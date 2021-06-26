@@ -40,7 +40,7 @@
             </table>
 
             <div class="col-4" style="padding-top: 10px;" >
-              <div class="left-div ml-1 mt-5">
+              <div class="left-div ml-5 mt-5">
                 play : {{totalTicketPurchased}}
               </div>
             </div>
@@ -49,7 +49,7 @@
         <div fxFlex="30">
           <div style="text-align: center;">
 
-            <div style="padding-top: 17px; padding-left: 40px;">
+            <div style="padding-top: 17px; ">
 
               <ngx-wheel
                 #wheel
@@ -66,6 +66,7 @@
                 [idToLandOn]='idToLandOn'
                 (onSpinStart)='before()'
                 (onSpinComplete)='after()'
+                style="padding-left: 40px;"
               ></ngx-wheel>
               <!-- <div class="buttons">
                 <button (click)="spin(0)">Prize 0</button>
@@ -94,13 +95,31 @@
                     <button matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"   (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
                   <!-- </div> -->
                 </div>
+                
+                <!-- <div class="d-flex justify-content-between" style="background-color: rgb(62, 233, 85);height: 50px; border-radius: 10px; border: 5px solid rgb(55, 75, 255); border-style: double; width: 110%;"> -->
+                  <div class="d-flex justify-content-between" style="background-image: url('assets/images/TripleFun/CancelBet.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
+                  margin-left: -38px;">
+                  <!-- <div class="chips-outer-div " *ngFor="let x of chips"> -->
+                    <div class="chips-outer-div " style="padding-top: 10%; padding-left: 15%;">
+                    <!-- <button class="coder-fab m-1 " [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" (click)="changeChip(x)"> -->
+                    <!-- <button style="background-image: url(/assets/images/TripleFun/Coin1Glow.png);"> -->
+                      <!-- <div> -->
+                        <!-- <img src="assets/images/TripleFun/Coin1Glow.png" height="30px" alt=""> -->
+                        <!-- <img src="assets/images/TripleFun/Coin5Glow.png" height="30px" alt="">
+                        <img src="assets/images/TripleFun/Coin10Glow.png" height="30px" alt="">
+                        <img src="assets/images/TripleFun/Coin50Glow.png" height="30px" alt="">
+                        <img src="assets/images/TripleFun/Coin1000Glow.png" height="30px" alt="">
+                        <img src="assets/images/TripleFun/Coin100Glow.png" height="30px" alt="">
+                        <img src="assets/images/TripleFun/Coin100Glow.png" height="30px" alt="">
+                        <img src="assets/images/TripleFun/Coin5000Glow.png" height="30px" alt=""> -->
+                      <!-- </div> -->
+                        <!-- {{ x }} -->
 
-                <div class="d-flex justify-content-between" style="background-color: rgb(62, 233, 85);height: 50px; border-radius: 10px; border: 5px solid rgb(55, 75, 255); border-style: double; width: 110%;">
-                  <div class="chips-outer-div " *ngFor="let x of chips">
-                    <button class="coder-fab m-1 " [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" (click)="changeChip(x)">{{ x }}</button>
+                      <!-- </button> -->
+                      <input class="chips-button" type="button" value="">
+                    </div>
                   </div>
                 </div>
-              </div>
 
             </div>
 
