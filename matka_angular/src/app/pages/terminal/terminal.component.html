@@ -15,7 +15,7 @@
                   </button>
                 </th>
               </tr>
-              <!--              activeTripleContainerValue is the index value of singleNumbers array-->
+              
               <tr *ngIf="singleNumbers.length && activeTripleContainerValue > -1">
                 <th colspan="10" class="text-center">
                   <button mat-fab  class="tripple-selection-button coder-fab">
@@ -27,9 +27,7 @@
               <ng-container *ngIf="isActiveTripleContainter(idxSingle)">
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
-                    <!--                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">-->
-                    <!--                      <mat-button-toggle mat-raised-button matBadge="7" [matBadgeHidden]="false"  class="triple-number-button" value="bold" (click)="setGameInputSet(x)">{{ x.visibleTripleNumber }}</mat-button-toggle>-->
-                    <!--                    </mat-button-toggle-group>-->
+                    
                     <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style">
                       {{ x.visibleTripleNumber }}
                     </button>
@@ -40,8 +38,8 @@
             </table>
 
             <div class="col-4" style="padding-top: 10px;" >
-              <div class="left-div ml-5 mt-5">
-                play : {{totalTicketPurchased}}
+              <div class="left-div">
+               <span>play : {{totalTicketPurchased}}</span> 
               </div>
             </div>
         </div>
@@ -68,55 +66,28 @@
                 (onSpinComplete)='after()'
                 style="padding-left: 40px;"
               ></ngx-wheel>
-              <!-- <div class="buttons">
-                <button (click)="spin(0)">Prize 0</button>
-                <button (click)="spin(1)">Prize 1</button>
-                <button (click)="spin(2)">Prize 2</button>
-                <button (click)="spin(3)">Prize 3</button>
-                <button (click)="spin(4)">Prize 4</button>
-                <button (click)="spin(5)">Prize 5</button>
-                <button (click)="spin(6)">Prize 6</button>
-                <button (click)="spin(7)">Prize 7</button>
-                <button (click)="spin(8)">Prize 8</button>
-                <button (click)="spin(9)">Prize 9</button>
-                <button (click)="spin(10)">Prize 10</button>
-                <button (click)="spin(11)">Prize 11</button>
-              </div> -->
+              
 
 
 
 
-<!--              <img src="assets/images/wheel.gif" height="200px" style="padding-left: 60px;" alt="" ><br>-->
+
 
               <div style="">
                 <span class="text-white text-center"><h1>SINGLES</h1> </span>
                 <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%;">
-                  <!-- <div class="chips-outer-div" > -->
+                  
                     <button matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"   (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
-                  <!-- </div> -->
+                  
                 </div>
+
                 
-                <!-- <div class="d-flex justify-content-between" style="background-color: rgb(62, 233, 85);height: 50px; border-radius: 10px; border: 5px solid rgb(55, 75, 255); border-style: double; width: 110%;"> -->
                   <div class="d-flex justify-content-between" style="background-image: url('assets/images/TripleFun/CancelBet.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
                   margin-left: -38px;">
-                  <!-- <div class="chips-outer-div " *ngFor="let x of chips"> -->
-                    <div class="chips-outer-div " style="padding-top: 10%; padding-left: 15%;">
-                    <!-- <button class="coder-fab m-1 " [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" (click)="changeChip(x)"> -->
-                    <!-- <button style="background-image: url(/assets/images/TripleFun/Coin1Glow.png);"> -->
-                      <!-- <div> -->
-                        <!-- <img src="assets/images/TripleFun/Coin1Glow.png" height="30px" alt=""> -->
-                        <!-- <img src="assets/images/TripleFun/Coin5Glow.png" height="30px" alt="">
-                        <img src="assets/images/TripleFun/Coin10Glow.png" height="30px" alt="">
-                        <img src="assets/images/TripleFun/Coin50Glow.png" height="30px" alt="">
-                        <img src="assets/images/TripleFun/Coin1000Glow.png" height="30px" alt="">
-                        <img src="assets/images/TripleFun/Coin100Glow.png" height="30px" alt="">
-                        <img src="assets/images/TripleFun/Coin100Glow.png" height="30px" alt="">
-                        <img src="assets/images/TripleFun/Coin5000Glow.png" height="30px" alt=""> -->
-                      <!-- </div> -->
-                        <!-- {{ x }} -->
-
-                      <!-- </button> -->
-                      <input class="chips-button" type="button" value="">
+                  
+                    <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
+                    
+                      <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" type="button" value="" (click)="changeChip(x)">
                     </div>
                   </div>
                 </div>
@@ -128,10 +99,7 @@
         </div>
 
         <div fxFlex="35" class=" ml-2 mt-2" style=" color: white; font-weight: bold; ">
-          <!-- <div>{{currentDate}}&nbsp;
-          </div>
-          <div>GAME1 RESULT SHEET</div>
-          <div style="text-align: end; color: white;">RESULT SHEET</div> -->
+          
           <div class="container right-container" >
             <table class="" >
               <thead >
@@ -152,16 +120,11 @@
 
 
 
-              <!-- <thead>
-                <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber3  === 0 ? currentDateResult.result.length / columnNumber3 : currentDateResult.result.length / columnNumber3 + 1); let idx = index">
-                  <th scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber3, idx * columnNumber3 + columnNumber3)" class="text-center align-middle"></th>
-                </tr>
-              </thead> -->
+              
 
               <tbody>
 
-<!--              <tr>-->
-   <!-- length = {{(currentDateResult.result.length)}} -->
+
                   <ng-container *ngIf="currentDateResult">
                     <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber2  === 0 ? currentDateResult.result.length / columnNumber2 : currentDateResult.result.length / columnNumber2 + 1); let idx = index">
                       <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
@@ -175,69 +138,7 @@
                   </ng-container>
 
 
-<!--              <tr >-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
 
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              <tr >-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td">-->
-<!--                  10:00 AM-->
-<!--                </td>-->
-<!--              </tr>-->
-
-<!--              <tr >-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--                <td colspan="2"  class="right-td1">-->
-<!--                  555 <br>-->
-<!--                  5-->
-<!--                </td>-->
-<!--              </tr>-->
 
               </tbody>
             </table>
@@ -256,47 +157,18 @@
         </div>
       </div>
       <div class="d-flex">
-        <!-- <div class="col-4 ml-2 mt-2" >
-          <div class="left-div ml-2">
-            play : {{totalTicketPurchased}}
-          </div>
-        </div> -->
+        
         <div class="col-4">
 
 
 
-          <!-- <span class="text-white text-center">SINGLES</span>
-          <div class="d-flex justify-content-between" style="background-color: rgb(223, 214, 177);height: 50px; border: 3px solid black;">
-            <div class="chips-outer-div" *ngFor="let single of singleNumbers">
-              <button matBadge="{{single.quantity}}" class="p-2"  style="border-radius: 50%;" (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
-            </div>
-          </div>
-
-
-          <div class="d-flex justify-content-between" style="background-color: rgb(223, 214, 177);height: 50px; border-radius: 10px; border: 3px solid rgb(65, 255, 255);">
-            <div class="chips-outer-div " *ngFor="let x of chips">
-              <button class="coder-fab m-1" mat-fab value="bold" (click)="changeChip(x)">{{ x }}</button>
-            </div>
-          </div> -->
+          
 
         </div>
-        <!-- <div class="col-4 ml-2 d-flex" style="height: 40px; border-radius: 10px;">
-          <button style="font-size: 65%; width: 20%;" class="btn btn-info  btn-responsive">INFO</button>
-          <button (click)="resetMatrixValue()" style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">CLEAR</button>
-          <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">REPEAT</button>
-          <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">DOUBLE</button>
-          <button (click)="saveUserPlayInputDetails()" style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">BUY</button>
-        </div> -->
+        
       </div>
 
-      <!-- <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="assets/images/terminal.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Terminal</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div> -->
+      
     </div>
   </div>
 

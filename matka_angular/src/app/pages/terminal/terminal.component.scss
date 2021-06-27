@@ -34,6 +34,14 @@ $triple-selection-background-colors: (
     $triple-selection-button-9
 );
 
+
+//set image for chips button
+
+
+
+$coin-values: (2,5,10,20,50,100);
+
+
 .coder-fab {
   width: 35px;
   height: 35px;
@@ -407,6 +415,20 @@ span .mat-fab .mat-button-wrapper {
   }
 }
 
+@for $i from 0 through 5 {
+  $value : nth($coin-values, $i+1);
+  .chips-button-#{$i}{
+    background-image: url('/assets/images/newImg/coin-#{$value}.png');
+      background-size: cover;
+      width: 50px;
+      height: 47px;
+      background-color: #ffffff00;
+      border: none;
+
+  }  
+}
+
+
 
 #triple-table{
   thead td, thead th{
@@ -420,18 +442,7 @@ span .mat-fab .mat-button-wrapper {
 }
 
 
-.chips-button{
-  // height: 35px;
-  // width: 35px;
-  // border-radius: 50px;
-  background-image: url('/assets/images/TripleFun/Coin1Glow.png');
-    background-size: cover;
-    width: 50px;
-    height: 47px;
-    background-color: #ffffff00;
-    border: none;
 
-}
 //.chips-outer-div{
 //  padding-left: 25px;
 //}
@@ -497,13 +508,15 @@ span .mat-fab .mat-button-wrapper {
   width: 300px;
   // border: 5px solid rgb(226, 162, 1);
   // background-color: rgb(240, 206, 122);
-  
+
 
   //  border-style: double;
 
   background-image: url('/assets/images/TripleFun/CancelBet.png');
   background-repeat: no-repeat;
   background-size: cover;
+  margin-left: -19px;
+  
 //   width: 1000px;
   height: 80px;
  }
