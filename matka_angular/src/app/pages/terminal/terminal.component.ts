@@ -77,7 +77,7 @@ export class TerminalComponent implements OnInit {
 
   ngOnInit(): void {
     this.idToLandOn = this.seed[Math.floor(Math.random() * this.seed.length)];
-    const colors = ['#FF0000', '#000000']
+    const colors = ['#FF0000', '#000000'];
     this.items = this.seed.map((value) => ({
       fillStyle: colors[value % 2],
       text: `Prize ${value}`,
@@ -124,25 +124,24 @@ export class TerminalComponent implements OnInit {
       this.currentDateResult = response;
     });
 
-
   }// end of ngOnIInit
 
 
   reset() {
-    this.wheel.reset()
+    this.wheel.reset();
   }
   before() {
-    alert('Your wheel is about to spin')
+    console.log('Your wheel is about to spin');
   }
 
   async spin(prize) {
-    this.idToLandOn = prize
+    this.idToLandOn = prize;
     await new Promise(resolve => setTimeout(resolve, 0));
-    this.wheel.spin()
+    this.wheel.spin();
   }
 
   after() {
-    alert('You have been bamboozled')
+    console.log('You have been bamboozled');
   }
 
 

@@ -11,7 +11,8 @@ export class MasterStockistService {
   constructor() {
     this.masterStockistForm = new FormGroup({
       id : new FormControl(null),
-      stockistName : 
+      stockistName : new FormControl(null, [Validators.required]),
+      loginId : new FormControl(null),
     });
    }
 }
