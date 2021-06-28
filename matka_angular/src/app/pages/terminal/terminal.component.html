@@ -1,5 +1,5 @@
 
-<div [ngClass]="projectData.colorScheme" id="outer-div" >
+<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 450px;">
 
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background" >
@@ -15,7 +15,7 @@
                   </button>
                 </th>
               </tr>
-              
+
               <tr *ngIf="singleNumbers.length && activeTripleContainerValue > -1">
                 <th colspan="10" class="text-center">
                   <button mat-fab  class="tripple-selection-button coder-fab">
@@ -27,7 +27,7 @@
               <ng-container *ngIf="isActiveTripleContainter(idxSingle)">
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
-                    
+
                     <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style">
                       {{ x.visibleTripleNumber }}
                     </button>
@@ -39,7 +39,7 @@
 
             <div class="col-4" style="padding-top: 10px;" >
               <div class="left-div">
-               <span>play : {{totalTicketPurchased}}</span> 
+               <span>play : {{totalTicketPurchased}}</span>
               </div>
             </div>
         </div>
@@ -51,8 +51,8 @@
 
               <ngx-wheel
                 #wheel
-                width='270'
-                height='270'
+                width='230'
+                height='230'
                 spinDuration='8'
                 [items]='items'
                 [innerRadius]='20'
@@ -66,7 +66,7 @@
                 (onSpinComplete)='after()'
                 style="padding-left: 40px;"
               ></ngx-wheel>
-              
+
 
 
 
@@ -76,18 +76,18 @@
               <div style="">
                 <span class="text-white text-center"><h1>SINGLES</h1> </span>
                 <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%;">
-                  
+
                     <button matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"   (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
-                  
+
                 </div>
 
-                
+
                   <div class="d-flex justify-content-between" style="background-image: url('assets/images/TripleFun/CancelBet.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
                   margin-left: -38px;">
-                  
+
                     <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
-                    
-                      <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" type="button" value="" (click)="changeChip(x)">
+
+                      <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" type="button" value="" (click)="changeChip(x)">
                     </div>
                   </div>
                 </div>
@@ -99,7 +99,7 @@
         </div>
 
         <div fxFlex="35" class=" ml-2 mt-2" style=" color: white; font-weight: bold; ">
-          
+
           <div class="container right-container" >
             <table class="" >
               <thead >
@@ -120,7 +120,7 @@
 
 
 
-              
+
 
               <tbody>
 
@@ -146,29 +146,29 @@
 
 
             <div class=" d-flex" style="height: 40px; border-radius: 10px;">
-              <button style="font-size: 65%; width: 20%;" class="btn btn-lg  btn-responsive btn-primary">INFO</button>
-              <button (click)="resetMatrixValue()" style="font-size: 65%; width: 20%;" class="btn btn-success ml-1 btn-responsive">CLEAR</button>
-              <button style="font-size: 65%; width: 20%;" class="btn btn-danger ml-1 btn-responsive">REPEAT</button>
-              <button style="font-size: 65%; width: 20%;" class="btn btn-info ml-1 btn-responsive">DOUBLE</button>
-              <button (click)="saveUserPlayInputDetails()" style="font-size: 65%; width: 20%;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
+              <button style="font-size: 95%; width: 20%;" class="btn btn-lg  btn-responsive btn-primary">INFO</button>
+              <button (click)="resetMatrixValue()" style="font-size: 95%; " class="btn btn-success ml-1 btn-responsive">CLEAR</button>
+              <button style="font-size: 95%; " class="btn btn-danger ml-1 btn-responsive">REPEAT</button>
+              <button style="font-size: 95%; " class="btn btn-info ml-1 btn-responsive">DOUBLE</button>
+              <button (click)="saveUserPlayInputDetails()" style="font-size: 95%; width: 20%;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
             </div>
           </div>
 
         </div>
       </div>
       <div class="d-flex">
-        
+
         <div class="col-4">
 
 
 
-          
+
 
         </div>
-        
+
       </div>
 
-      
+
     </div>
   </div>
 
