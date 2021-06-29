@@ -1,5 +1,5 @@
 
-<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 450px;">
+<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 480px;">
 
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background" >
@@ -28,7 +28,7 @@
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
 
-                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style">
+                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style" style="font-size: larger;">
                       {{ x.visibleTripleNumber }}
                     </button>
                   </td>
@@ -38,8 +38,8 @@
             </table>
 
             <div class="col-4" style="padding-top: 10px;" >
-              <div class="left-div">
-               <span>play : {{totalTicketPurchased}}</span>
+              <div class="left-div" style="padding-top: 30px;">
+               <span style="padding-left: 50px;">play : {{totalTicketPurchased}}</span>
               </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
 
 
 
-              <div style="">
+              <div style="padding-top: 30px;">
                 <span class="text-white text-center"><h1>SINGLES</h1> </span>
                 <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%;">
 
@@ -228,7 +228,7 @@
 
 
 
-<button id="print-button" [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>print</button>
+<!-- <button id="print-button" [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>print</button> -->
 
 <div class="d-flex" *ngIf="!isProduction">
   <div class="col-3">
@@ -238,6 +238,7 @@
 
 <div class="d-flex" *ngIf="!isProduction && showDevArea">
   <div class="col-6">
+    <button id="print-button" [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>print</button>
       <pre>
         singleNumbers = {{singleNumbers | json}}
       </pre>
