@@ -88,7 +88,7 @@ export class TerminalComponent implements OnInit {
 
 
 
-    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
+    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background1.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));

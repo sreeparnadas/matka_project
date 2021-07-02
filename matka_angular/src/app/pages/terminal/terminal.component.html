@@ -10,17 +10,20 @@
               <tr>
                 <th class="pink" *ngFor="let single of singleNumbers; let i = index">
 
-                  <button mat-fab matBadge="*" [matBadgeHidden]="activeTripleContainerValue!=i"  class="triple-selection-button-{{i}} tripple-selection-button" (click)="setActiveTripleContainerValue(i)">
+                  <button mat-fab matBadge="*" [matBadgeHidden]="activeTripleContainerValue!=i"  class="triple-selection-button-{{i}} tripple-selection-button" (click)="setActiveTripleContainerValue(i)" style="border-radius: 2px !important;">
                     <span>{{single.singleNumber}}</span>
                   </button>
                 </th>
               </tr>
+              <div style="background-image: url('/assets/images/btn-1.png');">
 
+              </div>
               <tr *ngIf="singleNumbers.length && activeTripleContainerValue > -1">
                 <th colspan="10" class="text-center">
-                  <button mat-fab  class="tripple-selection-button coder-fab">
+                  <button mat-fab  class="tripple-selection-button coder-fab" >
                     <span>{{singleNumbers[activeTripleContainerValue].singleNumber}}</span>
                   </button>
+
               </tr>
               </thead>
               <tbody  id="triple-body-{{idxSingle}}" class="table-div-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
@@ -28,8 +31,11 @@
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
                   <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
 
-                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style" style="font-size: larger;">
+
+                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style" style="font-size: larger; min-width: 40px !important; padding: 0px !important; min-height: 40px;">
+                      <!-- background-image: url('/assets/images/btn-1.png');background-size: cover; height: 60px; -->
                       {{ x.visibleTripleNumber }}
+
                     </button>
                   </td>
                 </tr>
@@ -37,22 +43,24 @@
               </tbody>
             </table>
 
-            <div class="col-4" style="padding-top: 10px;" >
-              <div class="left-div" style="padding-top: 30px;">
-               <span style="padding-left: 50px;">play : {{totalTicketPurchased}}</span>
+            <div class="col-4" style="padding-top: 3px;" >
+              <div class="left-div" style="padding-top: 15px;" >
+               <span class="d-flex" style="padding-left: 25px;" ><img src="assets/images/play.png" height="70px" alt=""> <h4 style="font-weight: bolder; font-size: large; padding-top: 15px; padding-left: 20px;">{{totalTicketPurchased}}</h4></span>
               </div>
             </div>
         </div>
 
         <div fxFlex="30">
-          <div style="text-align: center;">
+          <div style="">
 
-            <div style="padding-top: 17px; ">
+            <div style="padding-top: 23px;text-align: center; background-image: url('/assets/images/spinner.png'); background-repeat: no-repeat;min-height: 100px; ">
 
-              <ngx-wheel
+
+              <!-- <div style="background-image: url('/assets/images/spinner.png'); background-repeat: no-repeat;min-height: 100px;"> -->
+                <ngx-wheel
                 #wheel
-                width='230'
-                height='230'
+                width='200'
+                height='200'
                 spinDuration='8'
                 [items]='items'
                 [innerRadius]='20'
@@ -64,8 +72,12 @@
                 [idToLandOn]='idToLandOn'
                 (onSpinStart)='before()'
                 (onSpinComplete)='after()'
-                style="padding-left: 40px;"
-              ></ngx-wheel>
+                style="padding-left: 40px; padding-top: 10px;"
+
+              >
+
+            </ngx-wheel>
+              <!-- </div> -->
 
 
 
@@ -73,8 +85,9 @@
 
 
 
-              <div style="padding-top: 30px;">
-                <span class="text-white text-center"><h1>SINGLES</h1> </span>
+
+              <div style="padding-top: 125px; padding-right: 15px;">
+                <span class="text-white text-center">SINGLES </span>
                 <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%;">
 
                     <button matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"   (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
@@ -116,7 +129,7 @@
               </thead>
             </table>
 
-            <table class="table " id="result-table" >
+            <table class="table " id="result-table" style="margin-bottom: 48px;">
 
 
 

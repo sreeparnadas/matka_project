@@ -1,27 +1,38 @@
 
 
 
-$triple-selection-button-0: rgba(203, 155, 125, 0.74);
-$triple-selection-button-1: rgba(87, 103, 177, 0.55);
-$triple-selection-button-2: rgba(111, 203, 107, 0.8);
-$triple-selection-button-3: rgba(85, 69, 231, 0.82);
-$triple-selection-button-4: rgba(168, 100, 61, 0.82);
-$triple-selection-button-5: rgba(193, 153, 130, 0.82);
-$triple-selection-button-6: rgba(14, 139, 135, 0.82);
-$triple-selection-button-7: rgba(170, 49, 105, 0.82);
-$triple-selection-button-8: rgba(17, 97, 139, 0.82);
-$triple-selection-button-9: rgba(58, 173, 124, 0.82);
+// $triple-selection-button-0: rgba(203, 155, 125, 0.74);
+// $triple-selection-button-1: rgba(87, 103, 177, 0.55);
+// $triple-selection-button-2: rgba(111, 203, 107, 0.8);
+// $triple-selection-button-3: rgba(85, 69, 231, 0.82);
+// $triple-selection-button-4: rgba(168, 100, 61, 0.82);
+// $triple-selection-button-5: rgba(193, 153, 130, 0.82);
+// $triple-selection-button-6: rgba(14, 139, 135, 0.82);
+// $triple-selection-button-7: rgba(170, 49, 105, 0.82);
+// $triple-selection-button-8: rgba(17, 97, 139, 0.82);
+// $triple-selection-button-9: rgba(58, 173, 124, 0.82);
+
+$triple-selection-button-0: url('/assets/images/btn-1.png');
+$triple-selection-button-1: url('/assets/images/btn-2.png');
+$triple-selection-button-2: url('/assets/images/btn-3.png');
+$triple-selection-button-3: url('/assets/images/btn-4.png');
+$triple-selection-button-4: url('/assets/images/btn-5.png');
+$triple-selection-button-5: url('/assets/images/btn-6.png');
+$triple-selection-button-6: url('/assets/images/btn-7.png');
+$triple-selection-button-7: url('/assets/images/btn-8.png');
+$triple-selection-button-8: url('/assets/images/btn-9.png');
+$triple-selection-button-9: url('/assets/images/btn-10png.png');
 
 
 
 
-$blue: rgb(50, 57, 178);
-$green: rgb(209, 229, 100);
-$orange: rgb(255, 189, 29);
-$purple: rgb(144, 19, 254);
+// $blue: rgb(50, 57, 178);
+// $green: rgb(209, 229, 100);
+// $orange: rgb(255, 189, 29);
+// $purple: rgb(144, 19, 254);
 
 
-$triple-selection-background-colors: (
+$triple-selection-background-image: (
     $triple-selection-button-0,
     $triple-selection-button-1,
     $triple-selection-button-2,
@@ -62,7 +73,7 @@ $coin-values: (2,5,10,20,50,100);
 
 .dark-mode{
   #background{
-    /* background-image: url("assets/images/curtain.jpg"); */
+    /* background-image: url("assets/images/curtain.jpg"); */ 
     // background-color: rgb(107, 104, 106);
 
 
@@ -202,7 +213,7 @@ $coin-values: (2,5,10,20,50,100);
 
   }
   .pink{
-    background-color: #ff69b4;
+    background-color: #ff69b400;
     // background-color: rgb(122, 114, 118);
     border-radius: 5px;
   }
@@ -312,13 +323,13 @@ $coin-values: (2,5,10,20,50,100);
 
   }
   .pink{
-     background-color: hotpink;
+     background-color: rgba(255, 105, 180, 0);
     // background-color: rgb(122, 114, 118);
     border-radius: 5px;
   }
   .grad {
    background-image: linear-gradient(to right, rgb(250, 191, 230), rgb(252, 8, 191));
-  border: 2px solid hotpink;
+  border: 2px solid rgba(255, 105, 180, 0);
   border-radius: 100px;
   padding-left: 6px !important;
   width: 35px;
@@ -412,7 +423,11 @@ span .mat-fab .mat-button-wrapper {
 @for $i from 0 through 9 {
   #triple-body-#{$i}{
     .triple-number-button{
-      background-color: nth($triple-selection-background-colors, $i+1) !important;
+      background-image: nth($triple-selection-background-image, $i+1) !important;
+      background-size: cover;
+
+
+
     }
   }
 }
@@ -438,7 +453,8 @@ span .mat-fab .mat-button-wrapper {
   }
   @for $i from 0 through 9 {
     .triple-selection-button-#{$i}{
-      background-color: nth($triple-selection-background-colors, $i+1) !important;
+      background-image: nth($triple-selection-background-image, $i+1) !important;
+      background-size: cover;
     }
   }
 }
@@ -545,8 +561,10 @@ span .mat-fab .mat-button-wrapper {
   .single-number-button-#{$i}{
     @if $i%2{
       border-radius: 5;
+
     }
-    background-color: nth($triple-selection-background-colors, $i+1) !important;
+    background-color: nth($triple-selection-background-image, $i+1) !important;
+
   }
 }
 
