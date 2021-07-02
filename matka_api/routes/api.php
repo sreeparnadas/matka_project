@@ -120,6 +120,8 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::post('stockists',[StockistController::class, 'createStockist']);
     Route::put('stockists',[StockistController::class, 'updateStockist']);
 
+    
+
 
     Route::get('terminals',[TerminalController::class, 'getAllTerminals']);
     Route::post('terminals',[TerminalController::class, 'createTerminal']);
