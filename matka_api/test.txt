@@ -1,5 +1,3 @@
-Mounita Bhandari
+I am Mounita Bhandari.
 
 Ritaja Ghosh
-This is Developer songothon
-We are learning how to resolve stash merge conflict
