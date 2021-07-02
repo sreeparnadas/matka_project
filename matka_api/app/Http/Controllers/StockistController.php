@@ -16,6 +16,25 @@ class StockistController extends Controller
         $stockists = UserType::find(3)->users;
         return StockistResource::collection($stockists);
     }
+
+    public function getNextStockistPin(){
+        $customVoucher=CustomVoucher::where('voucher_name','=',"stockist")->where('accounting_year',"=",2021)->first();
+        if($customVoucher) {
+            //already exist
+            $customVoucher->last_counter = $customVoucher->last_counter + 1;
+            $customVoucher->save();
+        }else{
+            //fresh entry
+            $customVoucher= new CustomVoucher();
+            $customVoucher->voucher_name="stockist";
+            $customVoucher->accounting_year= 2021;
+            $customVoucher->last_counter=1;
+            $customVoucher->delimiter='-';
+            $customVoucher->prefix='S';
+            $customVoucher->save();
+        }
+    }
+
     public function createStockist(Request $request){
         $requestedData = (object)$request->json()->all();
 

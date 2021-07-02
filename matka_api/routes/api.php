@@ -119,9 +119,7 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('stockists',[StockistController::class, 'getAllStockists']);
     Route::post('stockists',[StockistController::class, 'createStockist']);
     Route::put('stockists',[StockistController::class, 'updateStockist']);
-    Route::put('stockists',[StockistController::class, 'getNextStockistPin']);
-
-
+    Route::get('stockists',[StockistController::class, 'getNextStockistPin']);
 
 
     Route::get('terminals',[TerminalController::class, 'getAllTerminals']);

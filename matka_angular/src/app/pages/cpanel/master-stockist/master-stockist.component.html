@@ -1,4 +1,68 @@
 <mat-tab-group>
-  <mat-tab label="Create stockist"> Create stockist </mat-tab>
+  <mat-tab label="Create stockist">
+<!--    first tab-->
+    <div fxFlexFill fxLayout="row" fxLayoutAlign="space-around top">
+
+      <div fxflex="100">
+        <div class="example-container">
+          <mat-card>
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>New Stockist Form</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                  <div fxFlex="100">
+                    <form [formGroup]="stockistMasterForm">
+                      <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                        <mat-form-field fxFlex="50">
+                          <mat-label>Stockist Name</mat-label>
+                          <input type="text" matInput formControlName="userName" placeholder="Enter name">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50">
+                          <mat-label>PIN</mat-label>
+                          <input type="text" matInput value="pin" disabled placeholder="PIN">
+                        </mat-form-field>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+              <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="createNewStockist()">Create</button>
+                <button class="pull-right" mat-raised-button color="warn" mat-stroked-button (click)="clearMasterStockistForm()">clear</button>
+              </div>
+
+
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+
+      </div>
+    </div>
+
+  </mat-tab>
+
+<!--second tab-->
   <mat-tab label="Stockist list"> Stockist list </mat-tab>
 </mat-tab-group>
+
+
+
+<div class="d-flex" *ngIf="!isProduction">
+  <div class="col-3">
+    <mat-slide-toggle (change)="showDevArea=!showDevArea">{{showDevArea?"Hide Developer Area":"Show Developer Area"}}</mat-slide-toggle>
+  </div>
+</div>
+
+<div class="d-flex" *ngIf="!isProduction && showDevArea">
+  <div class="col-6">
+    <pre>
+        stockistMasterForm = {{stockistMasterForm.value | json}}
+      </pre>
+  </div>
+  <div class="col-3"></div>
+  <div class="col-3"></div>
+</div>
