@@ -70,6 +70,11 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
     Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
 
+
+    Route::get('stockists',[StockistController::class, 'getAllStockists']);
+    Route::post('stockists',[StockistController::class, 'createStockist']);
+    Route::put('stockists',[StockistController::class, 'updateStockist']);
+
 });
 
 
@@ -119,7 +124,6 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('stockists',[StockistController::class, 'getAllStockists']);
     Route::post('stockists',[StockistController::class, 'createStockist']);
     Route::put('stockists',[StockistController::class, 'updateStockist']);
-    Route::get('stockists',[StockistController::class, 'getNextStockistPin']);
 
 
     Route::get('terminals',[TerminalController::class, 'getAllTerminals']);
