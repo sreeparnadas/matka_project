@@ -220,7 +220,7 @@
 
 
   <!--For Terminal-->
-  <mat-toolbar color="accent" *ngIf="isAuthenticated && isTerminal">
+  <mat-toolbar color="golden" style="background-color: rgb(22, 84, 21); color: goldenrod;" *ngIf="isAuthenticated && isTerminal">
 <!--    for desktop view-->
     <mat-toolbar-row fxLayoutAlign="space-between center" *ngIf="!deviceXs">
       <div fxLayout="row">
@@ -231,24 +231,27 @@
         </button>
 
         <div *ngIf="!deviceXs">
-          <button mat-button
+          <button class=" mt-2 ml-1 mr-1" style="font-size: large;" mat-button
                   [routerLink]="['/']"
                   routerLinkActive="MyActiveMenu"
                   [routerLinkActiveOptions]="{exact: true}">Home</button>
-          <mat-slider min="1" max="5" step="1" value="1" (input)="onMatSliderInputChange($event)"></mat-slider>
+          <!-- <mat-slider min="1" max="5" step="1" value="1" (input)="onMatSliderInputChange($event)"></mat-slider> -->
         </div>
-        <div class="text-white mt-2 ml-1 mr-1" style="font-size: large;">Balc:{{user.balance}}</div>
+        <div class=" mt-2 ml-1 mr-1" style="font-size: large;">Balc:{{user.balance}}</div>
 
 
         <span class="mt-2 ml-1 mr-1" style="font-size: large;">Next draw:{{activeDrawTime.visibleTime}}</span>
 
-        <div class="clock-container clock2 ml-1 mt-0 pt-1" *ngIf="alwaysTime" style="font-size: large; width: 150px;">
+        <!-- <div class="clock-container clock2 ml-1 mt-0 pt-1" *ngIf="alwaysTime" style="font-size: large; width: 150px;">
           <div class="time">{{alwaysTime}}</div>
-        </div>
+        </div> -->
 
       </div>
 
       <div fxLayout="row">
+        <div class="clock-container clock2 ml-1 mt-0 pt-1" *ngIf="alwaysTime" style="font-size: large; width: 150px;">
+          <div class="time">{{alwaysTime}}</div>
+        </div>
           <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
       </div>
     </mat-toolbar-row>

@@ -20,19 +20,20 @@
               </div>
               <tr *ngIf="singleNumbers.length && activeTripleContainerValue > -1">
                 <th colspan="10" class="text-center">
-                  <button mat-fab  class="tripple-selection-button coder-fab" >
+                  <button mat-fab  class="tripple-button coder-fab" >
                     <span>{{singleNumbers[activeTripleContainerValue].singleNumber}}</span>
                   </button>
+                  <!-- <input  class="tripple-selection-button coder-fab"  mat-fab value="bold" type="button" value="" (click)="changeChip(x)"> -->
 
               </tr>
               </thead>
               <tbody  id="triple-body-{{idxSingle}}" class="table-div-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
               <ng-container *ngIf="isActiveTripleContainter(idxSingle)">
                 <tr *ngFor="let row of tableData.numberCombinations.slice(0, tableData.numberCombinations.length % columnNumber  === 0 ? tableData.numberCombinations.length / columnNumber : tableData.numberCombinations.length / columnNumber + 1); let idx = index">
-                  <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle">
+                  <td colspan="2" *ngFor="let x of tableData.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="text-center align-middle" style="max-width: 100% !important;">
 
 
-                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style" style="font-size: larger; min-width: 40px !important; padding: 0px !important; min-height: 40px;">
+                    <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style" style="font-size: larger; min-width: 97% !important; padding: 0px !important; min-height: 40px;">
                       <!-- background-image: url('/assets/images/btn-1.png');background-size: cover; height: 60px; -->
                       {{ x.visibleTripleNumber }}
 
@@ -129,7 +130,7 @@
               </thead>
             </table>
 
-            <table class="table " id="result-table" style="margin-bottom: 48px;">
+            <table class="table " id="result-table" style="margin-bottom: 48px; border-radius: 10px;">
 
 
 
@@ -142,9 +143,10 @@
                     <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber2  === 0 ? currentDateResult.result.length / columnNumber2 : currentDateResult.result.length / columnNumber2 + 1); let idx = index">
                       <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
 
-                        <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
-                        <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
-                        <div class="bd-highlight current-result">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div>
+                        <div class=" result-heading current-result" style="background-color: rgb(61, 15, 15);">{{result.end_time.slice(0,5)}}</div>
+                        <div class="bd-highlight current-result" style="background-color: rgb(15, 194, 248);">{{result.visible_triple_number || '***'}}</div>
+                        <!-- <div class="bd-highlight current-result" style="background-color: rgb(114, 28, 253);">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div> -->
+                        <div class="bd-highlight current-result" style="background-color: rgb(28, 35, 253);"><img src="assets/images/singleStar.gif" height="10px" alt=""></div>
 
                       </td>
                     </tr>

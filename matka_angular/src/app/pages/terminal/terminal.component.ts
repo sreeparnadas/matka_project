@@ -47,7 +47,7 @@ export class TerminalComponent implements OnInit {
   currentDateResult: CurrentGameResult;
 
   columnNumber = 5;
-  columnNumber2 = 8;
+  columnNumber2 = 7;
   columnNumber3 = 1;
 
   public activeTripleContainerValue = 0;

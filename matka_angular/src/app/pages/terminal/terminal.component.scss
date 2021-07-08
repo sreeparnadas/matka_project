@@ -23,7 +23,16 @@ $triple-selection-button-7: url('/assets/images/btn-8.png');
 $triple-selection-button-8: url('/assets/images/btn-9.png');
 $triple-selection-button-9: url('/assets/images/btn-10png.png');
 
-
+$triple-button-0: url('/assets/images/nextbtn-1.png');
+$triple-button-1: url('/assets/images/nextbtn-2.png');
+$triple-button-2: url('/assets/images/nextbtn-3.png');
+$triple-button-3: url('/assets/images/nextbtn-4.png');
+$triple-button-4: url('/assets/images/nextbtn-5.png');
+$triple-button-5: url('/assets/images/nextbtn-6.png');
+$triple-button-6: url('/assets/images/nextbtn-7.png');
+$triple-button-7: url('/assets/images/nextbtn-8.png');
+$triple-button-8: url('/assets/images/nextbtn-9.png');
+$triple-button-9: url('/assets/images/nextbtn-10png.png');
 
 
 // $blue: rgb(50, 57, 178);
@@ -43,6 +52,18 @@ $triple-selection-background-image: (
     $triple-selection-button-7,
     $triple-selection-button-8,
     $triple-selection-button-9
+);
+$triple-background-image: (
+    $triple-button-0,
+    $triple-button-1,
+    $triple-button-2,
+    $triple-button-3,
+    $triple-button-4,
+    $triple-button-5,
+    $triple-button-6,
+    $triple-button-7,
+    $triple-button-8,
+    $triple-button-9
 );
 
 
@@ -73,7 +94,7 @@ $coin-values: (2,5,10,20,50,100);
 
 .dark-mode{
   #background{
-    /* background-image: url("assets/images/curtain.jpg"); */ 
+    /* background-image: url("assets/images/curtain.jpg"); */
     // background-color: rgb(107, 104, 106);
 
 
@@ -423,7 +444,7 @@ span .mat-fab .mat-button-wrapper {
 @for $i from 0 through 9 {
   #triple-body-#{$i}{
     .triple-number-button{
-      background-image: nth($triple-selection-background-image, $i+1) !important;
+      background-image: nth($triple-background-image, $i+1) !important;
       background-size: cover;
 
 
