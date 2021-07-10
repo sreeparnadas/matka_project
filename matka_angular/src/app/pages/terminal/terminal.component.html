@@ -23,7 +23,6 @@
                   <button mat-fab  class="tripple-button coder-fab" >
                     <span>{{singleNumbers[activeTripleContainerValue].singleNumber}}</span>
                   </button>
-                  <!-- <input  class="tripple-selection-button coder-fab"  mat-fab value="bold" type="button" value="" (click)="changeChip(x)"> -->
 
               </tr>
               </thead>
@@ -34,7 +33,6 @@
 
 
                     <button mat-raised-button matBadge="{{x.quantity}}" class="triple-number-button" [matBadgeHidden]="false" value="bold" (click)="setGameInputSet(x,idxSingle,2)" name="fontStyle" aria-label="Font Style" style="font-size: larger; min-width: 97% !important; padding: 0px !important; min-height: 40px;">
-                      <!-- background-image: url('/assets/images/btn-1.png');background-size: cover; height: 60px; -->
                       {{ x.visibleTripleNumber }}
 
                     </button>
@@ -63,13 +61,14 @@
                 width='270'
                 height='270'
                 spinDuration='8'
+                [disableSpinOnClick]='true'
                 [items]='items'
                 [innerRadius]='20'
                 [spinAmount]='10'
                 [textOrientation]='textOrientation'
                 [textAlignment]='textAlignment'
                 pointerStrokeColor='black'
-                pointerFillColor='gold'
+                pointerFillColor='#DC143C'
                 [idToLandOn]='idToLandOn'
                 (onSpinStart)='before()'
                 (onSpinComplete)='after()'
@@ -78,33 +77,32 @@
               >
 
             </ngx-wheel>
-              <!-- </div> -->
-
-
-
-
-
 
 
 
               <div style="padding-top: 55px; padding-right: 15px;">
                 <span class="text-white text-center">SINGLES </span>
                 <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 50px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%;">
-
-                    <button matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"   (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
-
+                    <button matBadge="{{single.quantity}}"
+                            *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"
+                            (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button>
+<!--                  <button mat-fab aria-label="Example icon button with a heart icon" matBadge="{{single.quantity}}"-->
+<!--                          *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"-->
+<!--                          (click)="setGameInputSet(single,1,1)" style="width: 40px;height: 40px;">-->
+<!--                    {{ single.singleNumber }}-->
+<!--                  </button>-->
                 </div>
 
 
-                  <div class="d-flex justify-content-between" style="background-image: url('assets/images/TripleFun/CancelBet.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
-                  margin-left: -38px;">
+                <div class="d-flex justify-content-between" style="background-image: url('assets/images/TripleFun/CancelBet.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
+                margin-left: -38px;">
 
-                    <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
+                  <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
 
-                      <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" type="button" value="" (click)="changeChip(x)">
-                    </div>
+                    <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" type="button" value="" (click)="changeChip(x)">
                   </div>
                 </div>
+              </div>
 
             </div>
 
@@ -132,13 +130,7 @@
 
             <table class="table " id="result-table" style="margin-bottom: 48px; border-radius: 10px; background-image: url('/assets/images/resultBackgroung.jpg');background-size: cover;">
 
-
-
-
-
               <tbody>
-
-
                   <ng-container *ngIf="currentDateResult">
                     <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber2  === 0 ? currentDateResult.result.length / columnNumber2 : currentDateResult.result.length / columnNumber2 + 1); let idx = index">
                       <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
@@ -146,22 +138,16 @@
                         <!-- <div class=" result-heading current-result" style="background-color: #2a2a72;background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);">{{result.end_time.slice(0,5)}}</div>
                         <div class="bd-highlight current-result" style="background-color: #7f5a83;background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);">{{result.visible_triple_number || '***'}}</div>
                         <div class="bd-highlight current-result" style="background-color: #90d5ec;background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : ''}}<img src="assets/images/singleStar3.gif" height="20px" alt=""></div> -->
-                        <div class=" result-heading current-result" style="">{{result.end_time.slice(0,5)}}</div>
-                        <div class="bd-highlight current-result" style="">{{result.visible_triple_number || '***'}}</div>
-                        <div class="bd-highlight current-result" style="">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : ''}}<img src="assets/images/singleStar3.gif" height="20px" alt=""></div>
+                        <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
+                        <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
+                        <div class="bd-highlight current-result">
+                          <span *ngIf="result.single_number!=null"></span>{{result.single_number}}
+                          <span *ngIf="result.single_number==null"><img src="assets/images/singleStar3.gif" height="20px" alt=""></span>
+                        </div>
                         <!-- <div class="bd-highlight current-result" style="background-color: rgb(28, 35, 253);"><img src="assets/images/singleStar.gif" height="10px" alt=""></div> -->
-
-
-
-
-
-
                       </td>
                     </tr>
                   </ng-container>
-
-
-
 
               </tbody>
             </table>
@@ -181,13 +167,7 @@
       </div>
       <div class="d-flex">
 
-        <div class="col-4">
-
-
-
-
-
-        </div>
+        <div class="col-4"></div>
 
       </div>
 

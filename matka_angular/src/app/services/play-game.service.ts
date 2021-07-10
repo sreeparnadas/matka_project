@@ -25,6 +25,9 @@ export class PlayGameService {
   numberCombinationMatrixSubject = new Subject<SingleNumber[]>();
   currentDateResult: CurrentGameResult;
   currentDateResultSubject = new Subject<CurrentGameResult>();
+
+  todayLastResult: GameResult;
+  todayLastResultSubject = new Subject<GameResult>();
   // activeDrawTime: DrawTime;
   // activeDrawTimeSubject = new Subject<DrawTime>();
   private BASE_API_URL = environment.BASE_API_URL;
@@ -95,5 +98,16 @@ export class PlayGameService {
       this.currentDateResult = response.data;
       this.currentDateResultSubject.next({...this.currentDateResult});
     });
+  }
+
+  getTodayLastResult(){
+    this.http.get(this.BASE_API_URL + '/results/lastResult').subscribe((response: GameResult) => {
+      this.todayLastResult = response;
+      this.todayLastResultSubject.next({...this.todayLastResult});
+    });
+  }
+
+  getTodayLastResultListener(){
+    return this.todayLastResultSubject.asObservable();
   }
 }

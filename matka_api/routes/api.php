@@ -111,6 +111,7 @@ Route::group(array('prefix' => 'dev'), function() {
     //result_masters
     Route::get('results',[ResultMasterController::class, 'get_results']);
     Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
+    Route::get('results/lastResult',[ResultMasterController::class, 'get_last_result']);
 
     //manual_result
 

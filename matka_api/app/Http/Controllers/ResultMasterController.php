@@ -75,22 +75,7 @@ class ResultMasterController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function save_auto_result($draw_id)
     {
         $manualResult = ManualResult::where('game_date',Carbon::today())
@@ -111,5 +96,19 @@ class ResultMasterController extends Controller
         }else{
             return response()->json(['success'=>0, 'data' => 'result not added'], 500);
         }
+    }
+
+    public function get_last_result(){
+
+        $result_query =get_sql_with_bindings(ResultMaster::where('game_date', Carbon::today()));
+        $data = DrawMaster::leftJoin(DB::raw("($result_query) as result_masters"),'draw_masters.id','=','result_masters.draw_master_id')
+            ->leftJoin('number_combinations','result_masters.number_combination_id','number_combinations.id')
+            ->leftJoin('single_numbers','number_combinations.single_number_id','single_numbers.id')
+            ->select('result_masters.game_date','draw_masters.end_time','number_combinations.triple_number','number_combinations.visible_triple_number','single_numbers.single_number')
+            ->orderBy('result_masters.draw_master_id','desc')
+            ->whereNotNull('single_numbers.single_number')
+            ->first();
+
+        return $data;
     }
 }

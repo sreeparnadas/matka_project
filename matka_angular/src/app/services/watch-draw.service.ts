@@ -21,7 +21,7 @@ export class WatchDrawService {
   constructor(private http: HttpClient, private gameResultService: GameResultService, private playGameService: PlayGameService) {
 
     setInterval(() => {
-      this.http.get(this.BASE_API_URL + '/dev/nextDrawId').subscribe((response) => {
+      this.http.get(this.BASE_API_URL + '/dev/nextDrawId').subscribe((response: any) => {
 
         // tslint:disable-next-line:triple-equals
         if (this.nextDrawId != response){
@@ -37,5 +37,8 @@ export class WatchDrawService {
 
   getNextDraw(){
     return {...this.nextDrawId};
+  }
+  getNextDrawListener(){
+    return this.nextDrawSubject.asObservable();
   }
 }

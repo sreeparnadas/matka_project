@@ -582,12 +582,7 @@ span .mat-fab .mat-button-wrapper {
 
 @for $i from 0 through 9 {
   .single-number-button-#{$i}{
-    @if $i%2{
-      border-radius: 5;
-
-    }
     background-color: nth($triple-selection-background-image, $i+1) !important;
-
   }
 }
 
@@ -597,5 +592,6 @@ span .mat-fab .mat-button-wrapper {
   border: double;
   border-radius: 5px;
 }
+
 
 

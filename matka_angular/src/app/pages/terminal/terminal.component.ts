@@ -27,7 +27,7 @@ import { NgxWheelComponent, TextAlignment, TextOrientation } from 'ngx-wheel';
 })
 export class TerminalComponent implements OnInit {
   @ViewChild(NgxWheelComponent, { static: false }) wheel;
-  seed = [...Array(12).keys()];
+  seed = [...Array(10).keys()];
   idToLandOn: any;
   items: any[];
   textOrientation: TextOrientation = TextOrientation.HORIZONTAL;
@@ -45,6 +45,7 @@ export class TerminalComponent implements OnInit {
   userGameInput: any[] = [];
   public totalTicketPurchased: number;
   currentDateResult: CurrentGameResult;
+  nextDrawId: any;
 
   columnNumber = 5;
   columnNumber2 = 7;
@@ -77,13 +78,13 @@ export class TerminalComponent implements OnInit {
 
   ngOnInit(): void {
     this.idToLandOn = this.seed[Math.floor(Math.random() * this.seed.length)];
-    const colors = ['#FF0000', '#000000'];
+    const colors = ['#FFA500', '#00FF00', '#0000FF', '#8B008B', '#FF1493', '#20B2AA', '#8B0000', '#6A5ACD', '#cd5c5c', '#e0e000'];
     this.items = this.seed.map((value) => ({
-      fillStyle: colors[value % 2],
-      text: `Prize ${value}`,
+      fillStyle: colors[value % 10],
+      text: `${value}`,
       id: value,
       textFillStyle: 'white',
-      textFontSize: '16'
+      textFontSize: '20'
     }));
 
 
@@ -124,6 +125,14 @@ export class TerminalComponent implements OnInit {
       this.currentDateResult = response;
     });
 
+    this.nextDrawId = this.watchDrawService.getNextDraw();
+    console.log(this.nextDrawId);
+    this.watchDrawService.getNextDrawListener().subscribe((response: any) => {
+      this.nextDrawId = response;
+      this.wheel.reset();
+      this.spin(this.nextDrawId).then(r => {});
+    });
+
   }// end of ngOnIInit
 
 
@@ -145,6 +154,15 @@ export class TerminalComponent implements OnInit {
   }
 
 
+  data = [
+    {
+      list: ['sun', 'earth', 'moon']
+    }
+  ]
+
+  change ({ gIndex, iIndex }) {
+    console.log(gIndex, iIndex)
+  }
 
 
   isActiveTripleContainter(idxSingle: number) {
