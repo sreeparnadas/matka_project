@@ -18,6 +18,8 @@ import { GameResult } from 'src/app/models/GameResult.model';
 import {CurrentGameResult} from '../../models/CurrentGameResult.model';
 import {WatchDrawService} from '../../services/watch-draw.service';
 import { NgxWheelComponent, TextAlignment, TextOrientation } from 'ngx-wheel';
+import {NextDrawId} from '../../models/NextDrawId.model';
+import {TodayLastResult} from '../../models/TodayLastResult.model';
 
 
 @Component({
@@ -45,7 +47,8 @@ export class TerminalComponent implements OnInit {
   userGameInput: any[] = [];
   public totalTicketPurchased: number;
   currentDateResult: CurrentGameResult;
-  nextDrawId: any;
+  todayLastResult: TodayLastResult;
+  nextDrawId: NextDrawId;
 
   columnNumber = 5;
   columnNumber2 = 7;
@@ -74,11 +77,31 @@ export class TerminalComponent implements OnInit {
     // this.renderer.listen(hello, 'click', console.log);
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
+
+    this.playGameService.getTodayLastResultListener().subscribe(response => {
+      this.todayLastResult = response;
+    });
+
+    this.watchDrawService.getNextDrawListener().subscribe((response: NextDrawId) => {
+      this.nextDrawId = response;
+      // if (this.todayLastResult !== undefined){
+      //   console.log(this.todayLastResult.data);
+      //   this.spin(this.todayLastResult.data.single_number).then(r => {});
+      // }
+      setTimeout(() => {
+        if (this.todayLastResult !== undefined){
+          this.wheel.reset();
+          this.spin(this.todayLastResult.data.single_number).then(r => {});
+        }
+        }, 2000);
+    });
+
+
   }
 
   ngOnInit(): void {
     this.idToLandOn = this.seed[Math.floor(Math.random() * this.seed.length)];
-    const colors = ['#FFA500', '#00FF00', '#0000FF', '#8B008B', '#FF1493', '#20B2AA', '#8B0000', '#6A5ACD', '#cd5c5c', '#e0e000'];
+    const colors = ['#FFA500', '#8B008B', '#FF1493', '#20B2AA', '#8B0000', '#00FF00', '#e0e000', '#0000FF', '#6A5ACD', '#cd5c5c'];
     this.items = this.seed.map((value) => ({
       fillStyle: colors[value % 10],
       text: `${value}`,
@@ -89,7 +112,7 @@ export class TerminalComponent implements OnInit {
 
 
 
-    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background1.jpg")');
+    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
@@ -126,12 +149,7 @@ export class TerminalComponent implements OnInit {
     });
 
     this.nextDrawId = this.watchDrawService.getNextDraw();
-    console.log(this.nextDrawId);
-    this.watchDrawService.getNextDrawListener().subscribe((response: any) => {
-      this.nextDrawId = response;
-      this.wheel.reset();
-      this.spin(this.nextDrawId).then(r => {});
-    });
+
 
   }// end of ngOnIInit
 
@@ -153,16 +171,6 @@ export class TerminalComponent implements OnInit {
     console.log('You have been bamboozled');
   }
 
-
-  data = [
-    {
-      list: ['sun', 'earth', 'moon']
-    }
-  ]
-
-  change ({ gIndex, iIndex }) {
-    console.log(gIndex, iIndex)
-  }
 
 
   isActiveTripleContainter(idxSingle: number) {

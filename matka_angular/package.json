@@ -45,6 +45,7 @@
     "lodash": "^4.17.21",
     "mousetrap": "^1.6.5",
     "ng-marquee-improved": "^1.0.1",
+    "ng-media-query": "^1.0.3",
     "ng2-completer": "^9.0.1",
     "ng2-search-filter": "^0.5.1",
     "ng2-smart-table": "^1.7.2",

@@ -69,6 +69,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('buyTicket',[PlayController::class,'save_play_details']);
 
     Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
+    Route::get('results/lastResult',[ResultMasterController::class, 'get_last_result']);
 
 
     Route::get('stockists',[StockistController::class, 'getAllStockists']);

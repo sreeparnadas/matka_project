@@ -136,3 +136,9 @@ body {
 .time{
   width:100% !important;
 }
+@media only screen and (max-width: 907px) {
+  /* Here are some changes*/
+  .layer{
+    border: 5px solid black;
+  }
+}

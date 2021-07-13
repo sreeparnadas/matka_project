@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Subject} from 'rxjs';
-import {ProjectData} from '../models/project-data.model';
 import {GameResultService} from './game-result.service';
-import {GameResult} from '../models/GameResult.model';
-import {ServerResponse} from '../models/ServerResponse.model';
 import {PlayGameService} from './play-game.service';
+import {NextDrawId} from '../models/NextDrawId.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,21 +13,29 @@ import {PlayGameService} from './play-game.service';
 export class WatchDrawService {
 
   private BASE_API_URL = environment.BASE_API_URL;
-  private nextDrawId: any;
-  nextDrawSubject = new Subject<number>();
+  private nextDrawId: NextDrawId = {};
+  nextDrawSubject = new Subject<NextDrawId>();
 
   constructor(private http: HttpClient, private gameResultService: GameResultService, private playGameService: PlayGameService) {
 
     setInterval(() => {
-      this.http.get(this.BASE_API_URL + '/dev/nextDrawId').subscribe((response: any) => {
+      this.http.get(this.BASE_API_URL + '/dev/nextDrawId').subscribe((response: NextDrawId) => {
 
-        // tslint:disable-next-line:triple-equals
-        if (this.nextDrawId != response){
+        if (Object.entries(this.nextDrawId).length === 0){
           this.nextDrawId = response;
-          this.nextDrawSubject.next(this.nextDrawId);
+          this.nextDrawSubject.next({...this.nextDrawId});
+          this.playGameService.getTodayLastResult();
+          this.gameResultService.getUpdatedResult();
+          this.playGameService.getTodayResult();
+
+        }else if (this.nextDrawId.data.id !== response.data.id) {
+          this.nextDrawId = response;
+          this.nextDrawSubject.next({...this.nextDrawId});
+          this.playGameService.getTodayLastResult();
           this.gameResultService.getUpdatedResult();
           this.playGameService.getTodayResult();
         }
+
       });
     }, 10000);
   }

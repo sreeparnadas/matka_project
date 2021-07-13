@@ -11,6 +11,9 @@ import {GameInputSaveResponse} from '../models/GameInputSaveResponse.model';
 import {DrawTime} from '../models/DrawTime.model';
 import {GameResult} from '../models/GameResult.model';
 import {CurrentGameResult} from '../models/CurrentGameResult.model';
+import {TodayLastResult} from '../models/TodayLastResult.model';
+import {User} from '../models/user.model';
+import {AuthService} from './auth.service';
 
 
 
@@ -26,30 +29,33 @@ export class PlayGameService {
   currentDateResult: CurrentGameResult;
   currentDateResultSubject = new Subject<CurrentGameResult>();
 
-  todayLastResult: GameResult;
-  todayLastResultSubject = new Subject<GameResult>();
+  todayLastResult: TodayLastResult;
+  todayLastResultSubject = new Subject<TodayLastResult>();
   // activeDrawTime: DrawTime;
   // activeDrawTimeSubject = new Subject<DrawTime>();
   private BASE_API_URL = environment.BASE_API_URL;
+  user: User;
 
 
 
-  constructor(private http: HttpClient, private errorService: ErrorService) {
+  constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) {
+
     // get single numbers
-      this.http.get(this.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {
-        this.singleNumbers = response.data;
-        this.singleNumberSubject.next([...this.singleNumbers]);
-      });
+    this.http.get(this.BASE_API_URL + '/dev/singleNumbers').subscribe((response: ServerResponse) => {
+      this.singleNumbers = response.data;
+      this.singleNumberSubject.next([...this.singleNumbers]);
+    });
 
-      this.http.get(this.BASE_API_URL + '/numberCombinations/matrix').subscribe((response: ServerResponse) => {
-        this.numberCombinationMatrix = response.data;
-        this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
-      });
+    this.http.get(this.BASE_API_URL + '/dev/numberCombinations/matrix').subscribe((response: ServerResponse) => {
+      this.numberCombinationMatrix = response.data;
+      this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
+    });
 
-      this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
-       this.currentDateResult = response.data;
-       this.currentDateResultSubject.next({...this.currentDateResult});
-      });
+    this.http.get(this.BASE_API_URL + '/dev/results/currentDate').subscribe((response: ServerResponse) => {
+      this.currentDateResult = response.data;
+      this.currentDateResultSubject.next({...this.currentDateResult});
+    });
+
 
     // get active draw
     //   this.http.get(this.BASE_API_URL + '/drawTimes/active').subscribe((response: ServerResponse) => {
@@ -94,14 +100,14 @@ export class PlayGameService {
   }
 
   getTodayResult(){
-    this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/dev/results/currentDate').subscribe((response: ServerResponse) => {
       this.currentDateResult = response.data;
       this.currentDateResultSubject.next({...this.currentDateResult});
     });
   }
 
   getTodayLastResult(){
-    this.http.get(this.BASE_API_URL + '/results/lastResult').subscribe((response: GameResult) => {
+    this.http.get<TodayLastResult>(this.BASE_API_URL + '/dev/results/lastResult').subscribe(response => {
       this.todayLastResult = response;
       this.todayLastResultSubject.next({...this.todayLastResult});
     });

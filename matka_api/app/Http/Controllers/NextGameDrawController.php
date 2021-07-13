@@ -15,6 +15,7 @@ class NextGameDrawController extends Controller
 
     public function getNextDrawIdOnly(){
         $nextGameDrawObj = NextGameDraw::first();
-        return $nextGameDrawObj->next_draw_id;
+        $result['id'] = $nextGameDrawObj->next_draw_id;
+        return response()->json(['success'=> 1, 'data' => $result], 200);
     }
 }

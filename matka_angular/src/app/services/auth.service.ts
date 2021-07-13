@@ -94,6 +94,10 @@ export class AuthService {
       }));  // this.handleError is a method created by me
   }
 
+  getUserListener(){
+    return this.userBehaviorSubject.asObservable();
+  }
+
   updateUserBalance(newBalance: number){
     const userData: User = JSON.parse(localStorage.getItem('user'));
     // tslint:disable-next-line:max-line-length

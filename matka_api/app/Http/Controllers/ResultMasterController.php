@@ -109,6 +109,6 @@ class ResultMasterController extends Controller
             ->whereNotNull('single_numbers.single_number')
             ->first();
 
-        return $data;
+        return response()->json(['success'=> 1, 'data' => $data], 200);
     }
 }
