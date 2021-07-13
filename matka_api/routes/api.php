@@ -76,6 +76,11 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('stockists',[StockistController::class, 'createStockist']);
     Route::put('stockists',[StockistController::class, 'updateStockist']);
 
+    Route::get('terminals',[TerminalController::class, 'getAllTerminals']);
+    Route::post('terminals',[TerminalController::class, 'createTerminal']);
+    Route::put('terminals',[TerminalController::class, 'updateTerminal']);
+    Route::get('terminals/{id}',[TerminalController::class, 'getStockistByTerminalId']);
+
 });
 
 

@@ -73,6 +73,8 @@ import { MasterStockistComponent } from './pages/cpanel/master-stockist/master-s
 // import { MasterStockistModule } from './modules/general/cpanel/master-stockist/master-stockist.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import {NgMarqueeModule} from 'ng-marquee-improved';
+// import { MasterTerminalComponent } from './pages/cpanel/master-terminal/master-terminal.component';
+import { MasterTerminalModule } from './modules/general/cpanel/master-terminal/master-terminal.module';
 // import {NgxPrintModule} from "ngx-print";
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
@@ -84,6 +86,7 @@ import {NgMarqueeModule} from 'ng-marquee-improved';
 @NgModule({
   declarations: [
     AppComponent,
+    // MasterTerminalComponent,
     // MasterStockistComponent,
     // HeaderComponent,
     // HomeComponent,
@@ -149,7 +152,8 @@ import {NgMarqueeModule} from 'ng-marquee-improved';
     BiIconModule,
     // MasterStockistModule,
     MatTabsModule,
-    NgMarqueeModule
+    NgMarqueeModule,
+    // MasterTerminalModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},

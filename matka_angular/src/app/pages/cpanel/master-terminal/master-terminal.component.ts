@@ -1,45 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../../../environments/environment';
-import Swal from 'sweetalert2';
-import {MasterStockistService} from '../../../services/master-stockist.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Terminal} from '../../../models/Terminal.model';
+import {MasterTerminalService} from '../../../services/master-terminal.service';
 import {Stockist} from '../../../models/Stockist.model';
+import {MasterStockistService} from '../../../services/master-stockist.service';
+import Swal from "sweetalert2";
 import {Sort} from '@angular/material/sort';
 
 @Component({
-  selector: 'app-master-stockist',
-  templateUrl: './master-stockist.component.html',
-  styleUrls: ['./master-stockist.component.scss']
+  selector: 'app-master-terminal',
+  templateUrl: './master-terminal.component.html',
+  styleUrls: ['./master-terminal.component.scss']
 })
-export class MasterStockistComponent implements OnInit {
-
+export class MasterTerminalComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
-  stockistMasterForm: FormGroup;
+  terminalMasterForm: FormGroup;
+  terminals: Terminal[] = [];
+  sortedTerminalList: Terminal[] = [];
   stockists: Stockist[] = [];
-  sortedStockistList: Stockist[] = [];
   public highLightedRowIndex = -1;
-  constructor(private masterStockistService: MasterStockistService) {
-    this.stockistMasterForm = new FormGroup({
+
+  constructor(private masterTerminalService: MasterTerminalService, private masterStockistService: MasterStockistService) {
+    this.terminalMasterForm = new FormGroup({
       id: new FormControl(null),
-      userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-      pin: new FormControl(null),
+      terminalName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      stockistId: new FormControl(null, [Validators.required]),
     });
   }
 
   ngOnInit(): void {
+    this.terminals = this.masterTerminalService.getTerminals();
+    this.sortedTerminalList = this.masterTerminalService.getTerminals();
+    this.masterTerminalService.getTerminalListener().subscribe((response: Terminal[]) => {
+      this.terminals = response;
+      this.sortedTerminalList = response;
+    });
+
     this.stockists = this.masterStockistService.getStockists();
-    this.sortedStockistList = this.masterStockistService.getStockists();
     this.masterStockistService.getStockistListener().subscribe((response: Stockist[]) => {
       this.stockists = response;
-      this.sortedStockistList = response;
     });
   }
 
-  createNewStockist() {
+  createNewTerminal() {
     Swal.fire({
       title: 'Confirmation',
-      text: 'Do you sure to create stockist?',
+      text: 'Do you sure to create terminal?',
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -47,14 +55,15 @@ export class MasterStockistComponent implements OnInit {
       confirmButtonText: 'Yes, create It!'
     }).then((result) => {
       if (result.isConfirmed){
-        const masterData = {userName : this.stockistMasterForm.value.userName};
-        this.masterStockistService.saveNewStockist(masterData).subscribe(response => {
+        // tslint:disable-next-line:max-line-length
+        const masterData = {terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId};
+        this.masterTerminalService.saveNewTerminal(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
-            this.stockists.unshift(responseData);
-            this.sortedStockistList.unshift(responseData);
+            this.terminals.unshift(responseData);
+            this.sortedTerminalList.unshift(responseData);
             this.highLightedRowIndex = 0;
-            this.stockistMasterForm.reset();
+            this.terminalMasterForm.reset();
             setTimeout(() => {
               this.highLightedRowIndex = -1;
             }, 10000);
@@ -62,7 +71,7 @@ export class MasterStockistComponent implements OnInit {
             Swal.fire({
               position: 'top-end',
               icon: 'success',
-              title: 'Stockist created',
+              title: 'Terminal created',
               showConfirmButton: false,
               timer: 1000
             });
@@ -96,27 +105,27 @@ export class MasterStockistComponent implements OnInit {
     }
   }
 
-  clearMasterStockistForm() {
-    this.stockistMasterForm.reset();
+  clearMasterTerminalForm() {
+    this.terminalMasterForm.reset();
   }
-
   sortData(sort: Sort) {
-    const data = this.stockists.slice();
+    const data = this.terminals.slice();
     if (!sort.active || sort.direction === '') {
-      this.sortedStockistList = data;
+      this.sortedTerminalList = data;
       return;
     }
-    this.sortedStockistList = data.sort((a, b) => {
+    this.sortedTerminalList = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       const isDesc = sort.direction === 'desc';
       switch (sort.active) {
-        case 'userName': return compare(a.userName, b.userName, isAsc);
-        case 'pin': return compare(a.pin, b.pin, isAsc);
+        case 'terminalName': return compare(a.terminalName, b.terminalName, isAsc);
+        case 'stockistName': return compare(a.stockist.userName, b.stockist.userName, isAsc);
         case 'balance': return compare(a.balance, b.balance, isAsc);
         default: return 0;
       }
     });
   }
+
 }
 
 function compare(a: number | string, b: number | string, isAsc: boolean) {

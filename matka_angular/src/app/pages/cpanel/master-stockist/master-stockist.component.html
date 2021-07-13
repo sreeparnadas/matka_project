@@ -53,7 +53,7 @@
             </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let stockist of sortedStockistList;let indexOfElement=index">
+          <tr [ngStyle]="getBackgroundColor(indexOfElement)" *ngFor="let stockist of sortedStockistList;let indexOfElement=index">
             <td>{{(indexOfElement+1)}}</td>
             <td>{{stockist.userName}}</td>
             <td>{{stockist.pin}}</td>
@@ -70,7 +70,7 @@
   </mat-tab>
 
 <!--second tab-->
-  <mat-tab label="Stockist list"></mat-tab>
+  <mat-tab label="Stockist limit"></mat-tab>
 </mat-tab-group>
 
 

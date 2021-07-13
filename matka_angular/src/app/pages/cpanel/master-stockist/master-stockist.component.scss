@@ -1,0 +1,24 @@
+@keyframes blinkingText {
+  0% { color: #ff3d50; }
+  /* YOU CAN ADD MORE COLORS IN THE KEYFRAMES IF YOU WANT
+  50% { color: #55d66b; }
+  */
+  100% { color: #222291; }
+}
+
+
+
+@keyframes blinking {
+  0% {
+    background-color: #8be7e4;
+  }
+  /* YOU CAN ADD MORE COLORS IN THE KEYFRAMES IF YOU WANT
+  50% {
+    background-color: #55d66b;
+    border: 5px solid #126620;
+  }
+  */
+  100% {
+    background-color: rgb(3 249 22 / 30%);
+  }
+}

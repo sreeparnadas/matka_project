@@ -94,10 +94,6 @@ export class AuthService {
       }));  // this.handleError is a method created by me
   }
 
-  getUserListener(){
-    return this.userBehaviorSubject.asObservable();
-  }
-
   updateUserBalance(newBalance: number){
     const userData: User = JSON.parse(localStorage.getItem('user'));
     // tslint:disable-next-line:max-line-length
@@ -127,15 +123,23 @@ export class AuthService {
   }
 
   logout(){
+    const userData: User = JSON.parse(localStorage.getItem('user'));
+
     this.userBehaviorSubject.next(null);
     localStorage.removeItem('user');
-    this.router.navigate(['/']).then(r => {
-      if (r) {
-        location.reload();
-      }
-    });
-    // location.reload();
-    // this.router.navigate(['/auth']);
+    if (userData.userTypeId === 4){
+      this.router.navigate(['/player']).then(r => {
+        if (r) {
+          location.reload();
+        }
+      });
+    }else {
+      this.router.navigate(['/power']).then(r => {
+        if (r) {
+          location.reload();
+        }
+      });
+    }
   }
 
   private serverError(err: any) {

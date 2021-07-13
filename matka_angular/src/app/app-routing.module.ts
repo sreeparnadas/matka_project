@@ -58,6 +58,11 @@ const routes: Routes = [
       .then(mod => mod.MasterStockistModule)
   },
   {
+    path: 'masterTerminal',
+    loadChildren: () => import('./modules/general/cpanel/master-terminal/master-terminal.module')
+      .then(mod => mod.MasterTerminalModule)
+  },
+  {
     path: 'manual',
     loadChildren: () => import('./modules/general/cpanel/manual-result/manual-result.module')
       .then(mod => mod.ManualResultModule)

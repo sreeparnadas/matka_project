@@ -55,7 +55,7 @@ class TerminalController extends Controller
             $user_id = $counter;
 
             $user = new User();
-            $user->user_name = $requestedData->userName;
+            $user->user_name = $requestedData->terminalName;
             $user->email = $user_id;
             $user->password = md5($user_id);
             $user->user_type_id = 4;
@@ -66,7 +66,7 @@ class TerminalController extends Controller
             $stockistToTerminal= new StockistToTerminal();
 
             $stockistToTerminal->terminal_id = $user->id;
-            $stockistToTerminal->stockist_id = $requestedData->stockistId ;
+            $stockistToTerminal->stockist_id = $requestedData->stockistId;
             $stockistToTerminal->save();
 
 

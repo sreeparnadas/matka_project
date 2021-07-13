@@ -5,6 +5,7 @@ import {Subject} from 'rxjs';
 import {GameResultService} from './game-result.service';
 import {PlayGameService} from './play-game.service';
 import {NextDrawId} from '../models/NextDrawId.model';
+import {User} from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,22 +19,30 @@ export class WatchDrawService {
 
   constructor(private http: HttpClient, private gameResultService: GameResultService, private playGameService: PlayGameService) {
 
+    const userData: User = JSON.parse(localStorage.getItem('user'));
     setInterval(() => {
       this.http.get(this.BASE_API_URL + '/dev/nextDrawId').subscribe((response: NextDrawId) => {
 
         if (Object.entries(this.nextDrawId).length === 0){
           this.nextDrawId = response;
           this.nextDrawSubject.next({...this.nextDrawId});
-          this.playGameService.getTodayLastResult();
-          this.gameResultService.getUpdatedResult();
-          this.playGameService.getTodayResult();
+          if (userData == null){
+            this.gameResultService.getUpdatedResult();
+          }else{
+            this.playGameService.getTodayLastResult();
+            this.playGameService.getTodayResult();
+          }
+
 
         }else if (this.nextDrawId.data.id !== response.data.id) {
           this.nextDrawId = response;
           this.nextDrawSubject.next({...this.nextDrawId});
-          this.playGameService.getTodayLastResult();
-          this.gameResultService.getUpdatedResult();
-          this.playGameService.getTodayResult();
+          if (userData == null){
+            this.gameResultService.getUpdatedResult();
+          }else{
+            this.playGameService.getTodayLastResult();
+            this.playGameService.getTodayResult();
+          }
         }
 
       });

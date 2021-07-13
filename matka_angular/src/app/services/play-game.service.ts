@@ -40,21 +40,25 @@ export class PlayGameService {
 
   constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) {
 
-    // get single numbers
-    this.http.get(this.BASE_API_URL + '/dev/singleNumbers').subscribe((response: ServerResponse) => {
-      this.singleNumbers = response.data;
-      this.singleNumberSubject.next([...this.singleNumbers]);
-    });
+    const userData: User = JSON.parse(localStorage.getItem('user'));
 
-    this.http.get(this.BASE_API_URL + '/dev/numberCombinations/matrix').subscribe((response: ServerResponse) => {
-      this.numberCombinationMatrix = response.data;
-      this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
-    });
+    if (userData !== null){
+      // get single numbers
+      this.http.get(this.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {
+        this.singleNumbers = response.data;
+        this.singleNumberSubject.next([...this.singleNumbers]);
+      });
 
-    this.http.get(this.BASE_API_URL + '/dev/results/currentDate').subscribe((response: ServerResponse) => {
-      this.currentDateResult = response.data;
-      this.currentDateResultSubject.next({...this.currentDateResult});
-    });
+      this.http.get(this.BASE_API_URL + '/numberCombinations/matrix').subscribe((response: ServerResponse) => {
+        this.numberCombinationMatrix = response.data;
+        this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
+      });
+
+      this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
+        this.currentDateResult = response.data;
+        this.currentDateResultSubject.next({...this.currentDateResult});
+      });
+    }
 
 
     // get active draw
@@ -100,14 +104,14 @@ export class PlayGameService {
   }
 
   getTodayResult(){
-    this.http.get(this.BASE_API_URL + '/dev/results/currentDate').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
       this.currentDateResult = response.data;
       this.currentDateResultSubject.next({...this.currentDateResult});
     });
   }
 
   getTodayLastResult(){
-    this.http.get<TodayLastResult>(this.BASE_API_URL + '/dev/results/lastResult').subscribe(response => {
+    this.http.get<TodayLastResult>(this.BASE_API_URL + '/results/lastResult').subscribe(response => {
       this.todayLastResult = response;
       this.todayLastResultSubject.next({...this.todayLastResult});
     });
