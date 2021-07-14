@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\RechargeToTerminal;
+use App\Models\RechargeToUser;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class RechargeToTerminalFactory extends Factory
+class RechargeToUserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = RechargeToTerminal::class;
+    protected $model = RechargeToUser::class;
 
     /**
      * Define the model's default state.

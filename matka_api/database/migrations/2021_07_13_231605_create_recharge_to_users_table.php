@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRechargeToStockistsTable extends Migration
+class CreateRechargeToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateRechargeToStockistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recharge_to_stockists', function (Blueprint $table) {
+        Schema::create('recharge_to_users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('beneficiary_uid')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('recharge_done_by_uid')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->double('amount')->default(0);
+            $table->decimal('amount')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateRechargeToStockistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recharge_to_stockists');
+        Schema::dropIfExists('recharge_to_users');
     }
 }

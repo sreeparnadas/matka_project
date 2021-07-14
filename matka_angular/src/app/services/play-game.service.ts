@@ -40,8 +40,8 @@ export class PlayGameService {
 
   constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) {
 
-    const userData: User = JSON.parse(localStorage.getItem('user'));
-
+    const userData: User =  JSON.parse(localStorage.getItem('user'));
+    // console.log('play game service calling', userData);
     if (userData !== null){
       // get single numbers
       this.http.get(this.BASE_API_URL + '/singleNumbers').subscribe((response: ServerResponse) => {

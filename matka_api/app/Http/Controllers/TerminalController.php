@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\UserType;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Models\RechargeToUser;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\CustomVoucher;
@@ -14,22 +15,23 @@ use App\Models\StockistToTerminal;
 use Illuminate\Http\Request;
 /////// for log
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class TerminalController extends Controller
 {
-    public function getAllTerminals(){
+    public function get_all_terminals(){
         $terminals = UserType::find(4)->users;
         return TerminalResource::collection($terminals);
     }
 
-    // public function getStockistByTerminalId(){
+    // public function get_stockist_by_terminal_id(){
     //     $trminals = User::find(StockistToTerminal::whereTerminalId(14)->first()->stockist_id);
     //     return response()->json(['success'=>0, 'data' => $trminals], 500);
     // }
 
 
 
-    public function createTerminal(Request $request){
+    public function create_terminal(Request $request){
         $requestedData = (object)$request->json()->all();
 
         DB::beginTransaction();
@@ -80,7 +82,7 @@ class TerminalController extends Controller
     }
 
 
-    public function updateTerminal(Request $request){
+    public function update_terminal(Request $request){
         $requestedData = (object)$request->json()->all();
 
         $id = $requestedData->id;
@@ -93,6 +95,50 @@ class TerminalController extends Controller
         $terminal->save();
 
         return response()->json(['success'=>1,'data'=> new TerminalResource($terminal)], 200,[],JSON_NUMERIC_CHECK);
+
+    }
+
+    public function update_limit_to_terminal(Request $request){
+        $requestedData = (object)$request->json()->all();
+//        $validator = Validator::make($requestedData,[
+//            'beneficiaryUid' => 'required'
+//        ]);
+//        if($validator->fails()){
+//            return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+//        }
+
+        //        Validation for terminal
+//        $rules = array(
+//            'beneficiaryUid'=> ['required',
+//                function($attribute, $value, $fail){
+//                    $terminal=User::where('id', $value)->where('user_type_id','=',4)->first();
+//                    if(!$terminal){
+//                        return $fail($value.' is not a valid terminal id');
+//                    }
+//                }],
+//        );
+
+        DB::beginTransaction();
+        try{
+
+            $beneficiaryUid = $requestedData->beneficiaryUid;
+            $amount = $requestedData->amount;
+            $beneficiaryObj = User::find($beneficiaryUid);
+            $beneficiaryObj->closing_balance = $beneficiaryObj->closing_balance + $amount;
+            $beneficiaryObj->save();
+
+            $rechargeToUser = new RechargeToUser();
+            $rechargeToUser->beneficiary_uid = $requestedData->beneficiaryUid;
+            $rechargeToUser->recharge_done_by_uid = $requestedData->rechargeDoneByUid;
+            $rechargeToUser->amount = $requestedData->amount;
+            $rechargeToUser->save();
+            DB::commit();
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            return response()->json(['success'=>0, 'data' => null, 'error'=>$e->getMessage()], 500);
+        }
+        return response()->json(['success'=>1,'data'=> new TerminalResource($beneficiaryObj)], 200,[],JSON_NUMERIC_CHECK);
 
     }
 

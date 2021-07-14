@@ -5,16 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StockistToTerminal extends Model
+class RechargeToUser extends Model
 {
     use HasFactory;
 
     /**
      * @var mixed
      */
-    private $terminal_id;
+    private $beneficiary_uid;
     /**
      * @var mixed
      */
-    private $stockist_id;
+    private $recharge_done_by_uid;
+    /**
+     * @var mixed
+     */
+    private $amount;
 }
