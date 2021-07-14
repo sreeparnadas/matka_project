@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
+
 class TerminalController extends Controller
 {
     public function get_all_terminals(){
@@ -100,23 +101,32 @@ class TerminalController extends Controller
 
     public function update_limit_to_terminal(Request $request){
         $requestedData = (object)$request->json()->all();
-//        $validator = Validator::make($requestedData,[
-//            'beneficiaryUid' => 'required'
-//        ]);
-//        if($validator->fails()){
-//            return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
-//        }
 
-        //        Validation for terminal
-//        $rules = array(
-//            'beneficiaryUid'=> ['required',
-//                function($attribute, $value, $fail){
-//                    $terminal=User::where('id', $value)->where('user_type_id','=',4)->first();
-//                    if(!$terminal){
-//                        return $fail($value.' is not a valid terminal id');
-//                    }
-//                }],
-//        );
+    //    $validator = Validator::make($requestedData,[
+    //        'beneficiaryUid' => 'required'
+    //    ]);
+    //    if($validator->fails()){
+    //        return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
+    //    }
+
+    //            Validation for terminal
+       $rules = array(
+           'beneficiaryUid'=> ['required',
+               function($attribute, $value, $fail){
+                   $terminal=User::where('id', $value)->where('user_type_id','=',4)->first();
+                   if(!$terminal){
+                       return $fail($value.' is not a valid terminal id');
+                   }
+               }],
+       );
+       $messages = array(
+           'beneficiaryUid.required' => "Terminal required"
+       );
+
+       $validator = Validator::make($request->all(),$rules,$messages);
+       if ($validator->fails()) {
+        return response()->json(['success'=>0, 'data' => $messages], 500);
+    }
 
         DB::beginTransaction();
         try{

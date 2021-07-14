@@ -10,6 +10,7 @@ use App\Models\UserType;
 use App\Models\CustomVoucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class StockistController extends Controller
 {
@@ -75,6 +76,25 @@ class StockistController extends Controller
     }
 
     public function update_limit_to_stockist(Request $request){
+        $requestedData = (object)$request->json()->all();
+        $rules = array(
+            'beneficiaryUid'=> ['required',
+                function($attribute, $value, $fail){
+                    $stockist=User::where('id', $value)->where('user_type_id','=',3)->first();
+                    if(!$stockist){
+                        return $fail($value.' is not a valid stockist id');
+                    }
+                }],
+        );
+        $messages = array(
+            'beneficiaryUid.required' => "Stockist required"
+        );
+
+        $validator = Validator::make($request->all(),$rules,$messages);
+        if ($validator->fails()) {
+            return response()->json(['success'=>0, 'data' => $messages], 500);
+        }
+
 
         DB::beginTransaction();
         try{
