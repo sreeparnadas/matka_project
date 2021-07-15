@@ -56,10 +56,16 @@ export class AdminReportsComponent implements OnInit {
     Swal.fire({
       title: '<strong>Ticket <u>' + barcodeNumber + '</u></strong>',
       icon: 'info',
-      html:
-        'You can use <b>bold text</b>, ' +
-        '<a href="//sweetalert2.github.io">links</a> ' +
-        'and other HTML tags',
+      // html:
+      //   'You can use <b>bold text</b>, ' +
+      //   '<a href="//sweetalert2.github.io">links</a> ' +
+      //   'and other HTML tags',
+      html: '<table>'+
+              '<tr><th>Number</th><th>quantity</th></tr>'+
+            this.barcodeDetails.single
+              .map(item => `<tr><td>${item.single_number}</td><td>${item.quantity}</td></tr>`)
+              .join('') +
+               '</table>',
       showCloseButton: true,
       showCancelButton: true,
       focusConfirm: false,
