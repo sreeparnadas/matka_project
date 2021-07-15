@@ -17,6 +17,7 @@ use App\Http\Controllers\StockistController;
 use App\Http\Controllers\CentralController;
 use App\Http\Controllers\NextGameDrawController;
 use App\Http\Controllers\TerminalController;
+use App\Http\Controllers\CPanelReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,10 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('terminals',[TerminalController::class, 'update_terminal']);
     Route::get('terminals/{id}',[TerminalController::class, 'get_stockist_by_terminal_id']);
 
+//    Admin reports
+
+    Route::get('cPanel/barcodeReport', [CPanelReportController::class, 'barcode_wise_report']);
+    Route::get('cPanel/barcodeReport/particulars/{id}', [CPanelReportController::class, 'get_barcode_report_particulars']);
 });
 
 
@@ -151,6 +156,9 @@ Route::group(array('prefix' => 'dev'), function() {
 
     Route::get('nextDrawId', [NextGameDrawController::class, 'getNextDrawIdOnly']);
 
+
+    Route::get('cPanel/barcodeReport', [CPanelReportController::class, 'barcode_wise_report']);
+    Route::get('cPanel/barcodeReport/particulars/{id}', [CPanelReportController::class, 'get_barcode_report_particulars']);
 
 });
 

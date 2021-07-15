@@ -5,7 +5,7 @@ import {Terminal} from '../../../models/Terminal.model';
 import {MasterTerminalService} from '../../../services/master-terminal.service';
 import {Stockist} from '../../../models/Stockist.model';
 import {MasterStockistService} from '../../../services/master-stockist.service';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 import {Sort} from '@angular/material/sort';
 
 @Component({

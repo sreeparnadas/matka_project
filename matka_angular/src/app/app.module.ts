@@ -74,7 +74,9 @@ import { MasterStockistComponent } from './pages/cpanel/master-stockist/master-s
 import {MatTabsModule} from '@angular/material/tabs';
 import {NgMarqueeModule} from 'ng-marquee-improved';
 // import { MasterTerminalComponent } from './pages/cpanel/master-terminal/master-terminal.component';
-import { MasterTerminalModule } from './modules/general/cpanel/master-terminal/master-terminal.module';
+// import { MasterTerminalModule } from './modules/general/cpanel/master-terminal/master-terminal.module';
+// import { AdminReportsComponent } from './pages/cpanel/admin-reports/admin-reports.component';
+// import { AdminReportsModule } from './modules/general/cpanel/admin-reports/admin-reports.module';
 // import {NgxPrintModule} from "ngx-print";
 // import { DeveloperModule } from './modules/general/developer/developer.module';
 
@@ -86,6 +88,7 @@ import { MasterTerminalModule } from './modules/general/cpanel/master-terminal/m
 @NgModule({
   declarations: [
     AppComponent,
+    // AdminReportsComponent,
     // MasterTerminalComponent,
     // MasterStockistComponent,
     // HeaderComponent,
@@ -153,6 +156,7 @@ import { MasterTerminalModule } from './modules/general/cpanel/master-terminal/m
     // MasterStockistModule,
     MatTabsModule,
     NgMarqueeModule,
+    // AdminReportsModule,
     // MasterTerminalModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},

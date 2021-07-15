@@ -102,14 +102,12 @@
         </mat-menu>
 
 
-        <mat-list-item>
-          <button mat-menu-item [matMenuTriggerFor]="menuAdminReport">Report<i class="bi bi-caret-down"></i></button>
+        <mat-list-item *ngIf="!deviceXs">
+          <button mat-menu-item
+                  [routerLink]="['/cPanelReports']"
+                  routerLinkActive="MyActiveMenu"
+                  [routerLinkActiveOptions]="{exact: true}">Reports</button>
         </mat-list-item>
-        <mat-menu #menuAdminReport="matMenu" [overlapTrigger]="false">
-          <button mat-menu-item [routerLink]="['/masterStockist']" routerLinkActive="MyActiveMenu">Customer sale report</button>
-          <button mat-menu-item [routerLink]="['/manual']" routerLinkActive="MyActiveMenu" [routerLinkActiveOptions]="{exact: true}">Barcode report</button>
-          <button mat-menu-item [routerLink]="['/manual']" routerLinkActive="MyActiveMenu" [routerLinkActiveOptions]="{exact: true}">Drawwise report</button>
-        </mat-menu>
 
 
         <mat-list-item *ngIf="!deviceXs">
