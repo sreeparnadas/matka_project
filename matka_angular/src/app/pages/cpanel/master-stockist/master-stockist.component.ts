@@ -16,6 +16,7 @@ export class MasterStockistComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
   stockistMasterForm: FormGroup;
+  stockistLimitForm: FormGroup;
   stockists: Stockist[] = [];
   sortedStockistList: Stockist[] = [];
   public highLightedRowIndex = -1;
@@ -25,6 +26,13 @@ export class MasterStockistComponent implements OnInit {
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
     });
+    this.stockistLimitForm = new FormGroup({
+      beneficiaryUid: new FormControl(null),
+      amount: new FormControl(null, [Validators.required, Validators.minLength(2)]),
+
+    });
+
+    
   }
 
   ngOnInit(): void {
