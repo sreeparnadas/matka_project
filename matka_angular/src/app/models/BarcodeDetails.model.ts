@@ -1,5 +1,6 @@
 
 export class BarcodeDetails{
+  barcode?: string;
   single?: {
     single_number: number,
     quantity: number
