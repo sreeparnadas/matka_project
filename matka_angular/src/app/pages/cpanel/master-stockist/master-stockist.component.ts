@@ -19,6 +19,7 @@ export class MasterStockistComponent implements OnInit {
   stockistLimitForm: FormGroup;
   stockists: Stockist[] = [];
   sortedStockistList: Stockist[] = [];
+  selectedStockist: Stockist=null;
   public highLightedRowIndex = -1;
   constructor(private masterStockistService: MasterStockistService) {
     this.stockistMasterForm = new FormGroup({
@@ -32,7 +33,7 @@ export class MasterStockistComponent implements OnInit {
 
     });
 
-    
+
   }
 
   ngOnInit(): void {
@@ -43,7 +44,10 @@ export class MasterStockistComponent implements OnInit {
       this.sortedStockistList = response;
     });
   }
-
+  onStockistSelect($event){
+    console.log($event.value);
+    this.selectedStockist= this.stockists[$event.value];
+  }
   createNewStockist() {
     Swal.fire({
       title: 'Confirmation',

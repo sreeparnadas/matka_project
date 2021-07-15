@@ -10,6 +10,7 @@ import {MatCardModule} from '@angular/material/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MatSortModule} from '@angular/material/sort';
     FormsModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule
   ],
   exports: [
     MasterStockistComponent
