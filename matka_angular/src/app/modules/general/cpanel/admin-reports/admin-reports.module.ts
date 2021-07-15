@@ -11,7 +11,8 @@ import {MatCardModule} from '@angular/material/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSortModule} from '@angular/material/sort';
-import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModalModule, NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
+import {MDBRootModule} from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatSortModule,
-    NgbToastModule
+    NgbToastModule,
+    NgbModalModule,
+    MDBRootModule
   ],
   exports: [
     AdminReportsComponent

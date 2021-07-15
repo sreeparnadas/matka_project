@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ModalDirective} from 'angular-bootstrap-md';
 import {AdminReportService} from '../../../services/admin-report.service';
 import {environment} from '../../../../environments/environment';
 import {CPanelBarcodeReport} from '../../../models/CPanelBarcodeReport.model';
@@ -12,6 +13,7 @@ import {BarcodeDetails} from '../../../models/BarcodeDetails.model';
   styleUrls: ['./admin-reports.component.scss']
 })
 export class AdminReportsComponent implements OnInit {
+  @ViewChild(ModalDirective) modal: ModalDirective;
   isProduction = environment.production;
   showDevArea = false;
   barcodeReportRecords: CPanelBarcodeReport[] = [];
@@ -51,30 +53,6 @@ export class AdminReportsComponent implements OnInit {
 
     this.adminReportService.getBarcodeDetails(playMasterId).subscribe(response => {
       this.barcodeDetails = response.data;
-    });
-
-    Swal.fire({
-      title: '<strong>Ticket <u>' + barcodeNumber + '</u></strong>',
-      icon: 'info',
-      // html:
-      //   'You can use <b>bold text</b>, ' +
-      //   '<a href="//sweetalert2.github.io">links</a> ' +
-      //   'and other HTML tags',
-      html: '<table>'+
-              '<tr><th>Number</th><th>quantity</th></tr>'+
-            this.barcodeDetails.single
-              .map(item => `<tr><td>${item.single_number}</td><td>${item.quantity}</td></tr>`)
-              .join('') +
-               '</table>',
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: false,
-      confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Great!',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText:
-        '<i class="fa fa-thumbs-down"></i>',
-      cancelButtonAriaLabel: 'Thumbs down'
     });
   }
 }

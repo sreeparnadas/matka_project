@@ -3,7 +3,6 @@
 
   <mat-tab label="Barcode report">
 
-
     <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important;">
       <thead>
         <tr>
@@ -24,13 +23,81 @@
           <td>{{record.ticket_taken_time}}</td>
           <td>{{record.total_quantity}}</td>
           <td>{{record.amount}}</td>
-          <td> <button mat-raised-button mat-button color="warn" (click)="openPopup(record.play_master_id, record.barcode_number)">info</button></td>
+          <td><a
+            type="button"
+            mdbBtn
+            color="info"
+            class="waves-effect mb-4"
+            (click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"
+            mdbWavesEffect
+          >Add event
+          </a></td>
         </tr>
       </tbody>
-
     </table>
+
+
 
   </mat-tab>
 
   <mat-tab label="Draw wise report"></mat-tab>
 </mat-tab-group>
+
+
+<!--Modal-->
+<div
+  mdbModal
+  #frame="mdbModal"
+  class="modal fade top"
+  id="frameModalTop"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+  style="overflow-y: auto"
+>
+  <!--Dialog-->
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">
+          Schedule appointment
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="frame.hide()"
+        >
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        Modal Body
+      </div>
+      <!--/.Body-->
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          mdbBtn
+          color="info"
+          class="waves-effect"
+          mdbWavesEffect
+        >
+          Add
+        </button>
+      </div>
+      <!--Footer-->
+    </div>
+    <!--/.Content-->
+  </div>
+  <!--/.Dialog-->
+</div>
+<!--/.Modal-->
