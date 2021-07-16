@@ -18,6 +18,7 @@ import {User} from '../../../models/user.model';
 export class MasterTerminalComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
+  isTerminalUpdatAble = false;
   terminalMasterForm: FormGroup;
   terminalLimitForm: FormGroup;
   user: User;
@@ -62,6 +63,11 @@ export class MasterTerminalComponent implements OnInit {
     this.terminalLimitForm.controls.amount.setValidators([Validators.max(this.selectedTerminal.stockist.balance)]);
   }
 
+
+  editTerminal(terminal){
+    this.terminalMasterForm.patchValue(terminal);
+    this.isTerminalUpdatAble = true;
+  }
   createNewTerminal() {
     Swal.fire({
       title: 'Confirmation',

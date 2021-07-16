@@ -63,6 +63,7 @@
             <th mat-sort-header="pin">Pin</th>
             <th mat-sort-header="balance">Balance</th>
             <th mat-sort-header="stockistName">Stockist</th>
+            <th mat-sort-header="edit">Edit</th>
           </tr>
           </thead>
           <tbody>
@@ -72,6 +73,7 @@
             <td>{{terminal.pin}}</td>
             <td>{{terminal.balance}}</td>
             <td>{{terminal.stockist.userName}}</td>
+            <td><i class="bi bi-pencil-square"(click)="editTerminal(terminal)"></i></td>
           </tr>
           </tbody>
 

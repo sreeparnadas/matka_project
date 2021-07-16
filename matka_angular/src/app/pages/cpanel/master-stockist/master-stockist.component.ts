@@ -17,6 +17,7 @@ export class MasterStockistComponent implements OnInit {
 
   isProduction = environment.production;
   showDevArea = false;
+  isStockistUpdatAble = false;
   stockistMasterForm: FormGroup;
   stockistLimitForm: FormGroup;
   user: User;
@@ -50,6 +51,10 @@ export class MasterStockistComponent implements OnInit {
   }
   onStockistSelect(event: any){
     this.selectedStockist = this.stockists.find(x => x.userId === event.value);
+  }
+  editStockist(stockist){
+    this.stockistMasterForm.patchValue(stockist);
+    this.isStockistUpdatAble = true;
   }
   createNewStockist() {
     Swal.fire({
