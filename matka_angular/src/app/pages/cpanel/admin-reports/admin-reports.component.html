@@ -2,10 +2,10 @@
   <mat-tab label="Customer sales report"></mat-tab>
 
   <mat-tab label="Barcode report">
-    <popover-content #popoverCustomer title="abcd" placement="right" [animation]="true" [closeOnClickOutside]="true">
-      this areais for testing
-    </popover-content>
-    <button [popover]="popoverCustomer">test</button>
+<!--    <popover-content #popoverCustomer title="abcd" placement="right" [animation]="true" [closeOnClickOutside]="true">-->
+<!--      this areais for testing-->
+<!--    </popover-content>-->
+<!--    <button [popover]="popoverCustomer">test</button>-->
     <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important;">
       <thead>
         <tr>
@@ -60,13 +60,13 @@
   style="overflow-y: auto"
 >
   <!--Dialog-->
-  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+  <div class="modal-dialog modal-notify modal-info" role="document" *ngIf="barcodeDetails">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header text-center">
-        <h4 class="modal-title white-text w-100 font-weight-bold py-2">
-          Schedule appointment
+        <h4 class="modal-title white-text font-weight-bold">
+          Ticket: {{barcodeDetails.barcode}}
         </h4>
         <button
           type="button"
@@ -81,22 +81,28 @@
 
       <!--Body-->
       <div class="modal-body">
-        Modal Body
+        <span *ngIf="barcodeDetails.single.length">Single</span>
+        <div class="d-flex flex-row mt-2">
+          <button matBadge="{{single.quantity}}" *ngFor="let single of barcodeDetails.single; let i=index" class="mr-2">{{ single.single_number }}</button>
+        </div>
+
+        <span *ngIf="barcodeDetails.triple.length">Triple</span>
+        <div class="d-flex flex-row mt-2" *ngFor="let row of barcodeDetails.triple.slice(0, barcodeDetails.triple.length % 10  === 0 ?
+        barcodeDetails.triple.length / 10 : barcodeDetails.triple.length / 10 + 1); let idx = index">
+          <div colspan="2" *ngFor="let x of barcodeDetails.triple.slice(idx * 10, idx * 10 + 10)"
+              class="text-center align-middle mr-3" style="max-width: 100% !important;">
+            <button mat-raised-button matBadge="{{x.quantity}}" [matBadgeHidden]="false"
+                    value="bold" name="fontStyle" aria-label="Font Style"
+                    style="font-size: larger; min-width: 97% !important; padding: 0px !important; min-height: 40px;">
+              {{ x.visible_triple_number }}
+            </button>
+          </div>
+        </div>
       </div>
       <!--/.Body-->
 
       <!--Footer-->
-      <div class="modal-footer justify-content-center">
-        <button
-          type="button"
-          mdbBtn
-          color="info"
-          class="waves-effect"
-          mdbWavesEffect
-        >
-          Add
-        </button>
-      </div>
+      <div class="modal-footer justify-content-center"></div>
       <!--Footer-->
     </div>
     <!--/.Content-->

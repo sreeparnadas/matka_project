@@ -75,7 +75,7 @@ class StockistController extends Controller
 
     }
 
-    public function update_limit_to_stockist(Request $request){
+    public function update_balance_to_stockist(Request $request){
         $requestedData = (object)$request->json()->all();
         $rules = array(
             'beneficiaryUid'=> ['required',

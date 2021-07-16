@@ -46,4 +46,11 @@ export class MasterStockistService {
         console.log('service ', response);
       }));
   }
+
+  saveStockistBalance(stockist){
+    return this.http.put<StockistMaster>(this.BASE_API_URL + '/stockists/balance', stockist)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        // console.log('service ', response);
+      }));
+  }
 }

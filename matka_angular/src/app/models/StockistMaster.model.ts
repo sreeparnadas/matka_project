@@ -6,7 +6,7 @@ export class StockistMaster{
     userId: number,
     userName: string,
     pin: string,
-    userTypeName: string,
+    userTypeName?: string,
     userTypeId: number,
     balance: number
   };

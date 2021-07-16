@@ -85,14 +85,6 @@
 
 
         <mat-list-item>
-          <button mat-menu-item [matMenuTriggerFor]="menuLimit">Limit<i class="bi bi-caret-down"></i></button>
-        </mat-list-item>
-        <mat-menu #menuLimit="matMenu" [overlapTrigger]="false">
-          <button mat-menu-item [routerLink]="['/limitStockist']" routerLinkActive="MyActiveMenu">Stockist</button>
-          <button mat-menu-item [routerLink]="['/limitTerminal']" routerLinkActive="MyActiveMenu">terminal</button>
-        </mat-menu>
-
-        <mat-list-item>
           <button mat-menu-item [matMenuTriggerFor]="menuGameSettings">Game settings<i class="bi bi-caret-down"></i></button>
         </mat-list-item>
         <mat-menu #menuGameSettings="matMenu" [overlapTrigger]="false">

@@ -14,6 +14,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {NgbModalModule, NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
 import {MDBRootModule} from 'angular-bootstrap-md';
 import {PopoverModule} from 'ngx-smart-popover';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {PopoverModule} from 'ngx-smart-popover';
     NgbToastModule,
     NgbModalModule,
     MDBRootModule,
-    PopoverModule
+    PopoverModule,
+    MatBadgeModule
   ],
   exports: [
     AdminReportsComponent

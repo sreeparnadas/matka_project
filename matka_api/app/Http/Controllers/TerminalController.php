@@ -99,17 +99,10 @@ class TerminalController extends Controller
 
     }
 
-    public function update_limit_to_terminal(Request $request){
+    public function update_balance_to_terminal(Request $request){
         $requestedData = (object)$request->json()->all();
 
-    //    $validator = Validator::make($requestedData,[
-    //        'beneficiaryUid' => 'required'
-    //    ]);
-    //    if($validator->fails()){
-    //        return response()->json(['position'=>1,'success'=>0,'data'=>null,'error'=>$validator->messages()], 406,[],JSON_NUMERIC_CHECK);
-    //    }
-
-    //            Validation for terminal
+    // Validation for terminal
        $rules = array(
            'beneficiaryUid'=> ['required',
                function($attribute, $value, $fail){
@@ -133,9 +126,14 @@ class TerminalController extends Controller
 
             $beneficiaryUid = $requestedData->beneficiaryUid;
             $amount = $requestedData->amount;
+            $stockistId = $requestedData->stockistId;
             $beneficiaryObj = User::find($beneficiaryUid);
             $beneficiaryObj->closing_balance = $beneficiaryObj->closing_balance + $amount;
             $beneficiaryObj->save();
+
+            $stockist = User::findOrFail($stockistId);
+            $stockist->closing_balance = $stockist->closing_balance - $amount;
+            $stockist->save();
 
             $rechargeToUser = new RechargeToUser();
             $rechargeToUser->beneficiary_uid = $requestedData->beneficiaryUid;

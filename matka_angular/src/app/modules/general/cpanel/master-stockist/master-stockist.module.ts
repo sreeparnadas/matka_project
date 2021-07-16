@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   exports: [
     MasterStockistComponent

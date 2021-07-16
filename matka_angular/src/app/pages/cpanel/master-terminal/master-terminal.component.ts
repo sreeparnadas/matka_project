@@ -7,6 +7,8 @@ import {Stockist} from '../../../models/Stockist.model';
 import {MasterStockistService} from '../../../services/master-stockist.service';
 import Swal from 'sweetalert2';
 import {Sort} from '@angular/material/sort';
+import {AuthService} from '../../../services/auth.service';
+import {User} from '../../../models/user.model';
 
 @Component({
   selector: 'app-master-terminal',
@@ -17,20 +19,31 @@ export class MasterTerminalComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
   terminalMasterForm: FormGroup;
+  terminalLimitForm: FormGroup;
+  user: User;
   terminals: Terminal[] = [];
   sortedTerminalList: Terminal[] = [];
   stockists: Stockist[] = [];
+  selectedTerminal: Terminal = null;
   public highLightedRowIndex = -1;
 
-  constructor(private masterTerminalService: MasterTerminalService, private masterStockistService: MasterStockistService) {
+  constructor(private masterTerminalService: MasterTerminalService, private masterStockistService: MasterStockistService,
+              private authService: AuthService) {
     this.terminalMasterForm = new FormGroup({
       id: new FormControl(null),
       terminalName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       stockistId: new FormControl(null, [Validators.required]),
     });
+
+    this.terminalLimitForm = new FormGroup({
+      beneficiaryUid: new FormControl(null, [Validators.required]),
+      amount: new FormControl(null, [Validators.required, Validators.max(0)]),
+
+    });
   }
 
   ngOnInit(): void {
+    this.user = this.authService.userBehaviorSubject.value;
     this.terminals = this.masterTerminalService.getTerminals();
     this.sortedTerminalList = this.masterTerminalService.getTerminals();
     this.masterTerminalService.getTerminalListener().subscribe((response: Terminal[]) => {
@@ -42,6 +55,11 @@ export class MasterTerminalComponent implements OnInit {
     this.masterStockistService.getStockistListener().subscribe((response: Stockist[]) => {
       this.stockists = response;
     });
+  }
+
+  onTerminalSelect(event: any){
+    this.selectedTerminal = this.terminals.find(x => x.terminalId === event.value);
+    this.terminalLimitForm.controls.amount.setValidators([Validators.max(this.selectedTerminal.stockist.balance)]);
   }
 
   createNewTerminal() {
@@ -60,7 +78,7 @@ export class MasterTerminalComponent implements OnInit {
         this.masterTerminalService.saveNewTerminal(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
-            this.terminals.unshift(responseData);
+            // this.terminals.unshift(responseData);
             this.sortedTerminalList.unshift(responseData);
             this.highLightedRowIndex = 0;
             this.terminalMasterForm.reset();
@@ -122,6 +140,66 @@ export class MasterTerminalComponent implements OnInit {
         case 'stockistName': return compare(a.stockist.userName, b.stockist.userName, isAsc);
         case 'balance': return compare(a.balance, b.balance, isAsc);
         default: return 0;
+      }
+    });
+  }
+
+  rechargeToTerminal() {
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to recharge?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, recharge It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        const masterData = {
+          beneficiaryUid: this.terminalLimitForm.value.beneficiaryUid,
+          stockistId: this.selectedTerminal.stockist.userId,
+          amount: this.terminalLimitForm.value.amount,
+          rechargeDoneByUid: this.user.userId
+        };
+        this.masterTerminalService.saveTerminalBalance(masterData).subscribe(response => {
+          if (response.success === 1){
+            const responseData = response.data;
+            const targetTerminalIndex = this.terminals.findIndex(x => x.terminalId === responseData.terminalId);
+            this.terminals[targetTerminalIndex].balance = responseData.balance;
+            this.terminals[targetTerminalIndex].stockist.balance = responseData.stockist.balance;
+
+            this.sortedTerminalList[targetTerminalIndex].balance = responseData.balance;
+            this.sortedTerminalList[targetTerminalIndex].stockist.balance = responseData.stockist.balance;
+
+            this.highLightedRowIndex = targetTerminalIndex;
+            this.terminalLimitForm.controls.amount.setValidators([Validators.max(responseData.stockist.balance)]);
+            this.terminalLimitForm.patchValue({amount: ''});
+            setTimeout(() => {
+              this.highLightedRowIndex = -1;
+            }, 10000);
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Recharge done',
+              showConfirmButton: false,
+              timer: 1000
+            });
+            // updating terminal balance from here
+
+          }else{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
+        });
       }
     });
   }

@@ -81,11 +81,13 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('stockists',[StockistController::class, 'get_all_stockists']);
     Route::post('stockists',[StockistController::class, 'create_stockist']);
     Route::put('stockists',[StockistController::class, 'update_stockist']);
+    Route::put('stockists/balance',[StockistController::class, 'update_balance_to_stockist']);
 
     Route::get('terminals',[TerminalController::class, 'get_all_terminals']);
     Route::post('terminals',[TerminalController::class, 'create_terminal']);
     Route::put('terminals',[TerminalController::class, 'update_terminal']);
     Route::get('terminals/{id}',[TerminalController::class, 'get_stockist_by_terminal_id']);
+    Route::put('terminals/balance',[TerminalController::class, 'update_balance_to_terminal']);
 
 //    Admin reports
 
@@ -141,14 +143,14 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('stockists',[StockistController::class, 'get_all_stockists']);
     Route::post('stockists',[StockistController::class, 'create_stockist']);
     Route::put('stockists',[StockistController::class, 'update_stockist']);
-    Route::put('stockists/limit',[StockistController::class, 'update_limit_to_stockist']);
+    Route::put('stockists/balance',[StockistController::class, 'update_balance_to_stockist']);
 
 
     Route::get('terminals',[TerminalController::class, 'get_all_terminals']);
     Route::post('terminals',[TerminalController::class, 'create_terminal']);
     Route::put('terminals',[TerminalController::class, 'update_terminal']);
     Route::get('terminals/{id}',[TerminalController::class, 'get_stockist_by_terminal_id']);
-    Route::put('terminals/limit',[TerminalController::class, 'update_limit_to_terminal']);
+    Route::put('terminals/balance',[TerminalController::class, 'update_balance_to_terminal']);
 
 
     Route::post('createAutoResult', [CentralController::class, 'createResult']);

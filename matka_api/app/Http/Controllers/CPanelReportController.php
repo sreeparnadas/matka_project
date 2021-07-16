@@ -29,7 +29,7 @@ class CPanelReportController extends Controller
     public function get_barcode_report_particulars($play_master_id){
         $data = array();
         $playMaster = PlayMaster::findOrFail($play_master_id);
-        $data['barcode'] = substr($playMaster->barcode_number,1,8);
+        $data['barcode'] = Str::substr($playMaster->barcode_number,0,8);
         $singleGameData = PlayDetails::select(DB::raw('max(single_numbers.single_number) as single_number')
             ,DB::raw('max(play_details.quantity) as quantity'))
             ->join('number_combinations','play_details.number_combination_id','number_combinations.id')

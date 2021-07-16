@@ -72,8 +72,8 @@
 <!--second tab-->
   <mat-tab label="Stockist limit">
     <div class="d-flex flex-row mt-2">
-      <div class="col-3"></div>
-      <div class="col-5">
+      <div class="col-2"></div>
+      <div class="col-6">
         <mat-card>
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
@@ -87,21 +87,36 @@
                     <mat-form-field fxFlex="100">
                       <mat-label>Stockist</mat-label>
                       <mat-select (selectionChange)="onStockistSelect($event)" formControlName="beneficiaryUid">
-                        <mat-option *ngFor="let stockist of stockists" [value]=".ustockistserId">
+                        <mat-option *ngFor="let stockist of sortedStockistList" [value]="stockist.userId">
                           {{stockist.pin}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="d-flex" fxFlex="100">
 
+                    <mat-form-field appearance="legacy" *ngIf="selectedStockist">
                       <mat-label>Name</mat-label>
-                      <input type="text" matInput  placeholder="Enter Id" [value]="selectedStockist.userName">
+                      <input type="text" matInput readonly  placeholder="Stockist" [value]="selectedStockist.userName">
+                      <mat-icon matSuffix>person_pin</mat-icon>
                     </mat-form-field>
-                    <mat-form-field class="d-flex" fxFlex="100">
 
-                      <mat-label>Currnt balance</mat-label>
-                      <input type="text" matInput  placeholder="Enter Id">
+
+                    <mat-form-field appearance="legacy" *ngIf="selectedStockist">
+                      <mat-label>Current balance</mat-label>
+                      <input type="text" readonly matInput [value]="selectedStockist.balance"  placeholder="Current balance">
+                      <mat-icon matSuffix>account_balance_wallet</mat-icon>
                     </mat-form-field>
+                  </div>
+
+                  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                    <mat-form-field class="d-flex" fxFlex="100">
+                      <mat-label>Recharge amount</mat-label>
+                      <input type="text" matInput formControlName="amount"  placeholder="Enter amount">
+                      <mat-icon matSuffix> money</mat-icon>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                    <button class="pull-right" mat-raised-button color="warn" mat-stroked-button [disabled]="!stockistLimitForm.valid" (click)="rechargeToStockist()">Save</button>
                   </div>
                 </form>
               </div>
@@ -109,7 +124,7 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div class="col-4"></div>
+      <div class="col-2"></div>
     </div>
   </mat-tab>
 </mat-tab-group>
@@ -129,6 +144,6 @@
         stockists = {{stockists | json}}
       </pre>
   </div>
-  <div class="col-3"></div>
+  <div class="col-3"><pre>stockistLimitForm = {{stockistLimitForm.value | json}}</pre></div>
   <div class="col-3"></div>
 </div>
