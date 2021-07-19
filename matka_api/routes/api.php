@@ -161,6 +161,7 @@ Route::group(array('prefix' => 'dev'), function() {
 
     Route::get('cPanel/barcodeReport', [CPanelReportController::class, 'barcode_wise_report']);
     Route::get('cPanel/barcodeReport/particulars/{id}', [CPanelReportController::class, 'get_barcode_report_particulars']);
+    Route::get('cPanel/barcodeReport/prizeValue/{id}', [CPanelReportController::class, 'get_prize_value_by_barcode']);
 
 });
 

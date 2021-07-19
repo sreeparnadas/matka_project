@@ -29,6 +29,7 @@ export class WatchDrawService {
           if (userData == null){
             this.gameResultService.getUpdatedResult();
           }else{
+            this.gameResultService.getUpdatedResult();
             this.playGameService.getTodayLastResult();
             this.playGameService.getTodayResult();
           }
@@ -40,6 +41,7 @@ export class WatchDrawService {
           if (userData == null){
             this.gameResultService.getUpdatedResult();
           }else{
+            this.gameResultService.getUpdatedResult();
             this.playGameService.getTodayLastResult();
             this.playGameService.getTodayResult();
           }

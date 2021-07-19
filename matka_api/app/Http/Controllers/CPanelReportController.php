@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ResultMaster;
 use Illuminate\Http\Request;
 use App\Models\PlayMaster;
 use App\Models\PlayDetails;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CPanelReportController extends Controller
 {
@@ -23,6 +25,11 @@ class CPanelReportController extends Controller
             ->groupBy('play_masters.id','play_masters.barcode_number','draw_masters.visible_time','users.email','play_masters.created_at')
             ->orderBy('play_masters.created_at','desc')
             ->get();
+
+        foreach($data as $x){
+            $detail = (object)$x;
+            $detail->prize_value = $this->get_prize_value_by_barcode($detail->play_master_id);
+        }
         return response()->json(['success'=> 1, 'data' => $data], 200);
     }
 
@@ -53,5 +60,27 @@ class CPanelReportController extends Controller
         $data['triple'] = $tripleGameData;
         return response()->json(['success'=> 1, 'data' => $data], 200);
 
+    }
+
+    public function get_prize_value_by_barcode($play_master_id){
+        $play_master = PlayMaster::findOrFail($play_master_id);
+        $play_date = Carbon::parse($play_master->created_at)->format('Y-m-d');
+        $result_master = ResultMaster::where('draw_master_id', $play_master->draw_master_id)->where('game_date',$play_date)->first();
+        $result_number_combination_id = !empty($result_master) ? $result_master->number_combination_id : null;
+        $prize_value = 0;
+        $data = PlayMaster::join('play_details','play_masters.id','play_details.play_master_id')
+            ->join('number_combinations','play_details.number_combination_id','number_combinations.id')
+            ->join('game_types','play_details.game_type_id','game_types.id')
+//            ->select('game_types.game_type_name','play_details.number_combination_id','play_details.quantity', 'game_types.winning_price'
+//                ,DB::raw("sum(play_details.quantity* game_types.winning_price) as prize_value") )
+            ->select(DB::raw("sum(play_details.quantity* game_types.winning_price) as prize_value") )
+            ->where('play_masters.id',$play_master_id)
+            ->where('play_details.number_combination_id',$result_number_combination_id)
+            ->groupBy('play_masters.id')
+            ->first();
+        if(!empty($data)){
+            $prize_value = $data->prize_value;
+        }
+        return $prize_value;
     }
 }
