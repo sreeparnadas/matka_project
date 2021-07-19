@@ -102,12 +102,14 @@ class TerminalController extends Controller
 
         $terminal = User::findOrFail($terminalId);
         $terminal->user_name = $terminalName;
-        
-        $terminal->id = $stockist_id;
         $terminal->save();
 
-        return response()->json(['success'=>1,'data'=> new TerminalResource($terminal)], 200,[],JSON_NUMERIC_CHECK);
+        $stockistToTerminal = StockistToTerminal::where('terminal_id',$terminalId)->first();
+        $stockistToTerminal->stockist_id = $stockist_id;
+        $stockistToTerminal->save();
 
+        return response()->json(['success'=>1,'data'=> new TerminalResource($terminal)], 200,[],JSON_NUMERIC_CHECK);
+        // return response()->json(['data'=> $stockistToTerminal]);
     }
 
     public function update_balance_to_terminal(Request $request){
