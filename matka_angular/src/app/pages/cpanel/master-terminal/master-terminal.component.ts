@@ -65,9 +65,64 @@ export class MasterTerminalComponent implements OnInit {
 
 
   editTerminal(terminal){
-    this.terminalMasterForm.patchValue(terminal);
+     let data={
+      id: terminal.terminalId, terminalName: terminal.terminalName, stockistId: terminal.stockist.userId
+     };
+    this.terminalMasterForm.patchValue(data);
     this.isTerminalUpdatAble = true;
   }
+  updatTerminal(){
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to update terminal?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, update It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        // tslint:disable-next-line:max-line-length
+        const masterData = {terminalId: this.terminalMasterForm.value.id, terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId};
+        this.masterTerminalService.updateTerminal(masterData).subscribe(response => {
+          if (response.success === 1){
+            const responseData = response.data;
+
+            // const responseData = response.data;
+            // this.terminals.unshift(responseData);
+            // this.sortedTerminalList.unshift(responseData);
+            // this.highLightedRowIndex = 0;
+            // this.terminalMasterForm.reset();
+            // setTimeout(() => {
+            //   this.highLightedRowIndex = -1;
+            // }, 10000);
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Terminal created',
+              showConfirmButton: false,
+              timer: 1000
+            });
+            // updating terminal balance from here
+
+          }else{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
+        });
+      }
+    });
+  }
+
   createNewTerminal() {
     Swal.fire({
       title: 'Confirmation',

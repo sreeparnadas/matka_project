@@ -43,6 +43,7 @@
 
             <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
               <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="createNewTerminal()" [disabled]="!terminalMasterForm.valid">Create</button>
+              <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="updatTerminal()" [disabled]="">Update</button>
               <button class="pull-right" mat-raised-button color="warn" mat-stroked-button (click)="clearMasterTerminalForm()">clear</button>
             </div>
 
@@ -178,7 +179,8 @@
   <div class="col-6">
     <pre>
         {{terminalLimitForm.valid}}
-        terminalLimitForm = {{terminalLimitForm.controls.amount.errors | json}}
+        <!-- terminalLimitForm = {{terminalLimitForm.controls.amount.errors | json}} -->
+        terminalForm = {{terminalMasterForm.value | json}}
 <!--      terminals = {{terminals | json}}-->
       </pre>
   </div>

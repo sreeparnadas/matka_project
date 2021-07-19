@@ -86,13 +86,7 @@ class TerminalController extends Controller
     public function update_terminal(Request $request){
 
 
-        // $terminal = new User();
-        // $requestedData=User::find($request->input('id'));
-        // $user_name = $requestedData->userName;
-        // $stockist_id = $requestedData->stockistId;
-        // $terminal->user_name = $user_name;
-        // $terminal->id = $stockist_id;
-        // $terminal->save();
+        
 
         $requestedData = (object)$request->json()->all();
 
