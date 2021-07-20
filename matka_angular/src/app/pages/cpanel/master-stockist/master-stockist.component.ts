@@ -53,9 +53,67 @@ export class MasterStockistComponent implements OnInit {
     this.selectedStockist = this.stockists.find(x => x.userId === event.value);
   }
   editStockist(stockist){
-    this.stockistMasterForm.patchValue(stockist);
+    const targetStockistIndex = this.stockists.findIndex(x => x.userId === stockist.userId);
+    this.highLightedRowIndex = targetStockistIndex;
+    console.log(targetStockistIndex);
+    let data={
+      id: stockist.userId, userName: stockist.userName, pin: stockist.pin,
+     };
+
+    this.stockistMasterForm.patchValue(data);
     this.isStockistUpdatAble = true;
   }
+
+  upateStockist(){
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to update stockist?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, update It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        // tslint:disable-next-line:max-line-length
+        const masterData = {id: this.stockistMasterForm.value.id, userName : this.stockistMasterForm.value.userName};
+        console.log(masterData);
+        this.masterStockistService.updateStockiist(masterData).subscribe(response => {
+          if (response.success === 1){
+            const responseData = response.data;
+            this.sortedStockistList[this.highLightedRowIndex]= responseData;
+            this.stockistMasterForm.reset();
+            this.isStockistUpdatAble = false,
+            setTimeout(() => {
+              this.highLightedRowIndex = -1;
+            }, 5000);
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Stockist updated',
+              // showConfirmButton: false,
+              timer: 1000
+            });
+            // updating terminal balance from here
+
+          }else{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
+        });
+      }
+    });
+  }
+
   createNewStockist() {
     Swal.fire({
       title: 'Confirmation',
@@ -118,6 +176,9 @@ export class MasterStockistComponent implements OnInit {
 
   clearMasterStockistForm() {
     this.stockistMasterForm.reset();
+    this.highLightedRowIndex = -1;
+    this.isStockistUpdatAble = false;
+
   }
 
   sortData(sort: Sort) {

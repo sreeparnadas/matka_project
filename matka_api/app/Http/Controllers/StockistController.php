@@ -72,6 +72,7 @@ class StockistController extends Controller
         $stockist->user_name = $user_name;
         $stockist->save();
         return response()->json(['success'=>1,'data'=> new StockistResource($stockist)], 200,[],JSON_NUMERIC_CHECK);
+        // return response()->json(['success'=>1,'data'=>$id], 200,[],JSON_NUMERIC_CHECK);
 
     }
 

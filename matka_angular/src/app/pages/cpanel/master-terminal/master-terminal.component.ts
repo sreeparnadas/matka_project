@@ -73,7 +73,7 @@ export class MasterTerminalComponent implements OnInit {
     this.terminalMasterForm.patchValue(data);
     this.isTerminalUpdatAble = true;
   }
-  updatTerminal(){
+  updateTerminal(){
     Swal.fire({
       title: 'Confirmation',
       text: 'Do you sure to update terminal?',
