@@ -42,8 +42,8 @@
             </div>
 
             <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
-              <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="createNewTerminal()" [disabled]="!terminalMasterForm.valid">Create</button>
-              <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="updatTerminal()" [disabled]="">Update</button>
+              <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="createNewTerminal()" [disabled]="!terminalMasterForm.valid || isTerminalUpdatAble">Create</button>
+              <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="updatTerminal()" [disabled]="!isTerminalUpdatAble">Update</button>
               <button class="pull-right" mat-raised-button color="warn" mat-stroked-button (click)="clearMasterTerminalForm()">clear</button>
             </div>
 

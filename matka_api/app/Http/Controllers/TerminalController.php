@@ -86,7 +86,7 @@ class TerminalController extends Controller
     public function update_terminal(Request $request){
 
 
-        
+
 
         $requestedData = (object)$request->json()->all();
 
@@ -99,8 +99,16 @@ class TerminalController extends Controller
         $terminal->save();
 
         $stockistToTerminal = StockistToTerminal::where('terminal_id',$terminalId)->first();
-        $stockistToTerminal->stockist_id = $stockist_id;
-        $stockistToTerminal->save();
+        if(!empty($stockistToTerminal)){
+            $stockistToTerminal->stockist_id = $stockist_id;
+            $stockistToTerminal->save();
+        }else{
+            $stockistToTerminal = new StockistToTerminal();
+            $stockistToTerminal->terminal_id = $terminalId;
+            $stockistToTerminal->stockist_id = $stockist_id;
+            $stockistToTerminal->save();
+        }
+
 
         return response()->json(['success'=>1,'data'=> new TerminalResource($terminal)], 200,[],JSON_NUMERIC_CHECK);
         // return response()->json(['data'=> $stockistToTerminal]);
