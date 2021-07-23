@@ -100,6 +100,12 @@ export class TerminalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // let audio = new Audio();
+    // audio.src = "sound/Wheel.wav";
+    // audio.load();
+    // audio.play();
+
     this.idToLandOn = this.seed[Math.floor(Math.random() * this.seed.length)];
     const colors = ['#FFA500', '#8B008B', '#FF1493', '#20B2AA', '#8B0000', '#00FF00', '#e0e000', '#0000FF', '#6A5ACD', '#cd5c5c'];
     this.items = this.seed.map((value) => ({
@@ -288,5 +294,13 @@ export class TerminalComponent implements OnInit {
       }
     });
   }
+  // playAudio(){
+  //   let audio = new Audio();
+  //   audio.src = "../../../assets/audio/alarm.wav";
+  //   audio.load();
+  //   audio.play();
+  // }
+  // playAudio();
+
 
 }
