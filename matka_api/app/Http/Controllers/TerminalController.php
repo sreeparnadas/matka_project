@@ -165,4 +165,15 @@ class TerminalController extends Controller
 
     }
 
+    public function reset_terminal_password(Request $request){
+        $requestedData = (object)$request->json()->all();
+        $terminalId = $requestedData->terminalId;
+        $terminalPassword = $requestedData->terminalNewPassword;
+        $terminal = User::find($terminalId);
+        $terminal->password = md5($terminalPassword);
+        $terminal->save();
+        return response()->json(['success'=>1,'data'=>$terminal], 200,[],JSON_NUMERIC_CHECK);
+        // return response()->json(['success'=>1,'data'=>$terminalPassword], 200,[],JSON_NUMERIC_CHECK);
+    }
+
 }
