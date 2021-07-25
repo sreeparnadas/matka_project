@@ -7,6 +7,8 @@ use App\Models\ResultMaster;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
+use App\Http\Controllers\CentralController;
 
 class GenerateResult extends Command
 {
@@ -42,5 +44,7 @@ class GenerateResult extends Command
     public function handle()
     {
         LOG::info(Carbon::today());
+        $centralControllerObj = new CentralController();
+        $centralControllerObj->createResult();
     }
 }
