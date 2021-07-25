@@ -12,7 +12,7 @@ use App\Http\Controllers\NumberCombinationController;
 
 class CentralController extends Controller
 {
-    public function createResult(Request $request){
+    public function createResult(){
 
         $nextGameDrawObj = NextGameDraw::first();
         $nextDrawId = $nextGameDrawObj->next_draw_id;
