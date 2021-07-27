@@ -68,6 +68,11 @@ const routes: Routes = [
       .then(mod => mod.ManualResultModule)
   },
   {
+    path: 'payoutSettings',
+    loadChildren: () => import('./modules/general/cpanel/payout-setting/payout-setting.module')
+      .then(mod => mod.PayoutSettingModule)
+  },
+  {
     path: 'cPanelReports',
     loadChildren: () => import('./modules/general/cpanel/admin-reports/admin-reports.module')
       .then(mod => mod.AdminReportsModule)

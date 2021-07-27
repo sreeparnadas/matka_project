@@ -4,17 +4,9 @@ import {AuthGuardAdminServiceService} from '../../../../services/auth-guard-admi
 import {PayoutSettingComponent} from '../../../../pages/cpanel/payout-setting/payout-setting.component';
 
 
+
 const routes: Routes = [
-  {
-    path: 'payoutSettings',
-    canActivate : [AuthGuardAdminServiceService],
-    component: PayoutSettingComponent,
-    data: {
-      title: 'About',
-      description: 'Description Meta Tag Content',
-      ogUrl: 'your og url'
-    }
-  }
+  { path: '', canActivate : [AuthGuardAdminServiceService], component: PayoutSettingComponent }
 ];
 
 @NgModule({
