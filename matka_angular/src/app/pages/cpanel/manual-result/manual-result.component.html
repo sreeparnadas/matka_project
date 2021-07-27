@@ -25,7 +25,8 @@
             </ul>
           </div>
 
-          <button type="button" class="btn btn-primary mt-2" (click)="saveManualResult()">Save</button>
+          <button type="button" class="btn btn-primary mt-2" (click)="saveManualResult()" [disabled]="!manualResultForm.valid" >Save</button>
+          
         </div>
       </div>
 
@@ -34,7 +35,7 @@
 
             <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
               <div class="p-1">
-                <button  class="single-number-button coder-fab"  mat-fab>
+                <button  class="single-number-button coder-fab" [class.green]="isDisabledSingleHeaderButton"  [disabled]="isDisabledSingleHeaderButton">
                   {{tableData.singleNumber}}
                 </button>
               </div>

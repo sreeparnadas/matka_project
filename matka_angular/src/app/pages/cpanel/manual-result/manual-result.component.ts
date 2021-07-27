@@ -48,6 +48,7 @@ export class ManualResultComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
   deviceXs: boolean;
+  isDisabledSingleHeaderButton:  boolean = true;
   // tslint:disable-next-line:max-line-length
   constructor(private http: HttpClient, private manualResultService: ManualResultService
               // tslint:disable-next-line:align
@@ -161,6 +162,7 @@ export class ManualResultComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
+            this.manualResultForm.reset();
           }else{
             this.validatorError = response.error;
             Swal.fire({
