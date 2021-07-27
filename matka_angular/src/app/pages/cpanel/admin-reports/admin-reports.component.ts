@@ -7,6 +7,7 @@ import {Sort} from '@angular/material/sort';
 import Swal from 'sweetalert2';
 import {BarcodeDetails} from '../../../models/BarcodeDetails.model';
 import {CPanelCustomerSaleReport} from '../../../models/CPanelCustomerSaleReport.model';
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-admin-reports',
@@ -15,11 +16,16 @@ import {CPanelCustomerSaleReport} from '../../../models/CPanelCustomerSaleReport
 })
 export class AdminReportsComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
+
+
+  startDate = new Date(2021, 0, 1);
+
   isProduction = environment.production;
   showDevArea = false;
   barcodeReportRecords: CPanelBarcodeReport[] = [];
   barcodeDetails: BarcodeDetails;
   customerSaleReportRecords: CPanelCustomerSaleReport[] = [];
+  // picker1: any;
   constructor(private adminReportService: AdminReportService) {
 
   }

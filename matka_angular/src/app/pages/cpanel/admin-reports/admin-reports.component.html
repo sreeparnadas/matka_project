@@ -1,4 +1,26 @@
-<mat-tab-group class="mt-2">
+<mat-form-field class="col-2">
+  <input matInput [matDatepicker]="startatpicker"
+         placeholder="Choose a date">
+  <mat-datepicker-toggle  [for]="startatpicker">
+  </mat-datepicker-toggle>
+  <mat-datepicker #startatpicker startView="year"
+                  [startAt]="startDate"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field class="col-2">
+  <input matInput [matDatepicker]="startatpicker"
+         placeholder="Choose a date">
+  <mat-datepicker-toggle  [for]="startatpicker">
+  </mat-datepicker-toggle>
+  <mat-datepicker #startatpicker startView="year"
+                  [startAt]="startDate"></mat-datepicker>
+</mat-form-field>
+
+<!--<input [matDatepicker]="basicDatepicker">-->
+<!--<mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>-->
+<!--<mat-datepicker #basicDatepicker></mat-datepicker>-->
+
+<mat-tab-group class="mt-2 mr-3 ml-3">
   <mat-tab label="Customer sales report">
       <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
         <thead>
@@ -7,6 +29,7 @@
           <th mat-sort-header="total">Total</th>
           <th mat-sort-header="commission">Commission</th>
           <th mat-sort-header="prize_value">Prize</th>
+          <th mat-sort-header="ntp">NTP</th>
           <th ></th>
         </tr>
         </thead>
@@ -16,6 +39,7 @@
           <td>{{record.total}}</td>
           <td>{{record.commission}}</td>
           <td>{{record.prize_value}}</td>
+          <td>{{record.ntp.toFixed(2)}}</td>
         </tr>
         </tbody>
       </table>
