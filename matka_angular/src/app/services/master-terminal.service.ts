@@ -44,14 +44,14 @@ export class MasterTerminalService {
   updateTerminal(terminal){
     return this.http.put<TerminalMaster>(this.BASE_API_URL + '/terminals', terminal)
     .pipe(catchError(this.errorService.serverError),tap(response => {
-      
+
     }))
   }
 
   saveTerminalBalance(terminal){
     return this.http.put<TerminalMaster>(this.BASE_API_URL + '/terminals/balance', terminal)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        console.log('service ', response);
+        // console.log('service ', response);
       }));
   }
 }

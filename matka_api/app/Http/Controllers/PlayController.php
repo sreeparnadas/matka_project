@@ -7,6 +7,7 @@ use App\Http\Resources\PlayDetailsResource;
 use App\Http\Resources\PlayMasterResource;
 use App\Http\Resources\PrintSingleGameInputResource;
 use App\Http\Resources\PrintTripleGameInputResource;
+use App\Models\GameType;
 use App\Models\PlayDetails;
 use App\Models\PlayMaster;
 use App\Models\SingleNumber;
@@ -83,6 +84,7 @@ class PlayController extends Controller
             $output_play_details = array();
             foreach($inputPlayDetails as $inputPlayDetail){
                 $detail = (object)$inputPlayDetail;
+                $gameType = GameType::find($detail->gameTypeId);
                 //insert value for triple
                 if($detail->gameTypeId == 2){
                     $playDetails = new PlayDetails();
@@ -91,6 +93,8 @@ class PlayController extends Controller
                     $playDetails->number_combination_id = $detail->numberCombinationId;
                     $playDetails->quantity = $detail->quantity;
                     $playDetails->mrp = $detail->mrp;
+                    $playDetails->commission = $gameType->commission;
+                    $playDetails->payout = $gameType->payout;
                     $playDetails->save();
                     $output_play_details[] = $playDetails;
                 }
@@ -103,6 +107,8 @@ class PlayController extends Controller
                         $playDetails->number_combination_id = $numberCombinationId;
                         $playDetails->quantity = $detail->quantity;
                         $playDetails->mrp = round($detail->mrp/22,4);
+                        $playDetails->commission = $gameType->commission;
+                        $playDetails->payout = $gameType->payout;
                         $playDetails->save();
                         $output_play_details[] = $playDetails;
 

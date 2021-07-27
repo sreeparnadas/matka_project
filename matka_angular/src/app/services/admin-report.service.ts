@@ -7,6 +7,7 @@ import {ServerResponse} from '../models/ServerResponse.model';
 import {CPanelBarcodeReport} from '../models/CPanelBarcodeReport.model';
 import {Subject, throwError} from 'rxjs';
 import {BarcodeDetails} from '../models/BarcodeDetails.model';
+import {CPanelCustomerSaleReport} from '../models/CPanelCustomerSaleReport.model';
 
 
 @Injectable({
@@ -21,11 +22,20 @@ export class AdminReportService {
   barcodeDetails: BarcodeDetails;
   barcodeDetailsSubject = new Subject<BarcodeDetails>();
 
+  customerSaleReportRecords: CPanelCustomerSaleReport[] = [];
+  customerSaleReportSubject = new Subject<CPanelCustomerSaleReport[]>();
+
   constructor(private http: HttpClient, private errorService: ErrorService) {
     // get all barcode reports
     this.http.get(this.BASE_API_URL + '/cPanel/barcodeReport').subscribe((response: ServerResponse) => {
       this.barcodeReportRecords = response.data;
       this.barcodeReportSubject.next([...this.barcodeReportRecords]);
+    });
+
+    // get all customer sale reports
+    this.http.get(this.BASE_API_URL + '/cPanel/customerSaleReport').subscribe((response: ServerResponse) => {
+      this.customerSaleReportRecords = response.data;
+      this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
     });
   }
 
@@ -34,6 +44,13 @@ export class AdminReportService {
   }
   getBarcodeReportListener(){
     return this.barcodeReportSubject.asObservable();
+  }
+
+  getCustomerSaleReportRecords(){
+    return [...this.customerSaleReportRecords];
+  }
+  getCustomerSaleReportListener(){
+    return this.customerSaleReportSubject.asObservable();
   }
 
   getBarcodeDetails(playMasterId: number){

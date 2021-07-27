@@ -20,6 +20,8 @@ class CreatePlayDetailsTable extends Migration
             $table ->foreignId('number_combination_id')->references('id')->on('number_combinations')->onDelete('cascade');
             $table->integer('quantity')->nullable(false);
             $table->decimal('mrp',5,4)->default(0);
+            $table->decimal('commission',10,2)->default(0);
+            $table->decimal('payout',10,2)->default(0);
 
             $table->timestamps();
         });

@@ -29,6 +29,14 @@ class PlayDetails extends Model
      * @var mixed
      */
     private $number_combination_id;
+    /**
+     * @var mixed
+     */
+    private $commission;
+    /**
+     * @var mixed
+     */
+    private $payout;
 
     public function game(){
         return $this->belongsTo(GameType::class,'game_type_id');

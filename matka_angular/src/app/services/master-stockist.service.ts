@@ -44,13 +44,13 @@ export class MasterStockistService {
     return this.http.put<StockistMaster>(this.BASE_API_URL + '/stockists', stockist)
     .pipe(catchError(this.errorService.serverError),tap(response => {
 
-    }))
+    }));
   }
 
   saveNewStockist(stockist){
     return this.http.post<StockistMaster>(this.BASE_API_URL + '/stockists', stockist)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        console.log('service ', response);
+        // console.log('service ', response);
       }));
   }
 

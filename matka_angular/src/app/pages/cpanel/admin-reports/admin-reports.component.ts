@@ -6,6 +6,7 @@ import {CPanelBarcodeReport} from '../../../models/CPanelBarcodeReport.model';
 import {Sort} from '@angular/material/sort';
 import Swal from 'sweetalert2';
 import {BarcodeDetails} from '../../../models/BarcodeDetails.model';
+import {CPanelCustomerSaleReport} from '../../../models/CPanelCustomerSaleReport.model';
 
 @Component({
   selector: 'app-admin-reports',
@@ -18,6 +19,7 @@ export class AdminReportsComponent implements OnInit {
   showDevArea = false;
   barcodeReportRecords: CPanelBarcodeReport[] = [];
   barcodeDetails: BarcodeDetails;
+  customerSaleReportRecords: CPanelCustomerSaleReport[] = [];
   constructor(private adminReportService: AdminReportService) {
 
   }
@@ -26,6 +28,12 @@ export class AdminReportsComponent implements OnInit {
     this.barcodeReportRecords = this.adminReportService.getBarcodeReportRecords();
     this.adminReportService.getBarcodeReportListener().subscribe((response: CPanelBarcodeReport[]) => {
       this.barcodeReportRecords = response;
+    });
+
+    this.customerSaleReportRecords = this.adminReportService.getCustomerSaleReportRecords();
+    this.adminReportService.getCustomerSaleReportListener().subscribe((response: CPanelCustomerSaleReport[]) => {
+      this.customerSaleReportRecords = response;
+      console.log('customerSaleReportRecords = ', this.customerSaleReportRecords);
     });
   }
   sortData(sort: Sort) {

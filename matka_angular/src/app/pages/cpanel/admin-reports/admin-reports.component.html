@@ -1,5 +1,27 @@
 <mat-tab-group class="mt-2">
-  <mat-tab label="Customer sales report"></mat-tab>
+  <mat-tab label="Customer sales report">
+      <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
+        <thead>
+        <tr>
+          <th mat-sort-header="terminal_pin">Terminal Id</th>
+          <th mat-sort-header="total">Total</th>
+          <th mat-sort-header="commission">Commission</th>
+          <th mat-sort-header="prize_value">Prize</th>
+          <th ></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let record of customerSaleReportRecords;let indexOfElement=index">
+          <td>{{record.terminal_pin}}</td>
+          <td>{{record.total}}</td>
+          <td>{{record.commission}}</td>
+          <td>{{record.prize_value}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+  </mat-tab>
 
   <mat-tab label="Barcode report">
 <!--    <popover-content #popoverCustomer title="abcd" placement="right" [animation]="true" [closeOnClickOutside]="true">-->
@@ -15,7 +37,7 @@
           <th mat-sort-header="ticket_taken_time">Ticket take time</th>
           <th mat-sort-header="total_quantity">Quantity</th>
           <th mat-sort-header="amount">Amount</th>
-          <th mat-sort-header="amount">Prize</th>
+          <th mat-sort-header="prize_value">Prize</th>
           <th ></th>
         </tr>
       </thead>
@@ -112,3 +134,4 @@
   <!--/.Dialog-->
 </div>
 <!--/.Modal-->
+

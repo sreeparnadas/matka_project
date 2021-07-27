@@ -91,10 +91,16 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('terminals/{id}',[TerminalController::class, 'get_stockist_by_terminal_id']);
     Route::put('terminals/balance',[TerminalController::class, 'update_balance_to_terminal']);
 
-//    Admin reports
-
     Route::get('cPanel/barcodeReport', [CPanelReportController::class, 'barcode_wise_report']);
     Route::get('cPanel/barcodeReport/particulars/{id}', [CPanelReportController::class, 'get_barcode_report_particulars']);
+    Route::get('cPanel/barcodeReport/prizeValue/{id}', [CPanelReportController::class, 'get_prize_value_by_barcode']);
+    Route::get('cPanel/customerSaleReport', [CPanelReportController::class, 'customer_sale_report']);
+    Route::get('terminal/barcodeReport',[TerminalReportController::class, 'barcode_wise_report_by_terminal']);
+
+
+    Route::put('terminal/resetPassword', [TerminalController::class, 'reset_terminal_password']);
+
+    Route::put('cPanel/game/payout',[GameTypeController::class, 'update_payout']);
 });
 
 
@@ -164,7 +170,8 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('cPanel/barcodeReport', [CPanelReportController::class, 'barcode_wise_report']);
     Route::get('cPanel/barcodeReport/particulars/{id}', [CPanelReportController::class, 'get_barcode_report_particulars']);
     Route::get('cPanel/barcodeReport/prizeValue/{id}', [CPanelReportController::class, 'get_prize_value_by_barcode']);
-    Route::get('terminal/barcodeRepot',[TerminalReportController::class, 'barcode_wise_report_by_terminal']);
+    Route::get('cPanel/customerSaleReport', [CPanelReportController::class, 'customer_sale_report']);
+    Route::get('terminal/barcodeReport',[TerminalReportController::class, 'barcode_wise_report_by_terminal']);
 
 
     Route::put('terminal/resetPassword', [TerminalController::class, 'reset_terminal_password']);
