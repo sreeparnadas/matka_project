@@ -82,7 +82,7 @@ class CPanelReportController extends Controller
                     ->where('play_masters.id',$play_master_id)
                     ->where('play_details.game_type_id',$game_id)
                     ->where('play_details.number_combination_id',$result_number_combination_id)
-                    ->groupBy('play_masters.id')
+                    ->groupBy('number_combinations.single_number_id')
                     ->first();
             }
             if($game_id == 2){
