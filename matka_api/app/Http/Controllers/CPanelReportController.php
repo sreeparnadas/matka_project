@@ -176,7 +176,7 @@ group by play_details.play_master_id")[0];
         inner join game_types ON game_types.id = play_details.game_type_id
         inner join users ON users.id = play_masters.user_id
         where play_masters.is_cancelled=0
-        group by play_masters.user_id,users.user_name,play_details.game_type_id,users.email) as table1 group by user_name,terminal_pin");
+        group by play_masters.user_id,users.user_name,play_details.game_type_id,users.email) as table1 group by user_name,user_id,terminal_pin");
 
         foreach($data as $x){
             $newPrize = 0;

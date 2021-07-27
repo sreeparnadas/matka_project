@@ -89,6 +89,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'terminalReport',
+    loadChildren: () => import('./modules/general/terminal-report/terminal-report.module')
+      .then(mod => mod.TerminalReportModule)
+  },
+
+  {
     path: 'bi-icon',
     loadChildren: () => import('./modules/general/bi-icon/bi-icon.module')
       .then(mod => mod.BiIconModule)
