@@ -73,9 +73,9 @@ import { MasterStockistComponent } from './pages/cpanel/master-stockist/master-s
 // import { MasterStockistModule } from './modules/general/cpanel/master-stockist/master-stockist.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import {NgMarqueeModule} from 'ng-marquee-improved';
-import { PayoutSettingComponent } from './pages/cpanel/payout-setting/payout-setting.component';
-import { TerminalReportComponent } from './pages/terminal-report/terminal-report.component';
-import { TerminalReportModule } from './modules/general/terminal-report/terminal-report.module';
+// import { PayoutSettingComponent } from './pages/cpanel/payout-setting/payout-setting.component';
+// import { TerminalReportComponent } from './pages/terminal-report/terminal-report.component';
+// import { TerminalReportModule } from './modules/general/terminal-report/terminal-report.module';
 // import { MasterTerminalComponent } from './pages/cpanel/master-terminal/master-terminal.component';
 // import { MasterTerminalModule } from './modules/general/cpanel/master-terminal/master-terminal.module';
 // import { AdminReportsComponent } from './pages/cpanel/admin-reports/admin-reports.component';
@@ -91,8 +91,8 @@ import { TerminalReportModule } from './modules/general/terminal-report/terminal
 @NgModule({
   declarations: [
     AppComponent,
-    PayoutSettingComponent,
-    TerminalReportComponent,
+    // PayoutSettingComponent,
+    // TerminalReportComponent,
     // AdminReportsComponent,
     // MasterTerminalComponent,
     // MasterStockistComponent,
@@ -161,7 +161,7 @@ import { TerminalReportModule } from './modules/general/terminal-report/terminal
     // MasterStockistModule,
     MatTabsModule,
     NgMarqueeModule,
-    TerminalReportModule,
+    // TerminalReportModule,
     // AdminReportsModule,
     // MasterTerminalModule
   ],
