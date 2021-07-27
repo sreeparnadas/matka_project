@@ -165,19 +165,6 @@ group by play_details.play_master_id")[0];
     }
 
     public function customer_sale_report(){
-//        $data = DB::select("select max(play_master_id) as play_master_id,terminal_pin,user_name,
-//        sum(total) as total,round(sum(commission),2) as commission from (
-//        select max(play_masters.id) as play_master_id,users.user_name,users.email as terminal_pin,
-//        round(sum(play_details.quantity * play_details.mrp)) as total,
-//        sum(play_details.quantity * play_details.mrp)* (max(play_details.commission)/100) as commission
-//        FROM play_masters
-//        inner join play_details on play_details.play_master_id = play_masters.id
-//        inner join game_types ON game_types.id = play_details.game_type_id
-//        inner join users ON users.id = play_masters.user_id
-//        where play_masters.is_cancelled=0
-//        group by play_masters.user_id,users.user_name,play_details.game_type_id,users.email) as table1 group by user_name,terminal_pin");
-
-
         $data = DB::select("select max(play_master_id) as play_master_id,terminal_pin,user_name,user_id,
         sum(total) as total,round(sum(commission),2) as commission from (
         select max(play_masters.id) as play_master_id,users.user_name,users.email as terminal_pin,
@@ -191,21 +178,15 @@ group by play_details.play_master_id")[0];
         where play_masters.is_cancelled=0
         group by play_masters.user_id,users.user_name,play_details.game_type_id,users.email) as table1 group by user_name,terminal_pin");
 
-//        foreach($data as $x){
-//            $detail = (object)$x;
-//            $detail->prize_value = $this->get_prize_value_by_barcode($detail->play_master_id);
-//        }
         foreach($data as $x){
             $newPrize = 0;
             $newData = PlayMaster::where('user_id',$x->user_id)->get();
-//            $newData = DB::select("select * from play_masters where user_id = ?",[$x->user_id]);
             foreach($newData as $y) {
-//                $detail->prize_value = $this->get_prize_value_by_barcode($detail->play_master_id);
                 $newPrize += $this->get_prize_value_by_barcode($y->id);
             }
             $detail = (object)$x;
             $detail->prize_value = $newPrize;
         }
-        return response()->json(['success'=> 1, 'data' => $data,'newdata'=>$newData], 200);
+        return response()->json(['success'=> 1, 'data' => $data], 200);
     }
 }
