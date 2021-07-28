@@ -18,8 +18,9 @@ import {DatePipe, formatDate} from '@angular/common';
 export class AdminReportsComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
 
-
-  startDate = new Date(2021, 0, 1);
+  thisYear = new Date().getFullYear();
+  thisMonth = new Date().getMonth();
+  startDate = new Date(this.thisYear, this.thisMonth, 1);
 
   isProduction = environment.production;
   showDevArea = false;
@@ -27,7 +28,7 @@ export class AdminReportsComponent implements OnInit {
   barcodeDetails: BarcodeDetails;
   customerSaleReportRecords: CPanelCustomerSaleReport[] = [];
 
-  StartDateFilter: any;
+  StartDateFilter = this.startDate;
   EndDateFilter: any;
   pipe = new DatePipe('en-US');
 
