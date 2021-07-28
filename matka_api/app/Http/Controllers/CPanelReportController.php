@@ -186,8 +186,6 @@ group by play_details.play_master_id")[0];
             foreach($newData as $y) {
                 $tempData = 0;
                 $newPrize += $this->get_prize_value_by_barcode($y->id);
-//                $tempntp += DB::select(DB::raw("select distinct if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total from play_details where play_master_id = ?",[$y->id]))[0];
-//                $tempntp += DB::raw("select distinct if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total from play_details where play_master_id = ?",[$y->id])[0];
                 $tempData = (PlayDetails::select(DB::raw("if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total"))
                     ->where('play_master_id',$y->id)->distinct()->get())[0];
                 $tempntp += $tempData->total;
@@ -196,10 +194,6 @@ group by play_details.play_master_id")[0];
             $detail->prize_value = $newPrize;
             $detail->ntp = $tempntp;
         }
-//        $tempntp =( DB::select("select distinct if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total from play_details where play_master_id = ?",[7])[0]);
-        $tempntp = (PlayDetails::select(DB::raw("if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total"))
-            ->where('play_master_id',7)->distinct()->get())[0];
-//        return response()->json(['success'=> 1, 'data' => $data, 'data1'=>$tempntp->total +1], 200);
         return response()->json(['success'=> 1, 'data' => $data], 200);
     }
 }
