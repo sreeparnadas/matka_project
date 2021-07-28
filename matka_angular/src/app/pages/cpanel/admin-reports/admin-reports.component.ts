@@ -50,11 +50,16 @@ export class AdminReportsComponent implements OnInit {
     });
   }
 
-  searchByDate(){
+  searchByDateTab1(){
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-
     this.adminReportService.customerSaleReportByDate(startDate,endDate).subscribe();
+  }
+
+  searchByDateTab2(){
+    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+    this.adminReportService.barcodeReportByDate(startDate,endDate).subscribe();
   }
 
   sortData(sort: Sort) {

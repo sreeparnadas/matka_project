@@ -95,6 +95,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('terminals/balance',[TerminalController::class, 'update_balance_to_terminal']);
 
     Route::get('cPanel/barcodeReport', [CPanelReportController::class, 'barcode_wise_report']);
+    Route::post('cPanel/barcodeReportByDate', [CPanelReportController::class, 'barcode_wise_report_by_date']);
     Route::get('cPanel/barcodeReport/particulars/{id}', [CPanelReportController::class, 'get_barcode_report_particulars']);
     Route::get('cPanel/barcodeReport/prizeValue/{id}', [CPanelReportController::class, 'get_prize_value_by_barcode']);
     Route::get('cPanel/customerSaleReport', [CPanelReportController::class, 'customer_sale_report']);

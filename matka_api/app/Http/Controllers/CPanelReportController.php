@@ -37,6 +37,40 @@ class CPanelReportController extends Controller
         return response()->json(['success'=> 1, 'data' => $data], 200);
     }
 
+    public function barcode_wise_report_by_date(Request $request){
+        $requestedData = (object)$request->json()->all();
+        $start_date = $requestedData->startDate;
+        $end_date = $requestedData->endDate;
+
+
+        $x = $this->get_total_quantity_by_barcode(1);
+
+        $data = PlayMaster::select('play_masters.id as play_master_id', DB::raw('substr(play_masters.barcode_number, 1, 8) as barcode_number')
+            ,'draw_masters.visible_time as draw_time',
+            'users.email as terminal_pin','play_masters.created_at as ticket_taken_time'
+        )
+            ->join('draw_masters','play_masters.draw_master_id','draw_masters.id')
+            ->join('users','users.id','play_masters.user_id')
+            ->join('play_details','play_details.play_master_id','play_masters.id')
+            ->where('play_masters.is_cancelled',0)
+            ->where('play_masters.created_at','>=',$start_date)
+            ->where('play_masters.created_at','<=',$end_date)
+            ->groupBy('play_masters.id','play_masters.barcode_number','draw_masters.visible_time','users.email','play_masters.created_at')
+            ->orderBy('play_masters.created_at','desc')
+            ->get();
+
+        foreach($data as $x){
+            $detail = (object)$x;
+            $detail->total_quantity = $this->get_total_quantity_by_barcode($detail->play_master_id);
+            $detail->prize_value = $this->get_prize_value_by_barcode($detail->play_master_id);
+            $detail->amount = $this->get_total_amount_by_barcode($detail->play_master_id);
+        }
+        return response()->json(['success'=> 1, 'data' => $data], 200);
+
+    }
+
+
+
     public function get_barcode_report_particulars($play_master_id){
         $data = array();
         $playMaster = PlayMaster::findOrFail($play_master_id);
@@ -144,15 +178,15 @@ group by play_details.play_master_id")[0];
         foreach ($play_game_ids as $game_id){
             if($game_id == 1){
                 $singleGameTotalAmount = DB::select("select sum(quantity)*max(mrp) as total_amount from(select max(quantity) as quantity,round(max(mrp)*22) as mrp from play_details
-inner join number_combinations ON number_combinations.id = play_details.number_combination_id
-where play_details.play_master_id= ".$play_master_id." and play_details.game_type_id=1
-group by number_combinations.single_number_id) as table1")[0];
+                inner join number_combinations ON number_combinations.id = play_details.number_combination_id
+                where play_details.play_master_id= ".$play_master_id." and play_details.game_type_id=1
+                group by number_combinations.single_number_id) as table1")[0];
             }
             if($game_id == 2){
                 $tripleGameTotalAmount = DB::select("select sum(quantity*mrp) as total_amount from play_details
-inner join number_combinations ON number_combinations.id = play_details.number_combination_id
-where play_details.play_master_id= ".$play_master_id." and play_details.game_type_id= 2
-group by play_details.play_master_id")[0];
+                inner join number_combinations ON number_combinations.id = play_details.number_combination_id
+                where play_details.play_master_id= ".$play_master_id." and play_details.game_type_id= 2
+                group by play_details.play_master_id")[0];
             }
         }
 

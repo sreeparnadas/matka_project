@@ -74,6 +74,16 @@ export class AdminReportService {
       })));
   }
 
+  barcodeReportByDate(startDate, endDate){
+    return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/cPanel/barcodeReportByDate', {startDate, endDate})
+      .pipe(catchError(this.handleError), tap(((response: ServerResponse) => {
+        if (response.data){
+          this.barcodeReportRecords = response.data;
+          this.barcodeReportSubject.next([...this.barcodeReportRecords]);
+        }
+      })));
+  }
+
 
   private serverError(err: any) {
     if (err instanceof Response) {
