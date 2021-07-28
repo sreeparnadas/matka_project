@@ -13,7 +13,7 @@ import {HttpClient} from '@angular/common/http';
 import {MatCard} from '@angular/material/card';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
-import {CommonService} from "../../../services/common.service";
+import {CommonService} from '../../../services/common.service';
 
 @Component({
   selector: 'app-manual-result',
@@ -48,7 +48,7 @@ export class ManualResultComponent implements OnInit {
   isProduction = environment.production;
   showDevArea = false;
   deviceXs: boolean;
-  isDisabledSingleHeaderButton:  boolean = true;
+  isDisabledSingleHeaderButton: boolean = true;
   // tslint:disable-next-line:max-line-length
   constructor(private http: HttpClient, private manualResultService: ManualResultService
               // tslint:disable-next-line:align
@@ -163,6 +163,7 @@ export class ManualResultComponent implements OnInit {
               timer: 1000
             });
             this.manualResultForm.reset();
+            this.currentCombinationMatrixSelectedId = -1;
           }else{
             this.validatorError = response.error;
             Swal.fire({
