@@ -64,6 +64,15 @@ export class AdminReportService {
     return this.barcodeDetailsSubject.asObservable();
   }
 
+  customerSaleReportByDate(startDate, endDate){
+    return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/cPanel/customerSaleReports', {startDate: startDate,endDate:endDate})
+      .pipe(catchError(this.handleError), tap(((response: {success: number, data: any}) => {
+        if (response.data){
+          console.log(response.data);
+        }
+      })));
+  }
+
 
   private serverError(err: any) {
     if (err instanceof Response) {

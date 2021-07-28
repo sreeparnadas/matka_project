@@ -196,4 +196,44 @@ group by play_details.play_master_id")[0];
         }
         return response()->json(['success'=> 1, 'data' => $data], 200);
     }
+
+    public function customer_sale_reports(Request $request){
+        $requestedData = (object)$request->json()->all();
+        $start_date = $requestedData->startDate;
+        $end_date = $requestedData->endDate;
+
+        $data = DB::select("select max(play_master_id) as play_master_id,terminal_pin,user_name,user_id,
+        sum(total) as total,round(sum(commission),2) as commission from (
+        select max(play_masters.id) as play_master_id,users.user_name,users.email as terminal_pin,
+        round(sum(play_details.quantity * play_details.mrp)) as total,
+        sum(play_details.quantity * play_details.mrp)* (max(play_details.commission)/100) as commission,
+        play_masters.user_id
+        FROM play_masters
+        inner join play_details on play_details.play_master_id = play_masters.id
+        inner join game_types ON game_types.id = play_details.game_type_id
+        inner join users ON users.id = play_masters.user_id
+        where play_masters.is_cancelled=0 and date(play_masters.created_at) >= ? and date(play_masters.created_at) <= ?
+        group by play_masters.user_id,users.user_name,play_details.game_type_id,users.email) as table1 group by user_name,user_id,terminal_pin",[$start_date,$end_date]);
+
+//        foreach($data as $x){
+//            $newPrize = 0;
+//            $tempntp = 0;
+//            $newData = PlayMaster::where('user_id',$x->user_id)->get();
+//            foreach($newData as $y) {
+//                $tempData = 0;
+//                $newPrize += $this->get_prize_value_by_barcode($y->id);
+//                $tempData = (PlayDetails::select(DB::raw("if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total"))
+//                    ->where('play_master_id',$y->id)->distinct()->get())[0];
+//                $tempntp += $tempData->total;
+//            }
+//            $detail = (object)$x;
+//            $detail->prize_value = $newPrize;
+//            $detail->ntp = $tempntp;
+//        }
+        return response()->json(['success'=> 1, 'data' => $data], 200);
+
+
+
+//        return response()->json(['success'=> 1, 'data' => $start_date, 'fdsf'=>$end_date], 200);
+    }
 }

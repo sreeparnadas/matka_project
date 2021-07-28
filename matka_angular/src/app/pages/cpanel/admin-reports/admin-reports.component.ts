@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import {BarcodeDetails} from '../../../models/BarcodeDetails.model';
 import {CPanelCustomerSaleReport} from '../../../models/CPanelCustomerSaleReport.model';
 import {FormGroup} from "@angular/forms";
+import {DatePipe, formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-admin-reports',
@@ -25,6 +26,11 @@ export class AdminReportsComponent implements OnInit {
   barcodeReportRecords: CPanelBarcodeReport[] = [];
   barcodeDetails: BarcodeDetails;
   customerSaleReportRecords: CPanelCustomerSaleReport[] = [];
+
+  StartDateFilter: any;
+  EndDateFilter: any;
+  pipe = new DatePipe('en-US');
+
   // picker1: any;
   constructor(private adminReportService: AdminReportService) {
 
@@ -42,6 +48,14 @@ export class AdminReportsComponent implements OnInit {
       console.log('customerSaleReportRecords = ', this.customerSaleReportRecords);
     });
   }
+
+  searchByDate(){
+    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+
+    this.adminReportService.customerSaleReportByDate(startDate,endDate).subscribe();
+  }
+
   sortData(sort: Sort) {
     const data = this.barcodeReportRecords.slice();
     if (!sort.active || sort.direction === '') {
