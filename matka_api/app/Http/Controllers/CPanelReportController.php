@@ -215,21 +215,21 @@ group by play_details.play_master_id")[0];
         where play_masters.is_cancelled=0 and date(play_masters.created_at) >= ? and date(play_masters.created_at) <= ?
         group by play_masters.user_id,users.user_name,play_details.game_type_id,users.email) as table1 group by user_name,user_id,terminal_pin",[$start_date,$end_date]);
 
-//        foreach($data as $x){
-//            $newPrize = 0;
-//            $tempntp = 0;
-//            $newData = PlayMaster::where('user_id',$x->user_id)->get();
-//            foreach($newData as $y) {
-//                $tempData = 0;
-//                $newPrize += $this->get_prize_value_by_barcode($y->id);
-//                $tempData = (PlayDetails::select(DB::raw("if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total"))
-//                    ->where('play_master_id',$y->id)->distinct()->get())[0];
-//                $tempntp += $tempData->total;
-//            }
-//            $detail = (object)$x;
-//            $detail->prize_value = $newPrize;
-//            $detail->ntp = $tempntp;
-//        }
+        foreach($data as $x){
+            $newPrize = 0;
+            $tempntp = 0;
+            $newData = PlayMaster::where('user_id',$x->user_id)->get();
+            foreach($newData as $y) {
+                $tempData = 0;
+                $newPrize += $this->get_prize_value_by_barcode($y->id);
+                $tempData = (PlayDetails::select(DB::raw("if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total"))
+                    ->where('play_master_id',$y->id)->distinct()->get())[0];
+                $tempntp += $tempData->total;
+            }
+            $detail = (object)$x;
+            $detail->prize_value = $newPrize;
+            $detail->ntp = $tempntp;
+        }
         return response()->json(['success'=> 1, 'data' => $data], 200);
 
 

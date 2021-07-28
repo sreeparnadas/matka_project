@@ -66,10 +66,10 @@ export class AdminReportService {
 
   customerSaleReportByDate(startDate, endDate){
     return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/cPanel/customerSaleReports', {startDate: startDate,endDate:endDate})
-      .pipe(catchError(this.handleError), tap(((response: {success: number, data: any}) => {
+      .pipe(catchError(this.handleError), tap(((response: ServerResponse) =>{
         if (response.data){
-          // this.customerSaleReportRecords = response.data;
-          // this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
+          this.customerSaleReportRecords = response.data;
+          this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
         }
       })));
   }
