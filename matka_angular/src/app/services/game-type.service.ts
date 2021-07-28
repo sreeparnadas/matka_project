@@ -20,5 +20,13 @@ export class GameTypeService {
       this.gameTypes = response.data;
       this.gameTypeSubject.next([...this.gameTypes]);
     });
-   }
+  }
+
+  getGameType(){
+    return [...this.gameTypes];
+  }
+
+  getGameTypeListener(){
+    return this.gameTypeSubject.asObservable();
+  }
 }
