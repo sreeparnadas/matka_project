@@ -65,11 +65,12 @@ export class AdminReportService {
   }
 
   customerSaleReportByDate(startDate, endDate){
-    return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/cPanel/customerSaleReports', {startDate: startDate,endDate:endDate})
-      .pipe(catchError(this.handleError), tap(((response: {success: number, data: any}) => {
+    // tslint:disable-next-line:max-line-length
+    return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/cPanel/customerSaleReports', {startDate, endDate})
+      .pipe(catchError(this.handleError), tap(((response: {success: number, data: CPanelCustomerSaleReport[]}) => {
         if (response.data){
-          // this.customerSaleReportRecords = response.data;
-          // this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
+          this.customerSaleReportRecords = response.data;
+          this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
         }
       })));
   }
