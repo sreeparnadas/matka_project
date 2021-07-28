@@ -64,6 +64,26 @@ export class AdminReportService {
     return this.barcodeDetailsSubject.asObservable();
   }
 
+  customerSaleReportByDate(startDate, endDate){
+    return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/cPanel/customerSaleReports', {startDate, endDate})
+      .pipe(catchError(this.handleError), tap(((response: {success: number, data: CPanelCustomerSaleReport[]}) => {
+        if (response.data){
+          this.customerSaleReportRecords = response.data;
+          this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
+        }
+      })));
+  }
+
+  barcodeReportByDate(startDate, endDate){
+    return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/cPanel/barcodeReportByDate', {startDate, endDate})
+      .pipe(catchError(this.handleError), tap(((response: ServerResponse) => {
+        if (response.data){
+          this.barcodeReportRecords = response.data;
+          this.barcodeReportSubject.next([...this.barcodeReportRecords]);
+        }
+      })));
+  }
+
 
   private serverError(err: any) {
     if (err instanceof Response) {

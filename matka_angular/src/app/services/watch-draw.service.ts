@@ -6,6 +6,7 @@ import {GameResultService} from './game-result.service';
 import {PlayGameService} from './play-game.service';
 import {NextDrawId} from '../models/NextDrawId.model';
 import {User} from '../models/user.model';
+import {CommonService} from './common.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,9 @@ export class WatchDrawService {
   private nextDrawId: NextDrawId = {};
   nextDrawSubject = new Subject<NextDrawId>();
 
-  constructor(private http: HttpClient, private gameResultService: GameResultService, private playGameService: PlayGameService) {
+  constructor(private http: HttpClient, private gameResultService: GameResultService, private playGameService: PlayGameService
+              // tslint:disable-next-line:align
+              , private commonService: CommonService) {
 
     const userData: User = JSON.parse(localStorage.getItem('user'));
     setInterval(() => {
@@ -32,6 +35,7 @@ export class WatchDrawService {
             this.gameResultService.getUpdatedResult();
             this.playGameService.getTodayLastResult();
             this.playGameService.getTodayResult();
+            this.commonService.getActiveDrawTime();
           }
 
 

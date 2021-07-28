@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import {BarcodeDetails} from '../../../models/BarcodeDetails.model';
 import {CPanelCustomerSaleReport} from '../../../models/CPanelCustomerSaleReport.model';
 import {FormGroup} from "@angular/forms";
+import {DatePipe, formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-admin-reports',
@@ -17,14 +18,20 @@ import {FormGroup} from "@angular/forms";
 export class AdminReportsComponent implements OnInit {
   @ViewChild(ModalDirective) modal: ModalDirective;
 
-
-  startDate = new Date(2021, 0, 1);
+  thisYear = new Date().getFullYear();
+  thisMonth = new Date().getMonth();
+  startDate = new Date(this.thisYear, this.thisMonth, 1);
 
   isProduction = environment.production;
   showDevArea = false;
   barcodeReportRecords: CPanelBarcodeReport[] = [];
   barcodeDetails: BarcodeDetails;
   customerSaleReportRecords: CPanelCustomerSaleReport[] = [];
+
+  StartDateFilter = this.startDate;
+  EndDateFilter: any;
+  pipe = new DatePipe('en-US');
+
   // picker1: any;
   constructor(private adminReportService: AdminReportService) {
 
@@ -42,6 +49,19 @@ export class AdminReportsComponent implements OnInit {
       console.log('customerSaleReportRecords = ', this.customerSaleReportRecords);
     });
   }
+
+  searchByDateTab1(){
+    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+    this.adminReportService.customerSaleReportByDate(startDate,endDate).subscribe();
+  }
+
+  searchByDateTab2(){
+    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+    this.adminReportService.barcodeReportByDate(startDate,endDate).subscribe();
+  }
+
   sortData(sort: Sort) {
     const data = this.barcodeReportRecords.slice();
     if (!sort.active || sort.direction === '') {

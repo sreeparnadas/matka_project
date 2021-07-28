@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'app-terminal-report',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TerminalReportComponent implements OnInit {
 
-  constructor() { }
+  constructor( private renderer: Renderer2) {
+    this.renderer.setStyle(document.body, 'background-image', 'none');
+  }
 
   ngOnInit(): void {
   }

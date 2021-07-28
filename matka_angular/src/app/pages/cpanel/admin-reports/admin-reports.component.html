@@ -1,20 +1,27 @@
-<mat-form-field class="col-2">
-  <input matInput [matDatepicker]="startatpicker"
-         placeholder="Choose a date">
-  <mat-datepicker-toggle  [for]="startatpicker">
-  </mat-datepicker-toggle>
-  <mat-datepicker #startatpicker startView="year"
-                  [startAt]="startDate"></mat-datepicker>
-</mat-form-field>
+<!--<div class="pt-4">-->
+<!--  <mat-form-field class="col-2">-->
+<!--  <input matInput [matDatepicker]="picker1" [(ngModel)]= "StartDateFilter"-->
+<!--         placeholder="Choose a date">-->
+<!--  <mat-datepicker-toggle  [for]="picker1">-->
+<!--  </mat-datepicker-toggle>-->
+<!--  <mat-datepicker #picker1-->
+<!--                  [(ngModel)]= "StartDateFilter"-->
+<!--                  [startAt]="startDate" ></mat-datepicker>-->
+<!--</mat-form-field>-->
 
-<mat-form-field class="col-2">
-  <input matInput [matDatepicker]="startatpicker"
-         placeholder="Choose a date">
-  <mat-datepicker-toggle  [for]="startatpicker">
-  </mat-datepicker-toggle>
-  <mat-datepicker #startatpicker startView="year"
-                  [startAt]="startDate"></mat-datepicker>
-</mat-form-field>
+<!--<mat-form-field class="col-2">-->
+<!--  <input matInput [matDatepicker]="picker2" [(ngModel)]= "EndDateFilter"-->
+<!--         placeholder="Choose a date">-->
+<!--  <mat-datepicker-toggle  [for]="picker2">-->
+<!--  </mat-datepicker-toggle>-->
+<!--  <mat-datepicker #picker2  startView="year"-->
+<!--                  [(ngModel)]= "EndDateFilter"-->
+<!--                  [startAt]="startDate" ></mat-datepicker>-->
+<!--</mat-form-field>-->
+
+<!--&lt;!&ndash;<button (click)="searchByDate()">test</button>&ndash;&gt;-->
+<!--<button mat-button color="accent" style="font-size: 25px;" (click)="searchByDate()">Search</button>-->
+<!--</div>-->
 
 <!--<input [matDatepicker]="basicDatepicker">-->
 <!--<mat-datepicker-toggle [for]="basicDatepicker"></mat-datepicker-toggle>-->
@@ -22,6 +29,29 @@
 
 <mat-tab-group class="mt-2 mr-3 ml-3">
   <mat-tab label="Customer sales report">
+
+    <div class="pt-1 d-flex">
+      <div class="col-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Start date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+      </mat-form-field>
+      </div>
+      <div class="col-2">
+      <mat-form-field appearance="fill">
+        <mat-label>End date</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
+      </mat-form-field>
+      </div>
+
+      <!--<button (click)="searchByDate()">test</button>-->
+      <button mat-button color="accent" style="font-size: 25px;" (click)="searchByDateTab1()">Search</button>
+    </div>
+
       <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
         <thead>
         <tr>
@@ -52,6 +82,30 @@
 <!--      this areais for testing-->
 <!--    </popover-content>-->
 <!--    <button [popover]="popoverCustomer">test</button>-->
+
+    <div class="pt-1 d-flex">
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Start date</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!--<button (click)="searchByDate()">test</button>-->
+      <button mat-button color="accent" style="font-size: 25px;" (click)="searchByDateTab2()">Search</button>
+    </div>
+
+
     <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
       <thead>
         <tr>
