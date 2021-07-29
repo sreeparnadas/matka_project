@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { PayoutSettingRoutingModule } from './payout-setting-routing.module';
 import { PayoutSettingComponent } from 'src/app/pages/cpanel/payout-setting/payout-setting.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
 
   imports: [
     CommonModule,
-    PayoutSettingRoutingModule
+    PayoutSettingRoutingModule,
+    MatTableModule,
   ],
   exports: [
     PayoutSettingComponent
@@ -18,5 +20,7 @@ import { PayoutSettingComponent } from 'src/app/pages/cpanel/payout-setting/payo
     PayoutSettingComponent
   ]
 })
+
+
 
 export class PayoutSettingModule { }
