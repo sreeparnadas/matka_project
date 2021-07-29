@@ -31,7 +31,7 @@
   <mat-tab label="Customer sales report">
 
     <div class="pt-1 d-flex">
-      <div class="col-2">
+      <div class="col-3">
       <mat-form-field appearance="fill">
         <mat-label>Start date</mat-label>
         <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
@@ -39,7 +39,7 @@
         <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
       </mat-form-field>
       </div>
-      <div class="col-2">
+      <div class="col-3">
       <mat-form-field appearance="fill">
         <mat-label>End date</mat-label>
         <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
@@ -49,7 +49,7 @@
       </div>
 
       <!--<button (click)="searchByDate()">test</button>-->
-      <button mat-button color="accent" style="font-size: 25px;" (click)="searchByDateTab1()">Search</button>
+      <button mat-button color="accent" style="font-size: 20px;" (click)="searchByDateTab1()">Search</button>
     </div>
 
       <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
@@ -84,7 +84,7 @@
 <!--    <button [popover]="popoverCustomer">test</button>-->
 
     <div class="pt-1 d-flex">
-      <div class="col-2">
+      <div class="col-3">
         <mat-form-field appearance="fill">
           <mat-label>Start date</mat-label>
           <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
@@ -92,7 +92,7 @@
           <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
         </mat-form-field>
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <mat-form-field appearance="fill">
           <mat-label>End date</mat-label>
           <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
@@ -102,7 +102,7 @@
       </div>
 
       <!--<button (click)="searchByDate()">test</button>-->
-      <button mat-button color="accent" style="font-size: 25px;" (click)="searchByDateTab2()">Search</button>
+      <button mat-button color="accent" style="font-size: 20px;" (click)="searchByDateTab2()">Search</button>
     </div>
 
 
