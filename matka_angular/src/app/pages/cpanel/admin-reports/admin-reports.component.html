@@ -56,6 +56,7 @@
         <thead>
         <tr>
           <th mat-sort-header="terminal_pin">Terminal Id</th>
+          <th mat-sort-header="terminal_pin">Stokiest Name</th>
           <th mat-sort-header="total">Total</th>
           <th mat-sort-header="commission">Commission</th>
           <th mat-sort-header="prize_value">Prize</th>
@@ -66,6 +67,7 @@
         <tbody>
         <tr *ngFor="let record of customerSaleReportRecords;let indexOfElement=index">
           <td>{{record.terminal_pin}}</td>
+          <td>{{record.stokiest_name}}</td>
           <td>{{record.total}}</td>
           <td>{{record.commission}}</td>
           <td>{{record.prize_value}}</td>
