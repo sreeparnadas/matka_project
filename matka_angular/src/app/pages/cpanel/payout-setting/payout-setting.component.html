@@ -1,79 +1,82 @@
 <div class="container pt-5">
-  <!-- <mat-tab-group> -->
 
-    <div>
-      <pre>{{gameTypes | json}}</pre>
-
+    <div class="container mb-3" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+      <div class="offset-5"><mark>Set Payout</mark></div>
     </div>
-
-    <!-- <mat-table #table [dataSource]="dataSource"> -->
+  <form #payoutSetForm="ngForm" novalidate>{{payoutSetForm.form.valid}}
+    <mat-table #table [dataSource]="dataSource">
 
       <!-- Position Column -->
-      <!-- <ng-container matColumnDef="position">
+       <ng-container matColumnDef="position">
         <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-      </ng-container> -->
+        <mat-cell *matCellDef="let element"> {{element.gameTypeId}} </mat-cell>
+      </ng-container>
 
-      <!-- Name Column -->
-      <!-- <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <mat-form-field floatLabel="never">
-            <input matInput placeholder="Name" [value]="element.name" [(ngModel)]="element.name">
-          </mat-form-field>
-        </mat-cell>
-      </ng-container> -->
+      <!-- GameName Column -->
+      <ng-container matColumnDef="gameTypeName">
+        <mat-header-cell *matHeaderCellDef> Game </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.gameTypeName}} </mat-cell>
+      </ng-container>
 
-      <!-- Weight Column -->
-      <!-- <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-      </ng-container> -->
+      <!-- mrp Column -->
+       <ng-container matColumnDef="mrp">
+        <mat-header-cell *matHeaderCellDef> mrp </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.mrp}} </mat-cell>
+      </ng-container>
 
-      <!-- Symbol Column -->
-      <!-- <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <mat-form-field floatLabel="never">
-            <input matInput placeholder="Symbol" [value]="element.symbol" [(ngModel)]="element.symbol">
-          </mat-form-field>
-        </mat-cell>
-      </ng-container> -->
+      <!-- WinningPrice Column -->
+      <ng-container matColumnDef="winningPrice">
+        <mat-header-cell *matHeaderCellDef> winningPrice </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.winningPrice}} </mat-cell>
+      </ng-container>
 
-      <!-- Fav Column -->
-      <!-- <ng-container matColumnDef="fav">
-        <mat-header-cell *matHeaderCellDef> Favorite </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <mat-form-field floatLabel="never">
-            <mat-select [(value)]="element.fav" placeholder="Favorite">
-              <mat-option>None</mat-option>
-              <mat-option value="Yes">Yes</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-cell>
-      </ng-container> -->
+      <!-- Commission Column -->
+      <ng-container matColumnDef="commission">
+        <mat-header-cell *matHeaderCellDef> commission </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.commission}} </mat-cell>
+      </ng-container>
 
-      <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+      <!-- Payout Column -->
+        <ng-container matColumnDef="payout">
+          <mat-header-cell *matHeaderCellDef> payout </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+              <input type="number" name="payout" matInput placeholder="payout" [value]="element.payout" [(ngModel)]="element.payout" required>
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table> -->
-  <!-- </mat-tab-group> -->
+    </mat-table>
+  </form>
+
+
+<!--  Ref: https://stackblitz.com/edit/angular-mat-table-inline-editing?file=main.ts-->
+
+    <div class="container mt-3" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+      <div class="offset-5"><button mat-raised-button color="primary" mat-stroked-button [disabled]="!payoutSetForm.form.valid" (click)="updateTerminal()">Save</button></div>
+    </div>
 </div>
 
 
 
-<!-- <div class="d-flex" >
+<div class="d-flex" *ngIf="!isProduction">
   <div class="col-3">
-    <mat-slide-toggle >{{showDevArea?"Hide Developer Area":"Show Developer Area"}}</mat-slide-toggle>
+    <mat-slide-toggle (change)="showDevArea=!showDevArea">{{showDevArea?"Hide Developer Area":"Show Developer Area"}}</mat-slide-toggle>
   </div>
 </div>
 
-<div class="d-flex" >
+
+<div class="d-flex" *ngIf="!isProduction && showDevArea">
   <div class="col-6">
     <pre>
-      {{gameTypes | json}}
+
+        gameTypes = {{gameTypes | json}}
       </pre>
   </div>
-
+  <!--  <div class="col-3"><pre>sortedTerminalList = {{sortedTerminalList | json}}</pre></div>-->
   <div class="col-3"></div>
-</div> -->
+</div>
 

@@ -43,9 +43,9 @@ export class MasterTerminalService {
   }
   updateTerminal(terminal){
     return this.http.put<TerminalMaster>(this.BASE_API_URL + '/terminals', terminal)
-    .pipe(catchError(this.errorService.serverError),tap(response => {
+    .pipe(catchError(this.errorService.serverError), tap(response => {
 
-    }))
+    }));
   }
 
   saveTerminalBalance(terminal){

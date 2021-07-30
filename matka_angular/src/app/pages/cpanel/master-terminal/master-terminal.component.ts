@@ -55,6 +55,7 @@ export class MasterTerminalComponent implements OnInit {
     this.stockists = this.masterStockistService.getStockists();
     this.masterStockistService.getStockistListener().subscribe((response: Stockist[]) => {
       this.stockists = response;
+      console.log(this.stockists, 'from terminal');
     });
   }
 
@@ -67,7 +68,7 @@ export class MasterTerminalComponent implements OnInit {
   editTerminal(terminal){
     const targetTerminalIndex = this.terminals.findIndex(x => x.terminalId === terminal.terminalId);
     this.highLightedRowIndex = targetTerminalIndex;
-     let data={
+    const data = {
       id: terminal.terminalId, terminalName: terminal.terminalName, stockistId: terminal.stockist.userId
      };
     this.terminalMasterForm.patchValue(data);
@@ -89,9 +90,9 @@ export class MasterTerminalComponent implements OnInit {
         this.masterTerminalService.updateTerminal(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
-            this.sortedTerminalList[this.highLightedRowIndex]= responseData;
+            this.sortedTerminalList[this.highLightedRowIndex] = responseData;
             this.terminalMasterForm.reset();
-            this.isTerminalUpdatAble= false,
+            this.isTerminalUpdatAble = false;
             setTimeout(() => {
               this.highLightedRowIndex = -1;
             }, 5000);

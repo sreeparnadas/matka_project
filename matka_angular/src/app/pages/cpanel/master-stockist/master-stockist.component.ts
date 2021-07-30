@@ -129,7 +129,7 @@ export class MasterStockistComponent implements OnInit {
         this.masterStockistService.saveNewStockist(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
-            // this.stockists.unshift(responseData);
+            this.stockists.unshift(responseData);
             this.sortedStockistList.unshift(responseData);
             this.highLightedRowIndex = 0;
             this.stockistLimitForm.reset();
