@@ -26,17 +26,17 @@ export class AdminReportService {
   customerSaleReportSubject = new Subject<CPanelCustomerSaleReport[]>();
 
   constructor(private http: HttpClient, private errorService: ErrorService) {
-    // get all barcode reports
-    this.http.get(this.BASE_API_URL + '/cPanel/barcodeReport').subscribe((response: ServerResponse) => {
-      this.barcodeReportRecords = response.data;
-      this.barcodeReportSubject.next([...this.barcodeReportRecords]);
-    });
-
-    // get all customer sale reports
-    this.http.get(this.BASE_API_URL + '/cPanel/customerSaleReport').subscribe((response: ServerResponse) => {
-      this.customerSaleReportRecords = response.data;
-      this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
-    });
+    // // get all barcode reports
+    // this.http.get(this.BASE_API_URL + '/cPanel/barcodeReport').subscribe((response: ServerResponse) => {
+    //   this.barcodeReportRecords = response.data;
+    //   this.barcodeReportSubject.next([...this.barcodeReportRecords]);
+    // });
+    //
+    // // get all customer sale reports
+    // this.http.get(this.BASE_API_URL + '/cPanel/customerSaleReport').subscribe((response: ServerResponse) => {
+    //   this.customerSaleReportRecords = response.data;
+    //   this.customerSaleReportSubject.next([...this.customerSaleReportRecords]);
+    // });
   }
 
   getBarcodeReportRecords(){

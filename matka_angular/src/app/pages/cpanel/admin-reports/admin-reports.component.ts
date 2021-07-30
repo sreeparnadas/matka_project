@@ -20,7 +20,8 @@ export class AdminReportsComponent implements OnInit {
 
   thisYear = new Date().getFullYear();
   thisMonth = new Date().getMonth();
-  startDate = new Date(this.thisYear, this.thisMonth, 1);
+  thisDay = new Date().getDate();
+  startDate = new Date(this.thisYear, this.thisMonth, this.thisDay);
 
   isProduction = environment.production;
   showDevArea = false;
@@ -29,12 +30,12 @@ export class AdminReportsComponent implements OnInit {
   customerSaleReportRecords: CPanelCustomerSaleReport[] = [];
 
   StartDateFilter = this.startDate;
-  EndDateFilter: any;
+  EndDateFilter = this.startDate;
   pipe = new DatePipe('en-US');
 
   // picker1: any;
   constructor(private adminReportService: AdminReportService) {
-
+    console.log(this.thisDay);
   }
 
   ngOnInit(): void {
@@ -48,6 +49,8 @@ export class AdminReportsComponent implements OnInit {
       this.customerSaleReportRecords = response;
       console.log('customerSaleReportRecords = ', this.customerSaleReportRecords);
     });
+    this.searchByDateTab1();
+    this.searchByDateTab2();
   }
 
   searchByDateTab1(){
