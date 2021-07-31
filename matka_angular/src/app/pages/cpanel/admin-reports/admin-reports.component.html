@@ -130,15 +130,8 @@
           <td>{{record.total_quantity}}</td>
           <td>{{record.amount}}</td>
           <td>{{record.prize_value}}</td>
-          <td><a
-            type="button"
-            mdbBtn
-            color="info"
-            class="waves-effect mb-4"
-            (click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"
-            mdbWavesEffect
-          >Info
-          </a></td>
+          <td><a color="info" class="waves-effect mb-4"(click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"
+            mdbWavesEffect><i class="bi bi-info-square-fill"></i></a></td>
         </tr>
       </tbody>
     </table>
