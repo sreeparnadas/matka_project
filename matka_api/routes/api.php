@@ -101,6 +101,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get('cPanel/customerSaleReport', [CPanelReportController::class, 'customer_sale_report']);
     Route::post('cPanel/customerSaleReports', [CPanelReportController::class, 'customer_sale_reports']);
     Route::post('terminal/barcodeReport',[TerminalReportController::class, 'barcode_wise_report_by_terminal']);
+    Route::post('terminal/terminal_sale_reports', [TerminalReportController::class, 'terminal_sale_reports']);
 
 
     Route::put('terminal/resetPassword', [TerminalController::class, 'reset_terminal_password']);
@@ -177,6 +178,7 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('cPanel/barcodeReport/prizeValue/{id}', [CPanelReportController::class, 'get_prize_value_by_barcode']);
     Route::get('cPanel/customerSaleReport', [CPanelReportController::class, 'customer_sale_report']);
     Route::post('cPanel/customerSaleReports', [CPanelReportController::class, 'customer_sale_reports']);
+    Route::post('terminal/terminal_sale_reports', [TerminalReportController::class, 'terminal_sale_reports']);
     Route::post('terminal/barcodeReport',[TerminalReportController::class, 'barcode_wise_report_by_terminal']);
 
 

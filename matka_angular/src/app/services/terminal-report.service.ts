@@ -8,6 +8,7 @@ import {TerminalBarcodeReport} from "../models/TerminalBarcodeReport.model";
 import {User} from "../models/user.model";
 import {catchError, tap} from "rxjs/operators";
 import {CPanelCustomerSaleReport} from "../models/CPanelCustomerSaleReport.model";
+import {TerminalSaleReport} from "../models/TerminaSaleReport.model";
 
 
 @Injectable({
@@ -18,12 +19,18 @@ import {CPanelCustomerSaleReport} from "../models/CPanelCustomerSaleReport.model
 export class TerminalReportService {
   private BASE_API_URL = environment.BASE_API_URL;
   barcodeReportRecords: TerminalBarcodeReport[] = [];
+  terminalSaleRRecords: TerminalSaleReport[] = [];
   userData: User = JSON.parse(localStorage.getItem('user'));
 
   barcodeReportRecordsSubject = new Subject<TerminalBarcodeReport[]>();
+  terminalSaleRecordsSubject = new Subject<TerminalSaleReport[]>();
 
   terminalListListener(){
     return this.barcodeReportRecordsSubject.asObservable();
+  }
+
+  terminalSaleListListener(){
+    return this.terminalSaleRecordsSubject.asObservable();
   }
 
   constructor(private http: HttpClient, private errorService: ErrorService) {
@@ -38,13 +45,22 @@ export class TerminalReportService {
     //   })));
   }
 
-  getTerminalReport(userId){
-    console.log("terminal_id",userId);
-    return this.http.post( this.BASE_API_URL + '/terminal/barcodeReport', {terminalId: userId})
+  getTerminalReport(userId,startDate,endDate){
+    return this.http.post( this.BASE_API_URL + '/terminal/barcodeReport', {terminalId: userId,startDate, endDate: endDate })
       .pipe(catchError(this.handleError), tap(((response: {success: number, data: TerminalBarcodeReport[]}) => {
         if(response.data){
           this.barcodeReportRecords = response.data;
           this.barcodeReportRecordsSubject.next([...this.barcodeReportRecords]);
+        }
+      })));
+  }
+
+  getTerminalSaleReport(userId,startDate,endDate){
+    return this.http.post( this.BASE_API_URL + '/terminal/terminal_sale_reports', {terminalId: userId,startDate, endDate: endDate })
+      .pipe(catchError(this.handleError), tap(((response: {success: number, data: TerminalSaleReport[]}) => {
+        if(response.data){
+          this.terminalSaleRRecords = response.data;
+          this.terminalSaleRecordsSubject.next([...this.terminalSaleRRecords]);
         }
       })));
   }

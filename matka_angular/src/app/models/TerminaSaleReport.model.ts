@@ -1,5 +1,5 @@
 
-export class TerminalBarcodeReport{
+export class TerminalSaleReport{
 
   play_master_id?: number;
   barcode_number?: string;

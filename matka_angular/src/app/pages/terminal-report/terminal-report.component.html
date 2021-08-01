@@ -1,24 +1,82 @@
-<div class="mt-5">
-  <table matSort class="table table-bordered table-sm m-3" style="border: none !important; height: 50px;  overflow: scroll;">
-    <thead>
-    <tr>
-      <th mat-sort-header="terminal_pin">Date</th>
-      <th mat-sort-header="total">Amount</th>
-      <th mat-sort-header="commission">Commission</th>
-      <th mat-sort-header="prize_value">Prize</th>
-      <th mat-sort-header="ntp">NTP</th>
-      <th ></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let record of terminalReportData;let indexOfElement=index">
-      <td>{{record.draw_time}}</td>
-      <td>{{record.amount}}</td>
-      <td>{{record.commission}}</td>
-      <td>{{record.prize_value}}</td>
-      <td>{{record.ntp}}</td>
-    </tr>
-    </tbody>
-  </table>
+<mat-tab-group class="mt-2 mr-3 ml-3">
+  <mat-tab label="Terminal barcode report">
 
-</div>
+    <div class="pt-1 d-flex">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Start date</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!--<button (click)="searchByDate()">test</button>-->
+      <button mat-button color="accent" style="font-size: 20px;" (click)="getTerminalBarcodeReport()">Search</button>
+    </div>
+
+
+
+    <div class="">
+      <table matSort class="table table-bordered table-sm m-3" style="border: none !important; height: 50px;  overflow: scroll;">
+        <thead>
+        <tr>
+          <th mat-sort-header="terminal_pin">Baarcode</th>
+          <th mat-sort-header="terminal_pin">Draw Time</th>
+          <th mat-sort-header="terminal_pin">Quantity</th>
+          <th mat-sort-header="total">Amount</th>
+          <th mat-sort-header="prize_value">Prize</th>
+          <th ></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let record of terminalReportData;let indexOfElement=index">
+          <td>{{record.barcode_number}}</td>
+          <td>{{record.draw_time}}</td>
+          <td>{{record.total_quantity}}</td>
+          <td>{{record.amount}}</td>
+          <td>{{record.prize_value}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </mat-tab>
+
+
+
+
+
+  <mat-tab label="Terminal sale report">
+
+    <div class="pt-1 d-flex">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Start date</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!--<button (click)="searchByDate()">test</button>-->
+      <button mat-button color="accent" style="font-size: 20px;" (click)="getTerminalSaleReport()">Search</button>
+    </div>
+  </mat-tab>
+</mat-tab-group>
