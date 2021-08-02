@@ -78,5 +78,30 @@
       <!--<button (click)="searchByDate()">test</button>-->
       <button mat-button color="accent" style="font-size: 20px;" (click)="getTerminalSaleReport()">Search</button>
     </div>
+
+    <table matSort class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
+      <thead>
+      <tr>
+        <th mat-sort-header="terminal_pin">Terminal Id</th>
+        <th mat-sort-header="terminal_pin">Stokiest Name</th>
+        <th mat-sort-header="total">Total</th>
+        <th mat-sort-header="commission">Commission</th>
+        <th mat-sort-header="prize_value">Prize</th>
+        <th mat-sort-header="ntp">NTP</th>
+        <th ></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let record of terminalSaleReportData;let indexOfElement=index">
+        <td>{{record.terminal_pin}}</td>
+        <td>{{record.stokiest_name}}</td>
+        <td>{{record.total}}</td>
+        <td>{{record.commission}}</td>
+        <td>{{record.prize_value}}</td>
+        <td>{{record.ntp.toFixed(2)}}</td>
+      </tr>
+      </tbody>
+    </table>
+
   </mat-tab>
 </mat-tab-group>

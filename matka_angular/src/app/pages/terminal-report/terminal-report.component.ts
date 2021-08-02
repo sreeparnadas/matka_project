@@ -4,6 +4,7 @@ import {User} from "../../models/user.model";
 import {CPanelBarcodeReport} from "../../models/CPanelBarcodeReport.model";
 import {TerminalBarcodeReport} from "../../models/TerminalBarcodeReport.model";
 import {DatePipe} from "@angular/common";
+import {TerminalSaleReport} from "../../models/TerminaSaleReport.model";
 
 @Component({
   selector: 'app-terminal-report',
@@ -21,11 +22,15 @@ export class TerminalReportComponent implements OnInit {
   pipe = new DatePipe('en-US');
 
   terminalReportData: TerminalBarcodeReport[];
+  terminalSaleReportData: TerminalSaleReport[];
 
   constructor( private renderer: Renderer2, private terminalReportService: TerminalReportService) {
     this.renderer.setStyle(document.body, 'background-image', 'none');
     this.terminalReportService.terminalListListener().subscribe((response)=>{
       this.terminalReportData = response;
+    })
+    this.terminalReportService.terminalSaleListListener().subscribe((response)=>{
+      this.terminalSaleReportData = response;
     })
     this.getTerminalBarcodeReport();
     this.getTerminalSaleReport();
