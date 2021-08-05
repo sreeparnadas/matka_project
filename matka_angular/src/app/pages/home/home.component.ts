@@ -48,17 +48,18 @@ export class HomeComponent implements OnInit {
   }
 
   public openPDF(): void {
-    const DATA = document.getElementById('table-div');
-
+    // const DATA = document.getElementById('table-div');
+    const DATA = document.getElementById('title-4-div');
+    console.log(DATA);
     html2canvas(DATA).then(canvas => {
 
       const fileWidth = 208;
       const fileHeight = canvas.height * fileWidth / canvas.width;
 
-      const FILEURI = canvas.toDataURL('image/png')
+      const FILEURI = canvas.toDataURL('image/png');
       let PDF = new jsPDF('p', 'mm', 'a4');
       let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
 
       PDF.save('angular-demo.pdf');
     });

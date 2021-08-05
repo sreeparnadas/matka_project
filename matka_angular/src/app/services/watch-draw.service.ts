@@ -35,9 +35,7 @@ export class WatchDrawService {
             this.gameResultService.getUpdatedResult();
             this.playGameService.getTodayLastResult();
             this.playGameService.getTodayResult();
-            this.commonService.getActiveDrawTime();
           }
-
 
         }else if (this.nextDrawId.data.id !== response.data.id) {
           this.nextDrawId = response;
@@ -48,6 +46,7 @@ export class WatchDrawService {
             this.gameResultService.getUpdatedResult();
             this.playGameService.getTodayLastResult();
             this.playGameService.getTodayResult();
+            this.commonService.getActiveServerDrawTime();
           }
         }
 
