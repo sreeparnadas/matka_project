@@ -76,7 +76,7 @@ class TerminalReportController extends Controller
             $tempntp = 0;
             $newData = PlayMaster::whereRaw('date(created_at) >= ?', [$x->date])->where('user_id',$terminalId)->get();
             foreach ($newData as $y){
-                $tempData = 0;
+//                $tempData = 0;
                 $newPrize += $cPanelRepotControllerObj->get_prize_value_by_barcode($y->id);
                 $tempData = (PlayDetails::select(DB::raw("if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total"))
                     ->where('play_master_id',$y->id)->distinct()->get())[0];
@@ -88,35 +88,6 @@ class TerminalReportController extends Controller
         }
 
 
-//        foreach($data as $x){
-//            $newPrize = 0;
-//            $tempntp = 0;
-//            $date = null;
-//            $newData = PlayMaster::where('user_id',$x->user_id)
-//                ->whereRaw('date(play_masters.created_at) >= ?', [$start_date])
-//                ->whereRaw('date(play_masters.created_at) <= ?', [$end_date])
-//                ->get();
-//            $date = $newData[0]->created_at;
-//
-//            foreach($newData as $y) {
-//                $tempData = 0;
-//                $newPrize += $cPanelRepotControllerObj->get_prize_value_by_barcode($y->id);
-//                $tempData = (PlayDetails::select(DB::raw("if(game_type_id = 1,(mrp*22)*quantity-(commission/100),mrp*quantity-(commission/100)) as total"))
-//                    ->where('play_master_id',$y->id)
-//                    ->distinct()->get())[0];
-//                $tempntp += $tempData->total;
-//                if($date != ($y->created_at)){
-//
-//                }
-//            }
-//            $detail = (object)$x;
-//            $detail->prize_value = $newPrize;
-//            $detail->ntp = $tempntp;
-//            $newPrize = 0;
-//            $tempntp = 0;
-
-//        }
-
-        return response()->json(['success' => 1, 'data' => $data], 200);
+        return response()->json(['success' => 1, 'data' => $data, 'ada'=>$newData], 200);
     }
 }
