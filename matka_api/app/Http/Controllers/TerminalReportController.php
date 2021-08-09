@@ -88,6 +88,6 @@ class TerminalReportController extends Controller
         }
 
 
-        return response()->json(['success' => 1, 'data' => $data, 'ada'=>$newData], 200);
+        return response()->json(['success' => 1, 'data' => $data], 200);
     }
 }
