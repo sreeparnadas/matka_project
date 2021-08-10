@@ -5,6 +5,7 @@ import {CPanelBarcodeReport} from "../../models/CPanelBarcodeReport.model";
 import {TerminalBarcodeReport} from "../../models/TerminalBarcodeReport.model";
 import {DatePipe} from "@angular/common";
 import {TerminalSaleReport} from "../../models/TerminaSaleReport.model";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-terminal-report',
@@ -52,7 +53,46 @@ export class TerminalReportComponent implements OnInit {
   }
 
   cancelTicket(masterId){
-    this.terminalReportService.cancelTicket(masterId).subscribe();
+    Swal.fire({
+      title: 'Confirm Cancel ?',
+      // showDenyButton: true,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: `Yes, confirm`,
+      // denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Please Wait !',
+          html: 'Confirming cancel',// add html attribute if you want or remove
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+        this.terminalReportService.cancelTicket(masterId).subscribe((response)=>{
+          if(response.data){
+            Swal.hideLoading();
+            Swal.fire({
+              icon: 'success',
+              title: 'Cancelled',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Some error occurred',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          }
+        });
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
   }
 
   getTerminalBarcodeReport(){
