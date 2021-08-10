@@ -13,6 +13,10 @@ export class ResultComponent implements OnInit {
   currentDateResult: CurrentGameResult;
 
   currentDate: string;
+  columnNumber = 5;
+  columnNumber2 = 7;
+  columnNumber3 = 1;
+  public activeTripleContainerValue = 0;
 
   constructor(private resultService: ResultService) {
 
@@ -24,6 +28,10 @@ export class ResultComponent implements OnInit {
       this.currentDateResult = response;
       console.log(this.currentDateResult);
     });
+  }
+  isActiveTripleContainter(idxSingle: number) {
+    // tslint:disable-next-line:triple-equals
+    return this.activeTripleContainerValue == idxSingle;
   }
 
 }
