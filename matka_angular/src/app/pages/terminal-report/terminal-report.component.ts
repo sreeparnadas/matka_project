@@ -5,6 +5,7 @@ import {CPanelBarcodeReport} from "../../models/CPanelBarcodeReport.model";
 import {TerminalBarcodeReport} from "../../models/TerminalBarcodeReport.model";
 import {DatePipe} from "@angular/common";
 import {TerminalSaleReport} from "../../models/TerminaSaleReport.model";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-terminal-report',
@@ -28,12 +29,70 @@ export class TerminalReportComponent implements OnInit {
     this.renderer.setStyle(document.body, 'background-image', 'none');
     this.terminalReportService.terminalListListener().subscribe((response)=>{
       this.terminalReportData = response;
+      console.log(this.terminalReportData);
     })
     this.terminalReportService.terminalSaleListListener().subscribe((response)=>{
       this.terminalSaleReportData = response;
     })
     this.getTerminalBarcodeReport();
     this.getTerminalSaleReport();
+  }
+
+  ngOnInit(): void {
+    // this.terminalReport.getTerminalReport();
+  }
+
+  checkBtnEligibility(record){
+    if(record.is_cancelled == 1){
+      return true;
+    }
+    if(record.is_cancelable == 0){
+      return true;
+    }
+    return false;
+  }
+
+  cancelTicket(masterId){
+    Swal.fire({
+      title: 'Confirm Cancel ?',
+      // showDenyButton: true,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: `Yes, confirm`,
+      // denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Please Wait !',
+          html: 'Confirming cancel',// add html attribute if you want or remove
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+        this.terminalReportService.cancelTicket(masterId).subscribe((response)=>{
+          if(response.data){
+            Swal.hideLoading();
+            Swal.fire({
+              icon: 'success',
+              title: 'Cancelled',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Some error occurred',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          }
+        });
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
   }
 
   getTerminalBarcodeReport(){
@@ -48,10 +107,6 @@ export class TerminalReportComponent implements OnInit {
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
     this.terminalReportService.getTerminalSaleReport(User.userId,startDate,endDate).subscribe();
-  }
-
-  ngOnInit(): void {
-    // this.terminalReport.getTerminalReport();
   }
 
 }

@@ -133,7 +133,7 @@ class CPanelReportController extends Controller
                     ->first();
             }
         }
-        return ['single' => $singleGamePrize];
+//        return ['single' => $singleGamePrize];
 
         if(!empty($singleGamePrize)){
             $prize_value+= $singleGamePrize->prize_value;

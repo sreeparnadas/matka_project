@@ -4,18 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayGameSave;
 use App\Http\Resources\PlayDetailsResource;
+use App\Models\PlayDetails;
 use App\Models\PlayMaster;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlayMasterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function cancelPlay(Request $request)
     {
-        //
+        $requestedData = (object)$request->json()->all();
+        $playMasterId = $requestedData->play_master_id;
+        $playMaster = new PlayMaster();
+        $playMaster = PlayMaster::find($playMasterId);
+        $playMaster->is_cancelled = 1;
+        $playMaster->update();
+
+        $data = DB::select("select round(sum(play_details.quantity * play_details.mrp)) as total from play_details where play_master_id = ?",[$playMasterId])[0]->total;
+//
+        $user = new User();
+        $user = User::find($playMaster->user_id);
+        $user->closing_balance += $data;
+        $user->update();
+
+        return response()->json(['success' => 1, 'data' => $playMaster, 'id'=>$playMaster->id, 'point'=>$user->closing_balance], 200);
     }
 
     /**

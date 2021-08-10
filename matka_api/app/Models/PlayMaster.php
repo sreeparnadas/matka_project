@@ -26,6 +26,9 @@ class PlayMaster extends Model
      * @var mixed
      */
     private $user_id;
+    /**
+     * @var int|mixed
+     */
 
     protected static function boot()
     {

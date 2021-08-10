@@ -9,6 +9,7 @@ import {User} from "../models/user.model";
 import {catchError, tap} from "rxjs/operators";
 import {CPanelCustomerSaleReport} from "../models/CPanelCustomerSaleReport.model";
 import {TerminalSaleReport} from "../models/TerminaSaleReport.model";
+import {AuthService} from "./auth.service";
 
 
 @Injectable({
@@ -33,7 +34,7 @@ export class TerminalReportService {
     return this.terminalSaleRecordsSubject.asObservable();
   }
 
-  constructor(private http: HttpClient, private errorService: ErrorService) {
+  constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) {
 
     // console.log(userData.userId);
     // this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/terminal/barcodeReport', {terminalId: userData.userId})
@@ -43,6 +44,21 @@ export class TerminalReportService {
     //     //   console.log(response);
     //     // }
     //   })));
+  }
+
+  cancelTicket(master_id){
+    return this.http.post( this.BASE_API_URL + '/cancelTicket', {play_master_id: master_id})
+      .pipe(catchError(this.handleError), tap(((response: {success: number, id:number ,data: TerminalBarcodeReport[], point: number}) => {
+        if(response.data){
+          // const userData =localStorage.getItem('user');
+          this.authService.updateUserBalance(response.point);
+
+          console.log(response.point);
+          const index = this.barcodeReportRecords.findIndex(x=>x.play_master_id === response.id);
+          this.barcodeReportRecords[index].is_cancelled = 1;
+          this.barcodeReportRecordsSubject.next([...this.barcodeReportRecords]);
+        }
+      })));
   }
 
   getTerminalReport(userId,startDate,endDate){
