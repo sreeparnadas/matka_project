@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {ActivatedRoute, Data, Router} from '@angular/router';
 import { faAtlas} from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import {User} from '../../models/user.model';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class AuthComponent implements OnInit {
   loginForm: FormGroup;
   // tslint:disable-next-line:max-line-length
   loginType: string;
+  public user: User;
   // tslint:disable-next-line:max-line-length
   constructor(private authService: AuthService, private storage: StorageMap, private router: Router, private activatedRoute: ActivatedRoute) {
     const data: Data = this.activatedRoute.snapshot.data;
@@ -29,6 +31,27 @@ export class AuthComponent implements OnInit {
       email: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required]),
     });
+
+    this.user = this.authService.userBehaviorSubject.value;
+
+    if (this.user != null){
+      // tslint:disable-next-line:triple-equals
+      if (this.user.userTypeId == 1){
+        this.router.navigate(['/cPanel']).then(r => {});
+      }
+      // tslint:disable-next-line:triple-equals
+      if (this.user.userTypeId == 2){
+        this.router.navigate(['/developer']).then(r => {});
+      }
+      // tslint:disable-next-line:triple-equals
+      if (this.user.userTypeId == 3){
+        this.router.navigate(['/stockistCPanel']).then(r => {});
+      }
+      // tslint:disable-next-line:triple-equals
+      if (this.user.userTypeId == 4){
+        this.router.navigate(['/terminal']).then(r => {});
+      }
+    }
   }
 
   ngOnInit(): void {
