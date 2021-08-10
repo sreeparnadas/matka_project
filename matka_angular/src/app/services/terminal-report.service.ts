@@ -45,6 +45,18 @@ export class TerminalReportService {
     //   })));
   }
 
+  cancelTicket(master_id){
+    return this.http.post( this.BASE_API_URL + '/cancelTicket', {play_master_id: master_id})
+      .pipe(catchError(this.handleError), tap(((response: {success: number, id:number ,data: TerminalBarcodeReport[]}) => {
+        if(response.data){
+          // const userData =localStorage.getItem('user');
+          const index = this.barcodeReportRecords.findIndex(x=>x.play_master_id === response.id);
+          this.barcodeReportRecords[index].is_cancelled = 1;
+          this.barcodeReportRecordsSubject.next([...this.barcodeReportRecords]);
+        }
+      })));
+  }
+
   getTerminalReport(userId,startDate,endDate){
     return this.http.post( this.BASE_API_URL + '/terminal/barcodeReport', {terminalId: userId,startDate, endDate: endDate })
       .pipe(catchError(this.handleError), tap(((response: {success: number, data: TerminalBarcodeReport[]}) => {

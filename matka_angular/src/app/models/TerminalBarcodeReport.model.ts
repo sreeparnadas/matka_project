@@ -8,5 +8,7 @@ export class TerminalBarcodeReport{
   ticket_taken_time?: string;
   total_quantity?: number;
   amount?: number;
+  is_cancelled? : number;
+
 
 }

@@ -34,6 +34,7 @@
           <th mat-sort-header="terminal_pin">Quantity</th>
           <th mat-sort-header="total">Amount</th>
           <th mat-sort-header="prize_value">Prize</th>
+          <th mat-sort-header="prize_value">Cancel</th>
           <th ></th>
         </tr>
         </thead>
@@ -44,6 +45,7 @@
           <td>{{record.total_quantity}}</td>
           <td>{{record.amount}}</td>
           <td>{{record.prize_value}}</td>
+          <td><button type="button" class="btn btn-danger" (click)="cancelTicket(record.play_master_id)" [disabled]="checkBtnEligibility(record)">Cancel</button></td>
         </tr>
         </tbody>
       </table>

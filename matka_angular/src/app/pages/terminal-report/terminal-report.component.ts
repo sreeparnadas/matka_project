@@ -28,12 +28,31 @@ export class TerminalReportComponent implements OnInit {
     this.renderer.setStyle(document.body, 'background-image', 'none');
     this.terminalReportService.terminalListListener().subscribe((response)=>{
       this.terminalReportData = response;
+      console.log(this.terminalReportData);
     })
     this.terminalReportService.terminalSaleListListener().subscribe((response)=>{
       this.terminalSaleReportData = response;
     })
     this.getTerminalBarcodeReport();
     this.getTerminalSaleReport();
+  }
+
+  ngOnInit(): void {
+    // this.terminalReport.getTerminalReport();
+  }
+
+  checkBtnEligibility(record){
+    if(record.is_cancelled == 1){
+      return true;
+    }
+    if(record.is_cancelable == 0){
+      return true;
+    }
+    return false;
+  }
+
+  cancelTicket(masterId){
+    this.terminalReportService.cancelTicket(masterId).subscribe();
   }
 
   getTerminalBarcodeReport(){
@@ -48,10 +67,6 @@ export class TerminalReportComponent implements OnInit {
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
     this.terminalReportService.getTerminalSaleReport(User.userId,startDate,endDate).subscribe();
-  }
-
-  ngOnInit(): void {
-    // this.terminalReport.getTerminalReport();
   }
 
 }
