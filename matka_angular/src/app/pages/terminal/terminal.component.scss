@@ -34,6 +34,19 @@ $triple-button-7: url('/assets/images/nextbtn-8.png');
 $triple-button-8: url('/assets/images/nextbtn-9.png');
 $triple-button-9: url('/assets/images/nextbtn-10.png');
 
+
+$single-button-0: url('/assets/images/single/single-0.png');
+$single-button-1: url('/assets/images/single/single-1.png');
+$single-button-2: url('/assets/images/single/single-2.png');
+$single-button-3: url('/assets/images/single/single-3.png');
+$single-button-4: url('/assets/images/single/single-4.png');
+$single-button-5: url('/assets/images/single/single-5.png');
+$single-button-6: url('/assets/images/single/single-6.png');
+$single-button-7: url('/assets/images/single/single-7.png');
+$single-button-8: url('/assets/images/single/single-8.png');
+$single-button-9: url('/assets/images/single/single-9.png');
+
+
 //background-color #bd4f6c;
 
 
@@ -66,6 +79,19 @@ $triple-background-image: (
     $triple-button-7,
     $triple-button-8,
     $triple-button-9
+);
+
+$single-background-image: (
+    $single-button-0,
+    $single-button-1,
+    $single-button-2,
+    $single-button-3,
+    $single-button-4,
+    $single-button-5,
+    $single-button-6,
+    $single-button-7,
+    $single-button-8,
+    $single-button-9
 );
 
 
@@ -455,6 +481,8 @@ span .mat-fab .mat-button-wrapper {
   }
 }
 
+
+
 @for $i from 0 through 5 {
   $value : nth($coin-values, $i+1);
   .chips-button-#{$i}{
@@ -582,9 +610,13 @@ span .mat-fab .mat-button-wrapper {
 
 @for $i from 0 through 9 {
   .single-number-button-#{$i}{
-    background-color: nth($triple-selection-background-image, $i+1) !important;
+    background-image: nth($single-background-image, $i+1) !important;
+      background-size: cover;
+      width: 36%;
+
   }
 }
+
 
 .selectedChipStyle{
   background-color: rgb(255, 0, 157);

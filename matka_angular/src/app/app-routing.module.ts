@@ -78,6 +78,11 @@ const routes: Routes = [
       .then(mod => mod.AdminReportsModule)
   },
   {
+    path: 'resultCPanel',
+    loadChildren: () => import('./modules/general/cpanel/result/result.module')
+      .then(mod => mod.ResultModule)
+  },
+  {
     path: 'terminal',
     loadChildren: () => import('./modules/general/terminal/terminal.module')
       .then(mod => mod.TerminalModule)
