@@ -29,7 +29,7 @@ class PlayMasterController extends Controller
         $user->closing_balance += $data;
         $user->update();
 
-        return response()->json(['success' => 1, 'data' => $playMaster, 'id'=>$playMaster->id, 'point'=>$data], 200);
+        return response()->json(['success' => 1, 'data' => $playMaster, 'id'=>$playMaster->id, 'point'=>$user->closing_balance], 200);
     }
 
     /**
