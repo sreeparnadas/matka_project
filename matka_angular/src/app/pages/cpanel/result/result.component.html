@@ -1,29 +1,24 @@
-<p>result works!</p>
-<p>result works!</p>
-<p>result works!</p>
-<p>result works!</p>
-<p>result works!</p>
-<p>result works!</p>
-  <div>
-    <!-- <table class="table " id="result-table" style="margin-bottom: 48px; border-radius: 10px; background-image: url('/assets/images/resultBackgroung.jpg');background-size: cover;">
 
-      <tbody>
+  <div class="pl-3 pr-3 pt-5">
+    <table class="table table-hover"  style="margin-bottom: 48px; border: 2px solid rgb(255, 208, 0); background-color: rgba(255, 127, 80, 0.719);">
+
+      <tbody >
           <ng-container *ngIf="currentDateResult">
-            <tr *ngFor="let row of currentDateResult.result">
-              <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
-                <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
-                <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
-                <div class="bd-highlight current-result">
+            <tr *ngFor="let row of currentDateResult.result; let idx = index">
+              <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2); " class="text-center align-middle" style="border: 1px solid rgb(255, 217, 2);">
+                <div class=" result-heading current-result" style="background-color: rgb(80, 255, 188);">{{result.end_time.slice(0,5)}}</div>
+                <div class="bd-highlight current-result" style="background-color: rgb(255, 80, 80);">{{result.visible_triple_number || '***'}}</div>
+                <div class="bd-highlight current-result" style="background-color: rgb(80, 200, 255);">
                   <span *ngIf="result.single_number!=null"></span>{{result.single_number}}
                   <span *ngIf="result.single_number==null"><img src="assets/images/singleStar3.gif" height="20px" alt=""></span>
                 </div>
-                 <div class="bd-highlight current-result" style="background-color: rgb(28, 35, 253);"><img src="assets/images/singleStar.gif" height="10px" alt=""></div>
+                 <!-- <div class="bd-highlight current-result" style="background-color: rgb(28, 35, 253);"><img src="assets/images/singleStar.gif" height="10px" alt=""></div> -->
               </td>
             </tr>
           </ng-container>
 
       </tbody>
-    </table> -->
+    </table>
   </div>
 
 <!--<div>-->
