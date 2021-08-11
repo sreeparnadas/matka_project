@@ -47,22 +47,45 @@ export class AdminReportsComponent implements OnInit {
     this.customerSaleReportRecords = this.adminReportService.getCustomerSaleReportRecords();
     this.adminReportService.getCustomerSaleReportListener().subscribe((response: CPanelCustomerSaleReport[]) => {
       this.customerSaleReportRecords = response;
-      console.log('customerSaleReportRecords = ', this.customerSaleReportRecords);
     });
     this.searchByDateTab1();
     this.searchByDateTab2();
   }
 
   searchByDateTab1(){
+    Swal.fire({
+      title: 'Please Wait !',
+      html: 'loading ...',// add html attribute if you want or remove
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-    this.adminReportService.customerSaleReportByDate(startDate,endDate).subscribe();
+    this.adminReportService.customerSaleReportByDate(startDate,endDate).subscribe((response)=>{
+      if(response.data){
+        Swal.close();
+      }
+    });
   }
 
   searchByDateTab2(){
+    Swal.fire({
+      title: 'Please Wait !',
+      html: 'loading ...',// add html attribute if you want or remove
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-    this.adminReportService.barcodeReportByDate(startDate,endDate).subscribe();
+    this.adminReportService.barcodeReportByDate(startDate,endDate).subscribe((response)=>{
+      if(response.data){
+        Swal.close();
+      }
+    });
   }
 
   sortData(sort: Sort) {
