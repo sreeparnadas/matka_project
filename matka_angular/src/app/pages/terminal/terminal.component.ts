@@ -113,7 +113,7 @@ export class TerminalComponent implements OnInit {
       text: `${value}`,
       id: value,
       textFillStyle: 'white',
-      textFontSize: '20'
+      textFontSize: '40'
     }));
 
 

@@ -1,4 +1,4 @@
-
+<!-- <div style="text-align: center; color: white; font-size: 30px; font-weight: bold;"><marquee behavior="slide" direction="" class="pt-2">Welcome</marquee></div> -->
 <div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 480px;">
 
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
@@ -50,12 +50,12 @@
         </div>
 
         <div fxFlex="30">
-          <div style="">
+          <div class="text-center" style="">
             <div style="padding-top: 23px;text-align: center; background-repeat: no-repeat;min-height: 100px; ">
                 <ngx-wheel
                 #wheel
-                width='270'
-                height='270'
+                width='300'
+                height='300'
                 spinDuration='8'
                 [disableSpinOnClick]='true'
                 [items]='items'
@@ -68,11 +68,12 @@
                 [idToLandOn]='idToLandOn'
                 (onSpinStart)='before()'
                 (onSpinComplete)='after()'
-                style="padding-left: 40px; padding-top: 10px;"
+                style="padding-left: 40px; padding-top: 10px; text-align: center;"
 
               >
 
             </ngx-wheel>
+
             <!-- <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div> -->
             <div class="d-flex">
               <div class="col-5"></div>
