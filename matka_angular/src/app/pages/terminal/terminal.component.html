@@ -86,13 +86,20 @@
               <div style="padding-top: 0px; padding-right: 15px;">
 
                 <span class="text-white text-center">SINGLES </span>
-                <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 43px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%; color: white;" >
-                  <input style="color: rgb(28, 12, 90); font-weight: bold; " matBadge="{{single.quantity}}" *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)" value="{{ single.singleNumber }}" class="single-number-button-{{i}}" type="button">
+                <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 43px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%; color: white;margin: 10px" >
+<!--                  <input matBadge="10" style="color: rgb(28, 12, 90); font-weight: bold; "-->
+<!--                         *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)"-->
+<!--                         value="{{ single.singleNumber }}" class="single-number-button-{{i}}" type="button">-->
+
+                  <button matBadge="{{single.quantity}}"  style="color: rgb(28, 12, 90); font-weight: bold; "
+                          *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)"
+                          class="single-number-button-{{i}}" type="button">{{ single.singleNumber }}</button>
 
 
-                    <!-- <button matBadge="{{single.quantity}}"
-                            *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}} single-number-button"
-                            (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button> -->
+
+                  <!-- <button matBadge="{{single.quantity}}"
+                          *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}} single-number-button"
+                          (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button> -->
 <!--                  <button mat-fab aria-label="Example icon button with a heart icon" matBadge="{{single.quantity}}"-->
 <!--                          *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"-->
 <!--                          (click)="setGameInputSet(single,1,1)" style="width: 40px;height: 40px;">-->
