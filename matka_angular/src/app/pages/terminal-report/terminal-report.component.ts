@@ -96,17 +96,41 @@ export class TerminalReportComponent implements OnInit {
   }
 
   getTerminalBarcodeReport(){
+    Swal.fire({
+      title: 'Please Wait !',
+      html: 'loading ...',// add html attribute if you want or remove
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
     const User = JSON.parse(localStorage.getItem('user'));
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-    this.terminalReportService.getTerminalReport(User.userId,startDate,endDate).subscribe();
+    this.terminalReportService.getTerminalReport(User.userId,startDate,endDate).subscribe((response)=>{
+      if(response.data){
+        Swal.close();
+      }
+    });
   }
 
   getTerminalSaleReport(){
+    Swal.fire({
+      title: 'Please Wait !',
+      html: 'loading ...',// add html attribute if you want or remove
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
     const User = JSON.parse(localStorage.getItem('user'));
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-    this.terminalReportService.getTerminalSaleReport(User.userId,startDate,endDate).subscribe();
+    this.terminalReportService.getTerminalSaleReport(User.userId,startDate,endDate).subscribe((response)=>{
+      if(response.data){
+        Swal.close();
+      }
+    });
   }
 
 }
