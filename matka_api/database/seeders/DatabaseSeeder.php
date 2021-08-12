@@ -316,8 +316,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         GameType::insert([
-            ['game_type_name'=>'single','game_type_initial' => '' ,'mrp'=> 1.00, 'winning_price'=>9, 'winning_bonus_percent'=>0.2, 'commission'=>5.00, 'payout'=>150,'default_payout'=>150],
-            ['game_type_name'=>'triple','game_type_initial' => '' ,'mrp'=> 1.00, 'winning_price'=>100, 'winning_bonus_percent'=>0.2, 'commission'=>5.00, 'payout'=>150,'default_payout'=>150]
+            ['game_type_name'=>'single','game_type_initial' => '' ,'mrp'=> 1.00, 'winning_price'=>9, 'winning_bonus_percent'=>0.2, 'commission'=>0.00, 'payout'=>150,'default_payout'=>150],
+            ['game_type_name'=>'triple','game_type_initial' => '' ,'mrp'=> 1.00, 'winning_price'=>100, 'winning_bonus_percent'=>0.2, 'commission'=>0.00, 'payout'=>150,'default_payout'=>150]
         ]);
 
         // Product has separate file

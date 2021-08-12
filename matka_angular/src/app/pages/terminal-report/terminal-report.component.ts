@@ -6,6 +6,9 @@ import {TerminalBarcodeReport} from "../../models/TerminalBarcodeReport.model";
 import {DatePipe} from "@angular/common";
 import {TerminalSaleReport} from "../../models/TerminaSaleReport.model";
 import Swal from 'sweetalert2';
+import {AdminReportService} from "../../services/admin-report.service";
+import {BarcodeDetails} from "../../models/BarcodeDetails.model";
+
 
 @Component({
   selector: 'app-terminal-report',
@@ -20,12 +23,13 @@ export class TerminalReportComponent implements OnInit {
   startDate = new Date(this.thisYear, this.thisMonth, this.thisDay);
   StartDateFilter = this.startDate;
   EndDateFilter = this.startDate;
+  barcodeDetails: BarcodeDetails;
   pipe = new DatePipe('en-US');
 
   terminalReportData: TerminalBarcodeReport[];
   terminalSaleReportData: TerminalSaleReport[];
 
-  constructor( private renderer: Renderer2, private terminalReportService: TerminalReportService) {
+  constructor( private renderer: Renderer2, private terminalReportService: TerminalReportService, private adminReportService:AdminReportService) {
     this.renderer.setStyle(document.body, 'background-image', 'none');
     this.terminalReportService.terminalListListener().subscribe((response)=>{
       this.terminalReportData = response;
@@ -33,6 +37,7 @@ export class TerminalReportComponent implements OnInit {
     })
     this.terminalReportService.terminalSaleListListener().subscribe((response)=>{
       this.terminalSaleReportData = response;
+      console.log(this.terminalSaleReportData);
     })
     this.getTerminalBarcodeReport();
     this.getTerminalSaleReport();
@@ -130,6 +135,13 @@ export class TerminalReportComponent implements OnInit {
       if(response.data){
         Swal.close();
       }
+    });
+  }
+
+  openPopup(playMasterId: number, barcodeNumber: string){
+
+    this.adminReportService.getBarcodeDetails(playMasterId).subscribe(response => {
+      this.barcodeDetails = response.data;
     });
   }
 

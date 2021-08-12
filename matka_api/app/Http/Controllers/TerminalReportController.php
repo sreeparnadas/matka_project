@@ -56,7 +56,7 @@ class TerminalReportController extends Controller
         $cPanelRepotControllerObj = new CPanelReportController();
 
 
-        $data = DB::select("select table1.commission, table1.total, table1.user_name, users.user_name as stokiest_name, table1.terminal_pin, table1.user_id, table1.stockist_id,
+        $data = DB::select("select round(table1.commission,2) as commission, table1.total, table1.user_name, users.user_name as stokiest_name, table1.terminal_pin, table1.user_id, table1.stockist_id,
         table1.`date` from (select sum(commission) as commission, sum(total) as total, user_name, terminal_pin, user_id, stockist_id, date(created_at) as date from (select max(play_masters.id) as play_master_id,users.user_name,users.email as terminal_pin,
         round(sum(play_details.quantity * play_details.mrp)) as total,
         sum(play_details.quantity * play_details.mrp)* (max(play_details.commission)/100) as commission,
@@ -88,6 +88,6 @@ class TerminalReportController extends Controller
         }
 
 
-        return response()->json(['success' => 1, 'data' => $data], 200);
+        return response()->json(['success' => 1, 'data' => $data, JSON_NUMERIC_CHECK], 200);
     }
 }

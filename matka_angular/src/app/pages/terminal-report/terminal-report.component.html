@@ -1,4 +1,59 @@
 <mat-tab-group class="mt-2 mr-3 ml-3">
+
+
+  <mat-tab label="Terminal sale report">
+
+    <div class="pt-1 d-flex">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Start date</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!--<button (click)="searchByDate()">test</button>-->
+      <button mat-button color="accent" style="font-size: 20px;" (click)="getTerminalSaleReport()">Search</button>
+    </div>
+
+    <table matSort class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
+      <thead>
+      <tr>
+        <th >Date</th>
+        <th mat-sort-header="total">Amount</th>
+        <th mat-sort-header="commission">Commission</th>
+        <th mat-sort-header="prize_value">Prize</th>
+        <th mat-sort-header="ntp">NTP</th>
+        <th ></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let record of terminalSaleReportData;let indexOfElement=index">
+        <td>{{record.date}}</td>
+        <td>{{record.total}}</td>
+        <td>{{record.commission}}</td>
+        <td>{{record.prize_value}}</td>
+        <td>{{record.ntp.toFixed(2)}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center" *ngIf="terminalSaleReportData.length==0">
+      <h1>No Data</h1>
+    </div>
+
+  </mat-tab>
+
+
   <mat-tab label="Terminal barcode report">
 
     <div class="pt-1 d-flex">
@@ -29,8 +84,10 @@
       <table matSort class="table table-bordered table-sm m-3" style="border: none !important; height: 50px;  overflow: scroll;">
         <thead>
         <tr>
-          <th mat-sort-header="terminal_pin">Baarcode</th>
+          <th>Sl.NO</th>
           <th mat-sort-header="terminal_pin">Draw Time</th>
+          <th mat-sort-header="terminal_pin">Ticket Time</th>
+          <th mat-sort-header="terminal_pin">Baarcode</th>
           <th mat-sort-header="terminal_pin">Quantity</th>
           <th mat-sort-header="total">Amount</th>
           <th mat-sort-header="prize_value">Prize</th>
@@ -40,12 +97,16 @@
         </thead>
         <tbody>
         <tr *ngFor="let record of terminalReportData;let indexOfElement=index">
-          <td>{{record.barcode_number}}</td>
+          <td>{{indexOfElement + 1}}</td>
           <td>{{record.draw_time}}</td>
+          <td>{{record.ticket_taken_time}}</td>
+          <td>{{record.barcode_number}}</td>
           <td>{{record.total_quantity}}</td>
           <td>{{record.amount}}</td>
           <td>{{record.prize_value}}</td>
           <td><button type="button" class="btn btn-danger" (click)="cancelTicket(record.play_master_id)" [disabled]="checkBtnEligibility(record)">Cancel</button></td>
+          <td><a color="info" class="waves-effect mb-4"(click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"
+                 mdbWavesEffect><i class="bi bi-info-square-fill"></i></a></td>
         </tr>
         </tbody>
       </table>
@@ -60,57 +121,72 @@
 
 
 
-  <mat-tab label="Terminal sale report">
 
-    <div class="pt-1 d-flex">
-      <div class="col-3">
-        <mat-form-field appearance="fill">
-          <mat-label>Start date</mat-label>
-          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="col-3">
-        <mat-form-field appearance="fill">
-          <mat-label>End date</mat-label>
-          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
-        </mat-form-field>
-      </div>
-
-      <!--<button (click)="searchByDate()">test</button>-->
-      <button mat-button color="accent" style="font-size: 20px;" (click)="getTerminalSaleReport()">Search</button>
-    </div>
-
-    <table matSort class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
-      <thead>
-      <tr>
-        <th >Terminal Id</th>
-        <th mat-sort-header="terminal_pin">Stokiest Name</th>
-        <th mat-sort-header="total">Total</th>
-        <th mat-sort-header="commission">Commission</th>
-        <th mat-sort-header="prize_value">Prize</th>
-        <th mat-sort-header="ntp">NTP</th>
-        <th ></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let record of terminalSaleReportData;let indexOfElement=index">
-        <td>{{record.terminal_pin}}</td>
-        <td>{{record.stokiest_name}}</td>
-        <td>{{record.total}}</td>
-        <td>{{record.commission}}</td>
-        <td>{{record.prize_value}}</td>
-        <td>{{record.ntp.toFixed(2)}}</td>
-      </tr>
-      </tbody>
-    </table>
-
-    <div class="text-center" *ngIf="terminalSaleReportData.length==0">
-      <h1>No Data</h1>
-    </div>
-
-  </mat-tab>
 </mat-tab-group>
+
+
+<!--Modal-->
+<div
+  mdbModal
+  #frame="mdbModal"
+  class="modal fade top"
+  id="frameModalTop"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+  style="overflow-y: auto"
+>
+  <!--Dialog-->
+  <div class="modal-dialog modal-notify modal-info" role="document" *ngIf="barcodeDetails">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text font-weight-bold">
+          Ticket: {{barcodeDetails.barcode}}
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="frame.hide()"
+        >
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <span *ngIf="barcodeDetails.single.length">Single</span>
+        <div class="d-flex flex-row mt-2">
+          <button matBadge="{{single.quantity}}" *ngFor="let single of barcodeDetails.single; let i=index" class="mr-2">{{ single.single_number }}</button>
+        </div>
+
+        <span *ngIf="barcodeDetails.triple.length">Triple</span>
+        <div class="d-flex flex-row mt-2" *ngFor="let row of barcodeDetails.triple.slice(0, barcodeDetails.triple.length % 10  === 0 ?
+        barcodeDetails.triple.length / 10 : barcodeDetails.triple.length / 10 + 1); let idx = index">
+          <div colspan="2" *ngFor="let x of barcodeDetails.triple.slice(idx * 10, idx * 10 + 10)"
+               class="text-center align-middle mr-3" style="max-width: 100% !important;">
+            <button mat-raised-button matBadge="{{x.quantity}}" [matBadgeHidden]="false"
+                    value="bold" name="fontStyle" aria-label="Font Style"
+                    style="font-size: larger; min-width: 97% !important; padding: 0px !important; min-height: 40px;">
+              {{ x.visible_triple_number }}
+            </button>
+          </div>
+        </div>
+      </div>
+      <!--/.Body-->
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center"></div>
+      <!--Footer-->
+    </div>
+    <!--/.Content-->
+  </div>
+  <!--/.Dialog-->
+</div>
+<!--/.Modal-->
+
+
