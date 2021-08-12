@@ -47,6 +47,7 @@ export class AdminReportsComponent implements OnInit {
     this.customerSaleReportRecords = this.adminReportService.getCustomerSaleReportRecords();
     this.adminReportService.getCustomerSaleReportListener().subscribe((response: CPanelCustomerSaleReport[]) => {
       this.customerSaleReportRecords = response;
+      console.log(this.customerSaleReportRecords);
     });
     this.searchByDateTab1();
     this.searchByDateTab2();
