@@ -32,6 +32,29 @@ class PlayMasterController extends Controller
         return response()->json(['success' => 1, 'data' => $playMaster, 'id'=>$playMaster->id, 'point'=>$user->closing_balance], 200);
     }
 
+    public function claimPrize(Request $request){
+        $requestedData = (object)$request->json()->all();
+        $playMasterId = $requestedData->play_master_id;
+
+        $cPanelReportControllerObj = new CPanelReportController();
+        $data = $cPanelReportControllerObj->get_prize_value_by_barcode($playMasterId);
+
+        if($data){
+            $playMaster = new PlayMaster();
+            $playMaster = PlayMaster::find($playMasterId);
+            $playMaster->is_claimed = 1;
+            $playMaster->update();
+
+            if($playMaster){
+                $user = new User();
+                $user = User::find($playMaster->user_id);
+                $user->closing_balance += $data;
+                $user->update();
+            }
+        }
+        return response()->json(['success' => 1, 'point'=>$user->closing_balance, 'id' =>$playMaster->id], 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

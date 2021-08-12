@@ -91,6 +91,7 @@
           <th mat-sort-header="terminal_pin">Quantity</th>
           <th mat-sort-header="total">Amount</th>
           <th mat-sort-header="prize_value">Prize</th>
+          <th mat-sort-header="prize_value">Claim</th>
           <th mat-sort-header="prize_value">Cancel</th>
           <th ></th>
         </tr>
@@ -104,6 +105,8 @@
           <td>{{record.total_quantity}}</td>
           <td>{{record.amount}}</td>
           <td>{{record.prize_value}}</td>
+<!--          is_claimed-->
+          <td><button type="button" class="btn btn-danger" (click)="claimPrize(record.play_master_id)" [disabled]="record.prize_value==0 || record.is_claimed==1" style="min-width: 87px">{{(record.prize_value > 0) ? ((record.is_claimed>0)?'Claimed':'Claim') : 'No Prize'}}</button></td>
           <td><button type="button" class="btn btn-danger" (click)="cancelTicket(record.play_master_id)" [disabled]="checkBtnEligibility(record)">Cancel</button></td>
           <td><a color="info" class="waves-effect mb-4"(click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"
                  mdbWavesEffect><i class="bi bi-info-square-fill"></i></a></td>

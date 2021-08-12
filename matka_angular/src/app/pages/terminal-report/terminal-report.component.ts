@@ -47,6 +47,22 @@ export class TerminalReportComponent implements OnInit {
     // this.terminalReport.getTerminalReport();
   }
 
+  claimPrize(play_master_id){
+    Swal.fire({
+      title: 'Please Wait !',
+      html: 'adding points ...',// add html attribute if you want or remove
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+    this.terminalReportService.claimPrize(play_master_id).subscribe((response)=>{
+      if(response.point){
+        Swal.close();
+      }
+    });
+  }
+
   checkBtnEligibility(record){
     if(record.is_cancelled == 1){
       return true;

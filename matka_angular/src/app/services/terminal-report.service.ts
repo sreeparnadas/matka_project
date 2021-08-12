@@ -52,10 +52,20 @@ export class TerminalReportService {
         if(response.data){
           // const userData =localStorage.getItem('user');
           this.authService.updateUserBalance(response.point);
-
-          console.log(response.point);
           const index = this.barcodeReportRecords.findIndex(x=>x.play_master_id === response.id);
           this.barcodeReportRecords[index].is_cancelled = 1;
+          this.barcodeReportRecordsSubject.next([...this.barcodeReportRecords]);
+        }
+      })));
+  }
+
+  claimPrize(master_id){
+    return this.http.post( this.BASE_API_URL + '/claimPrize', {play_master_id: master_id})
+      .pipe(catchError(this.handleError), tap(((response: {success: number, point: number, id:number}) => {
+        if(response.point){
+          this.authService.updateUserBalance(response.point);
+          const index = this.barcodeReportRecords.findIndex(x=>x.play_master_id === response.id);
+          this.barcodeReportRecords[index].is_claimed = 1;
           this.barcodeReportRecordsSubject.next([...this.barcodeReportRecords]);
         }
       })));

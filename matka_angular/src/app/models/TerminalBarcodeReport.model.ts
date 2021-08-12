@@ -9,6 +9,7 @@ export class TerminalBarcodeReport{
   total_quantity?: number;
   amount?: number;
   is_cancelled? : number;
+  is_claimed? : number;
 
 
 }
