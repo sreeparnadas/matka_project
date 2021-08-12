@@ -7,7 +7,7 @@
             <tr *ngFor="let row of currentDateResult.result; let idx = index">
               <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2); " class="text-center align-middle" style="border: 1px solid rgb(255, 217, 2);">
                 <div class=" result-heading current-result" style="background-color: rgb(80, 255, 188);">{{result.end_time.slice(0,5)}}</div>
-                <div class="bd-highlight current-result" style="background-color: rgb(255, 80, 80);">{{result.visible_triple_number || '***'}}</div>
+                <div class="bd-highlight current-result" style="background-color: rgb(250, 248, 248);">{{result.visible_triple_number || '***'}}</div>
                 <div class="bd-highlight current-result" style="background-color: rgb(80, 200, 255);">
                   <span *ngIf="result.single_number!=null"></span>{{result.single_number}}
                   <span *ngIf="result.single_number==null"><img src="assets/images/singleStar3.gif" height="20px" alt=""></span>

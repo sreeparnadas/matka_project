@@ -85,8 +85,12 @@
 
 
               <div style="padding-top: 0px; padding-right: 15px;">
-
-                <span class="text-white text-center">SINGLES </span>
+                <div class="d-flex">
+                  <div class="col-6"></div>
+                  <div class="col-1" style="color: white; font-weight: bold;">SINGLES</div>
+                  <div class="col-6"></div>
+                </div>
+                <!-- <div class="text-white  pl-3" >SINGLES </div> -->
                 <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 43px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%; color: white;margin: 10px" >
 <!--                  <input matBadge="10" style="color: rgb(28, 12, 90); font-weight: bold; "-->
 <!--                         *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)"-->
@@ -110,10 +114,10 @@
                 </div>
 
 
-                <div class="d-flex" style="background-image: url('assets/images/TripleFun/CancelBet.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
-                margin-left: -38px;">
+                <div class="d-flex" style="background-image: url('assets/images/number-background.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
+                margin-left: -4px;padding-right: 20px;">
 
-                  <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
+                  <div class="chips-outer-div " style="padding-top: 3%; padding-left: 15%;">
 
                     <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" type="button" value="" (click)="changeChip(x)">
                   </div>
