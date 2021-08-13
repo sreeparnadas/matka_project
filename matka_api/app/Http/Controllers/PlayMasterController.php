@@ -43,6 +43,7 @@ class PlayMasterController extends Controller
             $playMaster = new PlayMaster();
             $playMaster = PlayMaster::find($playMasterId);
             $playMaster->is_claimed = 1;
+            $playMaster->is_cancelable = 1;
             $playMaster->update();
 
             if($playMaster){

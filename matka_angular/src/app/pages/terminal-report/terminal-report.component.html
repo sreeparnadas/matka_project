@@ -42,7 +42,8 @@
         <td>{{record.total}}</td>
         <td>{{record.commission}}</td>
         <td>{{record.prize_value}}</td>
-        <td>{{record.ntp.toFixed(2)}}</td>
+        <td>{{record.total-record.commission-record.prize_value}}</td>
+<!--        <td>{{record.ntp.toFixed(2)}}</td>-->
       </tr>
       </tbody>
     </table>
@@ -80,8 +81,8 @@
 
 
 
-    <div class="">
-      <table matSort class="table table-bordered table-sm m-3" style="border: none !important; height: 50px;  overflow: scroll;">
+    <div class="" style="overflow: hidden">
+      <table matSort class="table table-bordered table-sm m-3" style="border: none !important; height: 50px;  overflow: hidden;">
         <thead>
         <tr>
           <th>Sl.NO</th>
@@ -106,7 +107,7 @@
           <td>{{record.amount}}</td>
           <td>{{record.prize_value}}</td>
 <!--          is_claimed-->
-          <td><button type="button" class="btn btn-danger" (click)="claimPrize(record.play_master_id)" [disabled]="record.prize_value==0 || record.is_claimed==1" style="min-width: 87px">{{(record.prize_value > 0) ? ((record.is_claimed>0)?'Claimed':'Claim') : 'No Prize'}}</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="claimPrize(record.play_master_id)" [hidden]="record.prize_value==0" [disabled]="record.is_claimed==1" style="min-width: 87px">{{(record.prize_value > 0) ? ((record.is_claimed>0)?'Claimed':'Claim') : 'No Prize'}}</button></td>
           <td><button type="button" class="btn btn-danger" (click)="cancelTicket(record.play_master_id)" [disabled]="checkBtnEligibility(record)">Cancel</button></td>
           <td><a color="info" class="waves-effect mb-4"(click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"
                  mdbWavesEffect><i class="bi bi-info-square-fill"></i></a></td>
@@ -141,7 +142,7 @@
   style="overflow-y: auto"
 >
   <!--Dialog-->
-  <div class="modal-dialog modal-notify modal-info" role="document" *ngIf="barcodeDetails">
+  <div class="modal-dialog modal-notify modal-info" role="document" *ngIf="barcodeDetails" style="min-width: 550px">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->

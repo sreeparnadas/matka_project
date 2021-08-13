@@ -66,6 +66,7 @@ export class TerminalReportService {
           this.authService.updateUserBalance(response.point);
           const index = this.barcodeReportRecords.findIndex(x=>x.play_master_id === response.id);
           this.barcodeReportRecords[index].is_claimed = 1;
+          this.barcodeReportRecords[index].is_cancelled = 1;
           this.barcodeReportRecordsSubject.next([...this.barcodeReportRecords]);
         }
       })));

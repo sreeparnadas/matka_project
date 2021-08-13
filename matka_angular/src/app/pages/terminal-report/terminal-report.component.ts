@@ -26,8 +26,8 @@ export class TerminalReportComponent implements OnInit {
   barcodeDetails: BarcodeDetails;
   pipe = new DatePipe('en-US');
 
-  terminalReportData: TerminalBarcodeReport[];
-  terminalSaleReportData: TerminalSaleReport[];
+  terminalReportData: TerminalBarcodeReport[] = [];
+  terminalSaleReportData: TerminalSaleReport[] = [];
 
   constructor( private renderer: Renderer2, private terminalReportService: TerminalReportService, private adminReportService:AdminReportService) {
     this.renderer.setStyle(document.body, 'background-image', 'none');

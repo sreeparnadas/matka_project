@@ -33,6 +33,8 @@ export class AdminReportsComponent implements OnInit {
   EndDateFilter = this.startDate;
   pipe = new DatePipe('en-US');
 
+  totalAmount: number = 0;
+
   // picker1: any;
   constructor(private adminReportService: AdminReportService) {
     console.log(this.thisDay);
@@ -47,7 +49,12 @@ export class AdminReportsComponent implements OnInit {
     this.customerSaleReportRecords = this.adminReportService.getCustomerSaleReportRecords();
     this.adminReportService.getCustomerSaleReportListener().subscribe((response: CPanelCustomerSaleReport[]) => {
       this.customerSaleReportRecords = response;
-      console.log(this.customerSaleReportRecords);
+      let temp= 0;
+      this.customerSaleReportRecords.forEach(function (value) {
+        temp += Number(value.total);
+      })
+      // console.log('total amount' + temp);
+      this.totalAmount = temp;
     });
     this.searchByDateTab1();
     this.searchByDateTab2();
