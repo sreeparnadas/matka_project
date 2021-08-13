@@ -54,8 +54,8 @@
             <div style="padding-top: 23px;text-align: center; background-repeat: no-repeat;min-height: 100px; ">
                 <ngx-wheel
                 #wheel
-                width='300'
-                height='300'
+                width='250'
+                height='250'
                 spinDuration='8'
                 [disableSpinOnClick]='true'
                 [items]='items'
@@ -117,7 +117,7 @@
                 <div class="d-flex" style="background-image: url('assets/images/number-background.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
                 margin-left: -4px;padding-right: 20px;">
 
-                  <div class="chips-outer-div " style="padding-top: 3%; padding-left: 15%;">
+                  <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
 
                     <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" type="button" value="" (click)="changeChip(x)">
                   </div>
@@ -170,23 +170,25 @@
 
 
 
-            <div class=" d-flex" style="height: 40px; border-radius: 10px;">
-              <button style="font-size: 95%; width: 20%;" class="btn btn-lg  btn-responsive btn-primary">INFO</button>
-              <button (click)="resetMatrixValue()" style="font-size: 95%; " class="btn btn-success ml-1 btn-responsive">CLEAR</button>
-              <button style="font-size: 95%; " class="btn btn-danger ml-1 btn-responsive" [routerLink]="['/terminalReport']">Report</button>
-              <button class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 95%;"
-                      [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>print</button>
-              <button (click)="saveUserPlayInputDetails()" style="font-size: 95%; width: 20%;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
+            <div class=" d-flex" style="height: 40px; border-radius: 10px;text-align: center; padding-left: 100px;">
+              <button style="font-size: 100%; width: 50%;text-align: center; border: 8px solid rgb(255, 255, 255);height: 145%;border-style: double;" class="btn btn-lg  btn-responsive btn-primary">INFO</button>
+              <button (click)="resetMatrixValue()" style="font-size: 100%;  width: 50%;  border: 8px solid rgb(253, 253, 253);height: 145%; border-style: double;" class="btn btn-success ml-1 btn-responsive">CLEAR</button>
+            </div>
+            <div class=" d-flex" style="height: 60px; border-radius: 10px;padding-top: 20px; padding-left: 97px;">
+              <button style="font-size: 100%;   width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-danger ml-1 btn-responsive" [routerLink]="['/terminalReport']">REPORT</button>
+              <button class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 100%;   width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;"
+                      [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>PRINT</button>
+            </div>
+            <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 211px;">
+              <button (click)="saveUserPlayInputDetails()" style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
             </div>
           </div>
 
         </div>
-      </div>
-      <div class="d-flex">
-
-        <div class="col-4"></div>
 
       </div>
+      <div><marquee behavior="" direction="" style="color: white; font-size: large; font-weight: bold;"><h1>Welcome</h1></marquee></div>
+
 
 
     </div>
