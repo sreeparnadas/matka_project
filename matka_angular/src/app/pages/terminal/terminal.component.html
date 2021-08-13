@@ -174,7 +174,8 @@
               <button style="font-size: 95%; width: 20%;" class="btn btn-lg  btn-responsive btn-primary">INFO</button>
               <button (click)="resetMatrixValue()" style="font-size: 95%; " class="btn btn-success ml-1 btn-responsive">CLEAR</button>
               <button style="font-size: 95%; " class="btn btn-danger ml-1 btn-responsive" [routerLink]="['/terminalReport']">Report</button>
-              <button style="font-size: 95%; " class="btn btn-info ml-1 btn-responsive">DOUBLE</button>
+              <button class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 95%;"
+                      [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>print</button>
               <button (click)="saveUserPlayInputDetails()" style="font-size: 95%; width: 20%;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
             </div>
           </div>
