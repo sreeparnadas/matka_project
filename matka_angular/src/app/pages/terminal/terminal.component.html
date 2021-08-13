@@ -1,5 +1,5 @@
 <!-- <div style="text-align: center; color: white; font-size: 30px; font-weight: bold;"><marquee behavior="slide" direction="" class="pt-2">Welcome</marquee></div> -->
-<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 480px;">
+<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 480px; ">
 
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background" >
@@ -51,7 +51,7 @@
 
         <div fxFlex="30">
           <div class="text-center" style="">
-            <div style="padding-top: 23px;text-align: center; background-repeat: no-repeat;min-height: 100px; ">
+            <div style="padding-top: px;text-align: center; background-repeat: no-repeat;min-height: 100px; ">
                 <ngx-wheel
                 #wheel
                 width='250'
@@ -90,39 +90,19 @@
                   <div class="col-2" style="color: white; font-weight: bold; margin-left: 11px;">SINGLES</div>
                   <div class="col-6"></div>
                 </div>
-                <!-- <div class="text-white  pl-3" >SINGLES </div> -->
                 <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 43px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%; color: white;margin: 10px" >
-<!--                  <input matBadge="10" style="color: rgb(28, 12, 90); font-weight: bold; "-->
-<!--                         *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)"-->
-<!--                         value="{{ single.singleNumber }}" class="single-number-button-{{i}}" type="button">-->
-
                   <button matBadge="{{single.quantity}}"  style="color: rgb(28, 12, 90); font-weight: bold; "
                           *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)"
                           class="single-number-button-{{i}}" type="button">{{ single.singleNumber }}</button>
-
-
-
-                  <!-- <button matBadge="{{single.quantity}}"
-                          *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}} single-number-button"
-                          (click)="setGameInputSet(single,1,1)">{{ single.singleNumber }}</button> -->
-<!--                  <button mat-fab aria-label="Example icon button with a heart icon" matBadge="{{single.quantity}}"-->
-<!--                          *ngFor="let single of singleNumbers; let i=index" class="single-number-button-{{i}}"-->
-<!--                          (click)="setGameInputSet(single,1,1)" style="width: 40px;height: 40px;">-->
-<!--                    {{ single.singleNumber }}-->
-<!--                  </button>-->
-
                 </div>
-
-
                 <div class="d-flex" style="background-image: url('assets/images/number-background.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
                 margin-left: -4px;padding-right: 20px;">
-
                   <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
-
                     <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" type="button" value="" (click)="changeChip(x)">
                   </div>
                 </div>
               </div>
+              <div style="background-image: url('/assets/images/place.png'); background-size: cover;height: 90px;"></div>
 
             </div>
 
@@ -187,7 +167,7 @@
         </div>
 
       </div>
-      <div><marquee behavior="" direction="" style="color: white; font-size: large; font-weight: bold;"><h1>Welcome</h1></marquee></div>
+      <div><marquee behavior="" direction="" style="color: white; font-size: 50px; font-weight: bold;">Welcome</marquee></div>
 
 
 
