@@ -43,7 +43,15 @@
           <td>{{record.total}}</td>
           <td>{{record.commission}}</td>
           <td>{{record.prize_value}}</td>
-          <td>{{record.ntp.toFixed(2)}}</td>
+          <td>{{record.total-record.commission-record.prize_value}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Grand Total</td>
+          <td>{{totalAmount}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         </tbody>
       </table>
@@ -136,7 +144,7 @@
   style="overflow-y: auto"
 >
   <!--Dialog-->
-  <div class="modal-dialog modal-notify modal-info" role="document" *ngIf="barcodeDetails">
+  <div class="modal-dialog modal-notify modal-info" role="document" *ngIf="barcodeDetails" style="min-width: 550px">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
