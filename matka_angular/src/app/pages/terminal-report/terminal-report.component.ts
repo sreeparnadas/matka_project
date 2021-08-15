@@ -8,6 +8,8 @@ import {TerminalSaleReport} from "../../models/TerminaSaleReport.model";
 import Swal from 'sweetalert2';
 import {AdminReportService} from "../../services/admin-report.service";
 import {BarcodeDetails} from "../../models/BarcodeDetails.model";
+import {AuthService} from "../../services/auth.service";
+import {CommonService} from "../../services/common.service";
 
 
 @Component({
@@ -31,13 +33,12 @@ export class TerminalReportComponent implements OnInit {
 
   constructor( private renderer: Renderer2, private terminalReportService: TerminalReportService, private adminReportService:AdminReportService) {
     this.renderer.setStyle(document.body, 'background-image', 'none');
+
     this.terminalReportService.terminalListListener().subscribe((response)=>{
       this.terminalReportData = response;
-      console.log(this.terminalReportData);
     })
     this.terminalReportService.terminalSaleListListener().subscribe((response)=>{
       this.terminalSaleReportData = response;
-      console.log(this.terminalSaleReportData);
     })
     this.getTerminalBarcodeReport();
     this.getTerminalSaleReport();

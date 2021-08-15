@@ -90,4 +90,14 @@ class TerminalReportController extends Controller
 
         return response()->json(['success' => 1, 'data' => $data, JSON_NUMERIC_CHECK], 200);
     }
+
+    public function updateCancellation(){
+        $data = PlayMaster::select()->where('is_cancelable',1)->get();
+        foreach ($data as $x){
+            $y = PlayMaster::find($x->id);
+            $y->is_cancelable = 0;
+            $y->update();
+        }
+        return response()->json(['success' => 1, 'data' => $data], 200);
+    }
 }

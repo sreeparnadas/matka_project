@@ -5,8 +5,10 @@ import {HttpClient} from '@angular/common/http';
 import {formatDate} from '@angular/common';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {environment} from '../../environments/environment';
-import {concatMap, tap} from 'rxjs/operators';
+import {catchError, concatMap, tap} from 'rxjs/operators';
 import {DrawTime} from '../models/DrawTime.model';
+import {CPanelCustomerSaleReport} from "../models/CPanelCustomerSaleReport.model";
+
 
 
 @Injectable({
@@ -18,7 +20,9 @@ export class CommonService {
 
   value$ = new BehaviorSubject(20);
   currentTimeBehaviorSubject = new  BehaviorSubject(null);
+  remainingTimeBehaviorSubject = new  BehaviorSubject(null);
   currentValue = 0;
+
 
   deviceXs = false;
   projectData: ProjectData;
@@ -87,9 +91,31 @@ export class CommonService {
         currentTime = tempHour + ':' + tempMinute + ':' + tempSecond + '' + tempMeridiem;
       }
 
+
+      // @ts-ignore
+      let remainingHour = this.activeDrawTime.endTime.split(":")[0]-this.currentTimeObj.hour;
+      // @ts-ignore
+      let remainingMin = Math.abs(this.currentTimeObj.minute - this.activeDrawTime.endTime.split(":")[1]);
+      // @ts-ignore
+      let remainingSec = Math.abs(60-(this.currentTimeObj.second-this.activeDrawTime.endTime.split(":")[2]));
+
+      // @ts-ignore
+      let remainingTime = remainingHour + ':' + remainingMin + ':' + remainingSec;
+
+      // console.log('rm_mn: '+ remainingMin , 'rem_sec' + remainingSec);
+
+      if(remainingMin<=1){
+        this.updateTerminalCancellation().subscribe();
+      }
+
       this.currentTimeBehaviorSubject.next(currentTime);
+      this.remainingTimeBehaviorSubject.next(remainingTime);
       // just testing if it is working
     }, 1000);
+
+
+
+    // this.updateTerminalCancellation().subscribe();
 
 
     // get active draw
@@ -128,10 +154,15 @@ export class CommonService {
     return currentDate;
   }
 
+  updateTerminalCancellation(){
+    // @ts-ignore
+    return this.http.post( this.BASE_API_URL + '/terminal/updateCancellation');
+  }
+
   loadValue(i) {
     this.currentValue += i;
     this.value$.next(this.currentValue);
-    console.log(this.currentValue);
+    // console.log(this.currentValue);
   }
 
   getActiveDrawTime(){

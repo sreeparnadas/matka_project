@@ -105,6 +105,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('terminal/barcodeReport',[TerminalReportController::class, 'barcode_wise_report_by_terminal']);
     Route::post('terminal/terminal_sale_reports', [TerminalReportController::class, 'terminal_sale_reports']);
 
+    Route::post('terminal/updateCancellation', [TerminalReportController::class, 'updateCancellation']);
+
 
     Route::put('terminal/resetPassword', [TerminalController::class, 'reset_terminal_password']);
 
