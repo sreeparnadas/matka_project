@@ -11,7 +11,7 @@
                 <th class="pink" *ngFor="let single of singleNumbers; let i = index">
 
                   <button mat-fab matBadge="*" [matBadgeHidden]="activeTripleContainerValue!=i"  class="triple-selection-button-{{i}} tripple-selection-button" (click)="setActiveTripleContainerValue(i)" style="border-radius: 2px !important;">
-                    <span>{{single.singleNumber}}</span>
+                    <span>hi{{single.singleNumber}}</span>
                   </button>
                 </th>
               </tr>
