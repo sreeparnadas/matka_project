@@ -73,6 +73,11 @@ const routes: Routes = [
       .then(mod => mod.PayoutSettingModule)
   },
   {
+  path: 'stockiestReport',
+  loadChildren: () => import('./modules/general/stockistPanel/stockist-report/stockist-report.module')
+  .then(mod => mod.StockistReportModule)
+  },
+  {
     path: 'cPanelReports',
     loadChildren: () => import('./modules/general/cpanel/admin-reports/admin-reports.module')
       .then(mod => mod.AdminReportsModule)

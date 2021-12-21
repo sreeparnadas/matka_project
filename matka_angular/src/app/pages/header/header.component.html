@@ -172,35 +172,75 @@
   <!--For Stockist-->
   <mat-toolbar color="accent" *ngIf="isAuthenticated && isStockist">
     <!-- for dektop view -->
+
     <mat-toolbar-row fxLayoutAlign="space-between center" *ngIf="!deviceXs">
       <div fxLayout="row">
-        <button mat-button [routerLink]="['stockistCPanel']">
-          <i class="bi bi-person-fill" style="font-size: 25px;"></i>
-          <span class="logo">Stockist</span>
+        <button mat-button [routerLink]="['cPanel']">
+          <i class="bi bi-gem" style="font-size: 25px;"></i>
+          <span class="logo">Stockiest</span>
         </button>
-        <div class="clock-container clock2" *ngIf="alwaysTime">
+
+        <div class="clock-container clock2" *ngIf="false">
           <div class="time">{{alwaysTime}}</div>
         </div>
-        <div *ngIf="!deviceXs">
-          <button mat-button
+
+        <!--        <div *ngIf="!deviceXs">-->
+        <!--          <button mat-button-->
+        <!--                  [routerLink]="['/']"-->
+        <!--                  routerLinkActive="MyActiveMenu"-->
+        <!--                  [routerLinkActiveOptions]="{exact: true}">Home</button>-->
+        <!--        </div>-->
+
+
+        <mat-list-item *ngIf="!deviceXs">
+          <button mat-menu-item
                   [routerLink]="['/']"
                   routerLinkActive="MyActiveMenu"
                   [routerLinkActiveOptions]="{exact: true}">Home</button>
-        </div>
+        </mat-list-item>
+
+        <mat-list-item>
+          <button mat-menu-item [matMenuTriggerFor]="menuLedger">Master<i class="bi bi-caret-down"></i></button>
+        </mat-list-item>
+        <mat-menu #menuLedger="matMenu" [overlapTrigger]="false">
+          <!--          <button mat-menu-item [routerLink]="['/stockiestMaster']" routerLinkActive="MyActiveMenu">Stockist</button>-->
+          <!--          <button mat-menu-item [routerLink]="['/stockiestMaster']" routerLinkActive="MyActiveMenu">Stockist2</button>-->
+          <button mat-menu-item [routerLink]="['/stockiestMasterTerminal']" routerLinkActive="MyActiveMenu">terminal</button>
+        </mat-menu>
+
+
+        <!--        <mat-list-item>-->
+        <!--          <button mat-menu-item [matMenuTriggerFor]="menuGameSettings">Game settings<i class="bi bi-caret-down"></i></button>-->
+        <!--        </mat-list-item>-->
+        <!--        <mat-menu #menuGameSettings="matMenu" [overlapTrigger]="false">-->
+        <!--          <button mat-menu-item [routerLink]="['/payoutSettings']" routerLinkActive="MyActiveMenu">Payout setting</button>-->
+        <!--          <button mat-menu-item [routerLink]="['/manual']" routerLinkActive="MyActiveMenu" [routerLinkActiveOptions]="{exact: true}">Manual result</button>-->
+        <!--          <button mat-menu-item [routerLink]="['/manual']" routerLinkActive="MyActiveMenu" [routerLinkActiveOptions]="{exact: true}">Message</button>-->
+        <!--        </mat-menu>-->
+
+
+        <mat-list-item *ngIf="!deviceXs">
+          <button mat-menu-item
+                  [routerLink]="['/stockiestReport']"
+                  routerLinkActive="MyActiveMenu"
+                  [routerLinkActiveOptions]="{exact: true}">Reports</button>
+        </mat-list-item>
+
+
+        <mat-list-item *ngIf="!deviceXs">
+          <button mat-menu-item
+                  [routerLink]="['/stockiestResult']"
+                  routerLinkActive="MyActiveMenu"
+                  [routerLinkActiveOptions]="{exact: true}">Result</button>
+
+        </mat-list-item>
+
+
+
       </div>
-
-      <button mat-button *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
-
-    </mat-toolbar-row>
-    <!-- for mobile view -->
-    <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="space-between end">
-      <button mat-button [matMenuTriggerFor]="menu" style="line-height: 18px !important; font-size: small; padding-top: 15px;"><i class="ri-menu-line"></i>Menu</button>
-      <span class="logo" style="padding-right: 120px; font-size: small; line-height: 18px !important;">Stockist</span>
-
-       <mat-menu #menu="matMenu" style="width: 20px !important;">
-         <button mat-menu-item [routerLink]="['stockist']" routerLinkActive="MyActiveMenu" style="height: 28px ; font-size: small; line-height: 18px !important;" >Home</button>
-         <button mat-button *ngIf="isAuthenticated" (click)="logout()" style="font-size: small; line-height: 18px !important;">Logout<i class="ri-logout-circle-r-line ri-1x"></i></button>
-       </mat-menu>
+      <div fxLayout="row">
+        <button mat-menu-item *ngIf="isAuthenticated" (click)="logout()">Logout<i class="ri-logout-circle-r-line ri-2x"></i></button>
+      </div>
     </mat-toolbar-row>
 
   </mat-toolbar>
