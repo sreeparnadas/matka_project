@@ -77,6 +77,7 @@ export class AuthService {
       // }
     }
   }
+
   login(loginData){
     return this.http.post<AuthResponseData>(this.BASE_API_URL + '/login', loginData)
       .pipe(catchError(this.serverError), tap(resData => {
@@ -124,7 +125,6 @@ export class AuthService {
 
   logout(){
     const userData: User = JSON.parse(localStorage.getItem('user'));
-
     this.userBehaviorSubject.next(null);
     localStorage.removeItem('user');
     if (userData.userTypeId === 4){

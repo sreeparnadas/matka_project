@@ -105,6 +105,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('terminal/barcodeReport',[TerminalReportController::class, 'barcode_wise_report_by_terminal']);
     Route::post('terminal/terminal_sale_reports', [TerminalReportController::class, 'terminal_sale_reports']);
 
+    Route::post('cPanel/barcodeReportByDate', [CPanelReportController::class, 'barcode_wise_report_by_date']);
+    Route::post('stockist/customerSaleReports', [StockistController::class, 'customer_sale_reports']);
+
     Route::post('terminal/updateCancellation', [TerminalReportController::class, 'updateCancellation']);
 
 
@@ -117,6 +120,11 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 
 Route::group(array('prefix' => 'dev'), function() {
+
+    Route::post('cPanel/barcodeReportByDate', [CPanelReportController::class, 'barcode_wise_report_by_date']);
+    Route::post('stockist/customerSaleReports', [StockistController::class, 'customer_sale_reports']);
+
+    Route::post('stockist/barcodeReportByDate', [StockistController::class, 'barcode_wise_report_by_date']);
 
     Route::get("users",[UserController::class,'getAllUsers']);
     Route::patch("users",[UserController::class,'update']);
