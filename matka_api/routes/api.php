@@ -107,6 +107,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
     Route::post('cPanel/barcodeReportByDate', [CPanelReportController::class, 'barcode_wise_report_by_date']);
     Route::post('stockist/customerSaleReports', [StockistController::class, 'customer_sale_reports']);
+    Route::post('stockist/barcodeReportByDate', [StockistController::class, 'barcode_wise_report_by_date']);
 
     Route::post('terminal/updateCancellation', [TerminalReportController::class, 'updateCancellation']);
 

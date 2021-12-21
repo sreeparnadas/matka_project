@@ -1,1 +1,203 @@
-<p>stockiest-report works!</p>
+
+<mat-tab-group class="mt-2 mr-3 ml-3">
+  <mat-tab label="Customer sales report">
+
+    <div class="pt-1 d-flex">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Start date</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!--<button (click)="searchByDate()">test</button>-->
+      <button mat-button color="accent" style="font-size: 20px;" (click)="searchByDateTab1()">Search</button>
+    </div>
+    <div *ngIf="selectedReport=='0'?true:false">
+      <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
+        <thead>
+        <tr>
+          <th mat-sort-header="terminal_pin">Terminal Id</th>
+          <th mat-sort-header="terminal_pin">Stokiest Name</th>
+          <th mat-sort-header="total">Total</th>
+          <th mat-sort-header="commission">Commission</th>
+          <th mat-sort-header="prize_value">Prize</th>
+          <th mat-sort-header="ntp">NTP</th>
+          <th ></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let record of customerSaleReportRecords;let indexOfElement=index">
+          <td>{{record.terminal_pin}}</td>
+          <td>{{record.stokiest_name}}</td>
+          <td>{{record.total}}</td>
+          <td>{{record.commission}}</td>
+          <td>{{record.prize_value}}</td>
+          <td>{{record.total-record.commission-record.prize_value}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Grand Total</td>
+          <td>{{totalAmount}}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="text-center" *ngIf="customerSaleReportRecords.length==0">
+        <h1>No Data</h1>
+      </div>
+    </div>
+
+
+  </mat-tab>
+
+  <mat-tab label="Barcode report">
+    <!--    <popover-content #popoverCustomer title="abcd" placement="right" [animation]="true" [closeOnClickOutside]="true">-->
+    <!--      this areais for testing-->
+    <!--    </popover-content>-->
+    <!--    <button [popover]="popoverCustomer">test</button>-->
+
+    <div class="pt-1 d-flex">
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Start date</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <!--<button (click)="searchByDate()">test</button>-->
+      <button mat-button color="accent" style="font-size: 20px;" (click)="searchByDateTab2()">Search</button>
+    </div>
+
+    <div class="text-center" style="align-content: center; align-items: center; text-align: center">
+      <table matSort (matSortChange)="sortData($event)" class=" ml-4 col-11 table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
+        <thead>
+        <tr>
+          <th mat-sort-header="barcode_number">Barcode</th>
+          <th mat-sort-header="draw_time">Draw time</th>
+          <th mat-sort-header="terminal_pin">Terminal</th>
+          <th mat-sort-header="ticket_taken_time">Ticket take time</th>
+          <th mat-sort-header="total_quantity">Quantity</th>
+          <th mat-sort-header="amount">Amount</th>
+          <th mat-sort-header="prize_value">Prize</th>
+          <th ></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let record of barcodeReportRecords;let indexOfElement=index">
+          <td>{{record.barcode_number}}</td>
+          <td>{{record.draw_time}}</td>
+          <td>{{record.terminal_pin}}</td>
+          <td>{{record.ticket_taken_time}}</td>
+          <td>{{record.total_quantity}}</td>
+          <td>{{record.amount}}</td>
+          <td>{{record.prize_value}}</td>
+<!--          <td><a color="info" class="waves-effect mb-4"(click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"-->
+          <td><a color="info" class="waves-effect mb-4"
+                 mdbWavesEffect><i class="bi bi-info-square-fill"></i></a></td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="text-center" *ngIf="barcodeReportRecords.length==0">
+        <h1>No Data</h1>
+      </div>
+
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Draw wise report"></mat-tab>
+</mat-tab-group>
+
+
+<!--Modal-->
+<!--<div-->
+<!--  mdbModal-->
+<!--  #frame="mdbModal"-->
+<!--  class="modal fade top"-->
+<!--  id="frameModalTop"-->
+<!--  tabindex="-1"-->
+<!--  role="dialog"-->
+<!--  aria-labelledby="myModalLabel"-->
+<!--  aria-hidden="true"-->
+<!--  style="overflow-y: auto"-->
+<!--&gt;-->
+<!--  &lt;!&ndash;Dialog&ndash;&gt;-->
+<!--  <div class="modal-dialog modal-notify modal-info" role="document" *ngIf="barcodeDetails" style="min-width: 550px">-->
+<!--    &lt;!&ndash;Content&ndash;&gt;-->
+<!--    <div class="modal-content">-->
+<!--      &lt;!&ndash;Header&ndash;&gt;-->
+<!--      <div class="modal-header text-center">-->
+<!--        <h4 class="modal-title white-text font-weight-bold">-->
+<!--          Ticket: {{barcodeDetails.barcode}}-->
+<!--        </h4>-->
+<!--        <button-->
+<!--          type="button"-->
+<!--          class="close"-->
+<!--          data-dismiss="modal"-->
+<!--          aria-label="Close"-->
+<!--          (click)="frame.hide()"-->
+<!--        >-->
+<!--          <span aria-hidden="true" class="white-text">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash;Body&ndash;&gt;-->
+<!--      <div class="modal-body">-->
+<!--        <span *ngIf="barcodeDetails.details.length">Single</span>-->
+<!--        <div class="d-flex flex-row mt-3" style="display: block" *ngFor="let detail of barcodeDetails.details.slice(0, barcodeDetails.details.length % columnNumber  === 0 ?-->
+<!--        barcodeDetails.details.length / columnNumber : barcodeDetails.details.length / columnNumber + 1); let idx = index">-->
+<!--          <button matBadge="{{detail.quantity}}" *ngFor="let detail of barcodeDetails.details.slice(idx * columnNumber, idx * columnNumber + columnNumber)" class="mr-2">-->
+<!--            {{detail.game_name}}-->
+<!--            {{ detail.number_set }}-->
+<!--          </button>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash;        <span *ngIf="barcodeDetails.triple.length">Triple</span>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="d-flex flex-row mt-2" *ngFor="let row of barcodeDetails.triple.slice(0, barcodeDetails.triple.length % 10  === 0 ?&ndash;&gt;-->
+<!--        &lt;!&ndash;        barcodeDetails.triple.length / 10 : barcodeDetails.triple.length / 10 + 1); let idx = index">&ndash;&gt;-->
+<!--        &lt;!&ndash;          <div colspan="2" *ngFor="let x of barcodeDetails.triple.slice(idx * 10, idx * 10 + 10)"&ndash;&gt;-->
+<!--        &lt;!&ndash;              class="text-center align-middle mr-3" style="max-width: 100% !important;">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <button mat-raised-button matBadge="{{x.quantity}}" [matBadgeHidden]="false"&ndash;&gt;-->
+<!--        &lt;!&ndash;                    value="bold" name="fontStyle" aria-label="Font Style"&ndash;&gt;-->
+<!--        &lt;!&ndash;                    style="font-size: larger; min-width: 97% !important; padding: 0px !important; min-height: 40px;">&ndash;&gt;-->
+<!--        &lt;!&ndash;              {{ x.visible_triple_number }}&ndash;&gt;-->
+<!--        &lt;!&ndash;            </button>&ndash;&gt;-->
+<!--        &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash;/.Body&ndash;&gt;-->
+
+<!--      &lt;!&ndash;Footer&ndash;&gt;-->
+<!--      <div class="modal-footer justify-content-center"></div>-->
+<!--      &lt;!&ndash;Footer&ndash;&gt;-->
+<!--    </div>-->
+<!--    &lt;!&ndash;/.Content&ndash;&gt;-->
+<!--  </div>-->
+<!--  &lt;!&ndash;/.Dialog&ndash;&gt;-->
+<!--</div>-->
+<!--/.Modal-->
+

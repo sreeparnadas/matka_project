@@ -20,10 +20,10 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatBadgeModule} from "@angular/material/badge";
+import {StockiestReportComponent} from "../../../../pages/stockistPanel/stockiest-report/stockiest-report.component";
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     StockistReportRoutingModule,
@@ -54,6 +54,12 @@ import {MatBadgeModule} from "@angular/material/badge";
     MatDatepickerModule,
     MatInputModule,
     MatFormFieldModule,
+  ],
+  exports: [
+    // StockiestReportComponent
+  ],
+  declarations: [
+    StockiestReportComponent
   ]
 })
 export class StockistReportModule { }
