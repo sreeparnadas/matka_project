@@ -73,6 +73,11 @@ const routes: Routes = [
       .then(mod => mod.PayoutSettingModule)
   },
   {
+    path: 'stockiestMasterTerminal',
+    loadChildren: () => import('./modules/general/stockistPanel/master-terminal/master-terminal.module')
+      .then(mod => mod.MasterTerminalModule)
+  },
+  {
   path: 'stockiestReport',
   loadChildren: () => import('./modules/general/stockistPanel/stockist-report/stockist-report.module')
   .then(mod => mod.StockistReportModule)
