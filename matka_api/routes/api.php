@@ -115,12 +115,15 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::put('terminal/resetPassword', [TerminalController::class, 'reset_terminal_password']);
 
     Route::put('cPanel/game/payout',[GameTypeController::class, 'update_payout']);
+    Route::post('getResultByDate', [ResultMasterController::class, 'get_result_by_date']);
 });
 
 
 
 
 Route::group(array('prefix' => 'dev'), function() {
+
+    Route::post('getResultByDate', [ResultMasterController::class, 'get_result_by_date']);
 
     Route::post('cPanel/barcodeReportByDate', [CPanelReportController::class, 'barcode_wise_report_by_date']);
     Route::post('stockist/customerSaleReports', [StockistController::class, 'customer_sale_reports']);

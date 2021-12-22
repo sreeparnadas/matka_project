@@ -1,1 +1,46 @@
-<p>stockist-result works!</p>
+<div style="padding-top: 50px; overflow: hidden !important;">
+  <!-- <mat-tab-group class="mt-5 mr-3 ml-3" [selectedIndex]="0"></mat-tab-group> -->
+  <div class="ml-4">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]= "startDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker [(ngModel)]= "startDate"></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-button type="button" class="btn btn-outline-warning" (click)="searchResultByDate()">Search</button>
+  </div>
+
+  <!-- <button mat-button type="button" class="btn btn-outline-warning">Search</button> -->
+  <table class="table table-bordered" style="overflow: hidden !important;">
+    <thead>
+    <tr style="font-size: 20px; font-weight: bold;">
+      <!-- <th scope="col" style="background-color: aqua;" >#</th> -->
+      <th scope="" style="background-color: rgb(255, 102, 0);">End Time</th>
+      <th scope="" style="background-color: rgb(0, 255, 98);">Triple Number</th>
+      <th scope="" style="background-color: rgb(255, 0, 0);">Single Number</th>
+<!--      <th scope="" style="background-color: rgb(255, 230, 0);">GoldStar SARASWATI-C</th>-->
+<!--      <th scope="" style="background-color: rgb(255, 0, 234);">GoldStar GODAVARI-D</th>-->
+<!--      <th scope="" style="background-color: rgb(175, 174, 252);">GoldStar GODAVARI-E</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of result" style="font-size: 40px; font-weight: bold;">
+      <!-- <td scope="col" style="background-color: aqua;" >#</td> -->
+      <td scope="" style="background-color: rgb(255, 102, 0);">{{row.end_time}}</td>
+      <td scope="" style="background-color: rgb(0, 255, 98);" >{{row.triple_number | number:'2.'}}</td>
+      <td scope="" style="background-color: rgb(255, 0, 0);" >{{row.single_number | number:'2.'}}</td>
+<!--      <td scope="" style="background-color: rgb(255, 230, 0);" >{{row.game_three | number:'2.'}}</td>-->
+<!--      <td scope="" style="background-color: rgb(255, 0, 234);" >{{row.game_four | number:'2.'}}</td>-->
+<!--      <td scope="" style="background-color: rgb(175, 174, 252);" >{{row.game_five | number:'2.'}}</td>-->
+    </tr>
+    <tr *ngIf="result.length==0">
+      <td colspan="6" class="text-center text-white">No results</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+
+</div>
