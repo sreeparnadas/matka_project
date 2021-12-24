@@ -32,8 +32,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isProduction = environment.production;
   public user: User;
   activeDrawTime: DrawTime;
+  currentDate: string;
 
-  constructor(private authService: AuthService,  private commonService: CommonService) { }
+
+  constructor(private authService: AuthService,  private commonService: CommonService) {
+
+    this.currentDate = this.commonService.getCurrentDate();
+  }
 
   ngOnInit(): void {
     this.commonService.value$.asObservable().subscribe(response => {

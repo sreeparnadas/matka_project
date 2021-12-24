@@ -51,7 +51,7 @@ export class TerminalComponent implements OnInit {
   nextDrawId: NextDrawId;
 
   columnNumber = 5;
-  columnNumber2 = 7;
+  columnNumber2 = 4;
   columnNumber3 = 1;
 
   public activeTripleContainerValue = 0;

@@ -117,8 +117,8 @@
               <thead >
                 <tr >
                   <th colspan="4">
-                    <div>{{currentDate}}&nbsp;
-                    </div>
+                    <!-- <div>{{currentDate}}&nbsp;
+                    </div> -->
                     <!-- <div>GAME1 RESULT SHEET</div> -->
                   </th>
                   <th colspan="4" style="padding-left: 100px;">
@@ -128,29 +128,31 @@
               </thead>
             </table>
 
-            <table class="table " id="result-table" style="margin-bottom: 48px; border-radius: 10px; background-image: url('/assets/images/resultBackgroung.jpg');background-size: cover;">
 
-              <tbody>
-                  <ng-container *ngIf="currentDateResult">
-                    <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber2  === 0 ? currentDateResult.result.length / columnNumber2 : currentDateResult.result.length / columnNumber2 + 1); let idx = index">
-                      <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
-                        <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
-                        <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
-                        <div class="bd-highlight current-result">
-                          <span *ngIf="result.single_number!=null"></span>{{result.single_number}}
-                          <span *ngIf="result.single_number==null"><img src="assets/images/singleStar3.gif" height="20px" alt=""></span>
-                        </div>
-                        <!-- <div class="bd-highlight current-result" style="background-color: rgb(28, 35, 253);"><img src="assets/images/singleStar.gif" height="10px" alt=""></div> -->
-                      </td>
-                    </tr>
-                  </ng-container>
+            <div class="scroll" style=" max-height: 330px !important; overflow: scroll;">
+              <table class="table " id="result-table" style="margin-bottom: 48px; border-radius: 10px; background-image: url('/assets/images/resultBackgroung.jpg');background-size: cover; font-size: 20px;">
 
-              </tbody>
-            </table>
+                <tbody>
+                    <ng-container *ngIf="currentDateResult">
+                      <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber2  === 0 ? currentDateResult.result.length / columnNumber2 : currentDateResult.result.length / columnNumber2 + 1); let idx = index">
+                        <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
+                          <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
+                          <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
+                          <div class="bd-highlight current-result">
+                            <span *ngIf="result.single_number!=null"></span>{{result.single_number}}
+                            <span *ngIf="result.single_number==null"><img src="assets/images/singleStar3.gif" height="20px" alt=""></span>
+                          </div>
+                          <!-- <div class="bd-highlight current-result" style="background-color: rgb(28, 35, 253);"><img src="assets/images/singleStar.gif" height="10px" alt=""></div> -->
+                        </td>
+                      </tr>
+                    </ng-container>
+
+                </tbody>
+              </table>
+            </div>
 
 
-
-            <div class=" d-flex" style="height: 40px; border-radius: 10px;text-align: center; padding-left: 100px;">
+            <div class=" d-flex mt-2" style="height: 40px; border-radius: 10px;text-align: center; padding-left: 100px;">
               <button style="font-size: 100%; width: 50%;text-align: center; border: 8px solid rgb(255, 255, 255);height: 145%;border-style: double;" class="btn btn-lg  btn-responsive btn-primary">INFO</button>
               <button (click)="resetMatrixValue()" style="font-size: 100%;  width: 50%;  border: 8px solid rgb(253, 253, 253);height: 145%; border-style: double;" class="btn btn-success ml-1 btn-responsive">CLEAR</button>
             </div>

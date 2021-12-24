@@ -23,16 +23,16 @@ $triple-selection-button-7: url('/assets/images/btn-8.png');
 $triple-selection-button-8: url('/assets/images/btn-9.png');
 $triple-selection-button-9: url('/assets/images/btn-10png.png');
 
-$triple-button-0: url('/assets/images/nextbtn-1.png');
-$triple-button-1: url('/assets/images/nextbtn-2.png');
-$triple-button-2: url('/assets/images/nextbtn-3.png');
-$triple-button-3: url('/assets/images/nextbtn-4.png');
-$triple-button-4: url('/assets/images/nextbtn-5.png');
-$triple-button-5: url('/assets/images/nextbtn-6.png');
-$triple-button-6: url('/assets/images/nextbtn-7.png');
-$triple-button-7: url('/assets/images/nextbtn-8.png');
-$triple-button-8: url('/assets/images/nextbtn-9.png');
-$triple-button-9: url('/assets/images/nextbtn-10.png');
+$triple-button-0: #fa874d;
+$triple-button-1: #fc58c5;
+$triple-button-2: #7eb0fa;
+$triple-button-3: #fadb4f;
+$triple-button-4: #d5a6fc;
+$triple-button-5: #fd9996;
+$triple-button-6: #83f19b;
+$triple-button-7: #00ffff;
+$triple-button-8: #fd8499;
+$triple-button-9: #72ca76;
 
 
 $single-button-0: url('/assets/images/single/single-0.png');
@@ -472,7 +472,7 @@ span .mat-fab .mat-button-wrapper {
 @for $i from 0 through 9 {
   #triple-body-#{$i}{
     .triple-number-button{
-      background-image: nth($triple-background-image, $i+1) !important;
+      background-color: nth($triple-background-image, $i+1) !important;
       background-size: cover;
 
 
@@ -625,5 +625,16 @@ span .mat-fab .mat-button-wrapper {
   border-radius: 5px;
 }
 
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
 
