@@ -1,5 +1,5 @@
 <!-- <div style="text-align: center; color: white; font-size: 30px; font-weight: bold;"><marquee behavior="slide" direction="" class="pt-2">Welcome</marquee></div> -->
-<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 480px; ">
+<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 480px; " class="scroll">
 
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background" >
@@ -77,14 +77,14 @@
             <!-- <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div> -->
             <div class="d-flex">
               <div class="col-5"></div>
-              <div class="col-2" style="color: white;font-size: larger;"><span *ngIf="todayLastResult && todayLastResult.data!=null">
+              <div class="col-2 mt-3" style="color: white;font-size: larger; min-height: 20px !important;"><span *ngIf="todayLastResult && todayLastResult.data!=null">
                 <h1>{{todayLastResult.data.visible_triple_number}}</h1>
               </span></div>
               <div class="col-5"></div>
             </div>
 
 
-              <div style="padding-top: 30px; padding-right: 25px;">
+              <div style="padding-top: 10px; padding-right: 25px;">
                 <div class="d-flex">
                   <div class="col-5"></div>
                   <div class="col-2" style="color: white; font-weight: bold; margin-left: 11px;">SINGLES</div>
