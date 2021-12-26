@@ -1,0 +1,49 @@
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {ErrorService} from './error.service';
+import {ServerResponse} from '../models/ServerResponse.model';
+import { GameType } from '../models/GameType.model';
+import {environment} from '../../environments/environment';
+import { Subject } from 'rxjs';
+import { Game } from '../models/Game.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+// @ts-ignore
+export class GameService {
+  private BASE_API_URL = environment.BASE_API_URL;
+  gameTypes: GameType[] = [];
+  games: Game[] = [];
+  gameTypeSubject = new Subject<GameType[]>();
+  gameSubject = new Subject<Game[]>();
+
+  constructor(private  http: HttpClient, private errorService: ErrorService) {
+    // this.http.get(this.BASE_API_URL + '/gameTypes').subscribe((response: ServerResponse) => {
+    //   this.gameTypes = response.data;
+    //   this.gameTypeSubject.next([...this.gameTypes]);
+    // });
+    this.http.get(this.BASE_API_URL + 'dev/getGame').subscribe((response: any) =>{
+      this.games = response.data;
+      console.log(this.games);
+      console.log('this.games');
+    });
+  }
+
+  getGameType(){
+    return [...this.gameTypes];
+  }
+
+  getGameTypeListener(){
+    return this.gameTypeSubject.asObservable();
+  }
+
+
+  getGame(){
+    return [...this.games];
+  }
+
+  getGameListener(){
+    return this.gameSubject.asObservable();
+  }
+}

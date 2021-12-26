@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 
 use App\Models\DrawMaster;
+use App\Models\Game;
 use App\Models\GameType;
 use App\Models\SingleNumber;
 use Illuminate\Database\Seeder;
@@ -313,6 +314,15 @@ class DatabaseSeeder extends Seeder
             // ['draw_name'=> 'Good morning','start_time'=>'20:30 ','end_time'=>'21:00','visible_time'=>'09:00 pm','active'=>0],
 
 
+        ]);
+
+
+        Game::insert([
+
+            ['game_name'=> 'Fatafat'],
+            ['game_name'=> 'Shirdi'],
+            ['game_name'=> 'Mumbai Main Bazar',],
+            ['game_name'=> 'Kalyan Matka'],
         ]);
 
         GameType::insert([

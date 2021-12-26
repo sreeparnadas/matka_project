@@ -14,9 +14,10 @@ import {DrawTime} from '../../models/DrawTime.model';
 import {NgxPrinterService, PrintItem} from 'ngx-printer';
 import {GameInputSaveResponse} from '../../models/GameInputSaveResponse.model';
 import {NgxPrintModule} from 'ngx-print';
-import { GameResult } from 'src/app/models/GameResult.model';
+import { Game } from 'src/app/models/Game.model';
 import {CurrentGameResult} from '../../models/CurrentGameResult.model';
 import {WatchDrawService} from '../../services/watch-draw.service';
+import {GameService} from '../../services/game.service';
 import { NgxWheelComponent, TextAlignment, TextOrientation } from 'ngx-wheel';
 import {NextDrawId} from '../../models/NextDrawId.model';
 import {TodayLastResult} from '../../models/TodayLastResult.model';
@@ -47,6 +48,8 @@ export class TerminalComponent implements OnInit {
   userGameInput: any[] = [];
   public totalTicketPurchased: number;
   currentDateResult: CurrentGameResult;
+
+  games: Game ;
   todayLastResult: TodayLastResult;
   nextDrawId: NextDrawId;
 
@@ -67,7 +70,8 @@ export class TerminalComponent implements OnInit {
   public lastPurchasedTicketTriple: {visibleTripleNumber: number, quantity: number, singleNumber: number}[];
 
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService,
-              private ngxPrinterService: NgxPrinterService, private renderer: Renderer2, private watchDrawService: WatchDrawService
+              private ngxPrinterService: NgxPrinterService, private renderer: Renderer2, private watchDrawService: WatchDrawService,
+              private gameService: GameService,
   ) {
 
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
@@ -77,6 +81,9 @@ export class TerminalComponent implements OnInit {
     // this.renderer.listen(hello, 'click', console.log);
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
+
+
+
 
     this.playGameService.getTodayLastResultListener().subscribe(response => {
       this.todayLastResult = response;
@@ -155,6 +162,10 @@ export class TerminalComponent implements OnInit {
     });
 
     this.nextDrawId = this.watchDrawService.getNextDraw();
+
+
+
+    // this.games = this.game
 
 
   }// end of ngOnIInit

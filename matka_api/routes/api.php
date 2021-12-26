@@ -19,6 +19,7 @@ use App\Http\Controllers\CentralController;
 use App\Http\Controllers\NextGameDrawController;
 use App\Http\Controllers\TerminalController;
 use App\Http\Controllers\CPanelReportController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\TerminalReportController;
 
 /*
@@ -116,6 +117,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
     Route::put('cPanel/game/payout',[GameTypeController::class, 'update_payout']);
     Route::post('getResultByDate', [ResultMasterController::class, 'get_result_by_date']);
+
+    Route::get('getGame', [GameController::class, 'getGame']);
 });
 
 
@@ -201,6 +204,9 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::put('terminal/resetPassword', [TerminalController::class, 'reset_terminal_password']);
 
     Route::put('cPanel/game/payout',[GameTypeController::class, 'update_payout']);
+
+    Route::get('getGame', [GameController::class, 'getGame']);
+
 
 });
 
