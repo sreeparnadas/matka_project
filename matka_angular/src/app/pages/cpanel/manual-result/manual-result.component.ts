@@ -66,6 +66,7 @@ export class ManualResultComponent implements OnInit {
       id: new FormControl(null),
       drawMasterId: new FormControl(null, [Validators.required]),
       numberCombinationId: new FormControl(null, [Validators.required]),
+      gameId: new FormControl(null, [Validators.required]),
       single: new FormControl(null),
       triple: new FormControl(null),
       transaction_date: new FormControl(currentSQLDate),
@@ -141,6 +142,7 @@ export class ManualResultComponent implements OnInit {
   }
 
   saveManualResult(){
+    this.manualResultForm.value.gameId = 1;
     this.validatorError = null;
     Swal.fire({
       title: 'Confirmation',

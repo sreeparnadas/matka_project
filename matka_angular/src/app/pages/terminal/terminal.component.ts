@@ -49,7 +49,7 @@ export class TerminalComponent implements OnInit {
   public totalTicketPurchased: number;
   currentDateResult: CurrentGameResult;
 
-  games: Game ;
+  games: Game[] ;
   todayLastResult: TodayLastResult;
   nextDrawId: NextDrawId;
 
@@ -163,8 +163,12 @@ export class TerminalComponent implements OnInit {
 
     this.nextDrawId = this.watchDrawService.getNextDraw();
 
-
-
+    this.games = this.gameService.getGame()
+    this.gameService.getGameListener().subscribe((response: Game[]) => {
+      this.games = response;
+      console.log(this.games);
+    });
+    console.log(this.games);
     // this.games = this.game
 
 
@@ -264,7 +268,7 @@ export class TerminalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         const masterData = {
-          playMaster: {drawMasterId: this.activeDrawTime.drawId, terminalId: this.user.userId},
+          playMaster: {drawMasterId: this.activeDrawTime.drawId, terminalId: this.user.userId, gameId: 1},
           playDetails: this.userGameInput
         };
         this.playGameService.saveUserPlayInputDetails(masterData).subscribe(response => {

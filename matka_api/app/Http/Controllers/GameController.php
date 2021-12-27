@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function getGame()
     {
         $game= Game::get();

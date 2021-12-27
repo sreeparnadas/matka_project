@@ -12,21 +12,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ManualResultController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function save_manual_result(Request $request)
     {
         $rules = array(
@@ -53,6 +44,7 @@ class ManualResultController extends Controller
             $manualResult = new ManualResult();
             $manualResult->draw_master_id = $requestedData->drawMasterId;
             $manualResult->number_combination_id = $requestedData->numberCombinationId;
+            $manualResult->game_id = $requestedData->gameId;
             $manualResult->game_date = Carbon::today();
             $manualResult->save();
 

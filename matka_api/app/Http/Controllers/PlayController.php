@@ -78,6 +78,7 @@ class PlayController extends Controller
             $playMaster = new PlayMaster();
             $playMaster->draw_master_id = $inputPlayMaster->drawMasterId;
             $playMaster->user_id = $inputPlayMaster->terminalId;
+            $playMaster->game_id = $inputPlayMaster->gameId;
             $playMaster->save();
             $output_array['play_master'] = new PlayMasterResource($playMaster);
 

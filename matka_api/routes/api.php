@@ -126,6 +126,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 Route::group(array('prefix' => 'dev'), function() {
 
+    Route::get('getGame', [GameController::class, 'getGame']);
+
     Route::post('getResultByDate', [ResultMasterController::class, 'get_result_by_date']);
 
     Route::post('cPanel/barcodeReportByDate', [CPanelReportController::class, 'barcode_wise_report_by_date']);
