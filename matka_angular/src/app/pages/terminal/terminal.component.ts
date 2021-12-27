@@ -248,12 +248,12 @@ export class TerminalComponent implements OnInit {
     // console.log(this.copyNumberMatrix);
     // console.log(this.copySingleNumber);
     this.userGameInput = [];
-    // this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
-    this.numberCombinationMatrix = this.copyNumberMatrix;
-    console.log(this.numberCombinationMatrix);
-    // this.singleNumbers = JSON.parse(JSON.stringify(this.copySingleNumber));
-    this.singleNumbers = this.copySingleNumber;
-    console.log(this.singleNumbers);
+    this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
+    // this.numberCombinationMatrix = this.copyNumberMatrix;
+    // console.log(this.numberCombinationMatrix);
+    this.singleNumbers = JSON.parse(JSON.stringify(this.copySingleNumber));
+    // this.singleNumbers = this.copySingleNumber;
+    // console.log(this.singleNumbers);
     this.totalTicketPurchased = 0;
   }
 
