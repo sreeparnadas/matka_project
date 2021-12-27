@@ -41,12 +41,19 @@
               </ng-container>
               </tbody>
             </table>
+            <!-- <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;" *ngFor="let x of games"> -->
+            <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;">
+              <select class="btn btn-warning" id="1" name="1">
+                <option value="volvo" *ngFor="let x of games">{{x.game_name}}</option>
+              </select>
+            </div>
 
-            <div class="col-4" style="padding-top: 3px; margin-top: 102px;" >
+            <div class="col-4" style="padding-top: px; margin-top: px;" >
               <div class="left-div" style="padding-top: 15px;" >
                <span class="d-flex" style="padding-left: 25px;" ><img src="assets/images/play.png" height="70px" alt=""> <h4 style="font-weight: bolder; font-size: large; padding-top: 15px; padding-left: 20px;">{{totalTicketPurchased}}</h4></span>
               </div>
             </div>
+
         </div>
 
         <div fxFlex="30">
@@ -165,17 +172,7 @@
               <button (click)="saveUserPlayInputDetails()" style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
             </div>
 
-            <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 100px;">
-              <!-- <button  style="font-size: 100%; width: 50%;height: 145%;" class="btn btn-warning ml-1 "> -->
-                <!-- Select Game -->
-                <select class="btn btn-warning" id="cars" name="cars">
-                  <option value="volvo">Fatafat</option>
-                  <option value="saab">Shirdi</option>
-                  <option value="fiat">Mumbai Main Bazar</option>
-                  <option value="audi">Kalyan Matka</option>
-                </select>
-              <!-- </button> -->
-            </div>
+
           </div>
 
         </div>

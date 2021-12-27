@@ -168,7 +168,7 @@ export class TerminalComponent implements OnInit {
     this.games = this.gameService.getGame()
     this.gameService.getGameListener().subscribe((response: Game[]) => {
       this.games = response;
-      console.log(this.games);
+      console.log('ts',this.games);
     });
     console.log(this.games);
     // this.games = this.game

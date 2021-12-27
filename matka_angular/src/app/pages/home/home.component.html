@@ -28,7 +28,7 @@
     <div  *ngFor="let tableData of resultList; let i = index">
       <table class="table" >
           <thead>
-            <tr><td style="background-color: #85592e;" colspan="8">{{tableData.date}}</td></tr>
+            <tr><td style="background-color: #85592e;" colspan="10">{{tableData.date}}</td></tr>
           </thead>
           <tbody>
             <tr *ngFor="let row of tableData.result.slice(0, tableData.result.length % columnNumber  === 0 ?

@@ -23,10 +23,11 @@ export class GameService {
     //   this.gameTypes = response.data;
     //   this.gameTypeSubject.next([...this.gameTypes]);
     // });
-    this.http.get(this.BASE_API_URL + 'dev/getGame').subscribe((response: any) =>{
+    this.http.get(this.BASE_API_URL + '/dev/getGame').subscribe((response: ServerResponse) =>{
       this.games = response.data;
-      console.log(this.games);
-      console.log('this.games');
+      console.log('games: ',this.games);
+      this.gameSubject.next([...this.games]);
+
     });
   }
 

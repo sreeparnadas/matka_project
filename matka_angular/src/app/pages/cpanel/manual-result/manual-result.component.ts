@@ -14,6 +14,8 @@ import {MatCard} from '@angular/material/card';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
 import {CommonService} from '../../../services/common.service';
+import { GameService } from 'src/app/services/game.service';
+import { Game } from 'src/app/models/Game.model';
 
 @Component({
   selector: 'app-manual-result',
@@ -49,8 +51,11 @@ export class ManualResultComponent implements OnInit {
   showDevArea = false;
   deviceXs: boolean;
   isDisabledSingleHeaderButton: boolean = true;
+
+  games: Game[] ;
+
   // tslint:disable-next-line:max-line-length
-  constructor(private http: HttpClient, private manualResultService: ManualResultService
+  constructor(private http: HttpClient, private manualResultService: ManualResultService, private gameService: GameService
               // tslint:disable-next-line:align
               , private playGameService: PlayGameService
               // tslint:disable-next-line:align
@@ -106,6 +111,14 @@ export class ManualResultComponent implements OnInit {
         this.numberCombinationMatrix = response;
         this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
       });
+
+
+    this.games = this.gameService.getGame()
+    this.gameService.getGameListener().subscribe((response: Game[]) => {
+      this.games = response;
+      console.log('ts',this.games);
+    });
+    console.log(this.games);
   }
 
   iscurrentCombinationMatrixSelected(id: number){

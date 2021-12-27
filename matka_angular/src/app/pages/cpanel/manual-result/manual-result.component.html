@@ -1,4 +1,9 @@
 <div [ngClass]="deviceXs?'mobile':'desktop'">
+  <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;">
+    <select class="btn btn-warning" id="1" name="1">
+      <option value="volvo" *ngFor="let x of games">{{x.game_name}}</option>
+    </select>
+  </div>
   <form [formGroup]="manualResultForm">
     <div class="d-flex flex-column bd-highlight">
       <div class="p-2 bd-highlight">
