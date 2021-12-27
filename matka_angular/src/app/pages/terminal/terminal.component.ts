@@ -133,12 +133,14 @@ export class TerminalComponent implements OnInit {
       this.numberCombinationMatrix = response;
       this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
     });
+    this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
 
     this.singleNumbers = this.playGameService.getSingleNumbers();
     this.playGameService.getSingleNumberListener().subscribe((response: SingleNumber[]) => {
       this.singleNumbers = response;
       this.copySingleNumber = JSON.parse(JSON.stringify(this.singleNumbers));
     });
+    this.copySingleNumber = JSON.parse(JSON.stringify(this.singleNumbers));
 
     this.commonService.currentTimeBehaviorSubject.asObservable().subscribe(response => {
       this.alwaysTime = response;
@@ -243,9 +245,15 @@ export class TerminalComponent implements OnInit {
   }
 
   resetMatrixValue(){
+    // console.log(this.copyNumberMatrix);
+    // console.log(this.copySingleNumber);
     this.userGameInput = [];
-    this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
-    this.singleNumbers = JSON.parse(JSON.stringify(this.copySingleNumber));
+    // this.numberCombinationMatrix = JSON.parse(JSON.stringify(this.copyNumberMatrix));
+    this.numberCombinationMatrix = this.copyNumberMatrix;
+    console.log(this.numberCombinationMatrix);
+    // this.singleNumbers = JSON.parse(JSON.stringify(this.copySingleNumber));
+    this.singleNumbers = this.copySingleNumber;
+    console.log(this.singleNumbers);
     this.totalTicketPurchased = 0;
   }
 
