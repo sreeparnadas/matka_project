@@ -284,7 +284,8 @@
       <div fxLayout="row">
 
         <div class="clock-container clock2 ml-1 mt-0 pt-1" *ngIf="remainingTime" style="font-size: large; width: 150px;">
-          <div class="time">{{remainingTime}}</div>
+          <div class="time" *ngIf="value>=0">{{remainingTime}}</div>
+          <div class="time" *ngIf="value<0">00:00:00</div>
         </div>
         <div class="clock-container clock2 ml-1 mt-0 pt-1" *ngIf="alwaysTime" style="font-size: large; width: 150px;">
           <div class="time">{{alwaysTime}}</div>

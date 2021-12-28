@@ -53,6 +53,9 @@ export class TerminalComponent implements OnInit {
   todayLastResult: TodayLastResult;
   nextDrawId: NextDrawId;
 
+  remainingTime: number;
+  value: number;
+
   columnNumber = 5;
   columnNumber2 = 4;
   columnNumber3 = 1;
@@ -146,6 +149,13 @@ export class TerminalComponent implements OnInit {
       this.alwaysTime = response;
     });
 
+    this.commonService.remainingTimeBehaviorSubject.asObservable().subscribe(response => {
+      this.remainingTime = response;
+      const x = String(this.remainingTime).split(':');
+      // tslint:disable-next-line:radix
+      this.value = parseInt(x[0]);
+    });
+
     // variableSettings enabling
     this.projectData = this.commonService.getProjectData();
     this.chips = this.projectData.chips;
@@ -168,9 +178,7 @@ export class TerminalComponent implements OnInit {
     this.games = this.gameService.getGame()
     this.gameService.getGameListener().subscribe((response: Game[]) => {
       this.games = response;
-      console.log('ts',this.games);
     });
-    console.log(this.games);
     // this.games = this.game
 
 
