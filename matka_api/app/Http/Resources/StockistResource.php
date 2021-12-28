@@ -18,7 +18,8 @@ class StockistResource extends JsonResource
             'userId' => $this->id,
             'userName' => $this->user_name,
             'pin' => $this->email,
-            'userTypeId' => ($this->user_type)->id,
+//            'userTypeId' => ($this->user_type)->id,
+            'userTypeId' => $this->user_type_id,
             'balance' => $this->closing_balance,
 
         ];

@@ -8,6 +8,7 @@ import {StockistMaster} from '../models/StockistMaster.model';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {Stockist} from '../models/Stockist.model';
 import {Subject} from 'rxjs';
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class MasterStockistService {
   private BASE_API_URL = environment.BASE_API_URL;
   masterStockistForm: FormGroup;
   stockists: Stockist[] = [];
+  user: User;
   stockistSubject = new Subject<Stockist[]>();
   constructor(private http: HttpClient, private errorService: ErrorService) {
     this.masterStockistForm = new FormGroup({
@@ -25,9 +27,9 @@ export class MasterStockistService {
       stockistName : new FormControl(null, [Validators.required]),
       loginId : new FormControl(null),
     });
-
+    const User = JSON.parse(localStorage.getItem('user'));
     // get all stockists
-    this.http.get(this.BASE_API_URL + '/stockists').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/stockists/'+ User.userId ).subscribe((response: ServerResponse) => {
       this.stockists = response.data;
       this.stockistSubject.next([...this.stockists]);
     });

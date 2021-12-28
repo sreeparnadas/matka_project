@@ -87,6 +87,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 
     Route::get('stockists',[StockistController::class, 'get_all_stockists']);
+    Route::get('stockists/{id}',[StockistController::class, 'get_stockist']);
     Route::post('stockists',[StockistController::class, 'create_stockist']);
     Route::put('stockists',[StockistController::class, 'update_stockist']);
     Route::put('stockists/balance',[StockistController::class, 'update_balance_to_stockist']);
@@ -176,6 +177,7 @@ Route::group(array('prefix' => 'dev'), function() {
 
 
     Route::get('stockists',[StockistController::class, 'get_all_stockists']);
+    Route::get('stockists/{id}',[StockistController::class, 'get_stockist']);
     Route::post('stockists',[StockistController::class, 'create_stockist']);
     Route::put('stockists',[StockistController::class, 'update_stockist']);
     Route::put('stockists/balance',[StockistController::class, 'update_balance_to_stockist']);

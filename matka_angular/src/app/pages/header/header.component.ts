@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   activeDrawTime: DrawTime;
   currentDate: string;
   remainingTime: number;
+  value: number;
 
 
   constructor(private authService: AuthService,  private commonService: CommonService) {
@@ -53,9 +54,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.commonService.remainingTimeBehaviorSubject.asObservable().subscribe(response => {
       this.remainingTime = response;
-      // const x = String(this.remainingTime).split(':');
+      const x = String(this.remainingTime).split(':');
       // tslint:disable-next-line:radix
-      // this.value = (((parseInt(x[1])*60)+parseInt(x[2]))/(15*60))*100;
+      this.value = parseInt(x[0]);
     });
 
     this.userSub = this.authService.userBehaviorSubject.subscribe(user => {
