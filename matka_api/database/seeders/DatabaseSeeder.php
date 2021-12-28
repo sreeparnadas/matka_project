@@ -319,10 +319,10 @@ class DatabaseSeeder extends Seeder
 
         Game::insert([
 
-            ['game_name'=> 'Fatafat'],
-            ['game_name'=> 'Shirdi'],
-            ['game_name'=> 'Mumbai Main Bazar',],
-            ['game_name'=> 'Kalyan Matka'],
+            ['game_name'=> 'FATAFAT'],
+            ['game_name'=> 'SHIRDI'],
+            ['game_name'=> 'MUMBAI MAIN BAZAR',],
+            ['game_name'=> 'KALYAN MATKA'],
         ]);
 
         GameType::insert([
