@@ -60,6 +60,8 @@ export class TerminalComponent implements OnInit {
   columnNumber2 = 4;
   columnNumber3 = 1;
 
+  bgColor: string = 'darkblue';
+
   public activeTripleContainerValue = 0;
   public selectedChip = 2;
   copyNumberMatrix: SingleNumber[];
@@ -128,7 +130,7 @@ export class TerminalComponent implements OnInit {
 
 
 
-    this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background.jpg")');
+    // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
@@ -332,6 +334,11 @@ export class TerminalComponent implements OnInit {
   //   audio.play();
   // }
   // playAudio();
+
+  changeColor() {
+    this.bgColor = '#' + (Math.random() *0xFFFFFF << 0).toString(16);
+
+  }
 
 
 }

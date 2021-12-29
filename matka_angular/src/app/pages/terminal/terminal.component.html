@@ -1,5 +1,6 @@
 <!-- <div style="text-align: center; color: white; font-size: 30px; font-weight: bold;"><marquee behavior="slide" direction="" class="pt-2">Welcome</marquee></div> -->
-<div [ngClass]="projectData.colorScheme" id="outer-div" style="height: 480px; " class="scroll">
+<div  [ngStyle]="{'background-color': bgColor}" style="height: 100vh; ">
+  <div [ngClass]="projectData.colorScheme" id="outer-div"  class="scroll">
 
   <div class="d-flex flex-row bd-highlight mb-3  " id="bg">
     <div class="p-2 background body  bd-highlight" id="background" >
@@ -43,9 +44,11 @@
             </table>
             <!-- <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;" *ngFor="let x of games"> -->
             <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;">
-              <select class="btn btn-warning" id="1" name="1">
-                <option value="volvo" *ngFor="let x of games">{{x.game_name}}</option>
-              </select>
+              <div class="">
+                <select class="btn btn-primary" id="1" name="1" (change)="changeColor()" style="border: 5px solid red;">
+                    <option value="{{x.id}}" *ngFor="let x of games" style="font-size: large;">{{x.game_name}}</option>
+                </select>
+              </div>
             </div>
 
             <div class="col-4" style="padding-top: px; margin-top: px;" >
@@ -186,8 +189,8 @@
   </div>
 
 
+  </div>
 </div>
-
 
 
 <div id="print-section" directPrint="true" style="border: 2px solid black; margin-left: 0; display: none" *ngIf="lastPurchasedTicketDetails">
