@@ -8,6 +8,8 @@ import {environment} from '../../../environments/environment';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import {WatchDrawService} from '../../services/watch-draw.service';
+import {Game} from "../../models/Game.model";
+import {GameService} from "../../services/game.service";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,11 +31,16 @@ export class HomeComponent implements OnInit {
   showDevArea = false;
   isProduction = environment.production;
   columnNumber = 10;
+  games: Game[];
+  selectedGame: number;
 
   nextDrawId: any;
 
   constructor(private gameResultService: GameResultService, private metaTagService: Meta,
-              private commonService: CommonService, private renderer: Renderer2, private watchDrawService: WatchDrawService) {
+              private commonService: CommonService
+              , private renderer: Renderer2
+              , private watchDrawService: WatchDrawService
+              , private gameService: GameService) {
 
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
@@ -41,10 +48,22 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(){
     this.renderer.setStyle(document.body, 'background-image', 'none');
+
+    this.selectedGame = 1;
+
+    this.games = this.gameService.getGame()
+    this.gameService.getGameListener().subscribe((response: Game[]) => {
+      this.games = response;
+    });
+
     this.resultList = this.gameResultService.getResultList();
     this.gameResultService.getResultListListener().subscribe((response: GameResult[]) => {
       this.resultList = response;
     });
+  }
+
+  test(){
+    this.gameResultService.getSelectedGamedResult(this.selectedGame);
   }
 
   public openPDF(): void {

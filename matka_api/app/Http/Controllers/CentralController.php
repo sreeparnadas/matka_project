@@ -29,10 +29,6 @@ class CentralController extends Controller
 
         $resultCreatedObj = json_decode($jsonData->content(),true);
 
-//        $actionId = 'score_update';
-//        $actionData = array('team1_score' => 46);
-//        event(new ActionEvent($actionId, $actionData));
-
         if( !empty($resultCreatedObj) && $resultCreatedObj['success']==1){
 
             $totalDraw = DrawMaster::count();

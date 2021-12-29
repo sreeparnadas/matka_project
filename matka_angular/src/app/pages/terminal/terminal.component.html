@@ -44,12 +44,24 @@
             </table>
             <!-- <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;" *ngFor="let x of games"> -->
             <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;">
-              <div class="">
-                <select class="btn btn-primary" id="1" name="1" (change)="changeColor()" style="border: 5px solid red;">
-                    <option value="{{x.id}}" *ngFor="let x of games" style="font-size: large;">{{x.game_name}}</option>
-                </select>
-              </div>
+<!--              <div class="">-->
+<!--                <select class="btn btn-primary" id="1" name="1" (change)="changeColor()" style="border: 5px solid red;">-->
+<!--                    <option value="{{x.id}}" *ngFor="let x of games" style="font-size: large;">{{x.game_name}}</option>-->
+<!--                </select>-->
+<!--              </div>-->
+
+              <mat-form-field  appearance="fill">
+                <mat-label>Favorite food</mat-label>
+                <mat-select class="btn btn-warning" [(ngModel)]="selectedGame" name="food">
+                  <mat-option *ngFor="let x of games" [value]="x.id">
+                    {{x.game_name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
             </div>
+
+
 
             <div class="col-4" style="padding-top: px; margin-top: px;" >
               <div class="left-div" style="padding-top: 15px;" >
@@ -172,8 +184,8 @@
                       [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>PRINT</button>
             </div>
             <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 151px;">
-<!--              <button (click)="saveUserPlayInputDetails()"  style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>-->
-              <button (click)="saveUserPlayInputDetails()" [disabled]="value<0" style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
+              <button (click)="saveUserPlayInputDetails()"  style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
+<!--              <button (click)="saveUserPlayInputDetails()" [disabled]="value<0" style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>-->
             </div>
 
 
