@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentDate: string;
   remainingTime: number;
   value: number;
+  drawHour: number
 
 
   constructor(private authService: AuthService,  private commonService: CommonService) {
@@ -50,6 +51,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.commonService.currentTimeBehaviorSubject.asObservable().subscribe(response => {
       this.alwaysTime = response;
+      const x = (String(this.alwaysTime).split(':'))[0];
+      this.drawHour =  parseInt(x[0]);
     });
 
     this.commonService.remainingTimeBehaviorSubject.asObservable().subscribe(response => {

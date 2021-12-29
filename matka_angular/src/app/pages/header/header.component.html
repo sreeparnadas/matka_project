@@ -270,7 +270,8 @@
         <div class=" mt-2 ml-1 mr-1" style="font-size: large;">Balc:{{user.balance}}</div>
 
 
-        <span class="mt-2 ml-1 mr-1" style="font-size: large;">Next draw:{{activeDrawTime.visibleTime}}</span>
+        <span class="mt-2 ml-1 mr-1" *ngIf="drawHour>9" style="font-size: large;">Next draw: </span>
+        <span class="mt-2 ml-1 mr-1" *ngIf="drawHour<=9" style="font-size: large;">Next draw:{{activeDrawTime.visibleTime}}</span>
 
         <div style="margin-left: 50px; margin-top: 10px;">{{currentDate}}&nbsp;
         </div>
