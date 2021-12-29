@@ -51,6 +51,7 @@ export class ManualResultComponent implements OnInit {
   showDevArea = false;
   deviceXs: boolean;
   isDisabledSingleHeaderButton: boolean = true;
+  selectedGame: number;
 
   games: Game[] ;
 
@@ -98,6 +99,8 @@ export class ManualResultComponent implements OnInit {
     ).subscribe(data =>
       console.log('data', data)
     );
+
+    this.selectedGame = 1;
 
     const now = new Date();
     const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
@@ -155,7 +158,7 @@ export class ManualResultComponent implements OnInit {
   }
 
   saveManualResult(){
-    this.manualResultForm.value.gameId = 1;
+    this.manualResultForm.value.gameId = this.selectedGame;
     this.validatorError = null;
     Swal.fire({
       title: 'Confirmation',
