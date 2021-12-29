@@ -270,7 +270,8 @@
         <div class=" mt-2 ml-1 mr-1" style="font-size: large;">Balc:{{user.balance}}</div>
 
 
-        <span class="mt-2 ml-1 mr-1" style="font-size: large;">Next draw:{{activeDrawTime.visibleTime}}</span>
+        <span class="mt-2 ml-1 mr-1" *ngIf="drawHour>9" style="font-size: large;">Next draw: </span>
+        <span class="mt-2 ml-1 mr-1" *ngIf="drawHour<=9" style="font-size: large;">Next draw:{{activeDrawTime.visibleTime}}</span>
 
         <div style="margin-left: 50px; margin-top: 10px;">{{currentDate}}&nbsp;
         </div>
@@ -284,7 +285,8 @@
       <div fxLayout="row">
 
         <div class="clock-container clock2 ml-1 mt-0 pt-1 " *ngIf="remainingTime" style="font-size: large; width: 150px;">
-          <div class="time bg-danger">{{remainingTime}}</div>
+          <div class="time bg-danger" *ngIf="value>=0">{{remainingTime}}</div>
+          <div class="time bg-danger" *ngIf="value<0">00:00:00</div>
         </div>
         <div class="clock-container clock2 ml-1 mt-0 pt-1" *ngIf="alwaysTime" style="font-size: large; width: 150px;">
           <div class="time bg-success">{{alwaysTime}}</div>

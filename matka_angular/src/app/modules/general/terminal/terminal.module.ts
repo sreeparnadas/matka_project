@@ -5,7 +5,7 @@ import { TerminalRoutingModule } from './terminal-routing.module';
 import {TerminalComponent} from '../../../pages/terminal/terminal.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
@@ -25,6 +25,7 @@ import {NgxWheelModule} from 'ngx-wheel';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    FormsModule,
     MatDatepickerModule,
     MatSelectModule,
     MatSlideToggleModule,

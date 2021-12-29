@@ -50,6 +50,7 @@ export class TerminalComponent implements OnInit {
   currentDateResult: CurrentGameResult;
 
   games: Game[] ;
+  selectedGame: number;
   todayLastResult: TodayLastResult;
   nextDrawId: NextDrawId;
 
@@ -128,7 +129,7 @@ export class TerminalComponent implements OnInit {
       textFontSize: '40'
     }));
 
-
+    this.selectedGame = 1;
 
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
@@ -286,7 +287,7 @@ export class TerminalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         const masterData = {
-          playMaster: {drawMasterId: this.activeDrawTime.drawId, terminalId: this.user.userId, gameId: 1},
+          playMaster: {drawMasterId: this.activeDrawTime.drawId, terminalId: this.user.userId, gameId: this.selectedGame},
           playDetails: this.userGameInput
         };
         this.playGameService.saveUserPlayInputDetails(masterData).subscribe(response => {
