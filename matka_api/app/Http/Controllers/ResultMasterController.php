@@ -179,13 +179,13 @@ class ResultMasterController extends Controller
                     $selectRandomResult = NumberCombination::all()->random(1)->first();
                     $number_combination_for_result = $selectRandomResult->id;
 
-                    $selectRandomGame = Game::all()->random(1)->first();
-                    $gameId = $selectRandomGame->id;
+//                    $selectRandomGame = Game::all()->random(1)->first();
+                    $gameId = $game->id;
                 }
                 $resultMaster = new ResultMaster();
                 $resultMaster->draw_master_id = $draw_id;
                 $resultMaster->number_combination_id = $number_combination_for_result;
-                $resultMaster->game_id = $game->id;
+                $resultMaster->game_id = $gameId;
                 $resultMaster->game_date = Carbon::today();
                 $resultMaster->save();
             }

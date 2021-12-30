@@ -163,8 +163,8 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('playDetails/playId/{id}',[PlayMasterController::class,'get_play_details_by_play_master_id']);
 
     //result_masters
-    Route::get('results/{id}',[ResultMasterController::class, 'get_results']);
-    Route::get('results/{id}',[ResultMasterController::class, 'get_results']);
+    Route::get('results',[ResultMasterController::class, 'get_results']);
+    Route::get('results/{id}',[ResultMasterController::class, 'get_result']);
     Route::post('getResultSheetByCurrentDateAndGameId',[ResultMasterController::class, 'get_result_sheet_by_current_date_and_game_id']);
     Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
     Route::get('results/lastResult',[ResultMasterController::class, 'get_last_result']);
