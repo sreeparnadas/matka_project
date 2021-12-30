@@ -51,7 +51,7 @@
 <!--              </div>-->
 
               <mat-form-field  appearance="fill">
-                <mat-label>Favorite food</mat-label>
+                <mat-label>Game</mat-label>
                 <mat-select class="btn btn-warning" [(ngModel)]="selectedGame" name="food">
                   <mat-option *ngFor="let x of games" [value]="x.id">
                     {{x.game_name}}
@@ -63,7 +63,7 @@
 
 
 
-            <div class="col-4" style="padding-top: px; margin-top: px;" >
+            <div class="col-4" style="padding-top: 30px; margin-top: px;" >
               <div class="left-div" style="padding-top: 15px;" >
                <span class="d-flex" style="padding-left: 25px;" ><img src="assets/images/play.png" height="70px" alt=""> <h4 style="font-weight: bolder; font-size: large; padding-top: 15px; padding-left: 20px;">{{totalTicketPurchased}}</h4></span>
               </div>
@@ -112,13 +112,16 @@
                   <div class="col-2" style="color: white; font-weight: bold; margin-left: 11px;">SINGLES</div>
                   <div class="col-6"></div>
                 </div>
-                <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 43px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%; color: white;margin: 10px; " >
-                  <button matBadge="{{single.quantity}}"  style="color: rgb(28, 12, 90); font-weight: bold; "
-                          *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)"
-                          class="single-number-button-{{i}}" type="button">{{ single.singleNumber }}</button>
+                <div style="padding-left: 15px;">
+                  <div class="d-flex justify-content-between" style="background-color: rgb(255, 230, 0);height: 43px; border: 5px solid rgb(247, 38, 84); border-style: double; width: 105%; color: white;margin: 10px; " >
+                    <button matBadge="{{single.quantity}}"  style="color: rgb(28, 12, 90); font-weight: bold; "
+                            *ngFor="let single of singleNumbers; let i=index" (click)="setGameInputSet(single,1,1)"
+                            class="single-number-button-{{i}}" type="button">{{ single.singleNumber }}</button>
+                  </div>
                 </div>
+
                 <div class="d-flex" style="background-image: url('assets/images/number-background.png'); background-repeat: no-repeat;background-size: cover; padding-bottom: 20px;  width: 435px;
-                margin-left: -35px;padding-right: 20px;">
+                margin-left: 4px;padding-right: 20px;">
                   <div class="chips-outer-div " style="padding-top: 8%; padding-left: 15%;">
                     <input *ngFor="let x of chips; let i= index" class="chips-button-{{i}}" [ngClass]="(selectedChip==x)?'selectedChipStyle':''" mat-fab value="bold" type="button" value="" (click)="changeChip(x)">
                   </div>

@@ -37,8 +37,15 @@ export class GameResultService {
     });
   }
 
+  // getSelectedGamedResult(data){
+  //   this.http.get(this.BASE_API_URL + '/dev/results/' + data).subscribe((response: ServerResponse) => {
+  //     this.resultList = response.data;
+  //     this.resultSubject.next([...this.resultList]);
+  //   });
+  // }
+
   getSelectedGamedResult(data){
-    this.http.get(this.BASE_API_URL + '/dev/results/' + data).subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/dev/results' + data).subscribe((response: ServerResponse) => {
       this.resultList = response.data;
       this.resultSubject.next([...this.resultList]);
     });
