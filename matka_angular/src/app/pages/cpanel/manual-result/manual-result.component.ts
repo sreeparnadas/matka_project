@@ -87,6 +87,8 @@ export class ManualResultComponent implements OnInit {
       //   this.drawTimes = response;
       // });
 
+
+    this.manualResultForm.patchValue({gameId:1});
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => this.route),
@@ -158,7 +160,9 @@ export class ManualResultComponent implements OnInit {
   }
 
   saveManualResult(){
-    this.manualResultForm.value.gameId = this.selectedGame;
+    // this.manualResultForm.value.gameId = this.selectedGame;
+    console.log(this.manualResultForm.value.gameId);
+    return;
     this.validatorError = null;
     Swal.fire({
       title: 'Confirmation',
