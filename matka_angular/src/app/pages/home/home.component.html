@@ -13,17 +13,18 @@
     <div id="title-3-div-child-2">
 
       <div class="d-flex" style="text-align: end; padding-left: 24%;">
-        <div id="title-3-div-child-2" style="text-align: center; color: white;" *ngFor="let x of games"><button type="button" class="btn  glow ml-1" style="font-size: x-large;border: 5px solid yellow; border-style: double; border-radius: 10px; background-color: brown; color: white;">{{x.game_name}}</button></div>
+        <div id="title-3-div-child-2" style="text-align: center; color: white;" *ngFor="let x of games">
+          <button type="button" (click)="varResult(x.id)" class="btn  glow ml-1" style="font-size: x-large;border: 5px solid yellow; border-style: double; border-radius: 10px; background-color: brown; color: white;">{{x.game_name}}</button></div>
       </div>
 
-      <mat-form-field  appearance="fill">
-        <mat-label>Game</mat-label>
-        <mat-select class="btn btn-warning" [(ngModel)]="selectedGame" (selectionChange)="test()" name="Game">
-          <mat-option *ngFor="let x of games" [value]="x.id">
-            {{x.game_name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<!--      <mat-form-field  appearance="fill">-->
+<!--        <mat-label>Game</mat-label>-->
+<!--        <mat-select class="btn btn-warning" [(ngModel)]="selectedGame" (selectionChange)="test()" name="Game">-->
+<!--          <mat-option *ngFor="let x of games" [value]="x.id">-->
+<!--            {{x.game_name}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
 
     </div>
   </div>

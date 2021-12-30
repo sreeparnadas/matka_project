@@ -62,8 +62,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  test(){
-    this.gameResultService.getSelectedGamedResult(this.selectedGame);
+  // test(){
+  //   this.gameResultService.getSelectedGamedResult(this.selectedGame);
+  // }
+
+  varResult(data){
+    this.gameResultService.getSelectedGamedResult(data);
   }
 
   public openPDF(): void {
