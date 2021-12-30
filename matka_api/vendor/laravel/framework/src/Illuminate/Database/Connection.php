@@ -54,7 +54,7 @@ class Connection implements ConnectionInterface
      *
      * @var string|null
      */
-    protected $type;
+    protected $readWriteType;
 
     /**
      * The table prefix for the connection.
@@ -129,9 +129,16 @@ class Connection implements ConnectionInterface
     /**
      * Indicates if changes have been made to the database.
      *
-     * @var int
+     * @var bool
      */
     protected $recordsModified = false;
+
+    /**
+     * Indicates if the connection should use the "write" PDO connection.
+     *
+     * @var bool
+     */
+    protected $readOnWriteConnection = false;
 
     /**
      * All of the queries run against the connection.
@@ -153,6 +160,13 @@ class Connection implements ConnectionInterface
      * @var bool
      */
     protected $pretending = false;
+
+    /**
+     * All of the callbacks that should be invoked before a query is executed.
+     *
+     * @var array
+     */
+    protected $beforeExecutingCallbacks = [];
 
     /**
      * The instance of Doctrine connection.
@@ -634,6 +648,10 @@ class Connection implements ConnectionInterface
      */
     protected function run($query, $bindings, Closure $callback)
     {
+        foreach ($this->beforeExecutingCallbacks as $beforeExecutingCallback) {
+            $beforeExecutingCallback($query, $bindings, $this);
+        }
+
         $this->reconnectIfMissingConnection();
 
         $start = microtime(true);
@@ -675,7 +693,7 @@ class Connection implements ConnectionInterface
         // run the SQL against the PDO connection. Then we can calculate the time it
         // took to execute and log the query SQL, bindings and time in our memory.
         try {
-            $result = $callback($query, $bindings);
+            return $callback($query, $bindings);
         }
 
         // If an exception occurs when attempting to run a query, we'll format the error
@@ -686,8 +704,6 @@ class Connection implements ConnectionInterface
                 $query, $this->prepareBindings($bindings), $e
             );
         }
-
-        return $result;
     }
 
     /**
@@ -803,6 +819,19 @@ class Connection implements ConnectionInterface
     }
 
     /**
+     * Register a hook to be run just before a database query is executed.
+     *
+     * @param  \Closure  $callback
+     * @return $this
+     */
+    public function beforeExecuting(Closure $callback)
+    {
+        $this->beforeExecutingCallbacks[] = $callback;
+
+        return $this;
+    }
+
+    /**
      * Register a database query listener with the connection.
      *
      * @param  \Closure  $callback
@@ -862,6 +891,16 @@ class Connection implements ConnectionInterface
     }
 
     /**
+     * Determine if the database connection has modified any database records.
+     *
+     * @return bool
+     */
+    public function hasModifiedRecords()
+    {
+        return $this->recordsModified;
+    }
+
+    /**
      * Indicate if any records have been modified.
      *
      * @param  bool  $value
@@ -875,6 +914,19 @@ class Connection implements ConnectionInterface
     }
 
     /**
+     * Set the record modification state.
+     *
+     * @param  bool  $value
+     * @return $this
+     */
+    public function setRecordModificationState(bool $value)
+    {
+        $this->recordsModified = $value;
+
+        return $this;
+    }
+
+    /**
      * Reset the record modification state.
      *
      * @return void
@@ -882,6 +934,19 @@ class Connection implements ConnectionInterface
     public function forgetRecordModificationState()
     {
         $this->recordsModified = false;
+    }
+
+    /**
+     * Indicate that the connection should use the write PDO connection for reads.
+     *
+     * @param  bool  $value
+     * @return $this
+     */
+    public function useWriteConnectionWhenReading($value = true)
+    {
+        $this->readOnWriteConnection = $value;
+
+        return $this;
     }
 
     /**
@@ -980,7 +1045,8 @@ class Connection implements ConnectionInterface
             return $this->getPdo();
         }
 
-        if ($this->recordsModified && $this->getConfig('sticky')) {
+        if ($this->readOnWriteConnection ||
+            ($this->recordsModified && $this->getConfig('sticky'))) {
             return $this->getPdo();
         }
 

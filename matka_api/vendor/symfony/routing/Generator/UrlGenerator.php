@@ -66,6 +66,7 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
         // some webservers don't allow the slash in encoded form in the path for security reasons anyway
         // see http://stackoverflow.com/questions/4069002/http-400-if-2f-part-of-get-url-in-jboss
         '%2F' => '/',
+        '%252F' => '%2F',
         // the following chars are general delimiters in the URI specification but have only special meaning in the authority component
         // so they can safely be used in the path in unencoded form
         '%40' => '@',
@@ -221,9 +222,9 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
         // so we need to encode them as they are not used for this purpose here
         // otherwise we would generate a URI that, when followed by a user agent (e.g. browser), does not match this route
         $url = strtr($url, ['/../' => '/%2E%2E/', '/./' => '/%2E/']);
-        if ('/..' === substr($url, -3)) {
+        if (str_ends_with($url, '/..')) {
             $url = substr($url, 0, -2).'%2E%2E';
-        } elseif ('/.' === substr($url, -2)) {
+        } elseif (str_ends_with($url, '/.')) {
             $url = substr($url, 0, -1).'%2E';
         }
 
@@ -294,6 +295,17 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
             return $a == $b ? 0 : 1;
         });
 
+        array_walk_recursive($extra, $caster = static function (&$v) use (&$caster) {
+            if (\is_object($v)) {
+                if ($vars = get_object_vars($v)) {
+                    array_walk_recursive($vars, $caster);
+                    $v = $vars;
+                } elseif (method_exists($v, '__toString')) {
+                    $v = (string) $v;
+                }
+            }
+        });
+
         // extract fragment
         $fragment = $defaults['_fragment'] ?? '';
 
@@ -331,7 +343,7 @@ class UrlGenerator implements UrlGeneratorInterface, ConfigurableRequirementsInt
      * @param string $basePath   The base path
      * @param string $targetPath The target path
      *
-     * @return string The relative target path
+     * @return string
      */
     public static function getRelativePath(string $basePath, string $targetPath)
     {
