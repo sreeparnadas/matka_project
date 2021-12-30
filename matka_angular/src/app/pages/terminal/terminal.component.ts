@@ -112,6 +112,14 @@ export class TerminalComponent implements OnInit {
     });
 
 
+    this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+    this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
+
+    this.singleNumbers = this.playGameService.getSingleNumbers();
+    this.copySingleNumber = JSON.parse(JSON.stringify(this.singleNumbers));
+
+
+
   }
 
   ngOnInit(): void {
@@ -135,20 +143,20 @@ export class TerminalComponent implements OnInit {
 
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
-    this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
+    // this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
     this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
       this.numberCombinationMatrix = response;
       this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
     });
-    this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
+    // this.copyNumberMatrix  = JSON.parse(JSON.stringify(this.numberCombinationMatrix));
 
-    this.singleNumbers = this.playGameService.getSingleNumbers();
+    // this.singleNumbers = this.playGameService.getSingleNumbers();
     this.playGameService.getSingleNumberListener().subscribe((response: SingleNumber[]) => {
       this.singleNumbers = response;
       this.copySingleNumber = JSON.parse(JSON.stringify(this.singleNumbers));
     });
-    this.copySingleNumber = JSON.parse(JSON.stringify(this.singleNumbers));
+    // this.copySingleNumber = JSON.parse(JSON.stringify(this.singleNumbers));
 
     this.commonService.currentTimeBehaviorSubject.asObservable().subscribe(response => {
       this.alwaysTime = response;
