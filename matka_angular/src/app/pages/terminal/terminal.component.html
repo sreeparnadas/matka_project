@@ -43,31 +43,37 @@
               </tbody>
             </table>
             <!-- <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;" *ngFor="let x of games"> -->
-            <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 50px;">
+            <div class="" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 0px;">
 <!--              <div class="">-->
 <!--                <select class="btn btn-primary" id="1" name="1" (change)="changeColor()" style="border: 5px solid red;">-->
 <!--                    <option value="{{x.id}}" *ngFor="let x of games" style="font-size: large;">{{x.game_name}}</option>-->
 <!--                </select>-->
 <!--              </div>-->
 
-              <mat-form-field  appearance="fill">
+              <!-- <mat-form-field  appearance="fill">
                 <mat-label>Game</mat-label>
                 <mat-select class="btn btn-warning" [(ngModel)]="selectedGame" name="food">
                   <mat-option *ngFor="let x of games" [value]="x.id">
                     {{x.game_name}}
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field> -->
 
-            </div>
-
-
-
-            <div class="col-4" style="padding-top: 30px; margin-top: px;" >
-              <div class="left-div" style="padding-top: 15px;" >
-               <span class="d-flex" style="padding-left: 25px;" ><img src="assets/images/play.png" height="70px" alt=""> <h4 style="font-weight: bolder; font-size: large; padding-top: 15px; padding-left: 20px;">{{totalTicketPurchased}}</h4></span>
+              <div class=" d-flex mt-2" style="height: 40px; border-radius: 10px;text-align: center; padding-right: 100px;">
+                <button style="font-size: 100%; width: 50%;text-align: center; border: 8px solid rgb(255, 255, 255);height: 145%;border-style: double;" class="btn btn-lg  btn-responsive btn-primary">FATAFAT</button>
+                <button  style="font-size: 100%;  width: 50%;  border: 8px solid rgb(253, 253, 253);height: 145%; border-style: double;" class="btn btn-success ml-1 btn-responsive">SHIRDHI</button>
               </div>
+              <div class=" d-flex" style="height: 60px; border-radius: 10px;padding-top: 20px; padding-right: 100px;">
+                <button style="font-size: 100%;   width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-danger ml-1 btn-responsive" >MUMBAI MAIN BAZAR</button>
+                <button class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 100%;   width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;"
+                        >KALYAN MATKA</button>
+              </div>
+
             </div>
+
+
+
+            
 
         </div>
 
@@ -186,9 +192,21 @@
               <button class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 100%;   width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;"
                       [printStyle]="{h1 : {'color': 'red'}, h2 : {'border': 'solid 3px'}}" printSectionId="print-section" ngxPrint>PRINT</button>
             </div>
+
             <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 151px;">
-<!--              <button (click)="saveUserPlayInputDetails()"  style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>-->
-              <button (click)="saveUserPlayInputDetails()" [disabled]="value<0" style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-1 btn-responsive">BUY</button>
+              
+            </div>
+
+            
+            <div class=" d-flex" style="height: 60px; border-radius: 10px;padding-top: 20px; padding-left: 18px;">
+              <div class="col-1"></div>
+              <div class="col-2" style="margin-bottom: 20px; margin-left: 45px;" >
+                <div class="left-div" style="padding-top: 15px;" >
+                 <span class="d-flex" style="padding-left: px; color: black;" ><img src="assets/images/play.png" height="70px" alt=""> <h4 style="font-weight: bolder; font-size: large; padding-top: 15px; padding-left: 20px;">{{totalTicketPurchased}}</h4></span>
+                </div>
+              </div>
+              <div class="col-3"></div>
+              <button (click)="saveUserPlayInputDetails()" [disabled]="value<0" style="font-size: 100%; width: 50%;height: 145%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-warning ml-4 btn-responsive col-4">BUY</button>
             </div>
 
 
