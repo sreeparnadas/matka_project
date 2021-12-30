@@ -31,7 +31,7 @@ export class GameResultService {
   }
 
   getUpdatedResult(){
-    this.http.get(this.BASE_API_URL + '/dev/results').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/dev/results/1').subscribe((response: ServerResponse) => {
       this.resultList = response.data;
       this.resultSubject.next([...this.resultList]);
     });
