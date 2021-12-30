@@ -165,27 +165,34 @@ class ResultMasterController extends Controller
     public function save_auto_result($draw_id)
     {
         $games = Game::select()->get();
-        foreach ($games as $game){
-            $manualResult = ManualResult::where('game_date',Carbon::today())
-                ->where('draw_master_id',$draw_id)
-                ->where('game_id',$game->id)
-                ->first();
-            if(!empty($manualResult)){
-                $number_combination_for_result = $manualResult->number_combination_id;
-                $gameId = $manualResult->game_id;
-            }else{
-                $selectRandomResult = NumberCombination::all()->random(1)->first();
-                $number_combination_for_result = $selectRandomResult->id;
+        DB::beginTransaction();
+        try{
+            foreach ($games as $game){
+                $manualResult = ManualResult::where('game_date',Carbon::today())
+                    ->where('draw_master_id',$draw_id)
+                    ->where('game_id',$game->id)
+                    ->first();
+                if(!empty($manualResult)){
+                    $number_combination_for_result = $manualResult->number_combination_id;
+                    $gameId = $manualResult->game_id;
+                }else{
+                    $selectRandomResult = NumberCombination::all()->random(1)->first();
+                    $number_combination_for_result = $selectRandomResult->id;
 
-                $selectRandomGame = Game::all()->random(1)->first();
-                $gameId = $selectRandomGame->id;
+                    $selectRandomGame = Game::all()->random(1)->first();
+                    $gameId = $selectRandomGame->id;
+                }
+                $resultMaster = new ResultMaster();
+                $resultMaster->draw_master_id = $draw_id;
+                $resultMaster->number_combination_id = $number_combination_for_result;
+                $resultMaster->game_id = $game->id;
+                $resultMaster->game_date = Carbon::today();
+                $resultMaster->save();
             }
-            $resultMaster = new ResultMaster();
-            $resultMaster->draw_master_id = $draw_id;
-            $resultMaster->number_combination_id = $number_combination_for_result;
-            $resultMaster->game_id = $gameId;
-            $resultMaster->game_date = Carbon::today();
-            $resultMaster->save();
+            DB::commit();
+        }catch (\Exception $e){
+            DB::rollBack();
+            return response()->json(['success'=>0,'exception'=>$e->getMessage(),'error_line'=>$e->getLine(),'file_name' => $e->getFile()], 500);
         }
 
 //        $manualResult = ManualResult::where('game_date',Carbon::today())
