@@ -93,11 +93,10 @@ export class HomeComponent implements OnInit {
   }
 
   setActiveGame(gameData) {
-    console.log(gameData);
+    // console.log(gameData);
     this.selectedGame = gameData.id;
     // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
     this.buttonColours = this.buttonColour[gameData.id-1];
-
   }
 
 }

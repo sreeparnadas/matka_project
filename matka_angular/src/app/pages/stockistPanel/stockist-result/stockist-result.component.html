@@ -1,6 +1,10 @@
 <div class="container" style="padding-top: 50px; overflow: hidden !important;">
   <!-- <mat-tab-group class="mt-5 mr-3 ml-3" [selectedIndex]="0"></mat-tab-group> -->
   <div class="ml-4">
+    <div class="d-flex" style="text-align: end; padding-left: 24%;">
+      <div id="title-3-div-child-2" style="text-align: center; color: white;" *ngFor="let x of games, let idx = index">
+        <button type="button" (click)="setActiveGame(games[idx])" [ngStyle]="{'background-color': buttonColour[idx]}" (click)="varResult(x.id)" class="btn  glow ml-1" style="font-size: x-large;border: 5px solid rgb(255, 230, 0); border-style: double; border-radius: 10px; background-color: rgb(4, 13, 136); color: white;">{{x.game_name}}</button></div>
+    </div>
 
     <mat-form-field appearance="fill">
       <mat-label>Choose a date</mat-label>
@@ -11,25 +15,37 @@
 
     <button mat-button type="button" class="btn btn-outline-warning" (click)="searchResultByDate()">Search</button>
   </div>
+  <!-- <div class="d-flex">
+    <div class="col-6">
+      <pre>
+        {{result | json}}
+      </pre>
+    </div>
+    <div class="col-6">
+      <pre>
+        {{resultList | json}}
+      </pre>
+    </div>
+  </div> -->
 
   <!-- <button mat-button type="button" class="btn btn-outline-warning">Search</button> -->
   <table class="table table-bordered" style="overflow: hidden !important;">
     <thead>
     <tr style="font-size: 20px; font-weight: bold;">
       <!-- <th scope="col" style="background-color: aqua;" >#</th> -->
-      <th scope="" style="background-color: rgb(255, 182, 133);">End Time</th>
-      <th scope="" style="background-color: rgb(135, 252, 180);">Triple Number</th>
+      <th scope="" style="background-color: darkblue; color: white; ">End Time</th>
+      <th scope="" style="background-color: darkgreen; color: white;">Triple Number</th>
       <th scope="" style="background-color: rgb(250, 118, 118);">Single Number</th>
 <!--      <th scope="" style="background-color: rgb(255, 230, 0);">GoldStar SARASWATI-C</th>-->
 <!--      <th scope="" style="background-color: rgb(255, 0, 234);">GoldStar GODAVARI-D</th>-->
 <!--      <th scope="" style="background-color: rgb(175, 174, 252);">GoldStar GODAVARI-E</th>-->
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let row of result" style="font-size: 40px; font-weight: bold;">
+    <tbody *ngFor="let tableData of resultList; let i = index">
+    <tr *ngFor="let row of tableData.result" style="font-size: 40px; font-weight: bold;">
       <!-- <td scope="col" style="background-color: aqua;" >#</td> -->
-      <td scope="" style="background-color: rgb(255, 182, 133);">{{row.end_time}}</td>
-      <td scope="" style="background-color: rgb(135, 252, 180);" >{{row.triple_number | number:'2.'}}</td>
+      <td scope="" [ngStyle]="{'background-color': buttonColours}" style="color: white; ">{{row.end_time}}</td>
+      <td scope="" [ngStyle]="{'background-color': buttonColours}" style="background-color: rgb(135, 252, 180);" >{{row.triple_number | number:'2.'}}</td>
       <td scope="" style="background-color: rgb(250, 118, 118);" >{{row.single_number | number:'2.'}}</td>
 <!--      <td scope="" style="background-color: rgb(255, 230, 0);" >{{row.game_three | number:'2.'}}</td>-->
 <!--      <td scope="" style="background-color: rgb(255, 0, 234);" >{{row.game_four | number:'2.'}}</td>-->

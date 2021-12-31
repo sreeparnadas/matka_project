@@ -5,6 +5,9 @@ import { CommonService } from 'src/app/services/common.service';
 import { PlayGameService } from 'src/app/services/play-game.service';
 import { ResultService } from 'src/app/services/result.service';
 import {DatePipe} from "@angular/common";
+import { GameService } from 'src/app/services/game.service';
+import { Game } from 'src/app/models/Game.model';
+import { GameResultService } from 'src/app/services/game-result.service';
 
 @Component({
   selector: 'app-stockist-result',
@@ -18,6 +21,9 @@ export class StockistResultComponent implements OnInit {
   public resultByDate: GameResult;
   result: GameResult[];
   currentResult: any[]=[];
+  selectedGame: number;
+  games: Game[];
+
 
   thisYear = new Date().getFullYear();
   thisMonth = new Date().getMonth();
@@ -26,9 +32,23 @@ export class StockistResultComponent implements OnInit {
   pipe = new DatePipe('en-US');
 
 
+  buttonColours: string = '#0047AB';
+  buttonColours_1: string = '#009900';
+  buttonColours_2: string = '#CC0033';
+  buttonColours_3: string = '#9900CC';
+  buttonColour=['#0047AB', '#009900','#CC0033', '#9900CC'];
+
+  resultList: GameResult[] = [];
 
 
-  constructor(private playGameService: PlayGameService, private commonService: CommonService, private resultService: ResultService) {
+
+
+
+
+
+  constructor(private playGameService: PlayGameService, private commonService: CommonService, private resultService: ResultService
+              , private gameService: GameService
+              ,private gameResultService: GameResultService) {
     this.playGameService.getTodayLastResultListener().subscribe(response => {
       this.todayLastResult = response;
     });
@@ -36,6 +56,20 @@ export class StockistResultComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.selectedGame = 1;
+
+    this.games = this.gameService.getGame()
+    this.gameService.getGameListener().subscribe((response: Game[]) => {
+      this.games = response;
+
+      this.resultList = this.gameResultService.getResultList();
+    this.gameResultService.getResultListListener().subscribe((response: GameResult[]) => {
+      this.resultList = response;
+    });
+    });
+
+
 
     // this.currentDateResult = this.playGameService.getCurrentDateResult();
     // this.playGameService.getCurrentDateResultListener().subscribe((response: CurrentGameResult) => {
@@ -58,6 +92,10 @@ export class StockistResultComponent implements OnInit {
     });
   }
 
+  varResult(data){
+    this.gameResultService.getSelectedGamedResult(data);
+  }
+
   searchResultByDate(){
     let x = this.pipe.transform(this.startDate,'yyyy-MM-dd');
     // console.log(this.startDate);
@@ -70,6 +108,13 @@ export class StockistResultComponent implements OnInit {
       // console.log(this.currentResult);
     });
 
+  }
+
+  setActiveGame(gameData) {
+    console.log(gameData);
+    this.selectedGame = gameData.id;
+    // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+    this.buttonColours = this.buttonColour[gameData.id-1];
   }
 
 
