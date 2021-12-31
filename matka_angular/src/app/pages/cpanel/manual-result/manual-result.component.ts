@@ -161,8 +161,8 @@ export class ManualResultComponent implements OnInit {
 
   saveManualResult(){
     // this.manualResultForm.value.gameId = this.selectedGame;
-    console.log(this.manualResultForm.value.gameId);
-    return;
+    // console.log(this.manualResultForm.value.gameId);
+    // return;
     this.validatorError = null;
     Swal.fire({
       title: 'Confirmation',
