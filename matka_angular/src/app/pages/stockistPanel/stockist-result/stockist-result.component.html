@@ -33,8 +33,8 @@
     <thead>
     <tr style="font-size: 20px; font-weight: bold;">
       <!-- <th scope="col" style="background-color: aqua;" >#</th> -->
-      <th scope="" style="background-color: darkblue; color: white; ">End Time</th>
-      <th scope="" style="background-color: darkgreen; color: white;">Triple Number</th>
+      <th scope="" style="background-color: rgb(164, 164, 235);">End Time</th>
+      <th scope="" style="background-color: rgb(151, 241, 151);">Triple Number</th>
       <th scope="" style="background-color: rgb(250, 118, 118);">Single Number</th>
 <!--      <th scope="" style="background-color: rgb(255, 230, 0);">GoldStar SARASWATI-C</th>-->
 <!--      <th scope="" style="background-color: rgb(255, 0, 234);">GoldStar GODAVARI-D</th>-->
@@ -45,8 +45,8 @@
     <tr *ngFor="let row of tableData.result" style="font-size: 40px; font-weight: bold;">
       <!-- <td scope="col" style="background-color: aqua;" >#</td> -->
       <td scope="" [ngStyle]="{'background-color': buttonColours}" style="color: white; ">{{row.end_time}}</td>
-      <td scope="" [ngStyle]="{'background-color': buttonColours}" style="background-color: rgb(135, 252, 180);" >{{row.triple_number | number:'2.'}}</td>
-      <td scope="" style="background-color: rgb(250, 118, 118);" >{{row.single_number | number:'2.'}}</td>
+      <td scope="" [ngStyle]="{'background-color': buttonColours}" style="color: white;" >{{row.triple_number | number:'2.'}}</td>
+      <td scope="" [ngStyle]="{'background-color': buttonColours}" style="color: white;" >{{row.single_number | number:'2.'}}</td>
 <!--      <td scope="" style="background-color: rgb(255, 230, 0);" >{{row.game_three | number:'2.'}}</td>-->
 <!--      <td scope="" style="background-color: rgb(255, 0, 234);" >{{row.game_four | number:'2.'}}</td>-->
 <!--      <td scope="" style="background-color: rgb(175, 174, 252);" >{{row.game_five | number:'2.'}}</td>-->
