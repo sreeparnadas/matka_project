@@ -63,7 +63,7 @@ export class TerminalComponent implements OnInit {
 
   bgColor: string = 'darkblue';
 
-  colorArr=['#00008B', '#00008B', '#008B8B', '#133201'];
+  gameBackgroundColorArr=['#00008B', '#133201','#B3032A', '#7C05AD'];
 
   public activeTripleContainerValue = 0;
   public selectedChip = 2;
@@ -346,8 +346,11 @@ export class TerminalComponent implements OnInit {
   // }
   // playAudio();
 
-  changeColor() {
-    this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+  setActiveGame(gameData) {
+    console.log(gameData);
+    this.selectedGame = gameData.id;
+    // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+    this.bgColor = this.gameBackgroundColorArr[gameData.id-1];   
 
   }
 

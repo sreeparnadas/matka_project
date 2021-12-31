@@ -34,6 +34,9 @@ export class HomeComponent implements OnInit {
   games: Game[];
   selectedGame: number;
 
+
+  buttonColour=['#0047AB', '#009900','#CC0033', '#9900CC'];
+
   nextDrawId: any;
 
   constructor(private gameResultService: GameResultService, private metaTagService: Meta,
