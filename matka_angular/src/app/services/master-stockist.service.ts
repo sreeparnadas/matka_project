@@ -29,7 +29,8 @@ export class MasterStockistService {
     });
     const User = JSON.parse(localStorage.getItem('user'));
     // get all stockists
-    this.http.get(this.BASE_API_URL + '/stockists/'+ User.userId ).subscribe((response: ServerResponse) => {
+    // this.http.get(this.BASE_API_URL + '/stockists/'+ User.userId ).subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/stockists').subscribe((response: ServerResponse) => {
       this.stockists = response.data;
       this.stockistSubject.next([...this.stockists]);
     });
