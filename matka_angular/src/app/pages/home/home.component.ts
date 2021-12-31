@@ -34,8 +34,9 @@ export class HomeComponent implements OnInit {
   games: Game[];
   selectedGame: number;
 
-
+  buttonColours: string = '#0047AB';
   buttonColour=['#0047AB', '#009900','#CC0033', '#9900CC'];
+
 
   nextDrawId: any;
 
@@ -89,6 +90,14 @@ export class HomeComponent implements OnInit {
 
       PDF.save('angular-demo.pdf');
     });
+  }
+
+  setActiveGame(gameData) {
+    console.log(gameData);
+    this.selectedGame = gameData.id;
+    // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+    this.buttonColours = this.buttonColour[gameData.id-1];
+
   }
 
 }
