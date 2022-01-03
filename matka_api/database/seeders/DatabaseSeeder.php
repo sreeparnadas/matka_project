@@ -285,38 +285,6 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        DrawMaster::insert([
-
-            ['draw_name'=> 'Good morning','start_time'=>'08:30 ','end_time'=>'09:00','visible_time'=>'09:00 am','active'=>0],
-            ['draw_name'=> 'Good morning','start_time'=>'09:00','end_time'=>'09:30','visible_time'=>'09:30 am','active'=>1],
-            ['draw_name'=> 'Good morning','start_time'=>'09:30','end_time'=>'10:00','visible_time'=>'10:00 am','active'=>1],
-            ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'10:30','visible_time'=>'10:30 am','active'=>0],
-            ['draw_name'=> 'Good evening','start_time'=>'10:30','end_time'=>'11:00','visible_time'=>'11:00 pm','active'=>0],
-            ['draw_name'=> 'Lets play','start_time'=>'11:00','end_time'=>'11:30','visible_time'=>'11:30 pm','active'=>0],
-            ['draw_name'=> 'Good night','start_time'=>'11:30','end_time'=>'12:00','visible_time'=>'12:00 pm','active'=>0],
-            ['draw_name'=> 'Good morning','start_time'=>'12:00','end_time'=>'12:30','visible_time'=>'12:30 pm','active'=>0],
-            ['draw_name'=> 'Good afternoon','start_time'=>'12:30','end_time'=>'13:00','visible_time'=>'01:00 pm','active'=>0],
-            ['draw_name'=> 'Good morning','start_time'=>'13:00 ','end_time'=>'13:30','visible_time'=>'01:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'13:30 ','end_time'=>'14:00','visible_time'=>'02:00 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'14:00 ','end_time'=>'14:30','visible_time'=>'02:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'14:30 ','end_time'=>'15:00','visible_time'=>'03:00 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'15:00 ','end_time'=>'15:30','visible_time'=>'03:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'15:30 ','end_time'=>'16:00','visible_time'=>'04:00 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'16:00 ','end_time'=>'16:30','visible_time'=>'04:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'16:30 ','end_time'=>'17:00','visible_time'=>'05:00 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'17:00 ','end_time'=>'17:30','visible_time'=>'05:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'17:30 ','end_time'=>'18:00','visible_time'=>'06:00 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'18:00 ','end_time'=>'18:30','visible_time'=>'06:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'18:30 ','end_time'=>'19:00','visible_time'=>'07:00 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'19:00 ','end_time'=>'19:30','visible_time'=>'07:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'19:30 ','end_time'=>'20:00','visible_time'=>'08:00 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'20:00 ','end_time'=>'20:30','visible_time'=>'08:30 pm','active'=>0],
-            // ['draw_name'=> 'Good morning','start_time'=>'20:30 ','end_time'=>'21:00','visible_time'=>'09:00 pm','active'=>0],
-
-
-        ]);
-
-
         Game::insert([
 
             ['game_name'=> 'FATAFAT'],
@@ -324,6 +292,73 @@ class DatabaseSeeder extends Seeder
             ['game_name'=> 'MUMBAI MAIN BAZAR',],
             ['game_name'=> 'KALYAN MATKA'],
         ]);
+
+        DrawMaster::insert([
+
+            ['draw_name'=> 'Good morning','start_time'=>'08:30 ','end_time'=>'09:00','visible_time'=>'09:00 am','game_id'=>1,'active'=>1],
+            ['draw_name'=> 'Good morning','start_time'=>'09:00','end_time'=>'09:30','visible_time'=>'09:30 am','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'09:30','end_time'=>'10:00','visible_time'=>'10:00 am','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'10:30','visible_time'=>'10:30 am','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Good evening','start_time'=>'10:30','end_time'=>'11:00','visible_time'=>'11:00 pm','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Lets play','start_time'=>'11:00','end_time'=>'11:30','visible_time'=>'11:30 pm','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Good night','start_time'=>'11:30','end_time'=>'12:00','visible_time'=>'12:00 pm','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'12:00','end_time'=>'12:30','visible_time'=>'12:30 pm','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'12:30','end_time'=>'13:00','visible_time'=>'01:00 pm','game_id'=>1,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'13:00 ','end_time'=>'13:30','visible_time'=>'01:30 pm','game_id'=>1,'active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'13:30 ','end_time'=>'14:00','visible_time'=>'02:00 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'14:00 ','end_time'=>'14:30','visible_time'=>'02:30 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'14:30 ','end_time'=>'15:00','visible_time'=>'03:00 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'15:00 ','end_time'=>'15:30','visible_time'=>'03:30 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'15:30 ','end_time'=>'16:00','visible_time'=>'04:00 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'16:00 ','end_time'=>'16:30','visible_time'=>'04:30 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'16:30 ','end_time'=>'17:00','visible_time'=>'05:00 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'17:00 ','end_time'=>'17:30','visible_time'=>'05:30 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'17:30 ','end_time'=>'18:00','visible_time'=>'06:00 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'18:00 ','end_time'=>'18:30','visible_time'=>'06:30 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'18:30 ','end_time'=>'19:00','visible_time'=>'07:00 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'19:00 ','end_time'=>'19:30','visible_time'=>'07:30 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'19:30 ','end_time'=>'20:00','visible_time'=>'08:00 pm','active'=>0],
+//            // ['draw_name'=> 'Good morning','start_time'=>'20:00 ','end_time'=>'20:30','visible_time'=>'08:30 pm','active'=>0],
+            // ['draw_name'=> 'Good morning','start_time'=>'20:30 ','end_time'=>'21:00','visible_time'=>'09:00 pm','active'=>0],
+//
+            ['draw_name'=> 'Good morning','start_time'=>'08:30 ','end_time'=>'09:00','visible_time'=>'09:00 am','game_id'=>2,'active'=>1],
+            ['draw_name'=> 'Good morning','start_time'=>'09:00','end_time'=>'09:30','visible_time'=>'09:30 am','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'09:30','end_time'=>'10:00','visible_time'=>'10:00 am','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'10:30','visible_time'=>'10:30 am','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Good evening','start_time'=>'10:30','end_time'=>'11:00','visible_time'=>'11:00 pm','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Lets play','start_time'=>'11:00','end_time'=>'11:30','visible_time'=>'11:30 pm','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Good night','start_time'=>'11:30','end_time'=>'12:00','visible_time'=>'12:00 pm','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'12:00','end_time'=>'12:30','visible_time'=>'12:30 pm','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'12:30','end_time'=>'13:00','visible_time'=>'01:00 pm','game_id'=>2,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'13:00 ','end_time'=>'13:30','visible_time'=>'01:30 pm','game_id'=>2,'active'=>0],
+
+            ['draw_name'=> 'Good morning','start_time'=>'08:30 ','end_time'=>'09:00','visible_time'=>'09:00 am','game_id'=>3,'active'=>1],
+            ['draw_name'=> 'Good morning','start_time'=>'09:00','end_time'=>'09:30','visible_time'=>'09:30 am','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'09:30','end_time'=>'10:00','visible_time'=>'10:00 am','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'10:30','visible_time'=>'10:30 am','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Good evening','start_time'=>'10:30','end_time'=>'11:00','visible_time'=>'11:00 pm','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Lets play','start_time'=>'11:00','end_time'=>'11:30','visible_time'=>'11:30 pm','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Good night','start_time'=>'11:30','end_time'=>'12:00','visible_time'=>'12:00 pm','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'12:00','end_time'=>'12:30','visible_time'=>'12:30 pm','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'12:30','end_time'=>'13:00','visible_time'=>'01:00 pm','game_id'=>3,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'13:00 ','end_time'=>'13:30','visible_time'=>'01:30 pm','game_id'=>3,'active'=>0],
+
+            ['draw_name'=> 'Good morning','start_time'=>'08:30 ','end_time'=>'09:00','visible_time'=>'09:00 am','game_id'=>4,'active'=>1],
+            ['draw_name'=> 'Good morning','start_time'=>'09:00','end_time'=>'09:30','visible_time'=>'09:30 am','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'09:30','end_time'=>'10:00','visible_time'=>'10:00 am','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'10:00','end_time'=>'10:30','visible_time'=>'10:30 am','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Good evening','start_time'=>'10:30','end_time'=>'11:00','visible_time'=>'11:00 pm','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Lets play','start_time'=>'11:00','end_time'=>'11:30','visible_time'=>'11:30 pm','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Good night','start_time'=>'11:30','end_time'=>'12:00','visible_time'=>'12:00 pm','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'12:00','end_time'=>'12:30','visible_time'=>'12:30 pm','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Good afternoon','start_time'=>'12:30','end_time'=>'13:00','visible_time'=>'01:00 pm','game_id'=>4,'active'=>0],
+            ['draw_name'=> 'Good morning','start_time'=>'13:00 ','end_time'=>'13:30','visible_time'=>'01:30 pm','game_id'=>4,'active'=>0],
+//
+//
+        ]);
+
+
+
 
         GameType::insert([
             ['game_type_name'=>'single','game_type_initial' => '' ,'mrp'=> 1.00, 'winning_price'=>9, 'winning_bonus_percent'=>0.2, 'commission'=>0.00, 'payout'=>150,'default_payout'=>150],
@@ -842,7 +877,10 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        NextGameDraw::create(['next_draw_id' => 2, 'last_draw_id' => 1]);
+        NextGameDraw::create(['next_draw_id' => 2, 'last_draw_id' => 1, 'game_id'=>1]);
+        NextGameDraw::create(['next_draw_id' => 12, 'last_draw_id' => 11, 'game_id'=>2]);
+        NextGameDraw::create(['next_draw_id' => 22, 'last_draw_id' => 21, 'game_id'=>3]);
+        NextGameDraw::create(['next_draw_id' => 32, 'last_draw_id' => 31, 'game_id'=>4]);
 
     }
 }

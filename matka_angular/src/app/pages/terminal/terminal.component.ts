@@ -21,6 +21,8 @@ import {GameService} from '../../services/game.service';
 import { NgxWheelComponent, TextAlignment, TextOrientation } from 'ngx-wheel';
 import {NextDrawId} from '../../models/NextDrawId.model';
 import {TodayLastResult} from '../../models/TodayLastResult.model';
+import { GameResult } from 'src/app/models/GameResult.model';
+import { GameResultService } from 'src/app/services/game-result.service';
 
 
 @Component({
@@ -73,13 +75,17 @@ export class TerminalComponent implements OnInit {
   showDevArea = false;
   currentDate: string;
   deviceXs: boolean;
+
+  currentResultList: GameResult[];
+
+
   public lastPurchasedTicketDetails: GameInputSaveResponse;
   public lastPurchasedTicketSingle: {singleNumber: number, quantity: number}[];
   public lastPurchasedTicketTriple: {visibleTripleNumber: number, quantity: number, singleNumber: number}[];
 
   constructor(private playGameService: PlayGameService, private commonService: CommonService, private authService: AuthService,
               private ngxPrinterService: NgxPrinterService, private renderer: Renderer2, private watchDrawService: WatchDrawService,
-              private gameService: GameService,
+              private gameService: GameService, private gameResultService: GameResultService,
   ) {
 
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/curtain.jpg")');
@@ -141,6 +147,16 @@ export class TerminalComponent implements OnInit {
 
     this.selectedGame = 1;
 
+
+    this.gameResultService.getResultByCurrentDate(1);
+    this.gameResultService.getResultByCurrentDateListener().subscribe((response: GameResult[])=>{
+      this.currentResultList = response;
+      // console.log('current',this.currentResultList);
+      // console.log('test');
+    });
+
+
+
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background.jpg")');
     this.user = this.authService.userBehaviorSubject.value;
     // this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
@@ -181,10 +197,10 @@ export class TerminalComponent implements OnInit {
     this.commonService.getActiveDrawTimeListener().subscribe((response: DrawTime) => {
         this.activeDrawTime = response;
     });
-    this.currentDateResult = this.playGameService.getCurrentDateResult();
-    this.playGameService.getCurrentDateResultListener().subscribe((response: CurrentGameResult) => {
-      this.currentDateResult = response;
-    });
+    // this.currentDateResult = this.playGameService.getCurrentDateResult();
+    // this.playGameService.getCurrentDateResultListener().subscribe((response: CurrentGameResult) => {
+    //   this.currentDateResult = response;
+    // });
 
     this.nextDrawId = this.watchDrawService.getNextDraw();
 
@@ -197,7 +213,9 @@ export class TerminalComponent implements OnInit {
 
   }// end of ngOnIInit
 
-
+  resultButton(gameId){
+    this.gameResultService.getResultByCurrentDate(gameId);
+  }
   reset() {
     this.wheel.reset();
   }
@@ -350,7 +368,7 @@ export class TerminalComponent implements OnInit {
     console.log(gameData);
     this.selectedGame = gameData.id;
     // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-    this.bgColor = this.gameBackgroundColorArr[gameData.id-1];   
+    this.bgColor = this.gameBackgroundColorArr[gameData.id-1];
 
   }
 

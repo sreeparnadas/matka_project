@@ -60,12 +60,12 @@
               </mat-form-field> -->
 
               <div class=" d-flex mt-2" style="height: 40px; border-radius: 10px;text-align: center; padding-right: 100px;">
-                <button style="font-size: 100%; width: 50%;text-align: center; border: 8px solid rgb(255, 255, 255);height: 145%;border-style: double;" class="btn btn-lg  btn-responsive btn-primary" (click)="setActiveGame(games[0])">{{games[0].game_name}}</button>
-                <button  style="font-size: 100%;  width: 50%;  border: 8px solid rgb(253, 253, 253);height: 145%; border-style: double;" class="btn btn-success ml-1 btn-responsive" (click)="setActiveGame(games[1])">{{games[1].game_name}}</button>
+                <button (click)="resultButton(1)" style="font-size: 100%; width: 50%;text-align: center; border: 8px solid rgb(255, 255, 255);height: 145%;border-style: double;" class="btn btn-lg  btn-responsive btn-primary" (click)="setActiveGame(games[0])">{{games[0].game_name}}</button>
+                <button (click)="resultButton(2)" style="font-size: 100%;  width: 50%;  border: 8px solid rgb(253, 253, 253);height: 145%; border-style: double;" class="btn btn-success ml-1 btn-responsive" (click)="setActiveGame(games[1])">{{games[1].game_name}}</button>
               </div>
               <div class=" d-flex" style="height: 60px; border-radius: 10px;padding-top: 20px; padding-right: 100px;">
-                <button style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-danger ml-1 btn-responsive" (click)="setActiveGame(games[2])">{{games[2].game_name}}</button>
-                <button class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" (click)="setActiveGame(games[3])"
+                <button (click)="resultButton(3)" style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-danger ml-1 btn-responsive" (click)="setActiveGame(games[2])">{{games[2].game_name}}</button>
+                <button (click)="resultButton(4)" class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" (click)="setActiveGame(games[3])"
                         >{{games[3].game_name}}</button>
               </div>
 
@@ -73,7 +73,7 @@
 
 
 
-            
+
 
         </div>
 
@@ -142,7 +142,7 @@
         </div>
 
         <div fxFlex="35" class=" ml-2 mt-2" style=" color: white; font-weight: bold; ">
-
+          <!-- <pre>{{currentResultList | json}}</pre> -->
           <div class="container right-container" >
             <table class="" >
               <thead >
@@ -194,10 +194,10 @@
             </div>
 
             <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 151px;">
-              
+
             </div>
 
-            
+
             <div class=" d-flex" style="height: 60px; border-radius: 10px;padding-top: 20px; padding-left: 18px;">
               <div class="col-1"></div>
               <div class="col-2" style="margin-bottom: 20px; margin-left: 45px;" >

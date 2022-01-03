@@ -82,7 +82,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('cancelTicket',[PlayMasterController::class,'cancelPlay']);
     Route::post('claimPrize',[PlayMasterController::class,'claimPrize']);
 
-    Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
+    Route::get('results/currentDate/{id}',[ResultMasterController::class, 'get_results_by_current_date']);
     Route::get('results/lastResult',[ResultMasterController::class, 'get_last_result']);
 
 
@@ -127,6 +127,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 Route::group(array('prefix' => 'dev'), function() {
 
+    Route::post('createAutoResult/{id}', [CentralController::class, 'createResult']);
+
     Route::get('getGame', [GameController::class, 'getGame']);
 
     Route::post('getResultByDate', [ResultMasterController::class, 'get_result_by_date']);
@@ -166,7 +168,7 @@ Route::group(array('prefix' => 'dev'), function() {
     Route::get('results',[ResultMasterController::class, 'get_results']);
     Route::get('results/{id}',[ResultMasterController::class, 'get_result']);
     Route::post('getResultSheetByCurrentDateAndGameId',[ResultMasterController::class, 'get_result_sheet_by_current_date_and_game_id']);
-    Route::get('results/currentDate',[ResultMasterController::class, 'get_results_by_current_date']);
+    Route::get('results/currentDate/{id}',[ResultMasterController::class, 'get_results_by_current_date']);
     Route::get('results/lastResult',[ResultMasterController::class, 'get_last_result']);
 
     //manual_result
@@ -193,6 +195,7 @@ Route::group(array('prefix' => 'dev'), function() {
 
 
     Route::post('createAutoResult', [CentralController::class, 'createResult']);
+
     Route::post('autoResult', [ResultMasterController::class, 'save_auto_result']);
 
     Route::get('nextDrawId', [NextGameDrawController::class, 'getNextDrawIdOnly']);

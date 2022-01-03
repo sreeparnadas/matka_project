@@ -19,6 +19,7 @@ class CreateDrawMastersTable extends Migration
             $table->time('start_time');
             $table->time('end_time');
             $table->string('visible_time',20)->nullable(true);
+            $table ->foreignId('game_id')->references('id')->on('games')->onDelete('cascade');
             $table->tinyInteger('active')->default(0);
             $table->timestamps();
         });
