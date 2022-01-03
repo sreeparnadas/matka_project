@@ -164,20 +164,29 @@
               <table class="table " id="result-table" style="margin-bottom: 48px; border-radius: 10px; background-image: url('/assets/images/resultBackgroung.jpg');background-size: cover; font-size: 20px;">
 
                 <tbody>
-                    <ng-container *ngIf="currentDateResult">
-                      <tr *ngFor="let row of currentDateResult.result.slice(0, currentDateResult.result.length % columnNumber2  === 0 ? currentDateResult.result.length / columnNumber2 : currentDateResult.result.length / columnNumber2 + 1); let idx = index">
-                        <td scope="row" class="current-result" colspan="2" *ngFor="let result of currentDateResult.result.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
+                    <ng-container *ngIf="currentResultList">
+
+                      <tr *ngFor="let row of currentResultList let idx = index">
+                        <td scope="row" class="current-result" colspan="2" *ngFor="let result of row" class="text-center align-middle">
                           <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
                           <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
                           <div class="bd-highlight current-result">
                             <span *ngIf="result.single_number!=null"></span>{{result.single_number}}
                             <span *ngIf="result.single_number==null"><img src="assets/images/singleStar3.gif" height="20px" alt=""></span>
                           </div>
-                          <!-- <div class="bd-highlight current-result" style="background-color: rgb(28, 35, 253);"><img src="assets/images/singleStar.gif" height="10px" alt=""></div> -->
+                        </td>
+                      </tr>
+                      <tr *ngFor="let row of currentResultList.slice(0, currentResultList.length % columnNumber2  === 0 ? currentResultList.length / columnNumber2 : currentResultList.length / columnNumber2 + 1); let idx = index">
+                        <td scope="row" class="current-result" colspan="2" *ngFor="let result of row.slice(idx * columnNumber2, idx * columnNumber2 + columnNumber2)" class="text-center align-middle">
+                          <div class=" result-heading current-result">{{result.end_time.slice(0,5)}}</div>
+                          <div class="bd-highlight current-result">{{result.visible_triple_number || '***'}}</div>
+                          <div class="bd-highlight current-result">
+                            <span *ngIf="result.single_number!=null"></span>{{result.single_number}}
+                            <span *ngIf="result.single_number==null"><img src="assets/images/singleStar3.gif" height="20px" alt=""></span>
+                          </div>
                         </td>
                       </tr>
                     </ng-container>
-
                 </tbody>
               </table>
             </div>
