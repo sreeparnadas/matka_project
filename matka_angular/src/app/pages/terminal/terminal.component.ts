@@ -59,8 +59,8 @@ export class TerminalComponent implements OnInit {
   remainingTime: number;
   value: number;
 
-  columnNumber = 2;
-  columnNumber2 = 2;
+  columnNumber = 5;
+  columnNumber2 = 5;
   columnNumber3 = 1;
 
   bgColor: string = 'darkblue';
