@@ -159,7 +159,7 @@ class ResultMasterController extends Controller
                 })
                 ->leftJoin('number_combinations','result_masters.number_combination_id','number_combinations.id')
                 ->leftJoin('single_numbers','number_combinations.single_number_id','single_numbers.id')
-               ->where('result_masters.game_id','=', $id)
+               ->where('draw_masters.game_id','=', $id)
                 ->get();
 
 
