@@ -306,7 +306,7 @@ class DatabaseSeeder extends Seeder
 //            ['draw_name'=> 'Good afternoon','start_time'=>'12:30','end_time'=>'13:00','visible_time'=>'01:00 pm','game_id'=>1,'active'=>0],
 //            ['draw_name'=> 'Good morning','start_time'=>'13:00 ','end_time'=>'13:30','visible_time'=>'01:30 pm','game_id'=>1,'active'=>0],
 
-            ['draw_name'=> 'Good morning','start_time'=>'10:00 ','end_time'=>'11:30','visible_time'=>'11:00 am','game_id'=>1,'active'=>1],
+            ['draw_name'=> 'Good morning','start_time'=>'10:00 ','end_time'=>'11:30','visible_time'=>'11:30 am','game_id'=>1,'active'=>1],
             ['draw_name'=> 'Good morning','start_time'=>'11:30','end_time'=>'13:00','visible_time'=>'01:30 pm','game_id'=>1,'active'=>0],
             ['draw_name'=> 'Good morning','start_time'=>'13:00','end_time'=>'14:30','visible_time'=>'02:30 pm','game_id'=>1,'active'=>0],
             ['draw_name'=> 'Good afternoon','start_time'=>'14:30','end_time'=>'16:00','visible_time'=>'04:00 pm','game_id'=>1,'active'=>0],
