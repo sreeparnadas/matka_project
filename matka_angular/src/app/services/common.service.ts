@@ -104,9 +104,9 @@ export class CommonService {
 
       // console.log('rm_mn: '+ remainingMin , 'rem_sec' + remainingSec);
 
-      if(remainingMin<=1){
-        this.updateTerminalCancellation().subscribe();
-      }
+      // if(remainingMin<=1){
+      //   this.updateTerminalCancellation().subscribe();
+      // }
 
       this.currentTimeBehaviorSubject.next(currentTime);
       this.remainingTimeBehaviorSubject.next(remainingTime);
