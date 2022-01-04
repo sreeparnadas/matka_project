@@ -43,9 +43,11 @@ export class WatchDrawService {
           if (userData == null){
             this.gameResultService.getUpdatedResult();
           }else{
-            this.gameResultService.getUpdatedResult();
+            // this.gameResultService.getUpdatedResult();
+            this.gameResultService.getSelectedGamedResult(1);
             this.playGameService.getTodayLastResult();
-            this.playGameService.getTodayResult();
+            // this.playGameService.getTodayResult();
+            this.gameResultService.getResultByCurrentDate(1);
             this.commonService.getActiveServerDrawTime();
           }
         }
