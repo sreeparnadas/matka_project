@@ -1,0 +1,3 @@
+[submodule "production_fatafat_api"]
+	path = production_fatafat_api
+	url = https://github.com/sreeparnadas/production_fatafat_api.git
