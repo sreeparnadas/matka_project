@@ -12,7 +12,7 @@ class generateShirdiResult extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'generateShirdi:result';
 
     /**
      * The console command description.

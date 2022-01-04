@@ -27,9 +27,13 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         //$schedule->command('generate:result')->everyThirtyMinutes()->timezone('Asia/Kolkata');
-        
-        $schedule->command('generate:result')->cron('50 10-13,15-19 * * * ')->timezone('Asia/Kolkata');
-        $schedule->command('generate:result')->dailyAt('21:00')->timezone('Asia/Kolkata');
+
+//        $schedule->command('generate:result')->cron('50 10-13,15-19 * * * ')->timezone('Asia/Kolkata');
+//        $schedule->command('generate:result')->dailyAt('21:00')->timezone('Asia/Kolkata');
+
+
+        $schedule->command('generateFatafat:result')->cron('30 11,13,14,17,20 * * * ')->timezone('Asia/Kolkata');
+        $schedule->command('generateShirdi:result')->cron('00 16,17 * * * ')->timezone('Asia/Kolkata');
     }
 
     /**

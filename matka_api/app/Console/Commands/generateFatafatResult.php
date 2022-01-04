@@ -12,7 +12,7 @@ class generateFatafatResult extends Command
      *
      * @var string
      */
-    protected $signature = 'generate:fatafat';
+    protected $signature = 'generateFatafat:result';
 
     /**
      * The console command description.
