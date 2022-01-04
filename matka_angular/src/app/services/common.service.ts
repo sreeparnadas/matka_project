@@ -119,7 +119,14 @@ export class CommonService {
 
 
     // get active draw
-    this.http.get(this.BASE_API_URL + '/dev/drawTimes/active').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/dev/drawTimes/active/1').subscribe((response: ServerResponse) => {
+      this.activeDrawTime = response.data;
+      this.activeDrawTimeSubject.next({...this.activeDrawTime});
+    });
+  }
+
+  gameDrawTime(game_id){
+    this.http.get(this.BASE_API_URL + '/dev/drawTimes/active/' + game_id).subscribe((response: ServerResponse) => {
       this.activeDrawTime = response.data;
       this.activeDrawTimeSubject.next({...this.activeDrawTime});
     });

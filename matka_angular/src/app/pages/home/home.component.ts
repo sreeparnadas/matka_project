@@ -96,6 +96,7 @@ export class HomeComponent implements OnInit {
     // console.log(gameData);
     // this.gameResultService.getSelectedGamedResult(data);
     this.selectedGame = gameData.id;
+    this.gameResultService.getSelectedGamedResult(this.selectedGame);
     // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
     this.buttonColours = this.buttonColour[gameData.id - 1];
   }

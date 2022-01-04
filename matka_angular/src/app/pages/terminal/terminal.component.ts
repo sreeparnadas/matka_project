@@ -365,11 +365,10 @@ export class TerminalComponent implements OnInit {
   // playAudio();
 
   setActiveGame(gameData) {
-    console.log(gameData);
     this.selectedGame = gameData.id;
+    this.commonService.gameDrawTime(this.selectedGame);
     // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
-    this.bgColor = this.gameBackgroundColorArr[gameData.id-1];
-
+    this.bgColor = this.gameBackgroundColorArr[gameData.id - 1];
   }
 
 

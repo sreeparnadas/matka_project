@@ -5,14 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\DrawMasterResource;
 use App\Models\DrawMaster;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class DrawMasterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $result = DrawMaster::get();
@@ -34,7 +31,16 @@ class DrawMasterController extends Controller
         }else{
             return response()->json(['success'=>1,'data'=> null], 200,[],JSON_NUMERIC_CHECK);
         }
+    }
 
+    public function getGameActiveDraw($id)
+    {
+        $result = DrawMaster::where('active',1)->whereGameId($id)->first();
+        if(!empty($result)){
+            return response()->json(['success'=>1,'data'=> new DrawMasterResource($result)], 200,[],JSON_NUMERIC_CHECK);
+        }else{
+            return response()->json(['success'=>1,'data'=> null], 200,[],JSON_NUMERIC_CHECK);
+        }
     }
 
     public function setActiveDraw(){
