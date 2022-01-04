@@ -100,4 +100,14 @@ class TerminalReportController extends Controller
         }
         return response()->json(['success' => 1, 'data' => $data], 200);
     }
+
+    public function updateCancellationGameWise($id){
+        $data = PlayMaster::select()->where('is_cancelable',1)->whereGameId($id)->get();
+        foreach ($data as $x){
+            $y = PlayMaster::find($x->id);
+            $y->is_cancelable = 0;
+            $y->update();
+        }
+        return response()->json(['success' => 1, 'data' => $data], 200);
+    }
 }

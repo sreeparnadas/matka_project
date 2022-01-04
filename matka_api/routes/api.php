@@ -112,6 +112,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post('stockist/barcodeReportByDate', [StockistController::class, 'barcode_wise_report_by_date']);
 
     Route::post('terminal/updateCancellation', [TerminalReportController::class, 'updateCancellation']);
+    Route::post('terminal/updateCancellation/{id}', [TerminalReportController::class, 'updateCancellationGameWise']);
 
 
     Route::put('terminal/resetPassword', [TerminalController::class, 'reset_terminal_password']);
@@ -126,6 +127,8 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 
 Route::group(array('prefix' => 'dev'), function() {
+
+    Route::post('terminal/updateCancellation/{id}', [TerminalReportController::class, 'updateCancellationGameWise']);
 
     Route::post('createAutoResult/{id}', [CentralController::class, 'createResult']);
 
