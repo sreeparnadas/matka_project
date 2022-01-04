@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\NumberCombination;
+use App\Models\PlayMaster;
 use Illuminate\Http\Request;
 use App\Models\NextGameDraw;
 use App\Models\DrawMaster;
@@ -61,6 +62,13 @@ class CentralController extends Controller
             $nextGameDrawObj->next_draw_id = $nextDrawId;
             $nextGameDrawObj->last_draw_id = $lastDrawId;
             $nextGameDrawObj->save();
+
+            $tempPlayMaster = PlayMaster::select()->where('is_cancelable',1)->whereGameId($id)->get();
+            foreach ($tempPlayMaster as $x){
+                $y = PlayMaster::find($x->id);
+                $y->is_cancelable = 0;
+                $y->update();
+            }
 
             return response()->json(['success'=>1, 'message' => 'Result added'], 200);
         }else{

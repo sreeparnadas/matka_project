@@ -17,6 +17,12 @@ class PlayMasterController extends Controller
     {
         $requestedData = (object)$request->json()->all();
         $playMasterId = $requestedData->play_master_id;
+
+        $checkValidation = PlayMaster::whereId($playMasterId)->whereIsCancelable(0)->first();
+        if($checkValidation){
+            return response()->json(['success' => 0, 'data' => $checkValidation, 'id'=>$checkValidation->id, 'point'=>0], 200);
+        }
+
         $playMaster = new PlayMaster();
         $playMaster = PlayMaster::find($playMasterId);
         $playMaster->is_cancelled = 1;
