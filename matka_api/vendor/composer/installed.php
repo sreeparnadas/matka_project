@@ -5,18 +5,18 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '152d69acddb800f6f79fe8b30d93f3325ab6e522',
+        'reference' => '642efb8f0b0ba94a25ba58133f772c7d82844f4a',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
         'asm89/stack-cors' => array(
-            'pretty_version' => 'v2.0.3',
-            'version' => '2.0.3.0',
+            'pretty_version' => 'v2.0.5',
+            'version' => '2.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../asm89/stack-cors',
             'aliases' => array(),
-            'reference' => '9cb795bf30988e8c96dd3c40623c48a877bc6714',
+            'reference' => '7a198ec737e926eab15d29368fc6fff66772b0e2',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -149,12 +149,12 @@
             'dev_requirement' => true,
         ),
         'fruitcake/laravel-cors' => array(
-            'pretty_version' => 'v2.0.4',
-            'version' => '2.0.4.0',
+            'pretty_version' => 'v2.0.5',
+            'version' => '2.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../fruitcake/laravel-cors',
             'aliases' => array(),
-            'reference' => 'a8ccedc7ca95189ead0e407c43b530dc17791d6a',
+            'reference' => '3a066e5cac32e2d1cdaacd6b961692778f37b5fc',
             'dev_requirement' => false,
         ),
         'graham-campbell/result-type' => array(
@@ -409,7 +409,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '152d69acddb800f6f79fe8b30d93f3325ab6e522',
+            'reference' => '642efb8f0b0ba94a25ba58133f772c7d82844f4a',
             'dev_requirement' => false,
         ),
         'laravel/sanctum' => array(
@@ -440,12 +440,12 @@
             'dev_requirement' => false,
         ),
         'league/commonmark' => array(
-            'pretty_version' => '2.1.0',
-            'version' => '2.1.0.0',
+            'pretty_version' => '2.1.1',
+            'version' => '2.1.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/commonmark',
             'aliases' => array(),
-            'reference' => '819276bc54e83c160617d3ac0a436c239e479928',
+            'reference' => '17d2b9cb5161a2ea1a8dd30e6991d668e503fb9d',
             'dev_requirement' => false,
         ),
         'league/config' => array(

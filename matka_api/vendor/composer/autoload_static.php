@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbfd3342be27458c033332fdcbcfa981a
+class ComposerStaticInitd923421c16a159ced817a3cd950cda53
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -545,6 +545,10 @@ class ComposerStaticInitbfd3342be27458c033332fdcbcfa981a
         'App\\Console\\Commands\\GenerateResult' => __DIR__ . '/../..' . '/app/Console/Commands/GenerateResult.php',
         'App\\Console\\Commands\\ModelFieldsCommand' => __DIR__ . '/../..' . '/app/Console/Commands/ModelFieldsCommand.php',
         'App\\Console\\Commands\\ModelListCommand' => __DIR__ . '/../..' . '/app/Console/Commands/ModelListCommand.php',
+        'App\\Console\\Commands\\generateFatafatResult' => __DIR__ . '/../..' . '/app/Console/Commands/generateFatafatResult.php',
+        'App\\Console\\Commands\\generateKalyanMatkaResult' => __DIR__ . '/../..' . '/app/Console/Commands/generateKalyanMatkaResult.php',
+        'App\\Console\\Commands\\generateMumbaiMainBazarResult' => __DIR__ . '/../..' . '/app/Console/Commands/generateMumbaiMainBazarResult.php',
+        'App\\Console\\Commands\\generateShirdiResult' => __DIR__ . '/../..' . '/app/Console/Commands/generateShirdiResult.php',
         'App\\Console\\Commands\\mysql' => __DIR__ . '/../..' . '/app/Console/Commands/mysql.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\ActionEvent' => __DIR__ . '/../..' . '/app/Events/ActionEvent.php',
@@ -5960,10 +5964,10 @@ class ComposerStaticInitbfd3342be27458c033332fdcbcfa981a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbfd3342be27458c033332fdcbcfa981a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbfd3342be27458c033332fdcbcfa981a::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitbfd3342be27458c033332fdcbcfa981a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitbfd3342be27458c033332fdcbcfa981a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd923421c16a159ced817a3cd950cda53::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd923421c16a159ced817a3cd950cda53::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd923421c16a159ced817a3cd950cda53::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitd923421c16a159ced817a3cd950cda53::$classMap;
 
         }, null, ClassLoader::class);
     }
