@@ -75,6 +75,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {NgMarqueeModule} from 'ng-marquee-improved';
 import { StockistResultComponent } from './pages/stockistPanel/stockist-result/stockist-result.component';
 import { StockistResultModule } from './modules/general/stockistPanel/stockist-result/stockist-result.module';
+// import { SettingsComponent } from './pages/cpanel/settings/settings.component';
+// import { SettingsModule } from './modules/general/cpanel/settings/settings.module';
 // import { MasterTerminalModule } from './modules/general/stockistPanel/master-terminal/master-terminal.module';
 // import { MasterTerminalComponent } from './pages/stockistPanel/master-terminal/master-terminal.component';
 // import { StockiestReportComponent } from './pages/stockistPanel/stockiest-report/stockiest-report.component';
@@ -99,6 +101,7 @@ import { StockistResultModule } from './modules/general/stockistPanel/stockist-r
 @NgModule({
   declarations: [
     AppComponent,
+    // SettingsComponent,
     // StockistResultComponent,
     // StockistReportComponent,
     // MasterTerminalComponent,
@@ -174,6 +177,7 @@ import { StockistResultModule } from './modules/general/stockistPanel/stockist-r
     // MasterStockistModule,
     MatTabsModule,
     NgMarqueeModule,
+    // SettingsModule,
     // StockistResultModule,
     // MasterTerminalModule,
     // StockistReportModule,

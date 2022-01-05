@@ -1,0 +1,21 @@
+<div>
+  <div class="container pt-5">
+    <table class="table col-4 text-center">
+      <thead>
+        <tr>
+          <th scope="col">Game</th>
+          <th scope="col">Auto Generate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let x of games">
+          <td>{{x.game_name}}</td>
+          <td><input  [checked]="x.auto_generate == 'yes'" (click)="changeAutoGenerate(x)" type="checkbox" data-toggle="toggle"></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <pre>
+      {{games | json}}
+    </pre> -->
+  </div>
+</div>

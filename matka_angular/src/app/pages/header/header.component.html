@@ -102,11 +102,18 @@
         </mat-list-item>
 
 
+
+
         <mat-list-item *ngIf="!deviceXs">
           <button mat-menu-item
                   [routerLink]="['/resultCPanel']"
                   routerLinkActive="MyActiveMenu"
                   [routerLinkActiveOptions]="{exact: true}">Result</button>
+        </mat-list-item>
+
+
+        <mat-list-item>
+          <button mat-menu-item [routerLink]="['/cPanelSettings']">Settings</button>
         </mat-list-item>
 
 

@@ -57,6 +57,14 @@ const routes: Routes = [
     loadChildren: () => import('./modules/general/cpanel/master-stockist/master-stockist.module')
       .then(mod => mod.MasterStockistModule)
   },
+
+
+  {
+    path: 'cPanelSettings',
+    loadChildren: () => import('./modules/general/cpanel/settings/settings.module')
+      .then(mod => mod.SettingsModule)
+  },
+
   {
     path: 'masterTerminal',
     loadChildren: () => import('./modules/general/cpanel/master-terminal/master-terminal.module')
