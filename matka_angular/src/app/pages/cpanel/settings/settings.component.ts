@@ -24,6 +24,7 @@ export class SettingsComponent implements OnInit {
 
   changeAutoGenerate(x){
     console.log(x);
+    this.gameService.updateAutogenertate(x.id);
   }
 
 }

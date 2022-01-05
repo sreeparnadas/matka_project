@@ -38,6 +38,13 @@ export class GameService {
     return this.gameTypeSubject.asObservable();
   }
 
+  updateAutogenertate(gameId){
+    this.http.get(this.BASE_API_URL + '/dev/updateAutoGenerate/'+gameId).subscribe((response: ServerResponse) =>{
+
+      console.log(response);
+    });
+  }
+
 
   getGame(){
     return [...this.games];
