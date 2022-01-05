@@ -44,6 +44,7 @@
 
   <div id="table-div" >
     <div  *ngFor="let tableData of resultList; let i = index">
+
       <table class="table" >
           <thead>
             <tr><td style="background-color: #85592e;" colspan="10">{{tableData.date}}</td></tr>
@@ -51,8 +52,11 @@
           <tbody>
             <tr *ngFor="let row of tableData.result.slice(0, tableData.result.length % columnNumber  === 0 ?
                tableData.result.length / columnNumber : tableData.result.length / columnNumber + 1); let idx = index">
-              <td scope="row" *ngFor="let result of tableData.result.slice(idx * columnNumber, idx * columnNumber + columnNumber)">
-                <div class="result-heading" [ngStyle]="{'background-color': buttonColours}">{{result.end_time.slice(0,5)}}</div>
+              <td scope="row" *ngFor="let result of tableData.result.slice(idx * columnNumber, idx * columnNumber + columnNumber); let col=index">
+                <!-- <pre>{{result | json}}</pre> -->
+                <!-- <div class="result-heading" [ngStyle]="{'background-color': buttonColours}">{{result.end_time.slice(0,5)}}</div> -->
+
+                <div class="result-heading" [ngStyle]="{'background-color': buttonColours}" >{{col+1}}</div>
                 <div class="bd-highlight">{{result.visible_triple_number || '***'}}</div>
                 <div class="bd-highlight">{{(result.single_number!=null && result.single_number>=0) ?  result.single_number : '*'}}</div>
               </td>
@@ -60,6 +64,140 @@
           </tbody>
       </table>
     </div>
+  </div>
+  <!-- <div id="table-div" >
+    <div>
+      <pre>{{resultList | json}}</pre>
+      <div class="d-flex">
+        <div class="col-2"></div>
+        <div class="col-4">1</div>
+        <div class="col-4">10:30</div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+  </div> -->
+  <div style="font-size: xx-large; color: white; background-color: rgb(202, 156, 95); text-align: center;">
+    Result Time Table ?
+  </div>
+  <div class=" text-center text-dark d-flex" style="font-size: xx-large; background-color: yellow;">
+
+    <div class="col-2"></div>
+
+    <div class="col-4">
+      <div class="" style="font-size: x-large; color: red; text-align: left">😍✔NEW TIME✔😍</div>
+      <div class="" style="font-size: x-large; color: rgb(5, 5, 5); font-weight: bold; text-align: center; padding-right: 292px;">KFATAFAT</div>
+
+      <table class=""  style="font-weight: bold;">
+        <thead style="font-size: large !important;">
+          <tr >
+            <th scope="col">Index</th>
+            <th></th>
+            <th scope="col">Draw Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td></td>
+            <td>10:00 am</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td></td>
+            <td>11:30 am</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td></td>
+            <td>01:00 am</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td></td>
+            <td>02:30 am</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td></td>
+            <td>04:00 am</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td></td>
+            <td>05:30 am</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td></td>
+            <td>07:00 am</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td></td>
+            <td>08:30 am</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-4">
+      <div class="" style="font-size: x-large; color: red; text-align: left; padding-right: 22px;">😍✔NEW TIME✔😍</div>
+      <div class="" style="font-size: x-large; color: rgb(5, 5, 5); font-weight: bold; text-align: center; padding-right: 292px;">SHIRDI</div>
+      <table class=" pl-3" style="padding-left: 20px; font-weight: bold;">
+        <thead style="font-size: large !important;">
+          <tr >
+            <th scope="col">Index</th>
+            <th></th>
+            <th scope="col">Draw Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td></td>
+            <td>10:30 am</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td></td>
+            <td>12:00 am</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td></td>
+            <td>01:30 am</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td></td>
+            <td>03:00 am</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td></td>
+            <td>04:30 am</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td></td>
+            <td>06:00 am</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td></td>
+            <td>07:30 am</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td></td>
+            <td>09:00 am</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-2"></div>
+
   </div>
 </div>
 
