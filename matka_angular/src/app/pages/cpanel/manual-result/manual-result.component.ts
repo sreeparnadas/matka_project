@@ -105,10 +105,12 @@ export class ManualResultComponent implements OnInit {
     this.selectedGame = 1;
 
     const now = new Date();
-    const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
-    this.http.get(this.BASE_API_URL + '/drawTimes/dates/' + currentSQLDate).subscribe((response: ServerResponse) => {
-        this.drawTimes = response.data;
-      });
+    // const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
+    // this.http.get(this.BASE_API_URL + '/drawTimes/dates/' + currentSQLDate).subscribe((response: ServerResponse) => {
+    //     this.drawTimes = response.data;
+    //   });
+
+    this.fetchDrawTime(this.selectedGame);
 
     this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
         // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
@@ -118,12 +120,18 @@ export class ManualResultComponent implements OnInit {
       });
 
 
-    this.games = this.gameService.getGame()
+    this.games = this.gameService.getGame();
     this.gameService.getGameListener().subscribe((response: Game[]) => {
       this.games = response;
-      console.log('ts',this.games);
+      // console.log('ts',this.games);
     });
-    console.log(this.games);
+    // console.log(this.games);
+  }
+
+  fetchDrawTime(gameID){
+    this.http.get(this.BASE_API_URL + '/drawTimes/dates/' + gameID).subscribe((response: ServerResponse) => {
+      this.drawTimes = response.data;
+    });
   }
 
   iscurrentCombinationMatrixSelected(id: number){
@@ -157,6 +165,11 @@ export class ManualResultComponent implements OnInit {
 
   changeState() {
     this.currentState = this.currentState === 'initial' ? 'final' : 'initial';
+  }
+
+  changeDraw(){
+    // console.log(this.manualResultForm.value.gameId);
+    this.fetchDrawTime(this.manualResultForm.value.gameId);
   }
 
   saveManualResult(){

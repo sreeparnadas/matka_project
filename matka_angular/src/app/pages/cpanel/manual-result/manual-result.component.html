@@ -24,7 +24,7 @@
           <div class=" d-flex col-2" style="height: 0px; border-radius: 10px; padding-top: 0px;padding-left: 10px;">
             <mat-form-field>
               <mat-label>Game</mat-label>
-              <mat-select  formControlName="gameId" placeholder="Category">
+              <mat-select  formControlName="gameId" placeholder="Category" (selectionChange)="changeDraw()">
                 <mat-option *ngFor="let x of games" [value]="x.id">
                   {{x.game_name}}
                 </mat-option>
