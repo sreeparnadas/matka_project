@@ -28,6 +28,7 @@ export class WatchDrawService {
 
         if (Object.entries(this.nextDrawId).length === 0){
           this.nextDrawId = response;
+          console.log(this.nextDrawId);
           this.nextDrawSubject.next({...this.nextDrawId});
           if (userData == null){
             this.gameResultService.getUpdatedResult();
@@ -37,18 +38,47 @@ export class WatchDrawService {
             this.playGameService.getTodayResult();
           }
 
-        }else if (this.nextDrawId.data.id !== response.data.id) {
-          this.nextDrawId = response;
-          this.nextDrawSubject.next({...this.nextDrawId});
+        // }else if (this.nextDrawId.data.id !== response.data.id) {
+        //   this.nextDrawId = response;
+        //   this.nextDrawSubject.next({...this.nextDrawId});
+        //   if (userData == null){
+        //     this.gameResultService.getUpdatedResult();
+        //   }else{
+        //     // this.gameResultService.getUpdatedResult();
+        //     this.gameResultService.getSelectedGamedResult(1);
+        //     this.playGameService.getTodayLastResult();
+        //     // this.playGameService.getTodayResult();
+        //     this.gameResultService.getResultByCurrentDate(1);
+        //     this.commonService.getActiveServerDrawTime();
+        //   }
+        // }
+
+        }else {
           if (userData == null){
             this.gameResultService.getUpdatedResult();
-          }else{
-            // this.gameResultService.getUpdatedResult();
-            this.gameResultService.getSelectedGamedResult(1);
-            this.playGameService.getTodayLastResult();
-            // this.playGameService.getTodayResult();
-            this.gameResultService.getResultByCurrentDate(1);
-            this.commonService.getActiveServerDrawTime();
+          }else {
+            if (this.nextDrawId.data[0].id !== response.data[0].id) {
+              this.gameResultService.getSelectedGamedResult(this.nextDrawId.data[0].game_id);
+              this.gameResultService.getResultByCurrentDate(this.nextDrawId.data[0].game_id);
+              this.commonService.getActiveServerDrawTime(this.nextDrawId.data[0].game_id);
+              this.nextDrawId = response;
+            } else if (this.nextDrawId.data[1].id !== response.data[1].id) {
+              this.gameResultService.getSelectedGamedResult(this.nextDrawId.data[1].game_id);
+              this.gameResultService.getResultByCurrentDate(this.nextDrawId.data[1].game_id);
+              this.commonService.getActiveServerDrawTime(this.nextDrawId.data[1].game_id);
+              this.nextDrawId = response;
+            } else if (this.nextDrawId.data[2].id !== response.data[2].id) {
+              this.gameResultService.getSelectedGamedResult(this.nextDrawId.data[2].game_id);
+              this.gameResultService.getResultByCurrentDate(this.nextDrawId.data[2].game_id);
+              this.commonService.getActiveServerDrawTime(this.nextDrawId.data[2].game_id);
+              this.nextDrawId = response;
+            } else if (this.nextDrawId.data[3].id !== response.data[3].id) {
+              this.gameResultService.getSelectedGamedResult(this.nextDrawId.data[3].game_id);
+              this.gameResultService.getResultByCurrentDate(this.nextDrawId.data[3].game_id);
+              this.commonService.getActiveServerDrawTime(this.nextDrawId.data[3].game_id);
+              this.nextDrawId = response;
+            }
+            this.nextDrawSubject.next({...this.nextDrawId});
           }
         }
 

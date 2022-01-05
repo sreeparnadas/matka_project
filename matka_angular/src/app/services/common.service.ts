@@ -179,9 +179,9 @@ export class CommonService {
     return this.activeDrawTimeSubject.asObservable();
   }
 
-  getActiveServerDrawTime(){
+  getActiveServerDrawTime(game_id){
     // get active draw
-    this.http.get(this.BASE_API_URL + '/dev/drawTimes/active').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/dev/drawTimes/active/' + game_id).subscribe((response: ServerResponse) => {
       this.activeDrawTime = response.data;
       this.activeDrawTimeSubject.next({...this.activeDrawTime});
     });
