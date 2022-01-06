@@ -10,6 +10,9 @@ import jsPDF from 'jspdf';
 import {WatchDrawService} from '../../services/watch-draw.service';
 import {Game} from "../../models/Game.model";
 import {GameService} from "../../services/game.service";
+import { HttpClient } from '@angular/common/http';
+import { ServerResponse } from 'src/app/models/ServerResponse.model';
+import { DrawTime } from 'src/app/models/DrawTime.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -38,13 +41,20 @@ export class HomeComponent implements OnInit {
   buttonColour=['#0047AB', '#009900','#CC0033', '#9900CC'];
 
 
+  private BASE_API_URL = environment.BASE_API_URL;
+  drawTimesFatafat: DrawTime[] = [];
+  drawTimesShirdi: DrawTime[] = [];
+
+
+
   nextDrawId: any;
 
   constructor(private gameResultService: GameResultService, private metaTagService: Meta,
               private commonService: CommonService
               , private renderer: Renderer2
               , private watchDrawService: WatchDrawService
-              , private gameService: GameService) {
+              , private gameService: GameService,
+              private http: HttpClient) {
 
     this.currentDate = this.commonService.getCurrentDate();
     this.deviceXs = this.commonService.deviceXs;
@@ -64,6 +74,9 @@ export class HomeComponent implements OnInit {
     this.gameResultService.getResultListListener().subscribe((response: GameResult[]) => {
       this.resultList = response;
     });
+
+    this.fetchDrawTime();
+    // this.fetchDrawTimeShirdi();
   }
 
   // test(){
@@ -100,5 +113,23 @@ export class HomeComponent implements OnInit {
     // this.bgColor = '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
     this.buttonColours = this.buttonColour[gameData.id - 1];
   }
+
+
+
+  fetchDrawTime(){
+    this.http.get(this.BASE_API_URL + '/dev/drawTimes/1').subscribe((response: ServerResponse) => {
+      this.drawTimesFatafat = response.data;
+    });
+    this.http.get(this.BASE_API_URL + '/dev/drawTimes/2').subscribe((response: ServerResponse) => {
+      this.drawTimesShirdi = response.data;
+    });
+  }
+
+  // fetchDrawTimeShirdi(){
+  //   this.http.get(this.BASE_API_URL + '/dev/drawTimes/2').subscribe((response: ServerResponse) => {
+  //     this.drawTimesShirdi = response.data;
+  //     console.log("drawTimes",this.drawTimesShirdi);
+  //   });
+  // }
 
 }

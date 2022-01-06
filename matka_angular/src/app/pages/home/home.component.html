@@ -96,45 +96,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
+          <tr *ngFor="let time of drawTimesFatafat; let i = index">
+            <td>{{i+1}}</td>
             <td></td>
-            <td>10:00 am</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td></td>
-            <td>11:30 am</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td></td>
-            <td>01:00 am</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td></td>
-            <td>02:30 am</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td></td>
-            <td>04:00 am</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td></td>
-            <td>05:30 am</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td></td>
-            <td>07:00 am</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td></td>
-            <td>08:30 am</td>
+            <td>{{time.visibleTime}}</td>
           </tr>
         </tbody>
       </table>
@@ -143,7 +108,7 @@
     <div class="col-4">
       <div class="" style="font-size: x-large; color: red; text-align: left; padding-right: 22px;">😍✔NEW TIME✔😍</div>
       <div class="" style="font-size: x-large; color: rgb(5, 5, 5); font-weight: bold; text-align: center; padding-right: 292px;">SHIRDI</div>
-      <table class=" pl-3" style="padding-left: 20px; font-weight: bold;">
+      <table class=""  style="font-weight: bold;">
         <thead style="font-size: large !important;">
           <tr >
             <th scope="col">Index</th>
@@ -152,45 +117,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
+          <tr *ngFor="let time of drawTimesShirdi; let i = index">
+            <td>{{i+1}}</td>
             <td></td>
-            <td>10:30 am</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td></td>
-            <td>12:00 am</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td></td>
-            <td>01:30 am</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td></td>
-            <td>03:00 am</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td></td>
-            <td>04:30 am</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td></td>
-            <td>06:00 am</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td></td>
-            <td>07:30 am</td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td></td>
-            <td>09:00 am</td>
+            <td>{{time.visibleTime}}</td>
           </tr>
         </tbody>
       </table>

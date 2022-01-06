@@ -17,6 +17,7 @@ export class GameService {
   games: Game[] = [];
   gameTypeSubject = new Subject<GameType[]>();
   gameSubject = new Subject<Game[]>();
+  
 
   constructor(private  http: HttpClient, private errorService: ErrorService) {
     // this.http.get(this.BASE_API_URL + '/gameTypes').subscribe((response: ServerResponse) => {
@@ -28,6 +29,8 @@ export class GameService {
       this.gameSubject.next([...this.games]);
 
     });
+
+
   }
 
   getGameType(){
