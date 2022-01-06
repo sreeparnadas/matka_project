@@ -15,7 +15,7 @@
       <div class="d-flex" style="text-align: end; padding-left: 24%;">
         <div id="title-3-div-child-2" style="text-align: center; color: white;" *ngFor="let x of games, let idx = index">
 <!--          <button type="button" [disabled]="x.id == 3 || x.id == 4" (click)="setActiveGame(games[idx])" [ngStyle]="{'background-color': buttonColour[idx]}" (click)="varResult(x.id)" class="btn  glow ml-1" style="font-size: x-large;border: 5px solid rgb(255, 230, 0); border-style: double; border-radius: 10px; background-color: rgb(4, 13, 136); color: white;">{{x.game_name}}</button></div>-->
-          <button type="button" [disabled]="x.id == 3 || x.id == 4" (click)="setActiveGame(games[idx])" [ngStyle]="{'background-color': buttonColour[idx]}"class="btn  glow ml-1" style="font-size: x-large;border: 5px solid rgb(255, 230, 0); border-style: double; border-radius: 10px; background-color: rgb(4, 13, 136); color: white;">{{x.game_name}}</button></div>
+          <button type="button" [disabled]="x.active === 'no'" (click)="setActiveGame(games[idx])" [ngStyle]="{'background-color': buttonColour[idx]}"class="btn  glow ml-1" style="font-size: x-large;border: 5px solid rgb(255, 230, 0); border-style: double; border-radius: 10px; background-color: rgb(4, 13, 136); color: white;">{{x.game_name}}</button></div>
       </div>
 
 <!--      <mat-form-field  appearance="fill">-->

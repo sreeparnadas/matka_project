@@ -39,9 +39,16 @@ export class GameService {
   }
 
   updateAutogenertate(gameId){
-    this.http.get(this.BASE_API_URL + '/dev/updateAutoGenerate/'+gameId).subscribe((response: ServerResponse) =>{
+    this.http.get(this.BASE_API_URL + '/dev/updateAutoGenerate/' + gameId).subscribe((response: ServerResponse) => {
+    });
+  }
 
-      console.log(response);
+  activateActive(gameId){
+    this.http.get(this.BASE_API_URL + '/dev/activateGame/' + gameId).subscribe((response: ServerResponse) => {
+      const game = response.data;
+      const index = this.games.findIndex(x => x.id === game.id);
+      this.games[index] = game;
+      this.gameSubject.next([...this.games]);
     });
   }
 

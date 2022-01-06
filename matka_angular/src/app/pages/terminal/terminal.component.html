@@ -64,8 +64,8 @@
                 <button (click)="resultButton(2)" style="font-size: 100%;  width: 50%;  border: 8px solid rgb(253, 253, 253);height: 145%; border-style: double;" class="btn btn-success ml-1 btn-responsive" (click)="setActiveGame(games[1])">{{games[1].game_name}}</button>
               </div>
               <div class=" d-flex" style="height: 60px; border-radius: 10px;padding-top: 20px; padding-right: 100px;">
-                <button disabled (click)="resultButton(3)" style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-danger ml-1 btn-responsive" (click)="setActiveGame(games[2])">{{games[2].game_name}}</button>
-                <button disabled (click)="resultButton(4)" class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" (click)="setActiveGame(games[3])"
+                <button [disabled]="games[2].active === 'no'" (click)="resultButton(3)" style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" class="btn btn-danger ml-1 btn-responsive" (click)="setActiveGame(games[2])">{{games[2].game_name}}</button>
+                <button [disabled]="games[3].active === 'no'" (click)="resultButton(4)" class="btn btn-info ml-1 btn-responsive" id="print-button" style="font-size: 100%;   width: 50%;height: 170%;  border: 8px solid rgb(255, 255, 255); border-style: double;" (click)="setActiveGame(games[3])"
                         >{{games[3].game_name}}</button>
               </div>
 

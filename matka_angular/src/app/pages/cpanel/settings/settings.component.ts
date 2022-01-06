@@ -16,15 +16,19 @@ export class SettingsComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
-    this.games=this.gameService.getGame();
-    this.gameService.getGameListener().subscribe((response: Game[])=>{
+    this.games = this.gameService.getGame();
+    this.gameService.getGameListener().subscribe((response: Game[]) => {
       this.games = response;
+      console.log(this.games);
     });
   }
 
   changeAutoGenerate(x){
-    console.log(x);
     this.gameService.updateAutogenertate(x.id);
+  }
+
+  activateGame(x){
+    this.gameService.activateActive(x.id);
   }
 
 }

@@ -1,16 +1,18 @@
 <div>
   <div class="container pt-5">
-    <table class="table col-4 text-center">
+    <table class="table col-6 text-center">
       <thead>
         <tr>
           <th scope="col">Game</th>
+          <th scope="col">Active Game</th>
           <th scope="col">Auto Generate</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let x of games">
           <td>{{x.game_name}}</td>
-          <td><input  [checked]="x.auto_generate == 'yes'" (click)="changeAutoGenerate(x)" type="checkbox" data-toggle="toggle"></td>
+          <td><input  [checked]="x.active === 'yes'" (click)="activateGame(x)" type="checkbox" data-toggle="toggle"></td>
+          <td><input [disabled]="x.active === 'no'" [checked]="x.auto_generate == 'yes'" (click)="changeAutoGenerate(x)" type="checkbox" data-toggle="toggle"></td>
         </tr>
       </tbody>
     </table>
