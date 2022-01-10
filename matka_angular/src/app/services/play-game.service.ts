@@ -54,7 +54,7 @@ export class PlayGameService {
         this.numberCombinationMatrixSubject.next([...this.numberCombinationMatrix]);
       });
 
-      this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
+      this.http.get(this.BASE_API_URL + '/dev/results/currentDate').subscribe((response: ServerResponse) => {
         this.currentDateResult = response.data;
         this.currentDateResultSubject.next({...this.currentDateResult});
       });
@@ -104,7 +104,7 @@ export class PlayGameService {
   }
 
   getTodayResult(){
-    this.http.get(this.BASE_API_URL + '/results/currentDate').subscribe((response: ServerResponse) => {
+    this.http.get(this.BASE_API_URL + '/dev/results/currentDate').subscribe((response: ServerResponse) => {
       this.currentDateResult = response.data;
       this.currentDateResultSubject.next({...this.currentDateResult});
     });
