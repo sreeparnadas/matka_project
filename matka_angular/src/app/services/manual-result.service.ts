@@ -53,4 +53,11 @@ export class ManualResultService {
         console.log(response);
       }));
   }
+
+  saveOldDateResult(formData){
+    return this.http.post<ManualResultSaveResponse>(this.BASE_API_URL + '/insertOldResultByDate', formData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        console.log(response);
+      }));
+  }
 }

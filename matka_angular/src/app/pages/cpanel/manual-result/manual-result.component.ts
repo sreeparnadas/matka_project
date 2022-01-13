@@ -7,7 +7,7 @@ import {PlayGameService} from '../../../services/play-game.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import Swal from 'sweetalert2';
 import {environment} from '../../../../environments/environment';
-import {formatDate} from '@angular/common';
+import {DatePipe, formatDate} from '@angular/common';
 import {ServerResponse} from '../../../models/ServerResponse.model';
 import {HttpClient} from '@angular/common/http';
 import {MatCard} from '@angular/material/card';
@@ -16,6 +16,7 @@ import {filter, map, mergeMap} from 'rxjs/operators';
 import {CommonService} from '../../../services/common.service';
 import { GameService } from 'src/app/services/game.service';
 import { Game } from 'src/app/models/Game.model';
+import { AdminReportService } from 'src/app/services/admin-report.service';
 
 @Component({
   selector: 'app-manual-result',
@@ -53,6 +54,16 @@ export class ManualResultComponent implements OnInit {
   isDisabledSingleHeaderButton: boolean = true;
   selectedGame: number;
 
+  thisYear = new Date().getFullYear();
+  thisMonth = new Date().getMonth();
+  thisDay = new Date().getDate();
+  startDate = new Date(this.thisYear, this.thisMonth, this.thisDay);
+
+  StartDateFilter = this.startDate;
+  EndDateFilter = this.startDate;
+  pipe = new DatePipe('en-US');
+
+
   games: Game[] ;
 
   // tslint:disable-next-line:max-line-length
@@ -64,7 +75,8 @@ export class ManualResultComponent implements OnInit {
               // tslint:disable-next-line:align
               , private router: Router
               // tslint:disable-next-line:align
-              , private commonService: CommonService) {
+              , private commonService: CommonService
+              , private adminReportService: AdminReportService) {
     this.deviceXs = this.commonService.deviceXs;
     const now = new Date();
     const currentSQLDate = formatDate(now, 'yyyy-MM-dd', 'en');
@@ -217,6 +229,51 @@ export class ManualResultComponent implements OnInit {
     });
   }
 
+  saveOldDateResult(){
+    // this.manualResultForm.value.gameId = this.selectedGame;
+    // console.log(this.manualResultForm.value.gameId);
+    // return;
+    this.validatorError = null;
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to save this result?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, save It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        this.manualResultService.saveOldDateResult(this.manualResultForm.value).subscribe(response => {
+          if (response.success === 1){
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Result saved',
+              showConfirmButton: false,
+              timer: 1000
+            });
+            this.manualResultForm.reset();
+            this.currentCombinationMatrixSelectedId = -1;
+          }else{
+            this.validatorError = response.error;
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
+        });
+      }
+    });
+  }
+
   gameDatepickerChange($event: Event) {
     // getting game after date change
     const currentSQLDate = formatDate(this.manualResultForm.value.transaction_date, 'yyyy-MM-dd', 'en');
@@ -224,4 +281,24 @@ export class ManualResultComponent implements OnInit {
       this.drawTimes = response.data;
     });
   }
+
+
+  searchByDateTab1(){
+    Swal.fire({
+      title: 'Please Wait !',
+      html: 'loading ...',// add html attribute if you want or remove
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    // var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+    this.manualResultService.saveOldDateResult(startDate).subscribe((response)=>{
+      if(response.data){
+        Swal.close();
+      }
+    });
+  }
+
 }
