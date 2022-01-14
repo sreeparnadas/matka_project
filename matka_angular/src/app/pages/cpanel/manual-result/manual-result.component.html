@@ -108,15 +108,17 @@
                   </mat-form-field>
                   <div class="pt-1 d-flex">
                     <div class="col-3">
-                      <mat-form-field formControlName="gameDate" appearance="fill">
+<!--                      <mat-form-field formControlName="gameDate" appearance="fill">-->
+                      <mat-form-field appearance="fill" formControlName="gameDate">
                         <mat-label>Start date</mat-label>
-                        <input  matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">
+                        <input  matInput [matDatepicker]="picker" >
+<!--                        <input  matInput [matDatepicker]="picker" [(ngModel)]= "newDateFilter" [ngModelOptions]="{standalone: true}">-->
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>
+                        <mat-datepicker #picker [(ngModel)]= "newDateFilter"></mat-datepicker>
                       </mat-form-field>
                     </div>
 
-                    <!-- <button mat-button color="accent" style="font-size: 20px;" (click)="searchByDateTab1()">Search</button> -->
+<!--                    &lt;!&ndash; <button mat-button color="accent" style="font-size: 20px;" (click)="searchByDateTab1()">Search</button> &ndash;&gt;-->
                   </div>
                 </div>
               </div>
