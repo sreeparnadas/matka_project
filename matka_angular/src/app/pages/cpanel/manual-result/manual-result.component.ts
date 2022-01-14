@@ -97,7 +97,7 @@ export class ManualResultComponent implements OnInit {
       drawMasterId: new FormControl(null, [Validators.required]),
       numberCombinationId: new FormControl(null, [Validators.required]),
       gameId: new FormControl(null, [Validators.required]),
-      gameDate: new FormControl(null),
+      gameDate: new FormControl(this.startDate),
     });
   }
 
@@ -164,6 +164,12 @@ export class ManualResultComponent implements OnInit {
   setManualResultInForm(single: number, numberCombination){
     // tslint:disable-next-line:max-line-length
     this.manualResultForm.patchValue({numberCombinationId: numberCombination.numberCombinationId, single, triple: numberCombination.visibleTripleNumber});
+    this.currentCombinationMatrixSelectedId = numberCombination.numberCombinationId;
+  }
+
+  setOldDateResultInForm(single: number, numberCombination){
+    // tslint:disable-next-line:max-line-length
+    this.oldDateResultForm.patchValue({numberCombinationId: numberCombination.numberCombinationId, single, triple: numberCombination.visibleTripleNumber});
     this.currentCombinationMatrixSelectedId = numberCombination.numberCombinationId;
   }
 
@@ -240,9 +246,12 @@ export class ManualResultComponent implements OnInit {
     });
   }
 
-  saveOldDateResult(){
-    // this.manualResultForm.value.gameId = this.selectedGame;
-    // console.log(this.manualResultForm.value.gameId);
+
+saveOldDateResult(){
+    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    this.oldDateResultForm.value.gameDate = startDate;
+    console.log(this.oldDateResultForm.value);
+    console.log(this.StartDateFilter);
     // return;
     this.validatorError = null;
     Swal.fire({
