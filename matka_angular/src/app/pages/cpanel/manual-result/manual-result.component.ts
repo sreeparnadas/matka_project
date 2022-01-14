@@ -61,6 +61,7 @@ export class ManualResultComponent implements OnInit {
   startDate = new Date(this.thisYear, this.thisMonth, this.thisDay);
 
   StartDateFilter = this.startDate;
+  newDateFilter = this.startDate;
   EndDateFilter = this.startDate;
   pipe = new DatePipe('en-US');
 
