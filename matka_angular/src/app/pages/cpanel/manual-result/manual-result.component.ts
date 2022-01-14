@@ -42,6 +42,7 @@ import { AdminReportService } from 'src/app/services/admin-report.service';
 export class ManualResultComponent implements OnInit {
   private BASE_API_URL = environment.BASE_API_URL;
   manualResultForm: FormGroup;
+  oldDateResultForm: FormGroup;
   drawTimes: DrawTime[] = [];
   public numberCombinationMatrix: SingleNumber[] = [];
   private copyNumberMatrix: SingleNumber[];
@@ -89,6 +90,14 @@ export class ManualResultComponent implements OnInit {
       triple: new FormControl(null),
       transaction_date: new FormControl(currentSQLDate),
     });
+
+    this.oldDateResultForm = new FormGroup({
+      id: new FormControl(null),
+      drawMasterId: new FormControl(null, [Validators.required]),
+      numberCombinationId: new FormControl(null, [Validators.required]),
+      gameId: new FormControl(null, [Validators.required]),
+      gameDate: new FormControl(null),
+    });
   }
 
 
@@ -101,6 +110,7 @@ export class ManualResultComponent implements OnInit {
 
 
     this.manualResultForm.patchValue({gameId:1});
+    this.oldDateResultForm.patchValue({gameId:1});
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => this.route),
@@ -244,7 +254,7 @@ export class ManualResultComponent implements OnInit {
       confirmButtonText: 'Yes, save It!'
     }).then((result) => {
       if (result.isConfirmed){
-        this.manualResultService.saveOldDateResult(this.manualResultForm.value).subscribe(response => {
+        this.manualResultService.saveOldDateResult(this.oldDateResultForm.value).subscribe(response => {
           if (response.success === 1){
             // @ts-ignore
             Swal.fire({
@@ -254,7 +264,7 @@ export class ManualResultComponent implements OnInit {
               showConfirmButton: false,
               timer: 1000
             });
-            this.manualResultForm.reset();
+            this.oldDateResultForm.reset();
             this.currentCombinationMatrixSelectedId = -1;
           }else{
             this.validatorError = response.error;
