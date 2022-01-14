@@ -64,6 +64,8 @@ export class ManualResultComponent implements OnInit {
   EndDateFilter = this.startDate;
   pipe = new DatePipe('en-US');
 
+  selectedNumberCombination = null;
+
 
   games: Game[] ;
 
@@ -95,6 +97,8 @@ export class ManualResultComponent implements OnInit {
       id: new FormControl(null),
       drawMasterId: new FormControl(null, [Validators.required]),
       numberCombinationId: new FormControl(null, [Validators.required]),
+      single: new FormControl(null),
+      triple: new FormControl(null),
       gameId: new FormControl(null, [Validators.required]),
       gameDate: new FormControl(this.startDate),
     });
@@ -170,6 +174,8 @@ export class ManualResultComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.oldDateResultForm.patchValue({numberCombinationId: numberCombination.numberCombinationId, single, triple: numberCombination.visibleTripleNumber});
     this.currentCombinationMatrixSelectedId = numberCombination.numberCombinationId;
+    this.selectedNumberCombination= numberCombination.visibleTripleNumber;
+    // console.log(numberCombination);
   }
 
 
@@ -249,8 +255,9 @@ export class ManualResultComponent implements OnInit {
 saveOldDateResult(){
     var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
     this.oldDateResultForm.value.gameDate = startDate;
-    console.log(this.oldDateResultForm.value);
-    console.log(this.StartDateFilter);
+    // console.log(this.oldDateResultForm.value);
+    // console.log(this.oldDateResultForm.value.numberCombinationId);
+    // console.log(this.StartDateFilter);
     // return;
     this.validatorError = null;
     Swal.fire({
@@ -274,6 +281,7 @@ saveOldDateResult(){
               timer: 1000
             });
             this.oldDateResultForm.reset();
+            this.selectedNumberCombination=null;
             this.currentCombinationMatrixSelectedId = -1;
           }else{
             this.validatorError = response.error;
