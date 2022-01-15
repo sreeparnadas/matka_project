@@ -209,16 +209,12 @@ export class ManualResultComponent implements OnInit {
   }
 
   changeDraw(){
-    // console.log(this.manualResultForm.value.gameId);
-    // console.log(this.manualResultForm.value.gameDate);
     this.fetchDrawTime(this.manualResultForm.value.gameId);
   }
 
 
   saveManualResult(){
-    // this.manualResultForm.value.gameId = this.selectedGame;
-    // console.log(this.manualResultForm.value.gameId);
-    // return;
+
     this.validatorError = null;
     Swal.fire({
       title: 'Confirmation',
@@ -262,12 +258,9 @@ export class ManualResultComponent implements OnInit {
 
 
 saveOldDateResult(){
+
     var startDate = this.pipe.transform(this.newDateFilter, 'yyyy-MM-dd');
     this.oldDateResultForm.value.gameDate = startDate;
-    // console.log(this.oldDateResultForm.value);
-    // console.log(this.oldDateResultForm.value.numberCombinationId);
-    // console.log(this.StartDateFilter);
-    // return;
     this.validatorError = null;
     Swal.fire({
       title: 'Confirmation',
@@ -312,15 +305,20 @@ saveOldDateResult(){
   }
 
   getDrawTimeForOldResult(event) {
-    const selectedDateForOldResult = event.value ;
-    var requestedData = {
+    const selectedDateForOldResult = this.pipe.transform(event.value,'yyyy-MM-dd') ;
+    let currentDate= this.pipe.transform(this.startDate, 'yyyy-MM-dd');
+    if(selectedDateForOldResult < currentDate){
+      var requestedData = {
         gameId : this.oldDateResultForm.value.gameId,
         gameDate : this.pipe.transform(selectedDateForOldResult, 'yyyy-MM-dd'),
-    };
-    this.manualResultService.fetchRemainingDrawTimesToPutOldResult(requestedData).subscribe(response =>{
-      this.oldDateReultDrawTime = response.data;
-    });
-    // this.(gameDate);
+      };
+      this.manualResultService.fetchRemainingDrawTimesToPutOldResult(requestedData).subscribe(response =>{
+        this.oldDateReultDrawTime = response.data;
+      });
+    }else{
+      this.oldDateReultDrawTime = [];
+    }
+
   }
 
   gameDatepickerChange($event: Event) {

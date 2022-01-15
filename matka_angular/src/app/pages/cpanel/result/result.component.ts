@@ -26,7 +26,7 @@ export class ResultComponent implements OnInit {
     this.currentDateResult = this.resultService.getCurrentDateResult();
     this.resultService.getCurrentDateResultListener().subscribe((response: CurrentGameResult) => {
       this.currentDateResult = response;
-      console.log(this.currentDateResult);
+      // console.log(this.currentDateResult);
     });
   }
   isActiveTripleContainter(idxSingle: number) {

@@ -55,7 +55,7 @@ export class MasterStockistComponent implements OnInit {
   editStockist(stockist){
     const targetStockistIndex = this.stockists.findIndex(x => x.userId === stockist.userId);
     this.highLightedRowIndex = targetStockistIndex;
-    console.log(targetStockistIndex);
+    // console.log(targetStockistIndex);
     let data={
       id: stockist.userId, userName: stockist.userName, pin: stockist.pin,
      };
@@ -77,7 +77,7 @@ export class MasterStockistComponent implements OnInit {
       if (result.isConfirmed){
         // tslint:disable-next-line:max-line-length
         const masterData = {id: this.stockistMasterForm.value.id, userName : this.stockistMasterForm.value.userName};
-        console.log(masterData);
+        // console.log(masterData);
         this.masterStockistService.updateStockiist(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
