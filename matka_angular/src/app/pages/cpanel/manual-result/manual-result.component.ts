@@ -316,13 +316,8 @@ saveOldDateResult(){
         gameId : this.oldDateResultForm.value.gameId,
         gameDate : this.pipe.transform(selectedDateForOldResult, 'yyyy-MM-dd'),
     };
-    // const selectedDateForOldResult = event.value ;
-    // var gameDate = this.pipe.transform(selectedDateForOldResult, 'yyyy-MM-dd')
-    // console.log(gameDate);
     this.manualResultService.fetchRemainingDrawTimesToPutOldResult(requestedData).subscribe(response =>{
-      this.oldDateReultDrawTime = response;
-      // console.log(response);
-      console.log(this.oldDateReultDrawTime);
+      this.oldDateReultDrawTime = response.data;
     });
     // this.(gameDate);
   }

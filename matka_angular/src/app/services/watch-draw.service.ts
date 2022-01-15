@@ -28,7 +28,6 @@ export class WatchDrawService {
 
         if (Object.entries(this.nextDrawId).length === 0){
           this.nextDrawId = response;
-          console.log(this.nextDrawId);
           this.nextDrawSubject.next({...this.nextDrawId});
           if (userData == null){
             this.gameResultService.getUpdatedResult();
