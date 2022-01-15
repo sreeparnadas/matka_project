@@ -292,6 +292,7 @@ saveOldDateResult(){
             this.oldDateResultForm.reset();
             this.selectedNumberCombination=null;
             this.currentCombinationMatrixSelectedId = -1;
+            this.oldDateReultDrawTime.splice(response.data,1);
           }else{
             this.validatorError = response.error;
             Swal.fire({
