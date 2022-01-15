@@ -26,6 +26,7 @@ export interface ManualResultSaveResponse{
 export class ManualResultService {
 
   drawTimes: DrawTime[] = [];
+  oldDateReultDrawTime: DrawTime[] = [];
   drawTimeSubject = new Subject<DrawTime[]>();
   private BASE_API_URL = environment.BASE_API_URL;
 
@@ -57,6 +58,14 @@ export class ManualResultService {
   saveOldDateResult(formData){
     return this.http.post<ManualResultSaveResponse>(this.BASE_API_URL + '/insertOldResultByDate', formData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
+        console.log(response);
+      }));
+  }
+
+  fetchRemainingDrawTimesToPutOldResult(requestedData){
+    return this.http.post<DrawTime>(this.BASE_API_URL + '/drawTimesByDate', requestedData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        // this.oldDateReultDrawTime = response.data;
         console.log(response);
       }));
   }

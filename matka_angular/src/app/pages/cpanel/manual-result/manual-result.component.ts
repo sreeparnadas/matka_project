@@ -17,6 +17,8 @@ import {CommonService} from '../../../services/common.service';
 import { GameService } from 'src/app/services/game.service';
 import { Game } from 'src/app/models/Game.model';
 import { AdminReportService } from 'src/app/services/admin-report.service';
+// import { Moment } from 'moment';
+// const moment = _moment;
 
 @Component({
   selector: 'app-manual-result',
@@ -65,7 +67,10 @@ export class ManualResultComponent implements OnInit {
   EndDateFilter = this.startDate;
   pipe = new DatePipe('en-US');
 
+  oldDateReultDrawTime: any;
+
   selectedNumberCombination = null;
+  requestedData = [];
 
 
   games: Game[] ;
@@ -161,6 +166,7 @@ export class ManualResultComponent implements OnInit {
     });
   }
 
+
   iscurrentCombinationMatrixSelected(id: number){
     return (id === this.currentCombinationMatrixSelectedId);
   }
@@ -204,8 +210,10 @@ export class ManualResultComponent implements OnInit {
 
   changeDraw(){
     // console.log(this.manualResultForm.value.gameId);
+    // console.log(this.manualResultForm.value.gameDate);
     this.fetchDrawTime(this.manualResultForm.value.gameId);
   }
+
 
   saveManualResult(){
     // this.manualResultForm.value.gameId = this.selectedGame;
@@ -254,7 +262,7 @@ export class ManualResultComponent implements OnInit {
 
 
 saveOldDateResult(){
-    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    var startDate = this.pipe.transform(this.newDateFilter, 'yyyy-MM-dd');
     this.oldDateResultForm.value.gameDate = startDate;
     // console.log(this.oldDateResultForm.value);
     // console.log(this.oldDateResultForm.value.numberCombinationId);
@@ -300,6 +308,23 @@ saveOldDateResult(){
         });
       }
     });
+  }
+
+  getDrawTimeForOldResult(event) {
+    const selectedDateForOldResult = event.value ;
+    var requestedData = {
+        gameId : this.oldDateResultForm.value.gameId,
+        gameDate : this.pipe.transform(selectedDateForOldResult, 'yyyy-MM-dd'),
+    };
+    // const selectedDateForOldResult = event.value ;
+    // var gameDate = this.pipe.transform(selectedDateForOldResult, 'yyyy-MM-dd')
+    // console.log(gameDate);
+    this.manualResultService.fetchRemainingDrawTimesToPutOldResult(requestedData).subscribe(response =>{
+      this.oldDateReultDrawTime = response;
+      // console.log(response);
+      console.log(this.oldDateReultDrawTime);
+    });
+    // this.(gameDate);
   }
 
   gameDatepickerChange($event: Event) {
