@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {ServerResponse} from '../models/ServerResponse.model';
 import {DrawTime} from '../models/DrawTime.model';
+import {GameInputLoad} from '../models/GameInputLoad.model';
 import {Subject} from 'rxjs';
 import {ErrorService} from './error.service';
 import {catchError, tap} from 'rxjs/operators';
@@ -28,6 +29,7 @@ export class ManualResultService {
   drawTimes: DrawTime[] = [];
   oldDateResultDrawTime: DrawTime[] = [];
   drawTimeSubject = new Subject<DrawTime[]>();
+  inputLoad : GameInputLoad[]=[];
   private BASE_API_URL = environment.BASE_API_URL;
 
 
@@ -66,6 +68,14 @@ export class ManualResultService {
     return this.http.post<ServerResponse>(this.BASE_API_URL + '/drawTimesByDate', requestedData)
       .pipe(catchError(this.errorService.serverError), tap(response => {
         this.oldDateResultDrawTime = response.data;
+      }));
+  }
+
+  showInputLoadGameWise(requestedData){
+    return this.http.post<ServerResponse>(this.BASE_API_URL + '/manualResult/inputLoadByGameId', requestedData)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        this.inputLoad = response.data;
+        console.log(this.inputLoad);
       }));
   }
 }

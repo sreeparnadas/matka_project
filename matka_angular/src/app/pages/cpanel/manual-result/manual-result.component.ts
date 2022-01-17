@@ -17,6 +17,7 @@ import {CommonService} from '../../../services/common.service';
 import { GameService } from 'src/app/services/game.service';
 import { Game } from 'src/app/models/Game.model';
 import { AdminReportService } from 'src/app/services/admin-report.service';
+import { GameInputLoad } from 'src/app/models/GameInputLoad.model';
 // import { Moment } from 'moment';
 // const moment = _moment;
 
@@ -74,6 +75,8 @@ export class ManualResultComponent implements OnInit {
 
 
   games: Game[] ;
+
+  inputLoad: GameInputLoad[];
 
   // tslint:disable-next-line:max-line-length
   constructor(private http: HttpClient, private manualResultService: ManualResultService, private gameService: GameService
@@ -319,6 +322,16 @@ saveOldDateResult(){
       this.oldDateReultDrawTime = [];
     }
 
+  }
+
+  getGameInputLoad() {
+      var requestedData = {
+        gameId : this.manualResultForm.value.gameId,
+        drawId : this.manualResultForm.value.drawMasterId,
+      };
+      this.manualResultService.showInputLoadGameWise(requestedData).subscribe(response =>{
+        this.inputLoad = response.data;
+      });
   }
 
   gameDatepickerChange($event: Event) {

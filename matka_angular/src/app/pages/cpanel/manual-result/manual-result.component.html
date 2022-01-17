@@ -1,86 +1,100 @@
-<div [ngClass]="deviceXs?'mobile':'desktop'" >
-  <!-- <div class=" d-flex" style="height: 50px; border-radius: 10px; padding-top: 20px;padding-left: 10px;">
-    <mat-form-field  appearance="standard">
-      <mat-label>Game</mat-label>
-      <mat-select class="btn " [(ngModel)]="selectedGame" name="food">
-        <mat-option *ngFor="let x of games" [value]="x.id">
-          {{x.game_name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div> -->
+<div [ngClass]="deviceXs?'mobile':'desktop'"  >
   <mat-tab-group>
     <mat-tab label="Today">
-      <div>
-        <form [formGroup]="manualResultForm">
-          <div class="d-flex flex-column bd-highlight">
-            <div class="p-2 bd-highlight" >
-              <div #targetDiv class="row">
-                <mat-form-field class="col-2">
-                  <mat-label>Draw time</mat-label>
-                  <mat-select  formControlName="drawMasterId" placeholder="Category">
-                    <mat-option *ngFor="let time of drawTimes" [value]="time.drawId">
-                      {{time.endTime}}
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <div class=" d-flex col-2" style="height: 0px; border-radius: 10px; padding-top: 0px;padding-left: 10px;">
-                  <mat-form-field>
-                    <mat-label>Game</mat-label>
-                    <mat-select  formControlName="gameId" placeholder="Category" (selectionChange)="changeDraw()">
-                      <mat-option *ngFor="let x of games" [value]="x.id">
-                        {{x.game_name}}
+      <div class="d-flex">
+        <div class="">
+          <form [formGroup]="manualResultForm">
+            <div class="d-flex flex-column bd-highlight">
+              <div class="p-2 bd-highlight" >
+                <div #targetDiv class="row">
+                  <mat-form-field class="col-2">
+                    <mat-label>Draw time</mat-label>
+                    <mat-select  formControlName="drawMasterId" placeholder="Category">
+                      <mat-option *ngFor="let time of drawTimes" [value]="time.drawId">
+                        {{time.endTime}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-                </div>
-              </div>
-
-
-              <div>
-
-                <div class="card" style="width: 18rem;">
-                  <div class="card-header">
-                    Upcoming result
+                  <div class=" d-flex col-2" style="height: 0px; border-radius: 10px; padding-top: 0px;padding-left: 10px;">
+                    <mat-form-field>
+                      <mat-label>Game</mat-label>
+                      <mat-select  formControlName="gameId" placeholder="Category" (selectionChange)="changeDraw()">
+                        <mat-option *ngFor="let x of games" [value]="x.id">
+                          {{x.game_name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{manualResultForm.value.triple}}</li>
-                    <li class="list-group-item">{{manualResultForm.value.single}}</li>
-                  </ul>
+
                 </div>
+                <div><button (click)="getGameInputLoad()">view load</button></div>
 
-      <!--          <button type="button" class="btn btn-primary mt-2" (click)="saveManualResult()" [disabled]="!manualResultForm.valid" >Save</button>-->
-                <button type="button" class="btn btn-primary mt-2" (click)="saveManualResult()" >Save</button>
-
+                <div>
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                      Upcoming result
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">{{manualResultForm.value.triple}}</li>
+                      <li class="list-group-item">{{manualResultForm.value.single}}</li>
+                    </ul>
+                  </div>
+                  <button type="button" class="btn btn-primary mt-2" (click)="saveManualResult()" >Save</button>
+                </div>
               </div>
+                <div class="d-flex flex-row bd-highlight">
+                    <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
+                      <div class="p-1">
+                        <button  class="single-number-button coder-fab" [class.green]="isDisabledSingleHeaderButton"  [disabled]="isDisabledSingleHeaderButton">
+                          {{tableData.singleNumber}}
+                        </button>
+                      </div>
+                      <div class="p-1" *ngFor="let numberCombination of tableData.numberCombinations">
+                        <button class="coder-fab" mat-fab  matBadge="{{tableData.singleNumber}}" [matBadgeHidden]="currentCombinationMatrixSelectedId != numberCombination.numberCombinationId"  [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(tableData.singleNumber, numberCombination);scroll(targetDiv)">
+                          {{numberCombination.visibleTripleNumber}}
+                        </button>
+                      </div>
+                    </div>
+                </div>
             </div>
+          </form>
+          <button class="coder-fab" mat-fab (click)="scroll(targetDiv)">
+            <i class="bi bi-arrow-up-circle"></i>
+          </button>
+        </div>
 
-              <div class="d-flex flex-row bd-highlight">
+        <div class="">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Single</th>
+                <th scope="col">Triple</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>
+                  <table>
+                    <tr>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>@mdo</td>
+                      <td>@mdo</td>
+                      <td>@mdo</td>
+                      <td>@mdo</td>
+                      <!-- <td>@mdo</td> -->
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
 
 
-                  <div class="d-flex flex-column" id="triple-flex-column-{{idxSingle}}" *ngFor="let tableData of numberCombinationMatrix; let idxSingle = index">
-                    <div class="p-1">
-                      <button  class="single-number-button coder-fab" [class.green]="isDisabledSingleHeaderButton"  [disabled]="isDisabledSingleHeaderButton">
-                        {{tableData.singleNumber}}
-                      </button>
-                    </div>
-                    <div class="p-1" *ngFor="let numberCombination of tableData.numberCombinations">
-                      <button class="coder-fab" mat-fab  matBadge="{{tableData.singleNumber}}" [matBadgeHidden]="currentCombinationMatrixSelectedId != numberCombination.numberCombinationId"  [ngStyle]="{'background-color':(currentCombinationMatrixSelectedId === numberCombination.numberCombinationId) ? 'rgb(30,64,30)' : '#858b8b' }" aria-label="" (click)="setManualResultInForm(tableData.singleNumber, numberCombination);scroll(targetDiv)">
-                        {{numberCombination.visibleTripleNumber}}
-                      </button>
-                    </div>
-                  </div>
-
-
-              </div>
-          </div>
-        </form>
-
-
-
-        <button class="coder-fab" mat-fab (click)="scroll(targetDiv)">
-          <i class="bi bi-arrow-up-circle"></i>
-        </button>
       </div>
     </mat-tab>
     <mat-tab label="Old Day">
