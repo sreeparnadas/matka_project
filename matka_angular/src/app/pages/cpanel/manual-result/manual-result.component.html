@@ -63,8 +63,8 @@
           </button>
         </div>
 
-        <div class="">
-          <table class="table table-bordered">
+        <div class="ml-3">
+          <table class="table table-bordered text-center">
             <thead>
               <tr>
                 <th scope="col">Single</th>
@@ -72,19 +72,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
+              <tr *ngFor="let input of inputLoad">
+                <th scope="row">{{input.singleNumber}}</th>
                 <td>
-                  <table>
-                    <tr>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                      <td>@mdo</td>
-                      <!-- <td>@mdo</td> -->
+                  <table >
+                      <tr *ngFor="let data of input.numberCombinations.slice(0, input.numberCombinations.length % columnNumber  === 0 ? input.numberCombinations.length / columnNumber : input.numberCombinations.length / columnNumber + 1); let idx = index">
+                        <!-- <td *ngFor="let row of input.numberCombinations">{{row.visible_triple_number}}</td> -->
+                        <td *ngFor="let row of input.numberCombinations.slice(idx * columnNumber, idx * columnNumber + columnNumber)"  matBadge="{{row.quantity}}">{{row.visible_triple_number}}</td>
                     </tr>
                   </table>
                 </td>
@@ -178,9 +172,6 @@
               </div>
           </div>
         </form>
-
-
-
         <button class="coder-fab" mat-fab (click)="scroll(targetDiv)">
           <i class="bi bi-arrow-up-circle"></i>
         </button>

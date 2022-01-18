@@ -73,6 +73,9 @@ export class ManualResultComponent implements OnInit {
   selectedNumberCombination = null;
   requestedData = [];
 
+  columnNumber = 10;
+
+
 
   games: Game[] ;
 
