@@ -49,7 +49,19 @@ export class MasterSuperStockistComponent implements OnInit {
   }
 
   updateSuperStockist(){
-
+    const masterData = {id : this.superStockistMasterForm.value.id , userName : this.superStockistMasterForm.value.userName, pin : this.superStockistMasterForm.value.pin};
+    this.masterSuperStockistService.updateSuperStockist(masterData).subscribe(response =>{
+      if (response.success === 1){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Super Stockist Updated',
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.superStockistMasterForm.reset();
+      }
+    });
   }
 
   editStockist(stockist){

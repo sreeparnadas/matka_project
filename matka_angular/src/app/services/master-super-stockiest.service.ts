@@ -40,4 +40,12 @@ export class MasterSuperStockiestService {
         // console.log('service ', response);
       }));
   }
+
+  updateSuperStockist(superStockist){
+    return this.http.put<StockistMaster>(this.BASE_API_URL + '/superStockist', superStockist)
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        // console.log('service ', response);
+      }));
+  }
+
 }
