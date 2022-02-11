@@ -7,6 +7,8 @@ import {Stockist} from '../../../models/Stockist.model';
 import {Sort} from '@angular/material/sort';
 import {User} from '../../../models/user.model';
 import {AuthService} from '../../../services/auth.service';
+import {SuperStockist} from "../../../models/SuperStockist.model";
+import {MasterSuperStockiestService} from "../../../services/master-super-stockiest.service";
 
 @Component({
   selector: 'app-master-stockist',
@@ -23,21 +25,20 @@ export class MasterStockistComponent implements OnInit {
   user: User;
   stockists: Stockist[] = [];
   sortedStockistList: Stockist[] = [];
+  superStockist: SuperStockist[] = [];
   selectedStockist: Stockist = null;
   public highLightedRowIndex = -1;
-  constructor(private masterStockistService: MasterStockistService, private authService: AuthService) {
+  constructor(private masterStockistService: MasterStockistService, private authService: AuthService , private masterSuperStockistService: MasterSuperStockiestService) {
     this.stockistMasterForm = new FormGroup({
       id: new FormControl(null),
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
+      superStockistId: new FormControl(null),
     });
     this.stockistLimitForm = new FormGroup({
       beneficiaryUid: new FormControl(null, [Validators.required]),
       amount: new FormControl(null, [Validators.required, Validators.minLength(2)]),
-
     });
-
-
   }
 
   ngOnInit(): void {
@@ -47,6 +48,10 @@ export class MasterStockistComponent implements OnInit {
     this.masterStockistService.getStockistListener().subscribe((response: Stockist[]) => {
       this.stockists = response;
       this.sortedStockistList = response;
+    });
+    this.superStockist = this.masterSuperStockistService.getSuperStockist();
+    this.masterSuperStockistService.getSuperStockistListener().subscribe((response) => {
+      this.superStockist = response;
     });
   }
   onStockistSelect(event: any){
@@ -114,6 +119,7 @@ export class MasterStockistComponent implements OnInit {
   }
 
   createNewStockist() {
+
     Swal.fire({
       title: 'Confirmation',
       text: 'Do you sure to create stockist?',
@@ -124,13 +130,14 @@ export class MasterStockistComponent implements OnInit {
       confirmButtonText: 'Yes, create It!'
     }).then((result) => {
       if (result.isConfirmed){
-        const masterData = {userName : this.stockistMasterForm.value.userName};
+        const masterData = {userName : this.stockistMasterForm.value.userName, superStockistId: this.stockistMasterForm.value.superStockistId};
         this.masterStockistService.saveNewStockist(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
             this.stockists.unshift(responseData);
             this.sortedStockistList.unshift(responseData);
             this.highLightedRowIndex = 0;
+            this.stockistMasterForm.reset();
             this.stockistLimitForm.reset();
             setTimeout(() => {
               this.highLightedRowIndex = -1;
