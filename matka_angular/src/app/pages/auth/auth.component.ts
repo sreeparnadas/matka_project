@@ -51,6 +51,10 @@ export class AuthComponent implements OnInit {
       if (this.user.userTypeId == 4){
         this.router.navigate(['/terminal']).then(r => {});
       }
+      // tslint:disable-next-line:triple-equals
+      if (this.user.userTypeId == 5){
+        this.router.navigate(['/superStockistPanel']).then(r => {});
+      }
     }
   }
 
@@ -87,6 +91,10 @@ export class AuthComponent implements OnInit {
         // tslint:disable-next-line:triple-equals
         if (response.data.user.userTypeId == 4){
           this.router.navigate(['/terminal']).then(r => {});
+        }
+        // tslint:disable-next-line:triple-equals
+        if (response.data.user.userTypeId == 5){
+          this.router.navigate(['/superStockistPanel']).then(r => {});
         }
       }else{
         Swal.fire({

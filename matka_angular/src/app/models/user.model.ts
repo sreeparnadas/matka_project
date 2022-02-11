@@ -42,4 +42,8 @@ export class User{
     // tslint:disable-next-line:triple-equals
     return this.userTypeId == 4;
   }
+  get isSuperStockist(){
+    // tslint:disable-next-line:triple-equals
+    return this.userTypeId == 5;
+  }
 }

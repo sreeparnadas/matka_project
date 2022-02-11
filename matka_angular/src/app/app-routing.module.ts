@@ -58,6 +58,12 @@ const routes: Routes = [
       .then(mod => mod.MasterStockistModule)
   },
 
+  {
+    path: 'superStockistPanel',
+    loadChildren: () => import('./modules/general/super-stockist-panel/super-stockist-panel-routing.module')
+      .then(mod => mod.SuperStockistPanelRoutingModule)
+  },
+
 
   {
     path: 'cPanelSettings',

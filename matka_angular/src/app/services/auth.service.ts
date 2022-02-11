@@ -61,6 +61,14 @@ export class AuthService {
     }
   }
 
+  isSuperStockist(): boolean{
+    if (this.userBehaviorSubject.value && this.userBehaviorSubject.value.isSuperStockist){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   autoLogin(){
     // tslint:disable-next-line:max-line-length
     const userData: User = JSON.parse(localStorage.getItem('user'));

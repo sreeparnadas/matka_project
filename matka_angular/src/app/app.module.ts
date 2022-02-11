@@ -69,12 +69,15 @@ import { StockistModule } from './modules/general/stockist/stockist.module';
 import { FooterModule } from './modules/general/footer/footer.module';
 import { BiIconModule } from './modules/general/bi-icon/bi-icon.module';
 import {NgxPrinterModule} from 'ngx-printer';
-import { MasterStockistComponent } from './pages/cpanel/master-stockist/master-stockist.component';
+// import { MasterStockistComponent } from './pages/cpanel/master-stockist/master-stockist.component';
 // import { MasterStockistModule } from './modules/general/cpanel/master-stockist/master-stockist.module';
 import {MatTabsModule} from '@angular/material/tabs';
 import {NgMarqueeModule} from 'ng-marquee-improved';
 import { StockistResultComponent } from './pages/stockistPanel/stockist-result/stockist-result.component';
 import { StockistResultModule } from './modules/general/stockistPanel/stockist-result/stockist-result.module';
+import { SuperStockistPanelModule } from './modules/general/super-stockist-panel/super-stockist-panel.module';
+import { MasterStockistModule } from './modules/general/super-stockist-panel/master-stockist/master-stockist.module';
+// import { MasterStockistComponent } from './pages/super-stockist/master-stockist/master-stockist.component';
 // import { MasterSuperStockistComponent } from './pages/cpanel/master-super-stockist/master-super-stockist.component';
 // import { MasterSuperStockistModule } from './modules/general/cpanel/master-super-stockist/master-super-stockist.module';
 // import { SettingsComponent } from './pages/cpanel/settings/settings.component';
@@ -103,6 +106,7 @@ import { StockistResultModule } from './modules/general/stockistPanel/stockist-r
 @NgModule({
   declarations: [
     AppComponent,
+    // MasterStockistComponent,
     // MasterSuperStockistComponent,
     // SettingsComponent,
     // StockistResultComponent,
@@ -180,6 +184,8 @@ import { StockistResultModule } from './modules/general/stockistPanel/stockist-r
     // MasterStockistModule,
     MatTabsModule,
     NgMarqueeModule,
+    MasterStockistModule,
+    // SuperStockistPanelModule,
     // MasterSuperStockistModule,
     // SettingsModule,
     // StockistResultModule,

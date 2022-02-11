@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isDeveloper = false;
   isStockist = false;
   isTerminal = false;
+  isSuperStockist = false;
   router: Router;
   faUserEdit = faUserEdit;
   faUserAlt = faUserAlt;
@@ -70,12 +71,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isDeveloper = user.isDeveloper;
         this.isStockist = user.isStockist;
         this.isTerminal = user.isTerminal;
+        this.isSuperStockist = user.isSuperStockist;
       }else{
         this.isAuthenticated = false;
         this.isAdmin = false;
         this.isDeveloper = false;
         this.isStockist = false;
         this.isTerminal = false;
+        this.isSuperStockist = false;
       }
     });
     this.authService.autoLogin();
