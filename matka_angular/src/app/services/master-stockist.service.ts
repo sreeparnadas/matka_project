@@ -39,6 +39,7 @@ export class MasterStockistService {
    getStockists(){
     return [...this.stockists];
    }
+
    getStockistListener(){
     return this.stockistSubject.asObservable();
    }

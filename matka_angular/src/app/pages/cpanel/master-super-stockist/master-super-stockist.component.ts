@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {MasterSuperStockiestService} from "../../../services/master-super-stockiest.service";
+import {SuperStockist} from "../../../models/SuperStockist.model";
 
 @Component({
   selector: 'app-master-super-stockist',
@@ -12,6 +13,8 @@ export class MasterSuperStockistComponent implements OnInit {
 
   superStockistMasterForm: FormGroup;
   isSuperStockistUpdateAble = false;
+  superStockist: SuperStockist[] = [];
+  public highLightedRowIndex = -1;
 
   constructor(private masterSuperStockistService: MasterSuperStockiestService) { }
 
@@ -21,6 +24,43 @@ export class MasterSuperStockistComponent implements OnInit {
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
     });
+
+    this.superStockist = this.masterSuperStockistService.getSuperStockist();
+    this.masterSuperStockistService.getSuperStockistListener().subscribe((response) => {
+      this.superStockist = response;
+    });
+  }
+
+  getBackgroundColor(index: number) {
+    // tslint:disable-next-line:triple-equals
+    if (index == this.highLightedRowIndex){
+      return {
+        'background-color': 'rgb(103 245 166 / 60%)',
+        // color: 'seashell',
+        animation: 'blinking 1s infinite'
+      };
+    }
+  }
+
+  clearMasterSuperStockistForm() {
+    this.superStockistMasterForm.reset();
+    this.highLightedRowIndex = -1;
+    this.isSuperStockistUpdateAble = false;
+  }
+
+  updateSuperStockist(){
+
+  }
+
+  editStockist(stockist){
+    const targetStockistIndex = this.superStockist.findIndex(x => x.userId === stockist.userId);
+    this.highLightedRowIndex = targetStockistIndex;
+    // console.log(targetStockistIndex);
+    const data = {
+      id: stockist.userId, userName: stockist.userName, pin: stockist.pin,
+    };
+    this.superStockistMasterForm.patchValue(data);
+    this.isSuperStockistUpdateAble = true;
   }
 
   createNewSuperStockist() {

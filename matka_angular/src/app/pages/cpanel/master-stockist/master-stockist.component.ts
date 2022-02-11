@@ -59,7 +59,6 @@ export class MasterStockistComponent implements OnInit {
     let data={
       id: stockist.userId, userName: stockist.userName, pin: stockist.pin,
      };
-
     this.stockistMasterForm.patchValue(data);
     this.isStockistUpdatAble = true;
   }
