@@ -66,6 +66,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'cPanelSuperStockist',
+    loadChildren: () => import('./modules/general/cpanel/master-super-stockist/master-super-stockist.module')
+      .then(mod => mod.MasterSuperStockistModule)
+  },
+
+  {
     path: 'masterTerminal',
     loadChildren: () => import('./modules/general/cpanel/master-terminal/master-terminal.module')
       .then(mod => mod.MasterTerminalModule)
