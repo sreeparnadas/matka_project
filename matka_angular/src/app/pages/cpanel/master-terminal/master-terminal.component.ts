@@ -34,14 +34,15 @@ export class MasterTerminalComponent implements OnInit {
       id: new FormControl(null),
       terminalName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       stockistId: new FormControl(null, [Validators.required]),
+      superStockistId: new FormControl(null),
     });
 
     this.terminalLimitForm = new FormGroup({
       beneficiaryUid: new FormControl(null, [Validators.required]),
       amount: new FormControl(null, [Validators.required, Validators.max(0)]),
-
     });
   }
+
 
   ngOnInit(): void {
     this.user = this.authService.userBehaviorSubject.value;
@@ -64,6 +65,9 @@ export class MasterTerminalComponent implements OnInit {
     this.terminalLimitForm.controls.amount.setValidators([Validators.max(this.selectedTerminal.stockist.balance)]);
   }
 
+  selectSuperStockist(stockiest){
+    this.terminalMasterForm.patchValue({superStockistId : stockiest.superStockiestId});
+  }
 
   editTerminal(terminal){
     const targetTerminalIndex = this.terminals.findIndex(x => x.terminalId === terminal.terminalId);
@@ -74,6 +78,7 @@ export class MasterTerminalComponent implements OnInit {
     this.terminalMasterForm.patchValue(data);
     this.isTerminalUpdatAble = true;
   }
+
   updateTerminal(){
     Swal.fire({
       title: 'Confirmation',
@@ -124,6 +129,7 @@ export class MasterTerminalComponent implements OnInit {
   }
 
   createNewTerminal() {
+
     Swal.fire({
       title: 'Confirmation',
       text: 'Do you sure to create terminal?',
@@ -135,7 +141,7 @@ export class MasterTerminalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         // tslint:disable-next-line:max-line-length
-        const masterData = {terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId};
+        const masterData = {terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId , superStockistId : this.terminalMasterForm.value.superStockistId};
         this.masterTerminalService.saveNewTerminal(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
