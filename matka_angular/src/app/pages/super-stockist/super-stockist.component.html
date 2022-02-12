@@ -11,6 +11,48 @@
   <!--  </div>-->
   <h1>Welcome</h1>
   <div class="p-2 bd-highlight">
+    <div class="">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>New Super Stockist Form</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+            <div fxFlex="100">
+              <form [formGroup]="stockistMasterForm">
+                <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                  <mat-form-field fxFlex="100">
+                    <mat-label>Super Stockist Name</mat-label>
+                    <input type="text" matInput formControlName="userName" placeholder="Enter name">
+
+                    <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="end" fxLayoutGap="10px" fxLayoutGap.xs="0" *ngIf="!stockistMasterForm.get('userName').valid && stockistMasterForm.get('userName').touched">
+                      <mat-error *ngIf="stockistMasterForm.get('userName').errors['required']">This field is Required</mat-error>
+                      <mat-error *ngIf="stockistMasterForm.get('userName').errors['minlength']">Minimum length of name is {{stockistMasterForm.get('userName').errors.minlength.requiredLength}}</mat-error>
+                    </div>
+                  </mat-form-field>
+
+                  <mat-form-field fxFlex="100">
+                    <mat-label>PIN</mat-label>
+                    <input type="text" matInput formControlName="pin" placeholder="Enter name">
+                  </mat-form-field>
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+            <!-- <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="createNewSuperStockist()" [disabled]="!stockistMasterForm.valid || isSuperStockistUpdateAble">Create</button> -->
+            <!-- <button class="pull-right" mat-raised-button color="primary"mat-stroked-button (click)="updateSuperStockist()" [disabled]="!isSuperStockistUpdateAble">Update</button> -->
+            <!-- <button class="pull-right" mat-raised-button color="warn" mat-stroked-button (click)="clearMasterSuperStockistForm()">clear</button> -->
+          </div>
+
+
+        </mat-card-content>
+      </mat-card>
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>
