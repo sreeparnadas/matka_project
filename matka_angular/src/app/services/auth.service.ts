@@ -72,11 +72,12 @@ export class AuthService {
   autoLogin(){
     // tslint:disable-next-line:max-line-length
     const userData: User = JSON.parse(localStorage.getItem('user'));
+    console.log('test : ' , userData);
     if (!userData){
       return;
     }
     // tslint:disable-next-line:max-line-length
-    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, userData.balance);
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, userData.balance, userData.commission);
     if (loadedUser.authKey){
       this.userBehaviorSubject.next(loadedUser);
 
@@ -96,7 +97,8 @@ export class AuthService {
             resData.data.token,
             resData.data.user.userTypeId,
               resData.data.user.userTypeName,
-          resData.data.user.balance);
+          resData.data.user.balance,
+          resData.data.user.commission);
             this.userBehaviorSubject.next(user);
             localStorage.setItem('user', JSON.stringify(user));
           }
@@ -106,7 +108,7 @@ export class AuthService {
   updateUserBalance(newBalance: number){
     const userData: User = JSON.parse(localStorage.getItem('user'));
     // tslint:disable-next-line:max-line-length
-    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, newBalance);
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, newBalance, userData.commission);
     // userData.balance = newBalance;
     this.userBehaviorSubject.next(loadedUser); // here two user is used one is user and another user is subject of rxjs
     localStorage.setItem('user', JSON.stringify(loadedUser));
@@ -115,7 +117,7 @@ export class AuthService {
   deductUserBalanceBy(deductibleAmount: number){
     const userData: User = JSON.parse(localStorage.getItem('user'));
     // tslint:disable-next-line:max-line-length
-    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, (userData.balance - deductibleAmount));
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, (userData.balance - deductibleAmount), userData.commission);
     // userData.balance = newBalance;
     this.userBehaviorSubject.next(loadedUser); // here two user is used one is user and another user is subject of rxjs
     localStorage.setItem('user', JSON.stringify(loadedUser));
@@ -125,7 +127,7 @@ export class AuthService {
   setUserBalanceBy(balance: number){
     const userData: User = JSON.parse(localStorage.getItem('user'));
     // tslint:disable-next-line:max-line-length
-    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, balance);
+    const loadedUser = new User(userData.userId, userData.userName, userData._authKey, userData.userTypeId, userData.userTypeName, balance, userData.commission);
     // userData.balance = newBalance;
     this.userBehaviorSubject.next(loadedUser); // here two user is used one is user and another user is subject of rxjs
     localStorage.setItem('user', JSON.stringify(loadedUser));

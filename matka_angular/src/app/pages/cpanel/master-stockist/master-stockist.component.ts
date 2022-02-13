@@ -63,7 +63,7 @@ export class MasterStockistComponent implements OnInit {
     this.highLightedRowIndex = targetStockistIndex;
     // console.log(targetStockistIndex);
     let data={
-      id: stockist.userId, userName: stockist.userName, pin: stockist.pin,
+      id: stockist.userId, userName: stockist.userName, pin: stockist.pin, superStockistId: stockist.superStockiestId, commission: stockist.commission
      };
     this.stockistMasterForm.patchValue(data);
     this.isStockistUpdatAble = true;
@@ -83,6 +83,7 @@ export class MasterStockistComponent implements OnInit {
         // tslint:disable-next-line:max-line-length
         const masterData = {id: this.stockistMasterForm.value.id
           , userName : this.stockistMasterForm.value.userName
+          , superStockistId: this.stockistMasterForm.value.superStockistId
           , commission : this.stockistMasterForm.value.commission};
         // console.log(masterData);
         this.masterStockistService.updateStockiist(masterData).subscribe(response => {

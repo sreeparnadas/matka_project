@@ -7,7 +7,8 @@ export class User{
               public _authKey: string,
               public userTypeId: number,
               public userTypeName: string,
-              public balance: number
+              public balance: number,
+              public commission: number
   ){}
 
 
