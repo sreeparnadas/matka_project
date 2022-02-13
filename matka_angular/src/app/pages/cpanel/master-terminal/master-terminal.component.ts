@@ -92,7 +92,10 @@ export class MasterTerminalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         // tslint:disable-next-line:max-line-length
-        const masterData = {terminalId: this.terminalMasterForm.value.id, terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId};
+        const masterData = {terminalId: this.terminalMasterForm.value.id
+          , terminalName : this.terminalMasterForm.value.terminalName
+          , stockistId: this.terminalMasterForm.value.stockistId
+          , commission : this.terminalMasterForm.value.commission};
         this.masterTerminalService.updateTerminal(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
