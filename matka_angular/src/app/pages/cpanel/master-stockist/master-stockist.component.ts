@@ -34,6 +34,7 @@ export class MasterStockistComponent implements OnInit {
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
       superStockistId: new FormControl(null),
+      commission: new FormControl(null),
     });
     this.stockistLimitForm = new FormGroup({
       beneficiaryUid: new FormControl(null, [Validators.required]),
@@ -80,14 +81,16 @@ export class MasterStockistComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         // tslint:disable-next-line:max-line-length
-        const masterData = {id: this.stockistMasterForm.value.id, userName : this.stockistMasterForm.value.userName};
+        const masterData = {id: this.stockistMasterForm.value.id
+          , userName : this.stockistMasterForm.value.userName
+          , commission : this.stockistMasterForm.value.commission};
         // console.log(masterData);
         this.masterStockistService.updateStockiist(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
             this.sortedStockistList[this.highLightedRowIndex]= responseData;
             this.stockistMasterForm.reset();
-            this.isStockistUpdatAble = false,
+            this.isStockistUpdatAble = false;
             setTimeout(() => {
               this.highLightedRowIndex = -1;
             }, 5000);
@@ -130,7 +133,9 @@ export class MasterStockistComponent implements OnInit {
       confirmButtonText: 'Yes, create It!'
     }).then((result) => {
       if (result.isConfirmed){
-        const masterData = {userName : this.stockistMasterForm.value.userName, superStockistId: this.stockistMasterForm.value.superStockistId};
+        const masterData = {userName : this.stockistMasterForm.value.userName
+          , superStockistId: this.stockistMasterForm.value.superStockistId
+          , commission : this.stockistMasterForm.value.commission};
         this.masterStockistService.saveNewStockist(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;

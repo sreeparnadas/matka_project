@@ -35,6 +35,7 @@ export class MasterTerminalComponent implements OnInit {
       terminalName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       stockistId: new FormControl(null, [Validators.required]),
       superStockistId: new FormControl(null),
+      commission: new FormControl(null),
     });
 
     this.terminalLimitForm = new FormGroup({
@@ -73,7 +74,7 @@ export class MasterTerminalComponent implements OnInit {
     const targetTerminalIndex = this.terminals.findIndex(x => x.terminalId === terminal.terminalId);
     this.highLightedRowIndex = targetTerminalIndex;
     const data = {
-      id: terminal.terminalId, terminalName: terminal.terminalName, stockistId: terminal.stockist.userId
+      id: terminal.terminalId, terminalName: terminal.terminalName, stockistId: terminal.stockist.userId, commission: terminal.commission
      };
     this.terminalMasterForm.patchValue(data);
     this.isTerminalUpdatAble = true;
@@ -129,7 +130,6 @@ export class MasterTerminalComponent implements OnInit {
   }
 
   createNewTerminal() {
-
     Swal.fire({
       title: 'Confirmation',
       text: 'Do you sure to create terminal?',
@@ -141,7 +141,10 @@ export class MasterTerminalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         // tslint:disable-next-line:max-line-length
-        const masterData = {terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId , superStockistId : this.terminalMasterForm.value.superStockistId};
+        const masterData = {terminalName : this.terminalMasterForm.value.terminalName
+          , stockistId: this.terminalMasterForm.value.stockistId
+          , superStockistId : this.terminalMasterForm.value.superStockistId
+          , commission : this.terminalMasterForm.value.commission};
         this.masterTerminalService.saveNewTerminal(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
