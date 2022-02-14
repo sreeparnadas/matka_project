@@ -72,7 +72,7 @@ export class AuthService {
   autoLogin(){
     // tslint:disable-next-line:max-line-length
     const userData: User = JSON.parse(localStorage.getItem('user'));
-    console.log('test : ' , userData);
+    // console.log('test : ' , userData);
     if (!userData){
       return;
     }

@@ -77,6 +77,10 @@ import { StockistResultComponent } from './pages/stockistPanel/stockist-result/s
 import { StockistResultModule } from './modules/general/stockistPanel/stockist-result/stockist-result.module';
 import { SuperStockistPanelModule } from './modules/general/super-stockist-panel/super-stockist-panel.module';
 import { MasterStockistModule } from './modules/general/super-stockist-panel/master-stockist/master-stockist.module';
+import { MasterTerminalComponent } from './pages/super-stockist/master-terminal/master-terminal.component';
+// import { MasterTerminalModule } from './modules/general/super-stockist-panel/master-terminal/master-terminal.module';
+// import { MasterTerminalModule } from './modules/general/super-stockist/master-terminal/master-terminal.module';
+// import { MasterTerminalModule } from './modules/general/master-terminal/master-terminal.module';
 // import { MasterStockistComponent } from './pages/super-stockist/master-stockist/master-stockist.component';
 // import { MasterSuperStockistComponent } from './pages/cpanel/master-super-stockist/master-super-stockist.component';
 // import { MasterSuperStockistModule } from './modules/general/cpanel/master-super-stockist/master-super-stockist.module';
@@ -106,6 +110,7 @@ import { MasterStockistModule } from './modules/general/super-stockist-panel/mas
 @NgModule({
   declarations: [
     AppComponent,
+    // MasterTerminalComponent,
     // MasterStockistComponent,
     // MasterSuperStockistComponent,
     // SettingsComponent,
@@ -184,7 +189,9 @@ import { MasterStockistModule } from './modules/general/super-stockist-panel/mas
     // MasterStockistModule,
     MatTabsModule,
     NgMarqueeModule,
-    MasterStockistModule,
+    // MasterTerminalModule,
+    // MasterTerminalModule,
+    // MasterStockistModule,
     // SuperStockistPanelModule,
     // MasterSuperStockistModule,
     // SettingsModule,

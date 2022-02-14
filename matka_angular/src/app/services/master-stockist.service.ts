@@ -19,8 +19,10 @@ export class MasterStockistService {
   private BASE_API_URL = environment.BASE_API_URL;
   masterStockistForm: FormGroup;
   stockists: Stockist[] = [];
+  stockistsBySuperStockist: Stockist[] = [];
   user: User;
   stockistSubject = new Subject<Stockist[]>();
+  stockistsBySuperStockistSubject = new Subject<Stockist[]>();
   constructor(private http: HttpClient, private errorService: ErrorService) {
     this.masterStockistForm = new FormGroup({
       id : new FormControl(null),
@@ -40,9 +42,15 @@ export class MasterStockistService {
     return [...this.stockists];
    }
 
+  getStockistBySuperStockistListener(){
+    return this.stockistsBySuperStockistSubject.asObservable();
+  }
+
    getStockistListener(){
     return this.stockistSubject.asObservable();
    }
+
+
 
    updateStockiist(stockist){
     return this.http.put<StockistMaster>(this.BASE_API_URL + '/stockists', stockist)
@@ -64,4 +72,12 @@ export class MasterStockistService {
         // console.log('service ', response);
       }));
   }
+
+  getStockistBySuperStockist($id){
+    this.http.get(this.BASE_API_URL + '/stockistsBySuperStockist/' + $id).subscribe((response: ServerResponse) => {
+      this.stockistsBySuperStockist = response.data;
+      this.stockistsBySuperStockistSubject.next([...this.stockistsBySuperStockist]);
+    });
+  }
+
 }

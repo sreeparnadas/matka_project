@@ -61,7 +61,6 @@ export class MasterStockistComponent implements OnInit {
   editStockist(stockist){
     const targetStockistIndex = this.stockists.findIndex(x => x.userId === stockist.userId);
     this.highLightedRowIndex = targetStockistIndex;
-    // console.log(targetStockistIndex);
     let data={
       id: stockist.userId, userName: stockist.userName, pin: stockist.pin, superStockistId: stockist.superStockiestId, commission: stockist.commission
      };

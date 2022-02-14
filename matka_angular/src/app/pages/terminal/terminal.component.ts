@@ -97,8 +97,6 @@ export class TerminalComponent implements OnInit {
     this.deviceXs = this.commonService.deviceXs;
 
 
-
-
     this.playGameService.getTodayLastResultListener().subscribe(response => {
       this.todayLastResult = response;
     });

@@ -18,7 +18,10 @@ export class MasterTerminalService {
 
   private BASE_API_URL = environment.BASE_API_URL;
   terminals: Terminal[] = [];
+  terminalsBySuperStockist: Terminal[] = [];
   terminalSubject = new Subject<Terminal[]>();
+  terminalsBySuperStockistSubject = new Subject<Terminal[]>();
+
   constructor(private http: HttpClient, private errorService: ErrorService) {
 
     // get all terminals
@@ -31,8 +34,13 @@ export class MasterTerminalService {
   getTerminals(){
     return [...this.terminals];
   }
+
   getTerminalListener(){
     return this.terminalSubject.asObservable();
+  }
+
+  getTerminalsBySuperStockistListener(){
+    return this.terminalsBySuperStockistSubject.asObservable();
   }
 
   saveNewTerminal(terminal){
@@ -54,4 +62,12 @@ export class MasterTerminalService {
         // console.log('service ', response);
       }));
   }
+
+  getTerminalBySuperStockist($id){
+    this.http.get(this.BASE_API_URL + '/terminalBySuperStockist/' + $id).subscribe((response: ServerResponse) => {
+      this.terminalsBySuperStockist = response.data;
+      this.terminalsBySuperStockistSubject.next([...this.terminalsBySuperStockist]);
+    });
+  }
+
 }
