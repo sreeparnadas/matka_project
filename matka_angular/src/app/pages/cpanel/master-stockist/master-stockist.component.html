@@ -12,7 +12,7 @@
 
           <mat-card-content>
             <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
-              <div fxFlex="100">
+              <div fxFlex="60">
                 <form [formGroup]="stockistMasterForm">
                   <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
                     <mat-form-field fxFlex="100">
@@ -35,15 +35,21 @@
                         </mat-select>
                       </mat-form-field>
                     </div>
-                    <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                    <!-- <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                    <mat-form-field fxFlex="100">
+                      <mat-label>Commission</mat-label>
+                      <input type="text" matInput formControlName="commission" placeholder="Commission">
+                    </mat-form-field>
+                    </div> -->
+
+
+                  </div>
+                  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
                     <mat-form-field fxFlex="100">
                       <mat-label>Commission</mat-label>
                       <input type="text" matInput formControlName="commission" placeholder="Commission">
                     </mat-form-field>
                     </div>
-
-
-                  </div>
                 </form>
               </div>
             </div>
