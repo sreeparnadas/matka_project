@@ -76,6 +76,11 @@ const routes: Routes = [
       .then(mod => mod.MasterTerminalModule)
   },
 
+  {
+    path: 'superStockistReport',
+    loadChildren: () => import('./modules/general/super-stockist-panel/super-stockist-report/super-stockist-report-routing.module')
+      .then(mod => mod.SuperStockistReportRoutingModule)
+  },
 
   {
     path: 'cPanelSettings',

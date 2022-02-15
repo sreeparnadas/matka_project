@@ -44,17 +44,12 @@ import {MatIcon} from "@angular/material/icon";
     MatBadgeModule,
     MatDatepickerModule,
     MatInputModule,
-    FormsModule,
     MatNativeDateModule,
     MatRippleModule,
     // BrowserAnimationsModule,
-
-    FormsModule,
     MatButtonModule,
     MatButtonToggleModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatFormFieldModule,
+    MatFormFieldModule
   ],
   exports: [
     AdminReportsComponent

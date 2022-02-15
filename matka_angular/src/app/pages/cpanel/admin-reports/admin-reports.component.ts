@@ -52,7 +52,7 @@ export class AdminReportsComponent implements OnInit {
       let temp= 0;
       this.customerSaleReportRecords.forEach(function (value) {
         temp += Number(value.total);
-      })
+      });
       // console.log('total amount' + temp);
       this.totalAmount = temp;
     });

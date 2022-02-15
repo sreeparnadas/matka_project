@@ -78,6 +78,9 @@ import { StockistResultModule } from './modules/general/stockistPanel/stockist-r
 import { SuperStockistPanelModule } from './modules/general/super-stockist-panel/super-stockist-panel.module';
 import { MasterStockistModule } from './modules/general/super-stockist-panel/master-stockist/master-stockist.module';
 import { MasterTerminalComponent } from './pages/super-stockist/master-terminal/master-terminal.component';
+import { SuperStockistReportModule } from './modules/general/super-stockist-panel/super-stockist-report/super-stockist-report.module';
+// import { SuperStockistReportComponent } from './pages/super-stockist/super-stockist-report/super-stockist-report.component';
+// import { SuperStockistReportModule } from './modules/general/super-stockist-panel/super-stockist-report/super-stockist-report.module';
 // import { MasterTerminalModule } from './modules/general/super-stockist-panel/master-terminal/master-terminal.module';
 // import { MasterTerminalModule } from './modules/general/super-stockist/master-terminal/master-terminal.module';
 // import { MasterTerminalModule } from './modules/general/master-terminal/master-terminal.module';
@@ -110,6 +113,7 @@ import { MasterTerminalComponent } from './pages/super-stockist/master-terminal/
 @NgModule({
   declarations: [
     AppComponent,
+    // SuperStockistReportComponent,
     // MasterTerminalComponent,
     // MasterStockistComponent,
     // MasterSuperStockistComponent,
@@ -189,6 +193,8 @@ import { MasterTerminalComponent } from './pages/super-stockist/master-terminal/
     // MasterStockistModule,
     MatTabsModule,
     NgMarqueeModule,
+    // SuperStockistReportModule,
+    // SuperStockistReportModule,
     // MasterTerminalModule,
     // MasterTerminalModule,
     // MasterStockistModule,

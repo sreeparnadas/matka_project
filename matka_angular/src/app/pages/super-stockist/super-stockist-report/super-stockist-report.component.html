@@ -1,0 +1,108 @@
+<mat-tab-group class="mt-2 mr-3 ml-3">
+  <mat-tab label="Customer sales report">
+    <div class="pt-1 d-flex">
+<!--      <div class="col-3">-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Start date</mat-label>-->
+<!--          <input matInput [matDatepicker]="picker" [(ngModel)]= "StartDateFilter">-->
+<!--          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #picker [(ngModel)]= "StartDateFilter"></mat-datepicker>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+<!--      <div class="col-3">-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>End date</mat-label>-->
+<!--          <input matInput [matDatepicker]="picker1" [(ngModel)]= "EndDateFilter">-->
+<!--          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #picker1 [(ngModel)]= "EndDateFilter"></mat-datepicker>-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+
+      <!--<button (click)="searchByDate()">test</button>-->
+<!--      <button mat-button color="accent" style="font-size: 20px;" (click)="searchByDateTab1()">Search</button>-->
+    </div>
+
+    <table matSort class="table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
+      <thead>
+      <tr>
+        <th mat-sort-header="terminal_pin">Terminal Id</th>
+        <th mat-sort-header="terminal_pin">Stokiest Name</th>
+        <th mat-sort-header="total">Total</th>
+        <th mat-sort-header="commission">Commission</th>
+        <th mat-sort-header="prize_value">Prize</th>
+        <th mat-sort-header="ntp">NTP</th>
+        <th ></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let record of customerSaleReportRecords;let indexOfElement=index">
+        <td>{{record.terminal_pin}}</td>
+        <td>{{record.stokiest_name}}</td>
+        <td>{{record.total}}</td>
+        <td>{{record.commission}}</td>
+        <td>{{record.prize_value}}</td>
+        <td>{{record.total-record.commission-record.prize_value}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Grand Total</td>
+        <td>{{totalAmount}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center" *ngIf="customerSaleReportRecords.length==0">
+      <h1>No Data</h1>
+    </div>
+
+
+
+  </mat-tab>
+
+  <mat-tab label="Barcode report">
+
+    <div class="text-center" style="align-content: center; align-items: center; text-align: center">
+      <table matSort class=" ml-4 col-11 table table-bordered table-sm" style="border: none !important; height: 50px;  overflow: scroll;">
+        <thead>
+        <tr>
+          <th mat-sort-header="barcode_number">Barcode</th>
+          <th mat-sort-header="draw_time">Draw time</th>
+          <th mat-sort-header="terminal_pin">Terminal</th>
+          <th mat-sort-header="terminal_pin">Game</th>
+          <th mat-sort-header="ticket_taken_time">Ticket take time</th>
+          <th mat-sort-header="total_quantity">Quantity</th>
+          <th mat-sort-header="amount">Amount</th>
+          <th mat-sort-header="prize_value">Prize</th>
+          <th ></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let record of barcodeReportRecords;let indexOfElement=index">
+          <td>{{record.barcode_number}}</td>
+          <td>{{record.draw_time}}</td>
+          <td>{{record.terminal_pin}}</td>
+          <td>{{record.game_name}}</td>
+          <td>{{record.ticket_taken_time}}</td>
+          <td>{{record.total_quantity}}</td>
+          <td>{{record.amount}}</td>
+          <td>{{record.prize_value}}</td>
+<!--          <td><a color="info" class="waves-effect mb-4"(click)="frame.show();openPopup(record.play_master_id, record.barcode_number)"-->
+<!--                 mdbWavesEffect><i class="bi bi-info-square-fill"></i></a></td>-->
+        </tr>
+        </tbody>
+      </table>
+
+      <div class="text-center" *ngIf="barcodeReportRecords.length==0">
+        <h1>No Data</h1>
+      </div>
+
+    </div>
+
+  </mat-tab>
+</mat-tab-group>
+
+
+
