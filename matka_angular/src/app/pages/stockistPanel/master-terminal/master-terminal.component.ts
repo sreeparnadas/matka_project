@@ -50,12 +50,13 @@ export class MasterTerminalComponent implements OnInit {
     this.sortedTerminalList = this.masterTerminalService.getTerminals();
     this.masterTerminalService.getTerminalListener().subscribe((response: Terminal[]) => {
       this.terminals = response;
-      this.sortedTerminalList = response;
+      this.sortedTerminalList = this.terminals.filter(x => x.stockistId === this.user.userId);
     });
 
     this.stockists = this.masterStockistService.getStockists();
     this.masterStockistService.getStockistListener().subscribe((response: Stockist[]) => {
       this.stockists = response;
+      this.terminalMasterForm.patchValue({stockistId : this.user.userId});
     });
   }
 
