@@ -19,24 +19,30 @@ export class MasterStockistComponent implements OnInit {
 
   user: User;
   stockistMasterForm: FormGroup;
+  stockistLimitForm: FormGroup;
   superStockist: SuperStockist[] = [];
   public highLightedRowIndex = -1;
   isStockistUpdatAble = false;
   stockistsBySuperStockist: Stockist[] = [];
+  selectedStockist: Stockist = null;
 
 
   constructor(private masterSuperStockistService: MasterSuperStockiestService, private masterStockistService: MasterStockistService, private authService: AuthService ) {
+    this.user = this.authService.userBehaviorSubject.value;
     this.stockistMasterForm = new FormGroup({
       id: new FormControl(null),
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
       superStockistId: new FormControl(null),
-      commission: new FormControl(null),
+      commission: new FormControl(null, [Validators.max(this.user.commission)]),
+    });
+    this.stockistLimitForm = new FormGroup({
+      beneficiaryUid: new FormControl(null, [Validators.required]),
+      amount: new FormControl(null, [Validators.required, Validators.minLength(2)]),
     });
    }
 
   ngOnInit(): void {
-    this.user = this.authService.userBehaviorSubject.value;
     this.masterStockistService.getStockistBySuperStockist(this.user.userId);
     this.masterStockistService.getStockistBySuperStockistListener().subscribe((response) => {
       this.stockistsBySuperStockist = response;
@@ -48,6 +54,10 @@ export class MasterStockistComponent implements OnInit {
     // });
 
 
+  }
+
+  onStockistSelect(event: any){
+    this.selectedStockist = this.stockistsBySuperStockist.find(x => x.userId === event.value);
   }
 
   getBackgroundColor(index: number) {
@@ -161,6 +171,60 @@ export class MasterStockistComponent implements OnInit {
               icon: 'success',
               title: 'Stockist updated',
               // showConfirmButton: false,
+              timer: 1000
+            });
+            // updating terminal balance from here
+
+          }else{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
+        });
+      }
+    });
+  }
+
+  rechargeToStockist() {
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to recharge?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, recharge It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        const masterData = {
+          beneficiaryUid: this.stockistLimitForm.value.beneficiaryUid,
+          amount: this.stockistLimitForm.value.amount,
+          rechargeDoneByUid: this.user.userId
+        };
+        this.masterStockistService.saveStockistBalance(masterData).subscribe(response => {
+          if (response.success === 1){
+            const responseData = response.data;
+            const targetStockistIndex = this.stockistsBySuperStockist.findIndex(x => x.userId === responseData.userId);
+            this.stockistsBySuperStockist[targetStockistIndex].balance = responseData.balance;
+            // this.sortedStockistList[targetStockistIndex].balance = responseData.balance;
+            this.highLightedRowIndex = targetStockistIndex;
+            this.stockistLimitForm.patchValue({amount: ''});
+            setTimeout(() => {
+              this.highLightedRowIndex = -1;
+            }, 10000);
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Recharge done',
+              showConfirmButton: false,
               timer: 1000
             });
             // updating terminal balance from here

@@ -9,6 +9,8 @@ import {ServerResponse} from '../models/ServerResponse.model';
 import {StockistMaster} from '../models/StockistMaster.model';
 import {catchError, tap} from 'rxjs/operators';
 import {TerminalMaster} from '../models/TerminalMaster.model';
+import {User} from "../models/user.model";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +19,14 @@ import {TerminalMaster} from '../models/TerminalMaster.model';
 export class MasterTerminalService {
 
   private BASE_API_URL = environment.BASE_API_URL;
+  user: User;
   terminals: Terminal[] = [];
   terminalsBySuperStockist: Terminal[] = [];
   terminalSubject = new Subject<Terminal[]>();
   terminalsBySuperStockistSubject = new Subject<Terminal[]>();
 
-  constructor(private http: HttpClient, private errorService: ErrorService) {
+  constructor(private http: HttpClient, private errorService: ErrorService, private authService: AuthService) {
+    this.user = this.authService.userBehaviorSubject.value;
 
     // get all terminals
     this.http.get(this.BASE_API_URL + '/terminals').subscribe((response: ServerResponse) => {
@@ -46,7 +50,10 @@ export class MasterTerminalService {
   saveNewTerminal(terminal){
     return this.http.post<TerminalMaster>(this.BASE_API_URL + '/terminals', terminal)
       .pipe(catchError(this.errorService.serverError), tap(response => {
-        // console.log('service ', response);
+        if (this.user.userTypeId === 5){
+          this.terminalsBySuperStockist.unshift(response.data);
+          this.terminalsBySuperStockistSubject.next([...this.terminalsBySuperStockist]);
+        }
       }));
   }
   updateTerminal(terminal){
