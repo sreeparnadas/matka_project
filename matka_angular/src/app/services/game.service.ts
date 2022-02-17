@@ -17,7 +17,7 @@ export class GameService {
   games: Game[] = [];
   gameTypeSubject = new Subject<GameType[]>();
   gameSubject = new Subject<Game[]>();
-  
+
 
   constructor(private  http: HttpClient, private errorService: ErrorService) {
     // this.http.get(this.BASE_API_URL + '/gameTypes').subscribe((response: ServerResponse) => {
@@ -27,7 +27,6 @@ export class GameService {
     this.http.get(this.BASE_API_URL + '/dev/getGame').subscribe((response: ServerResponse) =>{
       this.games = response.data;
       this.gameSubject.next([...this.games]);
-
     });
 
 
@@ -43,6 +42,10 @@ export class GameService {
 
   updateAutogenertate(gameId){
     this.http.get(this.BASE_API_URL + '/dev/updateAutoGenerate/' + gameId).subscribe((response: ServerResponse) => {
+      const game = response.data;
+      const index = this.games.findIndex(x => x.id === game.id);
+      this.games[index] = game;
+      this.gameSubject.next([...this.games]);
     });
   }
 

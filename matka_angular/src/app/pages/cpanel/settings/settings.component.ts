@@ -11,7 +11,7 @@ export class SettingsComponent implements OnInit {
 
 
   games: Game[];
-  selectedGame= null;
+  selectedGame = null;
 
   constructor(private gameService: GameService) { }
 
