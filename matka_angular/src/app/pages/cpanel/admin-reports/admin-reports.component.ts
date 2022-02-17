@@ -7,7 +7,7 @@ import {Sort} from '@angular/material/sort';
 import Swal from 'sweetalert2';
 import {BarcodeDetails} from '../../../models/BarcodeDetails.model';
 import {CPanelCustomerSaleReport} from '../../../models/CPanelCustomerSaleReport.model';
-import {FormGroup} from "@angular/forms";
+import {FormGroup} from '@angular/forms';
 import {DatePipe, formatDate} from '@angular/common';
 
 @Component({
@@ -33,11 +33,11 @@ export class AdminReportsComponent implements OnInit {
   EndDateFilter = this.startDate;
   pipe = new DatePipe('en-US');
 
-  totalAmount: number = 0;
+  totalAmount = 0;
 
   // picker1: any;
   constructor(private adminReportService: AdminReportService) {
-    console.log(this.thisDay);
+    // console.log(this.thisDay);
   }
 
   ngOnInit(): void {
@@ -49,8 +49,8 @@ export class AdminReportsComponent implements OnInit {
     this.customerSaleReportRecords = this.adminReportService.getCustomerSaleReportRecords();
     this.adminReportService.getCustomerSaleReportListener().subscribe((response: CPanelCustomerSaleReport[]) => {
       this.customerSaleReportRecords = response;
-      let temp= 0;
-      this.customerSaleReportRecords.forEach(function (value) {
+      let temp = 0;
+      this.customerSaleReportRecords.forEach(function(value) {
         temp += Number(value.total);
       });
       // console.log('total amount' + temp);
@@ -63,16 +63,16 @@ export class AdminReportsComponent implements OnInit {
   searchByDateTab1(){
     Swal.fire({
       title: 'Please Wait !',
-      html: 'loading ...',// add html attribute if you want or remove
+      html: 'loading ...', // add html attribute if you want or remove
       allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
       }
     });
-    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
-    var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-    this.adminReportService.customerSaleReportByDate(startDate,endDate).subscribe((response)=>{
-      if(response.data){
+    let startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    let endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+    this.adminReportService.customerSaleReportByDate(startDate, endDate).subscribe((response) => {
+      if (response.data){
         Swal.close();
       }
     });
@@ -81,16 +81,16 @@ export class AdminReportsComponent implements OnInit {
   searchByDateTab2(){
     Swal.fire({
       title: 'Please Wait !',
-      html: 'loading ...',// add html attribute if you want or remove
+      html: 'loading ...', // add html attribute if you want or remove
       allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
       }
     });
-    var startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
-    var endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-    this.adminReportService.barcodeReportByDate(startDate,endDate).subscribe((response)=>{
-      if(response.data){
+    let startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    let endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+    this.adminReportService.barcodeReportByDate(startDate, endDate).subscribe((response) => {
+      if (response.data){
         Swal.close();
       }
     });

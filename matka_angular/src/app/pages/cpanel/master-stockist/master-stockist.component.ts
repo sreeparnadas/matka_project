@@ -34,7 +34,7 @@ export class MasterStockistComponent implements OnInit {
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
       superStockistId: new FormControl(null),
-      commission: new FormControl(null),
+      commission: new FormControl(null, [Validators.required, Validators.max(100)]),
     });
     this.stockistLimitForm = new FormGroup({
       beneficiaryUid: new FormControl(null, [Validators.required]),

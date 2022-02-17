@@ -31,6 +31,17 @@
                     </mat-form-field>
 
                   </div>
+
+                  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+                    <div class="col-10 m-0 p-0">
+                      <mat-form-field fxFlex="col 100">
+                        <mat-label>Commission</mat-label>
+                        <input type="text" matInput formControlName="commission" placeholder="Commission">
+                      </mat-form-field>
+                    </div>
+                    <label style="color: red">(Max: 100)</label>
+                  </div>
+
                 </form>
               </div>
             </div>

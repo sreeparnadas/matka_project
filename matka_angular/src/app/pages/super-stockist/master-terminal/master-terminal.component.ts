@@ -31,7 +31,7 @@ export class MasterTerminalComponent implements OnInit {
       terminalName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       stockistId: new FormControl(null, [Validators.required]),
       superStockistId: new FormControl(null),
-      commission: new FormControl(null, [Validators.max(this.user.commission)]),
+      commission: new FormControl(null, [Validators.required, Validators.max(this.user.commission)]),
     });
 
     this.terminalLimitForm = new FormGroup({

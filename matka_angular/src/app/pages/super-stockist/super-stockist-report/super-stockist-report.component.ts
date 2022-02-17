@@ -38,11 +38,11 @@ export class SuperStockistReportComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.authService.userBehaviorSubject.value;
 
-    this.masterSuperStockistService.barcodeReportBySuperStockistId('2022-02-15', '2022-02-15', this.user.userId).subscribe((response) => {
+    this.masterSuperStockistService.barcodeReportBySuperStockistId('2022-02-17', '2022-02-17', this.user.userId).subscribe((response) => {
       this.barcodeReportRecords = response.data;
     });
 
-    this.masterSuperStockistService.customerSaleReportByDate('2022-02-15', '2022-02-15', this.user.userId).subscribe((response) => {
+    this.masterSuperStockistService.customerSaleReportByDate('2022-02-17', '2022-02-17', this.user.userId).subscribe((response) => {
       this.customerSaleReportRecords = response.data;
       let temp= 0;
       this.customerSaleReportRecords.forEach(function (value) {

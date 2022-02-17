@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
-import {MasterSuperStockiestService} from "../../../services/master-super-stockiest.service";
-import {SuperStockist} from "../../../models/SuperStockist.model";
+import {MasterSuperStockiestService} from '../../../services/master-super-stockiest.service';
+import {SuperStockist} from '../../../models/SuperStockist.model';
 
 @Component({
   selector: 'app-master-super-stockist',
@@ -23,6 +23,7 @@ export class MasterSuperStockistComponent implements OnInit {
       id: new FormControl(null),
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
+      commission: new FormControl(null, [Validators.required, Validators.max(100)]),
     });
 
     this.superStockist = this.masterSuperStockistService.getSuperStockist();
@@ -50,7 +51,7 @@ export class MasterSuperStockistComponent implements OnInit {
 
   updateSuperStockist(){
     const masterData = {id : this.superStockistMasterForm.value.id , userName : this.superStockistMasterForm.value.userName, pin : this.superStockistMasterForm.value.pin};
-    this.masterSuperStockistService.updateSuperStockist(masterData).subscribe(response =>{
+    this.masterSuperStockistService.updateSuperStockist(masterData).subscribe(response => {
       if (response.success === 1){
         Swal.fire({
           position: 'top-end',
@@ -86,7 +87,9 @@ export class MasterSuperStockistComponent implements OnInit {
       confirmButtonText: 'Yes, create It!'
     }).then((result) => {
       if (result.isConfirmed){
-        const masterData = {userName : this.superStockistMasterForm.value.userName, pin : this.superStockistMasterForm.value.pin};
+        const masterData = {userName : this.superStockistMasterForm.value.userName
+          , pin : this.superStockistMasterForm.value.pin
+          , commission : this.superStockistMasterForm.value.commission};
         this.masterSuperStockistService.saveNewSuperStockist(masterData).subscribe(response => {
           // console.log(response);
           if (response.success === 1){
