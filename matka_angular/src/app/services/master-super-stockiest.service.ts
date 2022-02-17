@@ -66,6 +66,13 @@ export class MasterSuperStockiestService {
       }));
   }
 
+  checkPinAvailability(pin){
+    return this.http.post<{success: number}>(this.BASE_API_URL + '/checkAvailability', {pin})
+      .pipe(catchError(this.errorService.serverError), tap(response => {
+        // console.log('service ', response);
+      }));
+  }
+
   customerSaleReportByDate(startDate, endDate, superStockiestId){
     return this.http.post<{success: number; data: any}>( this.BASE_API_URL + '/superStockist/customerSaleReports', {startDate, endDate, superStockiestId})
       .pipe(catchError(this.handleError), tap(((response: {success: number, data: CPanelCustomerSaleReport[]}) => {

@@ -40,7 +40,7 @@ export class GameService {
     return this.gameTypeSubject.asObservable();
   }
 
-  updateAutogenertate(gameId){
+  updateAutoGenerate(gameId){
     this.http.get(this.BASE_API_URL + '/dev/updateAutoGenerate/' + gameId).subscribe((response: ServerResponse) => {
       const game = response.data;
       const index = this.games.findIndex(x => x.id === game.id);

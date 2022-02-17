@@ -18,6 +18,7 @@ export class MasterSuperStockistComponent implements OnInit {
   superStockistLimitForm: FormGroup;
   user: User;
   isSuperStockistUpdateAble = false;
+  isPinAvailable = false;
   superStockist: SuperStockist[] = [];
   selectedSuperStockist: SuperStockist = null;
   public highLightedRowIndex = -1;
@@ -147,6 +148,21 @@ export class MasterSuperStockistComponent implements OnInit {
     this.isSuperStockistUpdateAble = true;
   }
 
+  pinCheck(){
+    this.masterSuperStockistService.checkPinAvailability(this.superStockistMasterForm.value.pin).subscribe((response) => {
+      if (response.success === 0){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Pin Not Available',
+          showConfirmButton: false,
+          timer: 1000
+        });
+        this.isPinAvailable = true;
+      }
+    });
+  }
+
   createNewSuperStockist() {
     Swal.fire({
       title: 'Confirmation',
@@ -182,14 +198,14 @@ export class MasterSuperStockistComponent implements OnInit {
             });
           //   // updating terminal balance from here
           //
-          // }else{
-          //   Swal.fire({
-          //     position: 'top-end',
-          //     icon: 'error',
-          //     title: 'Validation error',
-          //     showConfirmButton: false,
-          //     timer: 3000
-          //   });
+          }else{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
           }
         }, (error) => {
           // when error occured
