@@ -3,6 +3,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {MasterSuperStockiestService} from '../../../services/master-super-stockiest.service';
 import {SuperStockist} from '../../../models/SuperStockist.model';
+import {Stockist} from "../../../models/Stockist.model";
+import {AuthService} from "../../../services/auth.service";
+import {User} from "../../../models/user.model";
 
 @Component({
   selector: 'app-master-super-stockist',
@@ -12,11 +15,16 @@ import {SuperStockist} from '../../../models/SuperStockist.model';
 export class MasterSuperStockistComponent implements OnInit {
 
   superStockistMasterForm: FormGroup;
+  superStockistLimitForm: FormGroup;
+  user: User;
   isSuperStockistUpdateAble = false;
   superStockist: SuperStockist[] = [];
+  selectedSuperStockist: SuperStockist = null;
   public highLightedRowIndex = -1;
 
-  constructor(private masterSuperStockistService: MasterSuperStockiestService) { }
+  constructor(private masterSuperStockistService: MasterSuperStockiestService, private authService: AuthService) {
+    this.user = this.authService.userBehaviorSubject.value;
+  }
 
   ngOnInit(): void {
     this.superStockistMasterForm = new FormGroup({
@@ -24,6 +32,11 @@ export class MasterSuperStockistComponent implements OnInit {
       userName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       pin: new FormControl(null),
       commission: new FormControl(null, [Validators.required, Validators.max(100)]),
+    });
+
+    this.superStockistLimitForm = new FormGroup({
+      beneficiaryUid: new FormControl(null, [Validators.required]),
+      amount: new FormControl(null, [Validators.required, Validators.minLength(2)]),
     });
 
     this.superStockist = this.masterSuperStockistService.getSuperStockist();
@@ -41,6 +54,10 @@ export class MasterSuperStockistComponent implements OnInit {
         animation: 'blinking 1s infinite'
       };
     }
+  }
+
+  onSuperStockistSelect(event: any){
+    this.selectedSuperStockist = this.superStockist.find(x => x.userId === event.value);
   }
 
   clearMasterSuperStockistForm() {
@@ -61,6 +78,60 @@ export class MasterSuperStockistComponent implements OnInit {
           timer: 1000
         });
         this.superStockistMasterForm.reset();
+      }
+    });
+  }
+
+  rechargeToSuperStockist(){
+    Swal.fire({
+      title: 'Confirmation',
+      text: 'Do you sure to recharge?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, recharge It!'
+    }).then((result) => {
+      if (result.isConfirmed){
+        const masterData = {
+          beneficiaryUid: this.superStockistLimitForm.value.beneficiaryUid,
+          amount: this.superStockistLimitForm.value.amount,
+          rechargeDoneByUid: this.user.userId
+        };
+        this.masterSuperStockistService.saveSuperStockistBalance(masterData).subscribe(response => {
+          if (response.success === 1){
+            const responseData = response.data;
+            const targetStockistIndex = this.superStockist.findIndex(x => x.userId === responseData.userId);
+            this.superStockist[targetStockistIndex].balance = responseData.balance;
+            // this.sortedStockistList[targetStockistIndex].balance = responseData.balance;
+            // this.highLightedRowIndex = targetStockistIndex;
+            // this.stockistLimitForm.patchValue({amount: ''});
+            setTimeout(() => {
+              this.highLightedRowIndex = -1;
+            }, 10000);
+            // @ts-ignore
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Recharge done',
+              showConfirmButton: false,
+              timer: 1000
+            });
+            // updating terminal balance from here
+
+          }else{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: 'Validation error',
+              showConfirmButton: false,
+              timer: 3000
+            });
+          }
+        }, (error) => {
+          // when error occured
+          console.log('data saving error', error);
+        });
       }
     });
   }
