@@ -52,27 +52,27 @@ export class SuperStockistReportComponent implements OnInit {
       this.totalAmount = temp;
     });
 
-    this.searchByDateTab1();
+    // this.searchByDateTab1();
     // this.searchByDateTab2();
 
   }
-  searchByDateTab1(){
-    Swal.fire({
-      title: 'Please Wait !',
-      html: 'loading ...', // add html attribute if you want or remove
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      }
-    });
-    let startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
-    let endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
-    this.adminReportService.customerSaleReportByDate(startDate, endDate).subscribe((response) => {
-      if (response.data){
-        Swal.close();
-      }
-    });
-  }
+  // searchByDateTab1(){
+  //   Swal.fire({
+  //     title: 'Please Wait !',
+  //     html: 'loading ...', // add html attribute if you want or remove
+  //     allowOutsideClick: false,
+  //     didOpen: () => {
+  //       Swal.showLoading();
+  //     }
+  //   });
+  //   let startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+  //   let endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+  //   this.adminReportService.customerSaleReportByDate(startDate, endDate).subscribe((response) => {
+  //     if (response.data){
+  //       Swal.close();
+  //     }
+  //   });
+  // }
 
   openPopup(playMasterId: number, barcodeNumber: string){
     this.adminReportService.getBarcodeDetails(playMasterId).subscribe(response => {
