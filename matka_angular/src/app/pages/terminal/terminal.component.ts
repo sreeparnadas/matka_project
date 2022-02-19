@@ -153,10 +153,13 @@ export class TerminalComponent implements OnInit {
       // console.log('test');
     });
 
-
-
     // this.renderer.setStyle(document.body, 'background-image', ' url("assets/images/background.jpg")');
-    this.user = this.authService.userBehaviorSubject.value;
+    // this.user = this.authService.userBehaviorSubject.value;
+
+    this.authService.userBehaviorSubject.subscribe(user => {
+      this.user = user;
+    });
+
     // this.numberCombinationMatrix = this.playGameService.getNumberCombinationMatrix();
     // this.numberCombinationMatrix  = JSON.parse(JSON.stringify(this.copyNumberMatrix));
     this.playGameService.getNumberCombinationMatrixListener().subscribe((response: SingleNumber[]) => {
@@ -302,6 +305,18 @@ export class TerminalComponent implements OnInit {
 
 
   saveUserPlayInputDetails(){
+
+    if (this.user.balance < this.totalTicketPurchased){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Low Balance',
+        showConfirmButton: false,
+        timer: 1000
+      });
+      return;
+    }
+
     Swal.fire({
       title: 'Confirmation',
       text: 'Do you sure to buy ticket?',
@@ -332,6 +347,7 @@ export class TerminalComponent implements OnInit {
             });
             // updating terminal balance from here
             this.authService.setUserBalanceBy(responseData.play_master.terminal.balance);
+
             this.resetMatrixValue();
 
             setTimeout(function() {
