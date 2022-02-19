@@ -22,6 +22,7 @@ import {MatNativeDateModule, MatRippleModule} from "@angular/material/core";
 import {MatButtonModule} from "@angular/material/button";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatInputModule,
     MatNativeDateModule,
     MatRippleModule,
+    MatMomentDateModule,
     // BrowserAnimationsModule,
     MatButtonModule,
     MatButtonToggleModule,

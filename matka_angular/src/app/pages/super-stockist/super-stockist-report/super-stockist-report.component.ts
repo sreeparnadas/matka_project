@@ -8,6 +8,7 @@ import {CPanelBarcodeReport} from "../../../models/CPanelBarcodeReport.model";
 import {BarcodeDetails} from "../../../models/BarcodeDetails.model";
 import {AdminReportService} from "../../../services/admin-report.service";
 import {CPanelCustomerSaleReport} from "../../../models/CPanelCustomerSaleReport.model";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-super-stockist-report',
@@ -49,6 +50,27 @@ export class SuperStockistReportComponent implements OnInit {
         temp += Number(value.total);
       });
       this.totalAmount = temp;
+    });
+
+    this.searchByDateTab1();
+    // this.searchByDateTab2();
+
+  }
+  searchByDateTab1(){
+    Swal.fire({
+      title: 'Please Wait !',
+      html: 'loading ...', // add html attribute if you want or remove
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
+    let startDate = this.pipe.transform(this.StartDateFilter, 'yyyy-MM-dd');
+    let endDate = this.pipe.transform(this.EndDateFilter, 'yyyy-MM-dd');
+    this.adminReportService.customerSaleReportByDate(startDate, endDate).subscribe((response) => {
+      if (response.data){
+        Swal.close();
+      }
     });
   }
 
