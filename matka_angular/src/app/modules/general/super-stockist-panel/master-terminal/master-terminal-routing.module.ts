@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {MasterTerminalComponent} from '../../../../pages/super-stockist/master-terminal/master-terminal.component';
+import {AuthGuardSuperStockistServiceGuard} from "../../../../services/auth-guard-super-stockist-service.guard";
 
 const routes: Routes = [
-  { path: '',  component: MasterTerminalComponent }
+  { path: '', canActivate : [AuthGuardSuperStockistServiceGuard], component: MasterTerminalComponent }
 ];
 
 @NgModule({
