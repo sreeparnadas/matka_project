@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {DatePipe} from '@angular/common';
+import {DatePipe, formatDate} from '@angular/common';
 import {ModalDirective} from 'angular-bootstrap-md';
 import {AuthService} from '../../../services/auth.service';
 import {User} from '../../../models/user.model';

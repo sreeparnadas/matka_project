@@ -10,8 +10,6 @@ import {MatCardModule} from '@angular/material/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSortModule} from '@angular/material/sort';
-import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
 import {NgbModalModule, NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
 import {MDBRootModule} from 'angular-bootstrap-md';
 import {PopoverModule} from 'ngx-smart-popover';
@@ -22,7 +20,6 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field';
-// import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -48,8 +45,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatNativeDateModule,
     MatRippleModule,
-    // MatMomentDateModule,
-    // BrowserAnimationsModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatFormFieldModule,
