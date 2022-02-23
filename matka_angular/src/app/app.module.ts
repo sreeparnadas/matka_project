@@ -35,6 +35,7 @@ import {AuthInterceptorInterceptor} from './services/auth-interceptor.intercepto
 // import { LoaidngRollerComponent } from './shared/loaidng-roller/loaidng-roller.component';
 import { DateAdapter } from '@angular/material/core';
 import { DateFormat } from './date-format';
+import { MatNativeDateModule} from '@angular/material/core';
 // import {NgSelectModule} from '@ng-select/ng-select';
 
 // import {ShowHidePasswordModule} from 'ngx-show-hide-password';
@@ -208,6 +209,7 @@ import { SuperStockistReportModule } from './modules/general/super-stockist-pane
     // TerminalReportModule,
     // AdminReportsModule,
     // MasterTerminalModule
+    MatNativeDateModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi: true},
               {provide: LocationStrategy, useClass: HashLocationStrategy},
