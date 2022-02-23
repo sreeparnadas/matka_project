@@ -69,15 +69,19 @@
         </mat-card>
       </div>
       <div class="col-8" style="background-color: #6c757d5e">
+        <!-- <pre>
+          {{sortedStockistList.superStockistName | json}}
+        </pre> -->
 
         <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-sm" style="border: none !important;">
           <thead>
             <tr>
-              <th scope="colgroup" colspan="5" class="text-center">Stockist List</th>
+              <th scope="colgroup" colspan="6" class="text-center">Stockist List</th>
             </tr>
             <tr>
               <th >Id</th>
               <th mat-sort-header="userName">Stockist name</th>
+              <th mat-sort-header="userName">Super Stockist name</th>
               <th mat-sort-header="pin">Pin</th>
               <th mat-sort-header="balance">Balance</th>
               <th mat-sort-header="edit">Edit</th>
@@ -87,9 +91,13 @@
           <tr [ngStyle]="getBackgroundColor(indexOfElement)" *ngFor="let stockist of sortedStockistList;let indexOfElement=index">
             <td>{{(indexOfElement+1)}}</td>
             <td>{{stockist.userName}}</td>
+            <td>{{stockist.superStockistName.user_name}}</td>
             <td>{{stockist.pin}}</td>
             <td>{{stockist.balance}}</td>
             <td><i class="bi bi-pencil-square" (click)="editStockist(stockist)"></i></td>
+            <!-- <pre>
+              {{stockist.superStockistName.user_name | json}}
+            </pre> -->
           </tr>
           </tbody>
 
