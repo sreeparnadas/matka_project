@@ -31,10 +31,13 @@ export class MasterTerminalComponent implements OnInit {
 
   constructor(private masterTerminalService: MasterTerminalService, private masterStockistService: MasterStockistService,
               private authService: AuthService) {
+    this.user = this.authService.userBehaviorSubject.value;
     this.terminalMasterForm = new FormGroup({
       id: new FormControl(null),
       terminalName: new FormControl(null, [Validators.required, Validators.minLength(2)]),
       stockistId: new FormControl(null, [Validators.required]),
+      superStockistId: new FormControl(null),
+      commission: new FormControl(null, [Validators.required, Validators.max(this.user.commission)]),
     });
 
     this.terminalLimitForm = new FormGroup({
@@ -45,7 +48,7 @@ export class MasterTerminalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.authService.userBehaviorSubject.value;
+
     this.terminals = this.masterTerminalService.getTerminals();
     this.sortedTerminalList = this.masterTerminalService.getTerminals();
     this.masterTerminalService.getTerminalListener().subscribe((response: Terminal[]) => {
@@ -56,7 +59,8 @@ export class MasterTerminalComponent implements OnInit {
     this.stockists = this.masterStockistService.getStockists();
     this.masterStockistService.getStockistListener().subscribe((response: Stockist[]) => {
       this.stockists = response;
-      this.terminalMasterForm.patchValue({stockistId : this.user.userId});
+      const selectedStockistIndex = this.stockists.findIndex(x => x.userId === this.user.userId);
+      this.terminalMasterForm.patchValue({stockistId : this.user.userId, superStockistId : this.stockists[selectedStockistIndex].superStockiest.userId});
     });
   }
 
@@ -136,7 +140,11 @@ export class MasterTerminalComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed){
         // tslint:disable-next-line:max-line-length
-        const masterData = {terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId};
+        // const masterData = {terminalName : this.terminalMasterForm.value.terminalName, stockistId: this.terminalMasterForm.value.stockistId, commission : this.terminalMasterForm.value.commission};
+        const masterData = {terminalName : this.terminalMasterForm.value.terminalName
+          , stockistId: this.user.userId
+          , superStockistId : this.terminalMasterForm.value.superStockistId
+          , commission : this.terminalMasterForm.value.commission};
         this.masterTerminalService.saveNewTerminal(masterData).subscribe(response => {
           if (response.success === 1){
             const responseData = response.data;
@@ -173,6 +181,8 @@ export class MasterTerminalComponent implements OnInit {
       }
     });
   }
+
+
 
   getBackgroundColor(index: number) {
     // tslint:disable-next-line:triple-equals

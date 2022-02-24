@@ -29,7 +29,7 @@
                       <mat-form-field fxFlex="80">
                         <mat-label>Stockist</mat-label>
                         <mat-select formControlName="stockistId">
-                          <mat-option *ngFor="let stockist of stockists" [value]="stockist.userId" (blur) = selectSuperStockist(stockist)>
+                          <mat-option *ngFor="let stockist of stockists" [value]="stockist.userId" (blur) = "selectSuperStockist(stockist)">
                             {{stockist.userName}}
                           </mat-option>
                         </mat-select>

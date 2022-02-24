@@ -52,7 +52,11 @@ export class MasterTerminalComponent implements OnInit {
     this.masterTerminalService.getTerminalListener().subscribe((response: Terminal[]) => {
       this.terminals = response;
       this.sortedTerminalList = response;
+      console.log(this.sortedTerminalList);
     });
+    console.log(this.sortedTerminalList);
+    console.log(this.terminals);
+
 
     this.stockists = this.masterStockistService.getStockists();
     this.masterStockistService.getStockistListener().subscribe((response: Stockist[]) => {
@@ -67,7 +71,8 @@ export class MasterTerminalComponent implements OnInit {
   }
 
   selectSuperStockist(stockiest){
-    this.terminalMasterForm.patchValue({superStockistId : stockiest.superStockiestId});
+    // console.log(stockiest);
+    this.terminalMasterForm.patchValue({superStockistId : stockiest.superStockiest.userId});
   }
 
   editTerminal(terminal){
